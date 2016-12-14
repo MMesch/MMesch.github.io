@@ -8,8 +8,135 @@
         font-family: 'Lato';
         background-color: white;
     }
+    div.box {
+        width: auto;
+        height: auto;
+        color: black;
+        font-size: 12pt;
+        background-color: white;
+
+        float: left;
+        clear: left;
+
+        margin: 20px;
+        padding: 10px;
+        border: 2px solid;
+        border-color: #6E6E6E;
+        border-radius: 10px;
+    }
+    div.img {
+        margin: 5px;
+        border: 1px solid #ccc;
+
+        float: left;
+        width: 250px;
+    }
+    div.img:hover {
+        border: 1px solid #777;
+    }
+    div.img img {
+        width: 100%;
+        height: auto;
+    }
+    div.desc {
+        padding: 15px;
+        height: 50px;
+        text-align: center;
+    }
     </style>
 </head> 
 
 <body>
+  <div class="box">
+    <h1>Research</h1>
+    <div class="img">
+      <a target="_blank" href="">
+        <img src="images/thumbnails/chicxulub.png" alt="Chicxulub" width="300" height="300">
+      </a>
+      <div class="desc">Antipodal focusing of seismic waves due to large
+      meteorite impacts on Earth</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="">
+        <img src="images/thumbnails/collective_motion.png" alt="collective motion" width="300" height="300">
+      </a>
+      <div class="desc">Local disalignment can promote coherent collective motion</div>
+    </div>
+
+  </div>
+
+  <div class="box">
+    <h1>Visualizations</h1>
+
+    <div class="img">
+      <a target="_blank" href="">
+        <img src="images/thumbnails/3drays.png" alt="3d ray paths" width="300" height="300">
+      </a>
+      <div class="desc">3D Visualization of Seismic Ray Paths</div>
+    </div>
+    
+    <div class="img">
+      <a target="_blank" href="">
+        <img src="images/thumbnails/moment_tensors.png" alt="3d moment tensors" width="300" height="300">
+      </a>
+      <div class="desc">3D Visualization of Moment Tensors</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="https://mmesch.github.io/historical_paris">
+        <img src="images/thumbnails/historical_paris.png" alt="historical Paris" width="300" height="300">
+      </a>
+      <div class="desc">Interactive map of the city development of Paris</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="images/solarsystem.svg">
+        <img src="images/thumbnails/solarsystem.svg" alt="solarsystem svg"
+             width="300" height="300">
+      </a>
+      <div class="desc">Solarsystem SVG</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="">
+        <img src="images/thumbnails/seismic_wavefield_visualisation.png"
+             alt="seismic wavefield visualization" width="300" height="300">
+      </a>
+      <div class="desc">Visualization of the Seismic Wavefield on the Global Scale</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="images/metro_traffic_2011.png">
+        <img src="images/thumbnails/metro_traffic.png" alt="metro traffic 2011"
+             width="300" height="300">
+      </a>
+      <div class="desc">Map of the Parisian Metro Traffic 2011</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="sites/collective_motion_js.html">
+        <img src="images/thumbnails/collective_motion_animation.png"
+             alt="collective motion animation" width="300" height="300">
+      </a>
+      <div class="desc">Animated Collective Motion Model</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h1>Codes</h1>
+    <div class="img">
+      <a target="_blank" href="https://github.com/SHTOOLS/SHTOOLS">
+        <img src="images/thumbnails/shtools.png" alt="shtools" width="300" height="300">
+      </a>
+      <div class="desc">Spherical Harmonics Python Package (pyshtools)</div>
+    </div>
+
+    <div class="img">
+      <a target="_blank" href="https://github.com/MMesch/cmap_builder">
+        <img src="images/thumbnails/cmap2d.png" alt="colormap 2d" width="300" height="300">
+      </a>
+      <div class="desc">2D Colormap Designer and Python Package</div>
+    </div>
+  </div>
 </body>
