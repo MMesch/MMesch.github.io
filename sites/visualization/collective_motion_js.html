@@ -163,16 +163,18 @@
 <body>
    <div id="canvasContainer">
     <canvas id="mainCanvas" width="1280" height="720"></canvas>
-
     <p>
-    <br/>
-    Every particle adapts approximately the velocity of its neighbours. This
-    simple rule leads to swarm dynamics and closely resembles the movement of
-    fishes or birds.
-    </p><p>
-    Interestingly, particles that adapt their 'direction' to their neighbours
-    can also be found in magnetic materials. Here, the magnetic axes align
-    and not the velocity vectors of the particles (Ising model).
+    This is a collective motion simulation based upon the so-called Vicsek model (<a
+    href="https://en.wikipedia.org/wiki/Vicsek_model">Wikipedia article</a>).
+    Essentially each particle (fish, locust, bird...) adjusts its movement
+    direction to its neighbours while always retaining the same speed. This is
+    similar to a ferromagnet where particles adjust their spins but don't change
+    position. As the magnet, the moving system can show a "phase transition" from
+    unordered to swarm-like, depending on the strength of the random perturbations.
+    Interestingly a similar effect of organized motion can be observed if particles
+    repel each other (<a
+    href="http://iopscience.iop.org/1367-2630/10/2/023036">Grossman, Aranson and
+    Jacob 2008</a>)
     </p>
    </div>
 </body>

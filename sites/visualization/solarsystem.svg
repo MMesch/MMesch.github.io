@@ -2,7 +2,7 @@
 <!-- pythology.blogspot.com by Matthias Meschede -->
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="1024" height="768">
+     viewBox="-700 -500 2000 2000">
 
 <path id="Mercury_orbit" d="M458.919064564 452.059128302 A11.5389944502 11.2897578625 61.0 1,1 436.432563024,446.867710367A11.5389944502 11.2897578625 61.0 1,1 458.919064564,452.059128302" fill="none" stroke="#333333" stroke-width="3"/>
 <path id="Jupiter_orbit" d="M488.434028757 593.437748061 A156.117565095 155.931496312 -185.0 1,1 407.621630514,291.841771936A156.117565095 155.931496312 -185.0 1,1 488.434028757,593.437748061" fill="none" stroke="orange" stroke-width="3"/>
