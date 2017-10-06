@@ -1,0 +1,59 @@
+@font-face {
+    font-family: Orienta;
+    src: url('https://fonts.googleapis.com/css?family=Orienta');
+}
+
+body
+{
+    font-family: 'Orienta';
+    background-color: white;
+}
+
+h1 {
+    color: #6E7B7E;
+}
+
+div.box {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    color: black;
+    font-size: 12pt;
+    background-color: white;
+
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+}
+
+div.img {
+    margin: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+
+    display: inline-block;
+    vertical-align: top;
+    width: 250px;
+}
+div.img:hover {
+    border: 1px solid #777;
+}
+div.img img {
+    width: 100%;
+    height: auto;
+}
+div.desc {
+    color: #6E7B7E;
+    padding: 15px;
+    height: 70px;
+    text-align: center;
+}
+
+p {
+    display: inline-block;
+    max-width: 800px;
+    color: #333333;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: 13pt;
+}
