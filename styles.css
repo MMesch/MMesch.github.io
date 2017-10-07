@@ -15,11 +15,9 @@ h1 {
 
 hr {
     width: 80%;
-    border-color: #FAFAFA;
-    background-color: #FAFAFA;
 }
 
-div.box {
+section {
     text-align: center;
     position: relative;
     width: 100%;
@@ -31,6 +29,33 @@ div.box {
     display: inline-block;
     margin: 20px;
     padding: 10px;
+    padding-bottom: 100px;
+}
+
+section a span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #333333;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+section a span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px;
+  border-left: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
 }
 
 div.img {
@@ -42,6 +67,13 @@ div.img {
     vertical-align: top;
     width: 250px;
 }
+
+@media only screen and (max-width : 320px) {
+    div.img{
+        margin: 20px
+    }
+}
+
 div.img:hover {
     border: 1px solid #777;
 }
