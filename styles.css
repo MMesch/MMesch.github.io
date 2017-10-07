@@ -27,7 +27,6 @@ section {
     background-color: white;
 
     display: inline-block;
-    margin: 20px;
     padding: 10px;
     padding-bottom: 100px;
 }
@@ -90,6 +89,7 @@ div.desc {
     }
     div.desc {
         font-size: 9;
+        padding: 5px;
     }
 }
 
