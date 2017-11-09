@@ -22,10 +22,10 @@ section {
     text-align: center;
     position: relative;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     height: auto;
     color: black;
-    font-size: 12pt;
+    font-size: 11pt;
     background-color: white;
 
     display: block;
@@ -60,13 +60,13 @@ section a span::after {
 }
 
 div.img {
-    margin: 40px;
+    margin: 30px;
     padding: 5px;
     border: 1px solid #ccc;
 
     display: inline-block;
     vertical-align: top;
-    width: 250px;
+    width: 220px;
 }
 
 div.img:hover {
@@ -78,7 +78,7 @@ div.img img {
 }
 div.desc {
     color: #6E7B7E;
-    padding: 15px;
+    padding: 13px;
     height: 70px;
     text-align: center;
 }
@@ -102,5 +102,5 @@ section p {
     color: #555555;
     font-weight: 400;
     line-height: 35px;
-    font-size: 13pt;
+    font-size: 12pt;
 }
