@@ -16,7 +16,7 @@ h1 {
 
 #Introduction {
     background-image: url(images/svg_background.svg);
-    background-position: center;
+    background-position: center bottom;
     background-size: 100%;
     background-repeat: no-repeat;
     margin-top: 100px;
@@ -94,6 +94,14 @@ div.desc {
 }
 
 @media screen and (max-width : 600px) {
+    #Introduction {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+    }
+    section {
+        padding-bottom: 50px;
+    }
     div.img{
         width: 100px;
         padding: 2px;
