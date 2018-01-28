@@ -1,38 +1,43 @@
-@font-face {
-    font-family: Dosis;
-    src: url('https://fonts.googleapis.com/css?family=Dosis');
-}
+@import url('https://fonts.googleapis.com/css?family=Dosis|Lato');
 
 body
 {
-    font-family: 'Dosis', sans-serif;
+    font-family: "Verdana", sans-serif;
     background-color: white;
 }
 
 h1 {
+    text-align: left;
     font-weight: 500;
     color: #6E7B7E;
 }
 
-#Introduction {
+#main {
+    text-align: center;
     background-image: url(images/svg_background.svg);
     background-position: center bottom;
     background-size: 100%;
     background-repeat: no-repeat;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding-bottom: 200px;
+    margin-top: 40px;
+    padding-top: 120px;
+    margin-bottom: 10px;
+    padding-bottom: 170px;
 }
 
 hr {
     width: 80%;
 }
 
+em.small {
+    font-style: normal; 
+    font-variant: small-caps;
+}
+
 section {
-    text-align: center;
+    text-align: right;
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     height: auto;
     color: black;
     font-size: 11pt;
@@ -54,6 +59,7 @@ section a span {
   border-radius: 100%;
   box-sizing: border-box;
 }
+
 section a span::after {
   position: absolute;
   top: 50%;
@@ -114,6 +120,7 @@ div.desc {
 }
 
 section p {
+    text-align: center;
     display: inline-block;
     max-width: 800px;
     padding: 10px;
