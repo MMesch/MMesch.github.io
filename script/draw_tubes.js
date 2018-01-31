@@ -39,7 +39,7 @@ for(var j=0; j<2; j++){
 
     lines = draw_tube(tube_width, tube_skew, tube_bow, path);
     lines.style('stroke', 'black');
-    lines.style('opacity', 0.1);
+    lines.style('opacity', 0.07);
 }
 
 function draw_tube(tube_width, tube_skew, tube_bow, path){
