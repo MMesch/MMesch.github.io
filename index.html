@@ -7,11 +7,13 @@
     <meta property='og:description' content="This is my personal homepage and showcases projects that I have worked on"/>
     <meta property='og:url' content="https://mmesch.github.io/" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- load all background scripts -->
+    <script src="script/backgrounds/background_tubes.js"></script>
+    <script src="script/backgrounds/background_collective.js"></script>
 </head> 
 
 <body>
-  <svg width=100% height=100% style="position:absolute;left:0;right:0;z-index:-1;overflow:hidden;">
-  </svg>
 
   <section id="Introduction">
       <h1 id='main'>Welcome to my homepage</h1>
@@ -247,6 +249,12 @@
     </div>
     </div>
   </section>
-  <script src="script/draw_tubes.js"></script>
+
+    <script>
+        var random_choice = Math.random();
+        var backgrounds = [background_tubes, background_collective];
+        var background_index = Math.floor(random_choice * backgrounds.length)
+        backgrounds[background_index]();
+    </script>
 
 </body>
