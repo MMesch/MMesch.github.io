@@ -14,13 +14,7 @@ h1 {
 
 #main {
     text-align: center;
-    background-image: url(images/svg_background.svg);
-    background-position: center bottom;
-    background-size: 100%;
-    background-repeat: no-repeat;
     margin-bottom: 10px;
-    padding-top: 70px;
-    padding-bottom: 170px;
 }
 
 #introduction {
@@ -43,7 +37,7 @@ section {
     height: auto;
     color: black;
     font-size: 11pt;
-    background-color: white;
+    background-color:rgba(255, 255, 255, 0.2);
 
     display: block;
     margin: auto;
@@ -59,6 +53,7 @@ div.img {
     margin: 30px;
     padding: 5px;
     border: 1px solid #ccc;
+    background-color:white;
 
     display: inline-block;
     vertical-align: top;
