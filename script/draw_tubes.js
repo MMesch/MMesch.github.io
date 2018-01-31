@@ -1,21 +1,23 @@
-var width = window.innerWidth,
-    height = window.innerHeight;
+var body = document.body,
+    html = document.documentElement;
 
-var svg = d3.select("svg")
+var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+var width = body.clientWidth;
+
+var svg = d3.select("svg").attr('height', height)
 
 var all_lines_data = [];
-var tube_width = 50;
+var tube_width = width/10;
 var tube_skew = 10;
-var tube_bow = 100;
+var tube_bow = width/10;
 var normalize = function(x, y){
     return Math.sqrt(x*x + y*y);
 }
 
-var colors = ['red', 'blue', 'green', 'black'];
 for(var j=0; j<2; j++){
-    var n_path = 30;
+    var n_path = height/20;
     var path = [];
-    var radius = 200;
     var x_old = Math.random()*width;
     var y_old = 0;
     var x_dir = -(x_old - width/2)/150;
@@ -136,7 +138,6 @@ function draw_tube(tube_width, tube_skew, tube_bow, path){
         }
         line1 = line2;
     }
-    console.log(tube_nodes);
 
     var lines = svg.append('g').attr('id', 'tube').selectAll('.sublines')
         .data(tube_nodes).enter().append('g');
