@@ -8,7 +8,7 @@ function background_collective(){
         var canvasW = body.clientWidth;
 
         var canvas = document.createElement('canvas');
-        canvas.id = 'someId';
+        canvas.id = 'background';
         canvas.width = canvasW;
         canvas.height = canvasH;
         canvas.setAttribute('style', 'position:absolute;z-index:-1')

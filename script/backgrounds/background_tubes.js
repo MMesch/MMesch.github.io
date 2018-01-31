@@ -9,19 +9,20 @@ function background_tubes(){
 
     var svg = d3.select("body")
                 .insert('svg', ':first-child')
+                .attr('id', 'background')
                 .attr('width', width)
                 .attr('height', height)
                 .attr('style', 'position:absolute;z-index:-1')
     
     var all_lines_data = [];
-    var tube_width = Math.max(width/3, 300);
-    var tube_skew = tube_width/3;
+    var tube_width = Math.max(width/2, 300);
+    var tube_skew = tube_width/5;
     var tube_bow = 2*tube_width;
     var normalize = function(x, y){
         return Math.sqrt(x*x + y*y);
     }
     
-    for(var j=0; j<2; j++){
+    for(var j=0; j<1; j++){
         var n_path = height/50;
         var path = [];
         var x_old = Math.random()*width;
@@ -129,7 +130,7 @@ function background_tubes(){
     
         var x_center = 0;
         var y_center = 0;
-        var n_interp = 20;
+        var n_interp = 30;
     
         tube_nodes = [];
         var line1 = line_to_path(get_line(x_center, y_center), 0);

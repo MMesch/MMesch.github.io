@@ -255,6 +255,12 @@
         var backgrounds = [background_tubes];
         var background_index = Math.floor(random_choice * backgrounds.length)
         backgrounds[background_index]();
+        var update_background = function(){
+             var element = document.getElementById("background");
+             element.parentNode.removeChild(element);
+             backgrounds[background_index]();
+        }
+        window.onresize = update_background;
     </script>
 
 </body>
