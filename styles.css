@@ -20,7 +20,7 @@ h2 {
 }
 
 h2 a.inactive {
-    padding: 5%;
+    padding: 2%;
     text-decoration: none;
     color: #92897e;
 }
@@ -30,7 +30,7 @@ h2 a.inactive:hover {
 }
 
 h2 a.active {
-    padding: 5%;
+    padding: 2%;
     text-decoration: none;
     color: #086572;
 }
@@ -105,11 +105,8 @@ section p {
 }
 
 @media screen and (max-width : 600px) {
-    #main {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-top: 30px;
-        padding-bottom: 50px;
+    h2 {
+        font-size: 11;
     }
     div.img{
         width: 100px;
