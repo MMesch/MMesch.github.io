@@ -17,7 +17,7 @@ function background_collective(){
 
         var PI_2        = Math.PI * 2;
         
-        var numMovers   = 40;
+        var numMovers   = 60;
         var movers      = [];
         
         var canvas;
@@ -46,12 +46,12 @@ function background_collective(){
 
         function run(){
                 ctx.globalCompositeOperation = "source-over";
-                ctx.fillStyle = "rgba(255,255,255,0.04)";
+                ctx.fillStyle = "rgba(255,255,255,0.02)";
                 ctx.fillRect( 0 , 0 , canvasW , canvasH );
                 ctx.globalCompositeOperation = "darker";
                 
                 var interaction_range = 50.0;
-                var velocity = 3;
+                var velocity = 1;
                 
                 var i = numMovers;
                 while ( i-- ){
@@ -93,13 +93,13 @@ function background_collective(){
                         
                         ctx.fillStyle = m.color;
                         ctx.beginPath();
-                        ctx.arc(nextX, nextY, 2.0 , 0 , PI_2 , true );
+                        ctx.arc(nextX, nextY, 1.0 , 0 , PI_2 , true );
                         ctx.closePath();
                         ctx.fill(); 
                 }
         }
         function Mover(){
-                this.color = "rgb(230,230,230)";
+                this.color = "rgba(100,100,100, 0.5)";
                 this.y     = 0;
                 this.x     = 0;
                 this.vX    = 0;
