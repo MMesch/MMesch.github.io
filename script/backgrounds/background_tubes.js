@@ -14,15 +14,15 @@ function background_tubes(){
                 .attr('style', 'position:absolute;z-index:-1')
     
     var all_lines_data = [];
-    var tube_width = width/10;
-    var tube_skew = 10;
-    var tube_bow = width/10;
+    var tube_width = width/3;
+    var tube_skew = tube_width/3;
+    var tube_bow = 2*tube_width;
     var normalize = function(x, y){
         return Math.sqrt(x*x + y*y);
     }
     
     for(var j=0; j<2; j++){
-        var n_path = height/20;
+        var n_path = height/50;
         var path = [];
         var x_old = Math.random()*width;
         var y_old = 0;
@@ -45,7 +45,7 @@ function background_tubes(){
     
         lines = draw_tube(tube_width, tube_skew, tube_bow, path);
         lines.style('stroke', 'black');
-        lines.style('opacity', 0.07);
+        lines.style('opacity', 0.03);
     }
     
     function draw_tube(tube_width, tube_skew, tube_bow, path){

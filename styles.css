@@ -3,7 +3,8 @@
 body
 {
     font-family: "Verdana", sans-serif;
-    background-color: white;
+    background: linear-gradient(rgb(245, 245, 250), rgb(250, 245, 245),
+                                rgb(245, 250, 245));
 }
 
 h1 {
@@ -54,7 +55,6 @@ section {
     height: auto;
     color: black;
     font-size: 11pt;
-    background-color:rgba(255, 255, 255, 0.2);
 
     display: block;
     margin: auto;
