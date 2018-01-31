@@ -14,7 +14,7 @@ function background_tubes(){
                 .attr('style', 'position:absolute;z-index:-1')
     
     var all_lines_data = [];
-    var tube_width = width/3;
+    var tube_width = Math.max(width/3, 300);
     var tube_skew = tube_width/3;
     var tube_bow = 2*tube_width;
     var normalize = function(x, y){
