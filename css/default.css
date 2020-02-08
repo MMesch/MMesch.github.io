@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis|Lato');
+
+/* main */
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.container {
+    display: block;
+    margin: auto;
+    max-width: 60rem;
+}
+
+/* Top navigation bar */
+
+nav {
+  display: inline-block;
+}
+
+nav a {
+  font-size: 1.3rem;
+  padding: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a:visited {
+    color: rgb(50, 50, 50);
+}
+
+// post list specific
+
+div.archive {
+}
+
+div.archive ul {
+    display: block;
+    margin-left: 10rem;
+    counter-reset: auto-increment-numbers;
+}
+
+div.archive li {
+    padding-bottom: 0.5rem;
+    list-style-type: none;
+    counter-increment: auto-increment-numbers;
+    display: flex;
+    justify-content: flex-start;
+}
+
+div.archive li::before {
+    font-size: 2rem;
+    color: rgb(150,150,150);
+    position: relative;
+    --size: 32px;
+    left: calc(-1 * var(--size) - 10px);
+    width: var(--size);
+    text-align: center;
+    content: counter(auto-increment-numbers);
+}
+
+/* Blog */
+
+div.blog {
+  max-width: 60rem;
+}
+
+div.blog h1 {
+  font-size: 1.3rem;
+  font-variant:small-caps;
+  color: #5b5345;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.blog h2 {
+  font-size: 1rem;
+  font-variant:small-caps;
+  text-align: left;
+  font-weight: 500;
+  color: #6E7B7E;
+}
+
+div.blog article .header {
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+  padding-bottom: 30px;
+}
+
+div.blog article img {
+        width: 100%;
+}
+
+/* project gallery */
+
+div.projects {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+div.projects div.img {
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color:white;
+    vertical-align: top;
+    width: 220px;
+}
+
+div.projects div.img:hover {
+    border: 1px solid #777;
+}
+
+div.projects div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.projects div.desc {
+    color: #6E7B7E;
+    padding: 13px;
+    height: 70px;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+  body {
+    width: 90%;
+  }
+}
