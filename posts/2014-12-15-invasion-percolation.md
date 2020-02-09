@@ -1,5 +1,5 @@
 ---
-tile: Visualizing Invasion Percolation
+title: Visualizing Invasion Percolation
 ---
 
 And another volume render in Blender.
