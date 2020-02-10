@@ -48,7 +48,7 @@ div.archive {
 }
 
 div.archive .item {
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
     list-style-type: none;
     counter-increment: auto-increment-numbers;
     display: grid;
@@ -58,8 +58,8 @@ div.archive .item {
 }
 
 div.archive .item .thumbnail {
-        height: 100%;
-        width: auto;
+        widtht: 100%;
+        height: auto;
         margin-right: 1rem;
         vertical-align: top;
 }
@@ -137,8 +137,7 @@ div.projects div.desc {
     text-align: center;
 }
 
-@media (max-width: 640px) {
+@media screen and (max-width: 600px) {
   body {
     width: 90%;
-  }
 }
