@@ -1,5 +1,6 @@
 ---
 title: Visualizing Invasion Percolation
+class: post
 ---
 
 And another volume render in Blender.

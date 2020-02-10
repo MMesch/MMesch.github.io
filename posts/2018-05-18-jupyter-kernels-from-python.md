@@ -1,5 +1,6 @@
 ---
 title: Using Jupyter Kernels From Python
+class: post
 ---
 
 This notebook demonstrates how a jupyter kernel can be started and controlled from Python (i.e. another jupyter kernel in this case, with an attached notebook).

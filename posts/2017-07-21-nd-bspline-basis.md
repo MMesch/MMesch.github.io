@@ -1,5 +1,6 @@
 ---
 title: ND B-Spline Basi Functions with Scipy
+class: post
 ---
 
 The following <a href="https://gist.github.com/MMesch/591795afdefe328a3805f02a9d9d1397">gist</a> shows how to extract ND-Bspline basis functions from scipy.

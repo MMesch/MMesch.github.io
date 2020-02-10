@@ -1,5 +1,6 @@
 ---
 title: fast interpolation on regulard distored Nd-grids in Python
+class: post
 ---
 
 This post is about interpolation on a N-dimensional regular grid that is distorted.

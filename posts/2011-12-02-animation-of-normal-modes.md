@@ -1,5 +1,6 @@
 ---
 title: Animation of Earth's Normal Modes
+class: post
 ---
 
 

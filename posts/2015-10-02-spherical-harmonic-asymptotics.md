@@ -1,5 +1,6 @@
 ---
 title: Spherical Harmonic Polar and Equatorial Asymptotics
+class: post
 ---
 
 Spherical Harmonics are eigenfunctions of the Laplace-Beltrami Operator in spherical coordinates.

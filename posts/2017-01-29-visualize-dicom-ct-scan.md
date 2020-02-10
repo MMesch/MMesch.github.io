@@ -1,5 +1,6 @@
 ---
 title: Visualize you DICOM CT Scan in 3D with Paraview
+class: post
 ---
 
 CT Scan examinations often come with a data CD that contains the raw images of the scan.

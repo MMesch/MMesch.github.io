@@ -1,5 +1,6 @@
 ---
 title: Animation of Secondary Noise Sources
+class: post
 ---
 
 The interaction of ocean waves that run into each other is the major source of seismic noise in the frequency band between 0.1 and 0.3 Hz all over the Earth.

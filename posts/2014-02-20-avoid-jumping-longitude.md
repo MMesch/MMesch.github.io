@@ -1,5 +1,6 @@
 ---
 title: avoid jumping longitude in matplotlib basemap
+class: post
 ---
 
 

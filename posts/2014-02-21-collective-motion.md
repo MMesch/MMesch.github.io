@@ -1,5 +1,6 @@
 ---
 title: collective motion model
+class: post
 ---
 
 This is a collective motion simulation that I have done while working in Biophysics.

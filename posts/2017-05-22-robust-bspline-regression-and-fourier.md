@@ -1,5 +1,6 @@
 ---
 title: Robust B-Spline Regression and Fourier Transform with Scikit-Learn
+class: post
 ---
 
 Real world data is often cluttered with outliers.

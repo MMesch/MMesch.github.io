@@ -1,5 +1,6 @@
 ---
 title: Designing 2D Colormaps for Matplotlib with Blender
+class: post
 ---
 
 PDATE: check out the <a href="https://github.com/MMesch/cmap_builder.git">github</a> project with blender scripts and python module.

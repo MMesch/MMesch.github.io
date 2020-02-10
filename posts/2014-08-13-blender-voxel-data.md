@@ -1,5 +1,6 @@
 ---
 title: Blender Voxel Data
+class: post
 ---
 
 You can do cool stuff with manual Blender voxel data. See for example this video:

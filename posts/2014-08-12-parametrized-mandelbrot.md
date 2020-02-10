@@ -1,5 +1,6 @@
 ---
 title: parametrized mandelbrot set
+class: post
 ---
 
 I have recently written a script that plots the Mandelbrot set boundary to use it as a vector graphic in inkscape.

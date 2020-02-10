@@ -1,5 +1,6 @@
 ---
 title: Minimal Continuous Wavelet Transform as Python Function
+class: post
 ---
 
 The continuous wavelet transform (CWT) is one of the most handy tools to examine time-frequency content.

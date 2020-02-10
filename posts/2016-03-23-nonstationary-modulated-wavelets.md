@@ -1,5 +1,6 @@
 ---
 title: Wavelet Statistics for Nonstationary Modulated Noise
+class: post
 ---
 
 This is a simple test that I have done that plots wavelet statistics for a stationary white noise random model realisation.

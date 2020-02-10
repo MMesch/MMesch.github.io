@@ -1,5 +1,6 @@
 ---
 title: Visualization of Different Seismic Phases
+class: post
 ---
 
 This is an illustration of different paths that seismic waves take when they propagate through the Earth.

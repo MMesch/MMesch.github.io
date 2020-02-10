@@ -1,5 +1,6 @@
 ---
 title: Earthquake Visualization with Blender and Specfem
+class: post
 ---
 
 

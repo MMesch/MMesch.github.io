@@ -1,5 +1,6 @@
 ---
 title: Annual Metro Traffic in Paris 2011
+class: post
 ---
 
 This is the result of an experiment with mapnik, openstreetmap data and ratp open data.
