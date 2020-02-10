@@ -30,7 +30,6 @@ nav {
 nav a {
   font-size: 1.3rem;
   padding: 1rem;
-  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -41,30 +40,32 @@ a:visited {
 // post list specific
 
 div.archive {
-}
-
-div.archive ul {
     display: block;
     margin-left: 10rem;
     counter-reset: auto-increment-numbers;
 }
 
-div.archive li {
-    padding-bottom: 0.5rem;
+div.archive .item {
+    padding-bottom: 1rem;
     list-style-type: none;
     counter-increment: auto-increment-numbers;
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 4rem 4rem auto;
+    grid-gap: 1rem;
+    justify=content: grid-start;
 }
 
-div.archive li::before {
+div.archive .item .thumbnail {
+        height: 100%;
+        width: auto;
+        margin-right: 1rem;
+        vertical-align: top;
+}
+
+div.archive .item::before {
     font-size: 2rem;
     color: rgb(150,150,150);
-    position: relative;
-    --size: 32px;
-    left: calc(-1 * var(--size) - 10px);
-    width: var(--size);
-    text-align: center;
+    text-align:center;
     content: counter(auto-increment-numbers);
 }
 
@@ -90,7 +91,7 @@ div.blog h2 {
   color: #6E7B7E;
 }
 
-div.blog article .header {
+div.blog .header {
   text-align: center;
   font-size: 1rem;
   font-style: italic;
@@ -98,8 +99,8 @@ div.blog article .header {
   padding-bottom: 30px;
 }
 
-div.blog article img {
-        width: 100%;
+img {
+    width: 100%;
 }
 
 /* project gallery */

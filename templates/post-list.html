@@ -1,9 +1,16 @@
 <div class="archive">
-    <ul>
-        $for(posts)$
-            <li>
-                    <a href="$url$">$title$ </br> $date$</a>
-            </li>
-        $endfor$
-    </ul>
+    $for(posts)$
+        <div class="item $class$">
+            $if(thumbnail)$
+                <img class="thumbnail" src="$thumbnail$"/>
+            $else$
+                <div> </div>
+            $endif$
+            $if(external)$
+                <a href="$external$">External: $title$ </br> $date$</a>
+            $else$
+                 <a href="$url$">$title$ </br> $date$</a>
+            $endif$
+        </div>
+    $endfor$
 <div class="archive">

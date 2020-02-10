@@ -1,6 +1,7 @@
 ---
 title: Earthquake Visualization with Blender and Specfem
 class: post
+thumbnail: "/images/thumbnails/seismic_wavefield_visualisation.png"
 ---
 
 

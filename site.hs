@@ -21,14 +21,14 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    match "posts/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    create ["archive.html"] $ do
+    create ["index.html"] $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
@@ -42,41 +42,6 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-    match "projects/*.html" $ do
-        route $ idRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/projects.html" defaultContext
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    create ["projects.html"] $ do
-        route idRoute
-        compile $ do
-            projects <- loadAll "projects/*.html"
-            let galleryCtx =
-                    listField "projects" defaultContext (return projects) `mappend`
-                    constField "title" "Gallery"                         `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/projects-list.html" galleryCtx
-                >>= loadAndApplyTemplate "templates/default.html" galleryCtx
-                >>= relativizeUrls
-
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
-                    defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
-
     match "templates/*" $ compile templateBodyCompiler
 
 
@@ -84,4 +49,5 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
+    metadataField `mappend`
     defaultContext

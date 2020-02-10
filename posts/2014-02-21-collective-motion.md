@@ -1,6 +1,7 @@
 ---
 title: collective motion model
 class: post
+thumbnail: "/images/thumbnails/collective_motion_animation.png"
 ---
 
 This is a collective motion simulation that I have done while working in Biophysics.

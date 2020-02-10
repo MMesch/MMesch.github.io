@@ -1,6 +1,7 @@
 ---
 title: Earthquake Moment Tensor Radiation Patterns
 class: post
+thumbnail: "/images/thumbnails/moment_tensors.png"
 ---
 
 This post is about the radiation pattern of elastic waves due to different sources that can be expressed as a moment tensor (see https://en.wikipedia.org/wiki/Focal_mechanism).

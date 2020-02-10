@@ -1,6 +1,7 @@
 ---
 title: An Interactive Historical Map of Paris
 class: post
+thumbnail: "/images/thumbnails/historical_paris.png"
 ---
 
 This is an interactive, clickable map of Paris that I have compiled from various sources that I have found in the Internet. I have used open street map building data as background.
