@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - Visualizing Invasion Percolation</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="../scripts/backgrounds/background_tubes.js"></script>
+        <script src="../scripts/backgrounds/background_collective.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="../">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>Visualizing Invasion Percolation</h1>
+
+<article>
+    <section class="header">
+        Posted on December 15, 2014
+        
+    </section>
+    <section>
+        <p>And another volume render in Blender. This is based on a percolation simulation using a code written by <a href="https://sites.google.com/site/ydermasson/">Yder Masson</a>. It can for example describe how a liquid invades a porous rock. The principle is that it advances always at the site of least resistance. The pore resistance follows a statistical distribution that describes the material.</p>
+<iframe allowfullscreen frameborder="0" height="600" src="//www.youtube.com/embed/U5ltOcmB33o" width="600">
+</iframe>
+    </section>
+</article>
+</div>
+
+        </main>
+
+      <script>
+          var random_choice = Math.random();
+          var backgrounds = [background_tubes, background_collective];
+          var background_index = Math.floor(random_choice * backgrounds.length)
+          console.log(background_index);
+          backgrounds[background_index]();
+          var update_background = function(){
+               var element = document.getElementById("background");
+               element.parentNode.removeChild(element);
+               backgrounds[background_index]();
+          }
+          window.onresize = update_background;
+      </script>
+    </body>
+</html>

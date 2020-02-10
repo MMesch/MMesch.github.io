@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - An Interactive Historical Map of Paris</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="../scripts/backgrounds/background_tubes.js"></script>
+        <script src="../scripts/backgrounds/background_collective.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="../">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>An Interactive Historical Map of Paris</h1>
+
+<article>
+    <section class="header">
+        Posted on August 17, 2015
+        
+    </section>
+    <section>
+        <p>This is an interactive, clickable map of Paris that I have compiled from various sources that I have found in the Internet. I have used open street map building data as background. You need to Click the image to get to the interactive map!</p>
+<div data-align="center">
+<p><a href="https://mmesch.github.io/historical_paris/"> <img alt=" " border="0" src="../images/posts/paris_map_small.png" style="margin-bottom: 20px; margin-top: 20px;" width="100%" /> </a></p>
+</div>
+    </section>
+</article>
+</div>
+
+        </main>
+
+      <script>
+          var random_choice = Math.random();
+          var backgrounds = [background_tubes, background_collective];
+          var background_index = Math.floor(random_choice * backgrounds.length)
+          console.log(background_index);
+          backgrounds[background_index]();
+          var update_background = function(){
+               var element = document.getElementById("background");
+               element.parentNode.removeChild(element);
+               backgrounds[background_index]();
+          }
+          window.onresize = update_background;
+      </script>
+    </body>
+</html>

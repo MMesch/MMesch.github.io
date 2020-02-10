@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - Earthquake Visualization with Blender and Specfem</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="../scripts/backgrounds/background_tubes.js"></script>
+        <script src="../scripts/backgrounds/background_collective.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="../">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>Earthquake Visualization with Blender and Specfem</h1>
+
+<article>
+    <section class="header">
+        Posted on September 21, 2014
+        
+    </section>
+    <section>
+        <p>After my previous post about volume data blender, here is the final render:</p>
+<iframe allowfullscreen frameborder="0" height="600" src="//www.youtube.com/embed/1FPUiD3PYhI" width="600">
+</iframe>
+<p>Basically the smoke density corresponds to the magnitude of displacement in the interior of the Earth after a quake. The core of the Earth is shown as glassy blue sphere. It takes some tweaking of the smoke parameters in blender to get it to look nice. The calculations were done with the spectral element code Specfem3D Globe. Render time was ~4h on my laptop, mostly because of the mirror and transparency effects of the core.</p>
+<p>Here is a similar image rendered with paraview:</p>
+<p><img src="../images/posts/wavefield.png" style="width:80%" /></p>
+<p>It is clear that the advanced lightning possibilities in blender can greatly enhance the 3D impression of the image.</p>
+    </section>
+</article>
+</div>
+
+        </main>
+
+      <script>
+          var random_choice = Math.random();
+          var backgrounds = [background_tubes, background_collective];
+          var background_index = Math.floor(random_choice * backgrounds.length)
+          console.log(background_index);
+          backgrounds[background_index]();
+          var update_background = function(){
+               var element = document.getElementById("background");
+               element.parentNode.removeChild(element);
+               backgrounds[background_index]();
+          }
+          window.onresize = update_background;
+      </script>
+    </body>
+</html>

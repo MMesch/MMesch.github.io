@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - Visualize you DICOM CT Scan in 3D with Paraview</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="../scripts/backgrounds/background_tubes.js"></script>
+        <script src="../scripts/backgrounds/background_collective.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="../">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>Visualize you DICOM CT Scan in 3D with Paraview</h1>
+
+<article>
+    <section class="header">
+        Posted on January 29, 2017
+        
+    </section>
+    <section>
+        <p>CT Scan examinations often come with a data CD that contains the raw images of the scan. These can be easily visualized in 3D using freely available software such as <a href="http://www.paraview.org/">Paraview</a>. The steps to do this are as follows:</p>
+<h3 id="preparation">Preparation:</h3>
+<ol type="1">
+<li><p>Find the raw images. These can have an ending .dcm but sometimes the files have no ending at all. The folder structure that I received on a CD from my particular examination looked as follows:</p>
+<pre><code>IMAGES/
+└── PAT00000
+    └── ST000000
+        ├── SE000000
+        │   └── CT000000
+        ├── SE000001
+        │   ├── CT000000
+        │   ├── CT000001
+        │   ├── CT000002
+        │   ├── CT000003
+        │   ├── CT000[...]
+        │   └── CT000213
+        └── SE000002
+            └── CT000000</code></pre>
+<p>The folder SE000001 contains the set of sections that you want to visualize. Alternatively you can explore the OsiriX database that contains publicly available datasets.</p></li>
+<li><p>Copy all images to a new folder on your computer and change the file endings to .dmc</p></li>
+<li><p>dcm images can be raw or compressed (as is the case for the OsiriX database). If the files are compressed, you might get an error later in paraview. In this case, you can use the tool gdcmconv to uncompress them in the terminal (bash) using the line "for file in *.dcm; do gdcmconv -i $file –raw -o $file; done".</p></li>
+</ol>
+<h3 id="open-the-files-in-paraview">Open the files in Paraview</h3>
+<ol type="1">
+<li>Open Paraview and click on file -&gt; open. Browse to the folder that contains the set of sections. The files should show up as a collapsed list, e.g. as CT…dcm . Open them and select DICOM Files (directory) as reader that should be used. If you get an error (warnings are often OK), check that the files are really uncompressed, as explained above.</li>
+<li>If everything went well, you should see an object appearing in the paraview “pipeline browser” (usually on the left).</li>
+<li>Further down in the “Properties” window, click on “Apply” to display the data</li>
+<li>Once the data is loaded, you can select “Volume” rendering in the top toolbar instead of “Outline”.</li>
+<li>In the Properties window click on “Edit” under the “Coloring” tab. You should see a new window on the right hand side that you can use to adapt the opacity and color of the volume.</li>
+<li>Click the colorbar to add new points. Lower them to make regions with certain data values more transparent. (see image below)</li>
+</ol>
+<p><img src="../images/posts/CTScan_labels.png" /></p>
+    </section>
+</article>
+</div>
+
+        </main>
+
+      <script>
+          var random_choice = Math.random();
+          var backgrounds = [background_tubes, background_collective];
+          var background_index = Math.floor(random_choice * backgrounds.length)
+          console.log(background_index);
+          backgrounds[background_index]();
+          var update_background = function(){
+               var element = document.getElementById("background");
+               element.parentNode.removeChild(element);
+               backgrounds[background_index]();
+          }
+          window.onresize = update_background;
+      </script>
+    </body>
+</html>
