@@ -1,6 +1,7 @@
 ---
 title: Matplotlib Coordinate System Transformations
 class: post
+thumbnail: "/images/posts/matplotlib_coordinate_transformations.png"
 ---
 
 

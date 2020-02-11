@@ -1,6 +1,7 @@
 ---
 title: fast interpolation on regulard distored Nd-grids in Python
 class: post
+thumbnail: "/images/posts/interp_irregular.png"
 ---
 
 This post is about interpolation on a N-dimensional regular grid that is distorted.
