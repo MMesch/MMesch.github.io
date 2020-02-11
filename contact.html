@@ -27,12 +27,18 @@
           var random_choice = Math.random();
           var backgrounds = [background_tubes, background_collective];
           var background_index = Math.floor(random_choice * backgrounds.length)
+          var document_width = window.innerWidth;
           console.log(background_index);
           backgrounds[background_index]();
           var update_background = function(){
-               var element = document.getElementById("background");
-               element.parentNode.removeChild(element);
-               backgrounds[background_index]();
+               console.log(window.innerWidth);
+               console.log(document_width);
+               if(window.width != document_width) {
+                   document_width = window.innerWidth;
+                   var element = document.getElementById("background");
+                   element.parentNode.removeChild(element);
+                   backgrounds[background_index]();
+               };
           }
           window.onresize = update_background;
       </script>

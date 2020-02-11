@@ -17,7 +17,7 @@ function background_tubes(){
     var all_lines_data = [];
     var tube_width = Math.max(width/2, 300);
     var tube_skew = tube_width/5;
-    var tube_bow = 2*tube_width;
+    var tube_bow = 1*tube_width;
     var normalize = function(x, y){
         return Math.sqrt(x*x + y*y);
     }

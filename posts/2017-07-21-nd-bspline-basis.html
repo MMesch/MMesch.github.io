@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MMesch's blog - ND B-Spline Basi Functions with Scipy</title>
+        <title>MMesch's blog - ND B-Spline Basis Functions with Scipy</title>
         <link rel="stylesheet" href="../css/default.css" />
         <link rel="stylesheet" href="../css/syntax.css" />
 
@@ -21,7 +21,7 @@
 
         <main role="main" class="container">
             <div class="blog">
-<h1>ND B-Spline Basi Functions with Scipy</h1>
+<h1>ND B-Spline Basis Functions with Scipy</h1>
 
 <article>
     <section class="header">
@@ -44,12 +44,18 @@
           var random_choice = Math.random();
           var backgrounds = [background_tubes, background_collective];
           var background_index = Math.floor(random_choice * backgrounds.length)
+          var document_width = window.innerWidth;
           console.log(background_index);
           backgrounds[background_index]();
           var update_background = function(){
-               var element = document.getElementById("background");
-               element.parentNode.removeChild(element);
-               backgrounds[background_index]();
+               console.log(window.innerWidth);
+               console.log(document_width);
+               if(window.width != document_width) {
+                   document_width = window.innerWidth;
+                   var element = document.getElementById("background");
+                   element.parentNode.removeChild(element);
+                   backgrounds[background_index]();
+               };
           }
           window.onresize = update_background;
       </script>

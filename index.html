@@ -24,7 +24,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/bayes2_06.svg" />
             
             
                 <a href="https://www.tweag.io/posts/2019-11-08-monad-bayes-2.html">External: Probabilistic Programming with Monad-Bayes, Part 2: Linear Regression </br> November  8, 2019</a>
@@ -33,7 +33,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/bayes1_03.svg" />
             
             
                 <a href="https://www.tweag.io/posts/2019-09-20-monad-bayes-1.html">External: Probabilistic Programming With Monad-Bayes, Part 1: First Steps </br> September 20, 2019</a>
@@ -51,7 +51,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/codestatistics_histogram_importfractions_both.png" />
             
             
                 <a href="https://www.tweag.io/posts/2019-07-17-codestatistics.html">External: Revelations from Repetition: Source Code Headers In Haskell and Python </br> July 17, 2019</a>
@@ -60,7 +60,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/sneakernet.png" />
             
             
                 <a href="https://www.tweag.io/posts/2019-04-10-the-sneakernet.html">External: The Sneakernet: Towards a Much Faster Internet (Attention: Satiric) </br> April 10, 2019</a>
@@ -87,7 +87,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/Jupyter-Haskell-Logo.svg" />
             
             
                 <a href="https://www.tweag.io/posts/2019-01-23-jupyterlab-ihaskell.html">External: Towards Interactive Data Science In Haskell: Haskell in Jupyterlab </br> January 23, 2019</a>
@@ -105,7 +105,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/Jupyter_logo.svg" />
             
             
                  <a href="./posts/2018-05-26-execute-code-in-jupyter-through-http.html">Execute Code in Jupyter Kernels Through HTTP Requests and Websockets </br> May 26, 2018</a>
@@ -114,7 +114,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/Jupyter_logo.svg" />
             
             
                  <a href="./posts/2018-05-18-jupyter-kernels-from-python.html">Using Jupyter Kernels From Python </br> May 18, 2018</a>
@@ -150,7 +150,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/matplotlib_coordinate_transformations.png" />
             
             
                  <a href="./posts/2017-10-11-matplotlib-coordinate-system-transformations.html">Matplotlib Coordinate System Transformations </br> October 11, 2017</a>
@@ -168,16 +168,16 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/bspline1d_basis_scipy.png" />
             
             
-                 <a href="./posts/2017-07-21-nd-bspline-basis.html">ND B-Spline Basi Functions with Scipy </br> July 21, 2017</a>
+                 <a href="./posts/2017-07-21-nd-bspline-basis.html">ND B-Spline Basis Functions with Scipy </br> July 21, 2017</a>
             
         </div>
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/robust_fourier_tf.png" />
             
             
                  <a href="./posts/2017-05-22-robust-bspline-regression-and-fourier.html">Robust B-Spline Regression and Fourier Transform with Scikit-Learn </br> May 22, 2017</a>
@@ -357,7 +357,7 @@
     
         <div class="item post">
             
-                <div> </div>
+                <img class="thumbnail" src="./images/posts/interp_irregular.png" />
             
             
                  <a href="./posts/2014-03-11-fast-interpolation-in-python.html">fast interpolation on regulard distored Nd-grids in Python </br> March 11, 2014</a>
@@ -462,12 +462,18 @@
           var random_choice = Math.random();
           var backgrounds = [background_tubes, background_collective];
           var background_index = Math.floor(random_choice * backgrounds.length)
+          var document_width = window.innerWidth;
           console.log(background_index);
           backgrounds[background_index]();
           var update_background = function(){
-               var element = document.getElementById("background");
-               element.parentNode.removeChild(element);
-               backgrounds[background_index]();
+               console.log(window.innerWidth);
+               console.log(document_width);
+               if(window.width != document_width) {
+                   document_width = window.innerWidth;
+                   var element = document.getElementById("background");
+                   element.parentNode.removeChild(element);
+                   backgrounds[background_index]();
+               };
           }
           window.onresize = update_background;
       </script>
