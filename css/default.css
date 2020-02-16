@@ -87,7 +87,7 @@ div.archive .item {
     grid-template-columns: 4rem 4rem auto;
     grid-gap: 1rem;
     justify=content: grid-start;
-    height: 3rem;
+    min-height: 3rem;
 }
 
 div.archive .item .thumbnail {
@@ -174,4 +174,7 @@ div.projects div.desc {
 @media screen and (max-width: 600px) {
   .container {
     padding: 1rem;
+}
+nav {
+    font-size: 1.3rem;
 }
