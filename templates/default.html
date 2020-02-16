@@ -7,40 +7,26 @@
         <title>MMesch's blog - $title$</title>
         <link rel="stylesheet" href="/css/default.css" />
         <link rel="stylesheet" href="/css/syntax.css" />
-
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src="/scripts/backgrounds/background_tubes.js"></script>
-        <script src="/scripts/backgrounds/background_collective.js"></script>
     </head>
     <body>
         <header>
             <nav>
-                <a href="/">Blog</a>
+                <div class="external">
+                    <a href="https://twitter.com/Mattwittus">
+                    <img class="logo" src="/images/logos/mmesch.png"/>
+                    </a>
+                    <a href="https://github.com/mmesch">
+                    <img class="logo" src="/images/logos/github.png"/>
+                    </a>
+                </div>
+                <div class="internal">
+                    <a href="/">Blog</a>
+                </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             $body$
         </main>
-
-      <script>
-          var random_choice = Math.random();
-          var backgrounds = [background_tubes, background_collective];
-          var background_index = Math.floor(random_choice * backgrounds.length)
-          var document_width = window.innerWidth;
-          console.log(background_index);
-          backgrounds[background_index]();
-          var update_background = function(){
-               console.log(window.innerWidth);
-               console.log(document_width);
-               if(window.width != document_width) {
-                   document_width = window.innerWidth;
-                   var element = document.getElementById("background");
-                   element.parentNode.removeChild(element);
-                   backgrounds[background_index]();
-               };
-          }
-          window.onresize = update_background;
-      </script>
     </body>
 </html>
