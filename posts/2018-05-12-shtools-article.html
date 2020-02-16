@@ -7,6 +7,17 @@
         <title>MMesch's blog - SHTools - Tools for Working with Spherical Harmonics</title>
         <link rel="stylesheet" href="../css/default.css" />
         <link rel="stylesheet" href="../css/syntax.css" />
+        <script type="text/javascript"> 
+           var allbgs = [
+                   "/images/backgrounds/scrolls.svg",
+                   "/images/backgrounds/tiles.png"
+           ];
+           function ChangeIt() 
+           {
+               var num = Math.floor( Math.random() * allbgs.length );
+               document.body.background = allbgs[num]
+           }
+       </script>
     </head>
     <body>
         <header>
@@ -41,5 +52,8 @@
 </div>
 
         </main>
+        <script type="text/javascript"> 
+            ChangeIt();
+        </script> 
     </body>
 </html>

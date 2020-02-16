@@ -7,6 +7,17 @@
         <title>MMesch's blog - Execute Code in Jupyter Kernels Through HTTP Requests and Websockets</title>
         <link rel="stylesheet" href="../css/default.css" />
         <link rel="stylesheet" href="../css/syntax.css" />
+        <script type="text/javascript"> 
+           var allbgs = [
+                   "/images/backgrounds/scrolls.svg",
+                   "/images/backgrounds/tiles.png"
+           ];
+           function ChangeIt() 
+           {
+               var num = Math.floor( Math.random() * allbgs.length );
+               document.body.background = allbgs[num]
+           }
+       </script>
     </head>
     <body>
         <header>
@@ -116,5 +127,8 @@ starting new kernel 16582749-b11e-4868-930f-7bb76ae10c96
 </div>
 
         </main>
+        <script type="text/javascript"> 
+            ChangeIt();
+        </script> 
     </body>
 </html>
