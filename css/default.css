@@ -174,7 +174,10 @@ div.projects div.desc {
 @media screen and (max-width: 600px) {
   .container {
     padding: 1rem;
-}
-nav {
+  }
+  nav {
     font-size: 1.3rem;
-}
+  }
+    nav.welcome {
+    display: none;
+  }
