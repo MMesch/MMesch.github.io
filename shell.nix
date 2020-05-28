@@ -2,10 +2,10 @@
 
 let
   overrides = self: super: {
-      hakyll2 = pkgs.haskell.lib.appendConfigureFlag super.hakyll ["-fpreviewserver"];
+      hakyll = pkgs.haskell.lib.appendConfigureFlag super.hakyll ["-fpreviewserver"];
     };
   hskPkgs = pkgs.haskell.packages.ghc865.override { overrides = overrides; };
-  myenv = hskPkgs.ghcWithPackages (p: [p.hakyll2]);
+  myenv = hskPkgs.ghcWithPackages (p: [p.hakyll p.hakyll-sass]);
 in
   pkgs.stdenv.mkDerivation {
     name="hakyll";

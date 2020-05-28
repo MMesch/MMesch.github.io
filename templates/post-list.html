@@ -1,13 +1,8 @@
 <div class="archive">
     $for(posts)$
         <div class="item $class$">
-            $if(thumbnail)$
-                <img class="thumbnail" src="$thumbnail$"/>
-            $else$
-                <div> </div>
-            $endif$
             $if(external)$
-                <a href="$external$">External: $title$ </br> $date$</a>
+                <a href="$external$">$title$ </br> $date$ (External)</a>
             $else$
                  <a href="$url$">$title$ </br> $date$</a>
             $endif$
