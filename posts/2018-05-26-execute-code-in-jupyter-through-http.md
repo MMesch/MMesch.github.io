@@ -20,7 +20,7 @@ The API can be explored with this bash snippet that (a) starts a kernelgateway, 
 
 When executed, this produces:
 
-```
+```bash
 [...]/kernel_gateway_test$ ./run.sh 
 
 ==== START GATEWAY ====
@@ -52,7 +52,7 @@ When executing the kernel gateway in terminal1 and the above script in terminal2
 
 <script src="https://gist.github.com/MMesch/1647615e2e046648a5cac262836e58f8.js"></script>
 
-```
+```bash
 terminal1$  /gateway_aiohttp/jupyter kernelgateway --JupyterWebsocketPersonality.list_kernels=True
 
 [KernelGatewayApp] Jupyter Kernel Gateway at http://127.0.0.1:8888
