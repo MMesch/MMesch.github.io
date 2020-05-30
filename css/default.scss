@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Dosis|Lato");
 
+
+$blue: #294994;
+$orange: #e0806c;
+
 body {
     font-family: "Lato", sans-serif;
     font-size: 2rem;
@@ -29,9 +33,11 @@ header {
     padding: 3rem;
     max-width: 60rem;
     background: white;
+    opacity: 0.95;
 }
 nav {
-    background: #294994;
+    background: $blue;
+    opacity: 0.9;
     border-bottom: 1px solid gainsboro;
     padding: 0.5rem;
     text-transform: uppercase;
@@ -61,6 +67,7 @@ div.archive {
     counter-reset: auto-increment-numbers;
 }
 div.archive .item {
+    font-size: 1.5rem;
     margin-bottom: 4rem;
     padding: 0.5rem;
     list-style-type: none;
@@ -73,7 +80,7 @@ div.archive .item {
 }
 div.archive .item::before {
     font-size: 3rem;
-    color: black;
+    color: $blue;
     text-align: center;
     top: 50%;
     content: counter(auto-increment-numbers);
@@ -102,7 +109,7 @@ div.blog .header {
     text-align: center;
     font-size: 2rem;
     font-style: italic;
-    color: #e0806c;
+    color: $orange;
     padding-bottom: 30px;
 }
 img {
