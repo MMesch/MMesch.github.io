@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis|Lato");
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 2rem;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100rem;
+    background-position: top;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    color: #320000;
+}
+a:hover {
+    color: #640000;
+}
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.container {
+    display: block;
+    margin: auto;
+    padding: 3rem;
+    max-width: 60rem;
+    background: white;
+}
+nav {
+    background: #294994;
+    border-bottom: 1px solid gainsboro;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+nav a {
+    color: white;
+}
+nav a:visited {
+    color: white;
+}
+nav img.logo {
+    height: 2rem;
+    vertical-align: middle;
+    width: auto;
+}
+nav.internal {
+    display: inline-block;
+}
+nav.external {
+    display: inline-block;
+}
+div.archive {
+    display: block;
+    counter-reset: auto-increment-numbers;
+}
+div.archive .item {
+    margin-bottom: 4rem;
+    padding: 0.5rem;
+    list-style-type: none;
+    counter-increment: auto-increment-numbers;
+    display: grid;
+    grid-template-columns: 6rem auto;
+    grid-gap: 1rem;
+    justify-content: grid-start;
+    min-height: 6rem;
+}
+div.archive .item::before {
+    font-size: 3rem;
+    color: black;
+    text-align: center;
+    top: 50%;
+    content: counter(auto-increment-numbers);
+}
+div.blog {
+    max-width: 60rem;
+}
+div.blog p {
+    line-height: 150%;
+}
+div.blog h1 {
+    font-size: 3rem;
+    font-variant: small-caps;
+    color: #505050;
+    text-align: center;
+    margin-bottom: 10px;
+}
+div.blog h2 {
+    font-size: 2rem;
+    font-variant: small-caps;
+    text-align: left;
+    font-weight: 500;
+    color: #e0806c;
+}
+div.blog .header {
+    text-align: center;
+    font-size: 2rem;
+    font-style: italic;
+    color: #e0806c;
+    padding-bottom: 30px;
+}
+img {
+    width: 100%;
+}
+div.projects {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+div.projects div.img {
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    vertical-align: top;
+    width: 220px;
+}
+div.projects div.img:hover {
+    border: 1px solid #777;
+}
+div.projects div.img img {
+    width: 100%;
+    height: auto;
+}
+div.projects div.desc {
+    color: #6e7b7e;
+    padding: 13px;
+    height: 70px;
+    text-align: center;
+}
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+    nav {
+        font-size: 1.3rem;
+    }
+    nav.welcome {
+        display: none;
+    }
+}
