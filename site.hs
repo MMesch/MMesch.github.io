@@ -3,6 +3,7 @@
 import           Data.Monoid (mappend)
 import           Hakyll.Web.Sass (sassCompiler)
 import           Hakyll
+import Debug.Trace
 
 
 --------------------------------------------------------------------------------
@@ -27,25 +28,31 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*.md" $ do
+    match (fromList ["home.markdown"]) $ do
+        route $ constRoute "index.html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    match "blog/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    create ["index.html"] $ do
+    create ["blog/index.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAll "blog/*.md"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
                     defaultContext
 
-            makeItem ""
+            makeItem "<p>Hey there</p>"
                 >>= loadAndApplyTemplate "templates/post-list.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler

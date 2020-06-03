@@ -38,7 +38,6 @@ header {
 nav {
     background: $blue;
     opacity: 0.9;
-    border-bottom: 1px solid gainsboro;
     padding: 0.5rem;
     text-transform: uppercase;
     font-size: 1.5rem;
@@ -57,11 +56,18 @@ nav img.logo {
     width: auto;
 }
 nav.internal {
-    display: inline-block;
+    display: block;
 }
+
+a.internal  {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 nav.external {
-    display: inline-block;
+    display: block;
 }
+
 div.archive {
     display: block;
     counter-reset: auto-increment-numbers;

@@ -5,7 +5,7 @@ let
       hakyll = pkgs.haskell.lib.appendConfigureFlag super.hakyll ["-fpreviewserver"];
     };
   hskPkgs = pkgs.haskell.packages.ghc865.override { overrides = overrides; };
-  myenv = hskPkgs.ghcWithPackages (p: [p.hakyll p.hakyll-sass]);
+  myenv = hskPkgs.ghcWithPackages (p: [p.hakyll p.hakyll-sass p.hakyll-images]);
 in
   pkgs.stdenv.mkDerivation {
     name="hakyll";
