@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - calling fortran from python without f2py</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <script type="text/javascript"> 
+           var allbgs = [
+                   "/images/backgrounds/redblue.png",
+           ];
+           function ChangeIt() 
+           {
+               var num = Math.floor( Math.random() * allbgs.length );
+               document.body.background = allbgs[num]
+           }
+       </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="external">
+                    <a href="https://twitter.com/Mattwittus">
+                    <img class="logo" src="../images/logos/mmesch.png" />
+                    </a>
+                    <a href="https://github.com/mmesch">
+                    <img class="logo" src="../images/logos/github.png" />
+                    </a>
+                </div>
+                <div class="internal">
+                    <a class="internal" href="../">Home</a>
+                    <a class="internal" href="../viz">Viz</a>
+                    <a class="internal" href="../blog">Blog</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>calling fortran from python without f2py</h1>
+
+<article>
+    <section class="header">
+        Posted on March  4, 2014
+        
+    </section>
+    <section>
+        <p>This post explains how you can use a fortran shared object file without(!) recompiling it with the f2py compile. Say you want to wrap the library add.so, compiled with</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">gfortran</span> -shared -fPIC add.f95 -o add.so</span></code></pre></div>
+<p>from file add.f95:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">subroutine</span> add(a,b,c)    </span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">implicit</span> <span class="kw">none</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="dt">integer</span> a,b,c</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    c <span class="kw">=</span> a <span class="kw">+</span> b </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">end</span></span></code></pre></div>
+<p>The simple python code with which you can call it is:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> ctypes <span class="im">import</span> c_int, byref, cdll</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>a <span class="op">=</span> c_int(<span class="dv">3</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>b <span class="op">=</span> c_int(<span class="dv">4</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>c <span class="op">=</span> c_int()</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>addlib <span class="op">=</span> cdll.LoadLibrary(<span class="st">'./add.so'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>addlib.add_(byref(a),byref(b),byref(c))</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="bu">print</span> c</span></code></pre></div>
+<p>Note the extra underscore. I didn’t play around with arrays. It should work as well but is maybe more a dirty hack than a good solution. ctypes is however python standard if you don’t have access to f2py.</p>
+    </section>
+</article>
+</div>
+
+        </main>
+        <script type="text/javascript"> 
+            ChangeIt();
+        </script> 
+    </body>
+</html>

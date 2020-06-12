@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - fast interpolation on regulard distored Nd-grids in Python</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <script type="text/javascript"> 
+           var allbgs = [
+                   "/images/backgrounds/redblue.png",
+           ];
+           function ChangeIt() 
+           {
+               var num = Math.floor( Math.random() * allbgs.length );
+               document.body.background = allbgs[num]
+           }
+       </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="external">
+                    <a href="https://twitter.com/Mattwittus">
+                    <img class="logo" src="../images/logos/mmesch.png" />
+                    </a>
+                    <a href="https://github.com/mmesch">
+                    <img class="logo" src="../images/logos/github.png" />
+                    </a>
+                </div>
+                <div class="internal">
+                    <a class="internal" href="../">Home</a>
+                    <a class="internal" href="../viz">Viz</a>
+                    <a class="internal" href="../blog">Blog</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>fast interpolation on regulard distored Nd-grids in Python</h1>
+
+<article>
+    <section class="header">
+        Posted on March 11, 2014
+        
+    </section>
+    <section>
+        <p>This post is about interpolation on a N-dimensional regular grid that is distorted. With distorted I mean that dx, dy, dz can vary. The following code works very well:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> scipy.ndimage <span class="im">import</span> map_coordinates</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>nx_irreg, ny_irreg <span class="op">=</span> <span class="dv">20</span>,<span class="dv">30</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>nx_reg, ny_reg <span class="op">=</span> <span class="dv">500</span>,<span class="dv">500</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#create irregular sampling points and data</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>xgrid <span class="op">=</span> np.sqrt(np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_irreg))</span>
+<span id="cb1-11"><a href="#cb1-11"></a>ygrid <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_irreg)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>zgrid_irreg <span class="op">=</span> np.outer(xgrid,ygrid)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#create regular sampling points</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>xcoords <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_reg)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>ycoords <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,ny_reg)</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#get array index coordinates</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>ixcoords <span class="op">=</span> np.interp(xcoords, xgrid, np.arange(<span class="bu">len</span>(xgrid)))</span>
+<span id="cb1-20"><a href="#cb1-20"></a>iycoords <span class="op">=</span> np.interp(ycoords, ygrid, np.arange(<span class="bu">len</span>(ygrid)))</span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#create 2d grid and interpolate</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>ix,iy <span class="op">=</span> np.meshgrid(ixcoords,iycoords)</span>
+<span id="cb1-24"><a href="#cb1-24"></a>points2d <span class="op">=</span> np.vstack( (ix.flatten(),iy.flatten()) )</span>
+<span id="cb1-25"><a href="#cb1-25"></a>zgrid_reg <span class="op">=</span> map_coordinates(zgrid_irreg, points2d, cval<span class="op">=</span>np.NaN).reshape(ny_reg,nx_reg)</span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">#plotting</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb1-29"><a href="#cb1-29"></a>plt.imshow(zgrid_reg,extent<span class="op">=</span>(<span class="fl">0.</span>,<span class="fl">1.</span>,<span class="fl">0.</span>,<span class="fl">1.</span>))</span>
+<span id="cb1-30"><a href="#cb1-30"></a>xp, yp <span class="op">=</span> np.meshgrid(xgrid,ygrid)</span>
+<span id="cb1-31"><a href="#cb1-31"></a>plt.scatter(xp.flatten(),yp.flatten())</span>
+<span id="cb1-32"><a href="#cb1-32"></a>plt.show()</span></code></pre></div>
+<p><img src="../images/posts/interp_irregular.png" style="width:50%" /></p>
+    </section>
+</article>
+</div>
+
+        </main>
+        <script type="text/javascript"> 
+            ChangeIt();
+        </script> 
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMesch's blog - avoid jumping longitude in matplotlib basemap</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <script type="text/javascript"> 
+           var allbgs = [
+                   "/images/backgrounds/redblue.png",
+           ];
+           function ChangeIt() 
+           {
+               var num = Math.floor( Math.random() * allbgs.length );
+               document.body.background = allbgs[num]
+           }
+       </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="external">
+                    <a href="https://twitter.com/Mattwittus">
+                    <img class="logo" src="../images/logos/mmesch.png" />
+                    </a>
+                    <a href="https://github.com/mmesch">
+                    <img class="logo" src="../images/logos/github.png" />
+                    </a>
+                </div>
+                <div class="internal">
+                    <a class="internal" href="../">Home</a>
+                    <a class="internal" href="../viz">Viz</a>
+                    <a class="internal" href="../blog">Blog</a>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="blog">
+<h1>avoid jumping longitude in matplotlib basemap</h1>
+
+<article>
+    <section class="header">
+        Posted on February 20, 2014
+        
+    </section>
+    <section>
+        <p>Global line data is often jumping from one half of the globe to another.</p>
+<p><img src="../images/posts/jumpinglines1.png" style="width:50%" /></p>
+<p>To avoid this, we can split our lines into segments. Large jumps in longitude provide the indices where the line is split.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> mpl_toolkits.basemap <span class="im">import</span> Basemap</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># create line that spirals from south to north around the globe</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>lons <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">2000.</span>,<span class="dv">1000</span>)<span class="op">%</span><span class="fl">360.</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>lats <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">80.</span>,<span class="fl">80.</span>,<span class="dv">1000</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>segment <span class="op">=</span> np.vstack( (lons,lats))</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># create a global map that is centered around longitude &quot;lon0&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>lon0<span class="op">=</span><span class="fl">70.</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb1-14"><a href="#cb1-14"></a>m <span class="op">=</span> Basemap(lon_0 <span class="op">=</span> lon0,projection<span class="op">=</span><span class="st">'robin'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>m.drawmapboundary()</span>
+<span id="cb1-16"><a href="#cb1-16"></a>m.drawcoastlines()</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># move longitude into the map region and split if longitude jumps by more</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># than &quot;threshold&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>bleft <span class="op">=</span> lon0<span class="fl">-180.</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>bright <span class="op">=</span> lon0<span class="fl">+180.</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>segment[<span class="dv">0</span>,segment[<span class="dv">0</span>]<span class="op">&gt;</span> bright] <span class="op">-=</span> <span class="fl">360.</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>segment[<span class="dv">0</span>,segment[<span class="dv">0</span>]<span class="op">&lt;</span> bleft]  <span class="op">+=</span> <span class="fl">360.</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>threshold <span class="op">=</span> <span class="fl">90.</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>isplit <span class="op">=</span> np.nonzero(np.<span class="bu">abs</span>(np.diff(segment[<span class="dv">0</span>])) <span class="op">&gt;</span> threshold)[<span class="dv">0</span>]</span>
+<span id="cb1-26"><a href="#cb1-26"></a>subsegs <span class="op">=</span> np.split(segment,isplit<span class="op">+</span><span class="dv">1</span>,axis<span class="op">=+</span><span class="dv">1</span>)</span>
+<span id="cb1-27"><a href="#cb1-27"></a></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># plot the subsegments</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="cf">for</span> seg <span class="kw">in</span> subsegs:</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    x,y <span class="op">=</span> m(seg[<span class="dv">0</span>],seg[<span class="dv">1</span>])</span>
+<span id="cb1-31"><a href="#cb1-31"></a>    m.plot(x,y,c<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a>plt.show()</span></code></pre></div>
+<p>Alternatively we can plot it as a LineCollection (add ax = fig.add_subplot(111) in the beginning):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># [...]</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># isplit = np.nonzero(np.diff(segment[0]) &gt; threshold)[0]</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>segment[<span class="dv">0</span>], segment[<span class="dv">1</span>] <span class="op">=</span> m(segment[<span class="dv">0</span>],segment[<span class="dv">1</span>])</span>
+<span id="cb2-4"><a href="#cb2-4"></a>subsegs <span class="op">=</span> np.split(np.transpose(segment),isplit,axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>line <span class="op">=</span> LineCollection(subsegs,antialiaseds<span class="op">=</span>(<span class="va">True</span>,))</span>
+<span id="cb2-6"><a href="#cb2-6"></a>ax.add_collection(line)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>plt.show()</span></code></pre></div>
+<p>This is the result:</p>
+<p><img src="../images/posts/jumpinglines2.png" style="width:50%" /></p>
+    </section>
+</article>
+</div>
+
+        </main>
+        <script type="text/javascript"> 
+            ChangeIt();
+        </script> 
+    </body>
+</html>
