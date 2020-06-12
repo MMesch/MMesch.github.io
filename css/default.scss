@@ -121,11 +121,11 @@ div.blog .header {
 img {
     width: 100%;
 }
-div.projects {
+div.gallery {
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
-div.projects div.img {
+div.gallery div.img {
     font-size: 1rem;
     padding: 5px;
     border: 1px solid #ccc;
@@ -133,14 +133,14 @@ div.projects div.img {
     vertical-align: top;
     width: 220px;
 }
-div.projects div.img:hover {
+div.gallery div.img:hover {
     border: 1px solid #777;
 }
-div.projects div.img img {
+div.gallery div.img img {
     width: 100%;
     height: auto;
 }
-div.projects div.desc {
+div.gallery div.desc {
     color: #6e7b7e;
     padding: 13px;
     height: 70px;
