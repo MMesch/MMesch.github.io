@@ -54,7 +54,7 @@ header {
     margin: auto;
     padding: 4rem;
     padding-top: 1rem;
-    max-width: 40rem;
+    max-width: 60rem;
     background: white;
     opacity: 0.8;
     text-align: justify;
@@ -95,6 +95,7 @@ nav.external {
 div.archive {
     display: block;
     counter-reset: auto-increment-numbers;
+    text-align: left;
 }
 div.archive .item {
     font-size: 1.5rem;
@@ -116,29 +117,31 @@ div.archive .item::before {
     content: counter(auto-increment-numbers);
 }
 div.gallery {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin-top: 4rem;
 }
 div.gallery div.img {
+    flex-shrink: 1;
+    flex-grow: 2;
     font-size: 1rem;
     padding: 5px;
     border: 1px solid #ccc;
-    background-color: white;
-    vertical-align: top;
-    width: 220px;
+    text-align: center;
+}
+div.gallery div.img .scenes {
+    max-width: 200px;
+}
+div.gallery div.img .verticals {
+    max-width: 200px;
+}
+div.gallery div.img .animals {
+    height: 300px;
 }
 div.gallery div.img:hover {
     border: 1px solid #777;
-}
-div.gallery div.img img {
-    width: 100%;
-    height: auto;
-}
-div.gallery div.desc {
-    color: #6e7b7e;
-    padding: 13px;
-    height: 70px;
-    text-align: center;
 }
 @media screen and (max-width: 600px) {
     .container {

@@ -62,10 +62,14 @@ main = hakyll $ do
   create ["viz/index.html"] $ do
     route idRoute
     compile $ do
-      images <- loadAll "images/backgrounds/**"
+      verticals <- loadAll "images/gallery/verticals/**"
+      animals <- loadAll "images/gallery/animals/**"
+      scenes <- loadAll "images/gallery/scenes/**"
       let galleryCtx =
             constField "title" "viz"
-              <> listField "images" imageCtx (return images)
+              <> listField "verticals" imageCtx (return verticals)
+              <> listField "animals" imageCtx (return animals)
+              <> listField "scenes" imageCtx (return scenes)
               <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "templates/viz.html" galleryCtx
