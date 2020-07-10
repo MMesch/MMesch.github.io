@@ -8,10 +8,8 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 1.2rem;
     margin: 0px;
-    background-repeat: no-repeat;
-    background-size: cover;
     min-height: 100rem;
-    background-position: top;
+    background-color: lighten($blue, 60%);
 }
 p {
     line-height: 150%;
@@ -56,7 +54,6 @@ header {
     padding-top: 1rem;
     max-width: 60rem;
     background: white;
-    opacity: 0.8;
     text-align: justify;
 }
 nav {
@@ -64,15 +61,19 @@ nav {
     opacity: 0.9;
     padding: 0.5rem;
     text-transform: uppercase;
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     display: flex;
     justify-content: space-between;
+    -moz-box-shadow:    inset 0px -5px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow:         inset 0px -5px 5px rgba(0, 0, 0, 0.2);
 }
 nav a {
-    color: white;
+    color: lighten($blue, 50%);
+    vertical-align: middle;
 }
 nav a:visited {
-    color: white;
+    color: lighten($blue, 70%);
 }
 nav img.logo {
     height: 2rem;
@@ -132,7 +133,8 @@ div.gallery div.img {
     text-align: center;
 }
 div.gallery div.img .scenes {
-    max-width: 200px;
+    height: 300px;
+    width: auto;
 }
 div.gallery div.img .verticals {
     max-width: 200px;
