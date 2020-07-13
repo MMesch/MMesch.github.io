@@ -117,7 +117,7 @@ imageCtx =
     [ urlField "url",
       field "thumbnail" $ \item -> do
         route <- getRoute $ itemIdentifier item
-	let fp = maybe mempty id $ route
+        let fp = maybe mempty id $ route
             tn = moveDownIntoDirectory "small" $ replaceExtension fp ".png"
         return $ toUrl tn,
       missingField
