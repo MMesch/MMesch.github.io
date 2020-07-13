@@ -3,6 +3,7 @@
 
 $blue: #294994;
 $orange: #e0806c;
+$almostwhite: #320000;
 
 body {
     font-family: "Poppins", sans-serif;
@@ -36,13 +37,13 @@ img {
 }
 a {
     text-decoration: none;
-    color: black;
+    color: $almostwhite;
 }
 a:visited {
-    color: #320000;
+    color: $almostwhite;
 }
 a:hover {
-    color: #640000;
+    color: $almostwhite;
 }
 
 header {
@@ -61,9 +62,6 @@ nav {
     font-size: 1.2rem;
     display: flex;
     justify-content: space-between;
-    -moz-box-shadow:    inset 0px -5px 5px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.2);
-    box-shadow:         inset 0px -5px 5px rgba(0, 0, 0, 0.2);
 }
 nav a {
     color: lighten($blue, 50%);
@@ -161,7 +159,8 @@ div.gallery div.img:hover {
         padding: 1rem;
     }
     nav {
-        font-size: 1.3rem;
+        padding: 0.1rem;
+        font-size: 1.0rem;
     }
     a.internal  {
         margin-left: 0.1rem;
