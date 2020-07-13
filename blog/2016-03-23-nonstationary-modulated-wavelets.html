@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>Wavelet Statistics for Nonstationary Modulated Noise</h1>
-
-<article>
-    <section class="header">
-        Posted on March 23, 2016
-        
-    </section>
-    <section>
-        <p>This is a simple test that I have done that plots wavelet statistics for a stationary white noise random model realisation. In this case, the expected statistics of the model amplitudes is a Gaussian (normal) distribution. Due to the orthogonality of the daubechies wavelet basis (using PyWavelets), the coefficient power of one wavelet follows a Chi square distribution with 1 degree of freedom. This is simply the distribution of the square of normal distributed independent random variables. Finally, the distribution of the power of the average of all wavelets at one time follows a Chi square distribution with the number of wavelets as degrees of freedom (16 in this case). The plot and the attached script shows these prediction compared to a measured distribution of synthesized white noise.</p>
+    <h1>Wavelet Statistics for Nonstationary Modulated Noise</h1>
+    
+    <article>
+        <section class="header">
+            Posted on March 23, 2016
+            
+        </section>
+        <section>
+            <p>This is a simple test that I have done that plots wavelet statistics for a stationary white noise random model realisation. In this case, the expected statistics of the model amplitudes is a Gaussian (normal) distribution. Due to the orthogonality of the daubechies wavelet basis (using PyWavelets), the coefficient power of one wavelet follows a Chi square distribution with 1 degree of freedom. This is simply the distribution of the square of normal distributed independent random variables. Finally, the distribution of the power of the average of all wavelets at one time follows a Chi square distribution with the number of wavelets as degrees of freedom (16 in this case). The plot and the attached script shows these prediction compared to a measured distribution of synthesized white noise.</p>
 <p><img src="../images/posts/stationarywavelets.png" /></p>
 <p>Now imagine that the Gaussian distributed White noise is modulated (multiplied) in time by another (smooth) oscillatory function. This will not necessarily be visible in the distribution of the model itself, because the overall amplitudes might stay unchanged. Different statistics, however, do change: first, modulation in time will affect <i>all</i> frequencies in the same manner. This means that we introduce a correlation between frequencies that Gaussian white noise doesn’t have. This correlation in turn means, that the averages of the 16 wavelets at each time are <i>not</i> chi square distributed anymore, which can be tested. This example is shown in the image below. Another possible statistic would be to check whether wavelet components that follow each other are correlated and not chi square distributed anymore. This could be another hint for a modulating background function.</p>
 <p><img src="../images/posts/nonstationarywavelets.png" /></p>
@@ -140,8 +140,8 @@
 <span id="cb1-95"><a href="#cb1-95"></a></span>
 <span id="cb1-96"><a href="#cb1-96"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb1-97"><a href="#cb1-97"></a>    main()<span class="op">&lt;/</span>code<span class="op">&gt;</span></span></code></pre></div>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

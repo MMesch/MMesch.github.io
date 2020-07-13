@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>Execute Code in Jupyter Kernels Through HTTP Requests and Websockets</h1>
-
-<article>
-    <section class="header">
-        Posted on May 26, 2018
-        
-    </section>
-    <section>
-        <p>My last post demonstrated how to interact directly with a Jupyter kernel via the <i>jupyter_client</i> python module. Communication was done via the ZeroMQ messaging protocoll through a number of specific ports. As soon as we want to communicate with the kernel via a web application, as for example the jupyter notebook app does, there is a simpler way that exposes the communication API as http endpoints and websocket connections. Any client website or webserver can then directly talk to a jupyter kernel. The jupyter application that provides this API is a tornado server called <a href="https://github.com/jupyter/kernel_gateway">kernelgateway</a> that can -for our purposes- be thought of as a jupyter notebook without the notebook client itself. The kernelgateway can be installed with <code>conda install -c conda-forge jupyter_kernel_gateway</code> or <code>pip install jupyter_kernel_gateway</code>. <br /></p>
+    <h1>Execute Code in Jupyter Kernels Through HTTP Requests and Websockets</h1>
+    
+    <article>
+        <section class="header">
+            Posted on May 26, 2018
+            
+        </section>
+        <section>
+            <p>My last post demonstrated how to interact directly with a Jupyter kernel via the <i>jupyter_client</i> python module. Communication was done via the ZeroMQ messaging protocoll through a number of specific ports. As soon as we want to communicate with the kernel via a web application, as for example the jupyter notebook app does, there is a simpler way that exposes the communication API as http endpoints and websocket connections. Any client website or webserver can then directly talk to a jupyter kernel. The jupyter application that provides this API is a tornado server called <a href="https://github.com/jupyter/kernel_gateway">kernelgateway</a> that can -for our purposes- be thought of as a jupyter notebook without the notebook client itself. The kernelgateway can be installed with <code>conda install -c conda-forge jupyter_kernel_gateway</code> or <code>pip install jupyter_kernel_gateway</code>. <br /></p>
 <p>The default API of the kernelgateway can be found here (<a href="https://github.com/jupyter/kernel_gateway/blob/master/kernel_gateway/jupyter_websocket/swagger.yaml">swagger.yaml</a>). It is possible to add your own custom API to the preexisting one (this is for another blogpost).</p>
 <h3 id="starting-kernels-via-bash-and-curl">Starting Kernels via Bash and Curl</h3>
 <p>The API can be explored with this bash snippet that (a) starts a kernelgateway, (b) starts a new kernel via a POST message, (c) get’s a list of running kernels via a GET request:</p>
@@ -114,8 +114,8 @@
 <li>status -&gt; idle</li>
 </ol>
 <p>This corresponds to the standard jupyter messaging protocol (<a href="http://jupyter-client.readthedocs.io/en/stable/messaging.html" target="_blank">see details</a>).</p>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>Designing 2D Colormaps for Matplotlib with Blender</h1>
-
-<article>
-    <section class="header">
-        Posted on May 18, 2016
-        
-    </section>
-    <section>
-        <p>PDATE: check out the <a href="https://github.com/MMesch/cmap_builder.git">github</a> project with blender scripts and python module.</p>
+    <h1>Designing 2D Colormaps for Matplotlib with Blender</h1>
+    
+    <article>
+        <section class="header">
+            Posted on May 18, 2016
+            
+        </section>
+        <section>
+            <p>PDATE: check out the <a href="https://github.com/MMesch/cmap_builder.git">github</a> project with blender scripts and python module.</p>
 <p>A 2d colormap is designed to represent two dimensional data on a two dimensional domain. Common examples are wind direction and magnitude, signal amplitude and frequency or a complex functions magnitude and argument. Typically, direction or frequency are hereby represented by the color hue and magnitude by the lightness or/and saturation of the colors (check out <a href="http://peterkovesi.com/projects/colourmaps/ColourmapTheory/index.html"></a> for some really nice explanations and examples).</p>
 <p>A simple 2d colormap can easily be designed in the HSV (hue, saturation, value) color space. Unfortunately, HSV is not perceptually uniform. This means, equal distances in the HSV domain can be visually perceived differently. It therefore distorts the represented data.</p>
 <p>The python module colorspacious (pip install colorspacious) provides access to a colorspace, in which similar distances map to similar perceived distances. I have written three short blender scripts (available on <a href="www.github.com/mmesch/cmap_builder"></a>) that allow you to visualize this colorspace in blender, and export color values on paths and surfaces to colormaps.</p>
@@ -65,8 +65,8 @@
 <span id="cb1-11"><a href="#cb1-11"></a>    rgb <span class="op">=</span> np.array([r, g, b])</span>
 <span id="cb1-12"><a href="#cb1-12"></a>    rgb <span class="op">=</span> rgb.reshape(<span class="dv">3</span>, nrows, ncols).transpose(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
 <span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">return</span> rgb</span></code></pre></div>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

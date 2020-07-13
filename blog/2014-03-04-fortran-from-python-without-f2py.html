@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>calling fortran from python without f2py</h1>
-
-<article>
-    <section class="header">
-        Posted on March  4, 2014
-        
-    </section>
-    <section>
-        <p>This post explains how you can use a fortran shared object file without(!) recompiling it with the f2py compile. Say you want to wrap the library add.so, compiled with</p>
+    <h1>calling fortran from python without f2py</h1>
+    
+    <article>
+        <section class="header">
+            Posted on March  4, 2014
+            
+        </section>
+        <section>
+            <p>This post explains how you can use a fortran shared object file without(!) recompiling it with the f2py compile. Say you want to wrap the library add.so, compiled with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">gfortran</span> -shared -fPIC add.f95 -o add.so</span></code></pre></div>
 <p>from file add.f95:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">subroutine</span> add(a,b,c)    </span>
@@ -57,8 +57,8 @@
 <span id="cb3-8"><a href="#cb3-8"></a>addlib.add_(byref(a),byref(b),byref(c))</span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="bu">print</span> c</span></code></pre></div>
 <p>Note the extra underscore. I didn’t play around with arrays. It should work as well but is maybe more a dirty hack than a good solution. ctypes is however python standard if you don’t have access to f2py.</p>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

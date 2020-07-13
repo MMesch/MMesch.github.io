@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>avoid jumping longitude in matplotlib basemap</h1>
-
-<article>
-    <section class="header">
-        Posted on February 20, 2014
-        
-    </section>
-    <section>
-        <p>Global line data is often jumping from one half of the globe to another.</p>
+    <h1>avoid jumping longitude in matplotlib basemap</h1>
+    
+    <article>
+        <section class="header">
+            Posted on February 20, 2014
+            
+        </section>
+        <section>
+            <p>Global line data is often jumping from one half of the globe to another.</p>
 <p><img src="../images/posts/jumpinglines1.png" style="width:50%" /></p>
 <p>To avoid this, we can split our lines into segments. Large jumps in longitude provide the indices where the line is split.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/usr/bin/env python</span></span>
@@ -85,8 +85,8 @@
 <span id="cb2-8"><a href="#cb2-8"></a>plt.show()</span></code></pre></div>
 <p>This is the result:</p>
 <p><img src="../images/posts/jumpinglines2.png" style="width:50%" /></p>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>Spherical Harmonics Transform and Rotation in Python</h1>
-
-<article>
-    <section class="header">
-        Posted on March 11, 2013
-        
-    </section>
-    <section>
-        <p>Recently I needed a module that provides spherical harmonics transforms and tools in Python and I started wrapping the library shtools written by Mark Wieczorek using f2py from the numpy/scipy packages. Here is the result in case anyone is interested. If you are looking for a complete package, note that there is also another python module (pyspharm) that deals with spherical harmonics.</p>
+    <h1>Spherical Harmonics Transform and Rotation in Python</h1>
+    
+    <article>
+        <section class="header">
+            Posted on March 11, 2013
+            
+        </section>
+        <section>
+            <p>Recently I needed a module that provides spherical harmonics transforms and tools in Python and I started wrapping the library shtools written by Mark Wieczorek using f2py from the numpy/scipy packages. Here is the result in case anyone is interested. If you are looking for a complete package, note that there is also another python module (pyspharm) that deals with spherical harmonics.</p>
 <p>UPDATE: a new and better version of the python wrapper is now included in the SHTOOLS library which you can find here: pyshtools. Numerous examples are included that show how it can be used from Python. Other spherical harmonics libraries are: pyspharm and SHTns. In addition to the spherical harmonics transforms, SHTOOLS provides local multitaper spherical harmonics analysis, as well as spherical harmonics rotations, coupling matrices, etc …</p>
 <p>Little Examples Once the package is compiled, a spherical harmonics transform is as easy as:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> shtools</span>
@@ -74,8 +74,8 @@
 <p>this should create the file shtools.so that you can finally import into python.</p>
 <p>The test script the test script test.py shows an example on how to plot a map from spherical harmonics coefficients. You need shtools,numpy, matplotlib and basemap working. The script plots a function with sh-coefficients up to a certain degree. The result should look something like this:</p>
 <p><img src="../images/posts/spherical-harmonics.png" style="width:50%" /></p>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>

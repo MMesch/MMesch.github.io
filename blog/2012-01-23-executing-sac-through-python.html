@@ -21,24 +21,24 @@
                     </a>
                 </div>
                 <div class="internal">
-                    <a class="internal" href="../">Home</a>
-                    <a class="internal" href="../viz">Viz</a>
-                    <a class="internal" href="../blog">Blog</a>
+                    <a class="internal hvr-underline-from-left" href="../">Home</a>
+                    <a class="internal hvr-underline-from-left" href="../viz">Viz</a>
+                    <a class="internal hvr-underline-from-left" href="../blog">Blog</a>
                 </div>
             </nav>
         </header>
 
         <main role="main" class="container">
             <div class="blog">
-<h1>Executing SAC through Python</h1>
-
-<article>
-    <section class="header">
-        Posted on January 23, 2012
-        
-    </section>
-    <section>
-        <p>SAC (get it here) is a processing tool for seismic traces. The question came up recently how to handle it through a python pipe, instead of the common perl approach. This is the short answer we found, employing python’s subprocess module. Remember to exchange the SAC executable path.</p>
+    <h1>Executing SAC through Python</h1>
+    
+    <article>
+        <section class="header">
+            Posted on January 23, 2012
+            
+        </section>
+        <section>
+            <p>SAC (get it here) is a processing tool for seismic traces. The question came up recently how to handle it through a python pipe, instead of the common perl approach. This is the short answer we found, employing python’s subprocess module. Remember to exchange the SAC executable path.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> subprocess</span>
 <span id="cb1-2"><a href="#cb1-2"></a>process <span class="op">=</span> subprocess.Popen([<span class="st">'/usr/local/sac/bin/sac'</span>],stdin <span class="op">=</span> subprocess.PIPE,stdout<span class="op">=</span>subprocess.PIPE,stderr<span class="op">=</span>subprocess.PIPE)</span>
 <span id="cb1-3"><a href="#cb1-3"></a>process.stdin.write(<span class="st">'fg</span><span class="ch">\n</span><span class="st">'</span>)</span>
@@ -47,8 +47,8 @@
 <span id="cb1-6"><a href="#cb1-6"></a>out,err <span class="op">=</span> process.communicate()</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="bu">print</span> out</span></code></pre></div>
 <p>An explanation can also be found here. I usually avoid SAC and use the python package obspy.</p>
-    </section>
-</article>
+        </section>
+    </article>
 </div>
 
         </main>
