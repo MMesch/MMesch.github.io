@@ -11,9 +11,6 @@ body {
     min-height: 100rem;
     background-color: lighten($blue, 60%);
 }
-p {
-    line-height: 150%;
-}
 h1 {
     font-size: 2rem;
     text-align: center;
@@ -143,6 +140,7 @@ div.gallery div.img .scenes {
     width: auto;
 }
 div.gallery div.img .verticals {
+    height: auto;
     max-width: 200px;
 }
 div.gallery div.img .animals {
@@ -153,7 +151,7 @@ div.gallery div.img:hover {
 }
 
 @media screen and (max-width: 600px) {
-    .container {
+    div.blog {
         padding: 1rem;
     }
     nav {
