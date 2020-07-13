@@ -35,6 +35,7 @@ main = hakyll $ do
     route $ constRoute "index.html"
     compile $
       pandocCompiler
+        >>= loadAndApplyTemplate "templates/home.html" defaultContext 
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
         >>= relativizeUrls
   --

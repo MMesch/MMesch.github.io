@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
-
+@import url("hover-min.css");
 
 $blue: #294994;
 $orange: #e0806c;
@@ -47,18 +47,15 @@ a:visited {
 a:hover {
     color: #640000;
 }
+
 header {
     margin-bottom: 2rem;
 }
+
 .container {
-    display: block;
     margin: auto;
-    padding: 4rem;
-    padding-top: 1rem;
-    max-width: 60rem;
-    background: white;
-    text-align: justify;
 }
+
 nav {
     background: $blue;
     opacity: 0.9;
@@ -91,23 +88,41 @@ a.internal  {
     margin-left: 1rem;
     margin-right: 1rem;
 }
-
 nav.external {
     display: block;
 }
 
+div.home {
+    margin: auto;
+    max-width: 60rem;
+    text-align: justify;
+    padding: 4rem;
+}
+
+div.blog {
+    margin: auto;
+    text-align: justify;
+    padding: 4rem;
+    padding-top: 1rem;
+    max-width: 60rem;
+    background: white;
+}
+
 div.archive {
+    margin: auto;
     display: block;
     counter-reset: auto-increment-numbers;
     text-align: left;
+    padding: 4rem;
+    padding-top: 1rem;
+    max-width: 60rem;
+    background: white;
 }
 div.archive .item {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: 2rem;
-    padding: 0.5rem;
-    list-style-type: none;
-    min-height: 6rem;
 }
+
 div.gallery {
     display: flex;
     flex-wrap: wrap;
@@ -124,18 +139,19 @@ div.gallery div.img {
     text-align: center;
 }
 div.gallery div.img .scenes {
-    height: 300px;
+    max-height: 300px;
     width: auto;
 }
 div.gallery div.img .verticals {
     max-width: 200px;
 }
 div.gallery div.img .animals {
-    height: 300px;
+    max-height: 300px;
 }
 div.gallery div.img:hover {
     border: 1px solid #777;
 }
+
 @media screen and (max-width: 600px) {
     .container {
         padding: 1rem;

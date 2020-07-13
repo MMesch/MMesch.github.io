@@ -2,9 +2,9 @@
     $for(posts)$
         <div class="item $class$">
             $if(external)$
-      	      <a href="$external$"><b>$title$</b></br> $date$ (External)</a>
+      	      <a href="$external$">$title$</br> $date$ (External)</a>
             $else$
-  	      <a href="$url$"><b>$title$</b></br> $date$</a>
+  	      <a href="$url$">$title$</br> $date$</a>
             $endif$
         </div>
     $endfor$
