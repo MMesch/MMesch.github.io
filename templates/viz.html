@@ -3,7 +3,9 @@
     <div class="gallery">
     $for(scenes)$
         <div class="img">
-          <img src="$url$" class="scenes">
+	  <a href=$url$>
+           <img src="$thumbnail$" class="scenes">
+	  </a>
         </div>
     $endfor$
     </div>
@@ -14,7 +16,9 @@
     <div class="gallery">
     $for(animals)$
         <div class="img">
-          <img src="$url$" class="animals">
+	  <a href=$url$>
+            <img src="$thumbnail$" class="animals">
+	  </a>
         </div>
     $endfor$
     </div>
@@ -25,7 +29,9 @@
     <div class="gallery">
     $for(verticals)$
         <div class="img">
-          <img src="$url$" class="verticals">
+	  <a href=$url$>
+            <img src="$thumbnail$" class="verticals">
+	  </a>
         </div>
     $endfor$
     </div>

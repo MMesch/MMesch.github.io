@@ -136,15 +136,21 @@ div.gallery div.img {
     text-align: center;
 }
 div.gallery div.img .scenes {
-    max-height: 300px;
+    max-height: 200px;
+    max-width: 100%;
     width: auto;
+    height: auto;
 }
 div.gallery div.img .verticals {
     height: auto;
     max-width: 200px;
+    width: auto;
+    height: auto;
 }
 div.gallery div.img .animals {
     max-height: 300px;
+    width: auto;
+    height: auto;
 }
 div.gallery div.img:hover {
     border: 1px solid #777;

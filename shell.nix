@@ -10,6 +10,8 @@ in
   pkgs.stdenv.mkDerivation {
     name="hakyll";
     buildInputs = [
+      pkgs.inkscape
+      pkgs.imagemagick
       myenv
     ];
   }
