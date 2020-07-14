@@ -33,7 +33,7 @@ main = hakyll $ do
       TmpFile o <- newTmpFile $ "out" <> takeExtension i
       _ <-
         unsafeCompiler $
-          rawSystem "convert" ["-resize", "300x", "-filter", "Sinc", i, o]
+          rawSystem "convert" ["-resize", "400x", "-filter", "Sinc", i, o]
       makeItem $ TmpFile o
   --
   match "images/gallery/**/*.svg" $ version "small" $ do
