@@ -97,11 +97,13 @@ main = hakyll $ do
       verticals <- loadAll ("images/gallery/verticals/*" .&&. hasNoVersion) :: Compiler [Item CopyFile]
       animals <- loadAll ("images/gallery/animals/*" .&&. hasNoVersion) :: Compiler [Item CopyFile]
       scenes <- loadAll ("images/gallery/scenes/*" .&&. hasNoVersion) :: Compiler [Item CopyFile]
+      blues <- loadAll ("images/gallery/blues/*" .&&. hasNoVersion) :: Compiler [Item CopyFile]
       let galleryCtx =
             constField "title" "viz"
               <> listField "verticals" imageCtx (return verticals)
               <> listField "animals" imageCtx (return animals)
               <> listField "scenes" imageCtx (return scenes)
+              <> listField "blues" imageCtx (return blues)
               <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "templates/viz.html" galleryCtx
