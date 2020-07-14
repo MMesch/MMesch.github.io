@@ -1,4 +1,17 @@
 <div class="section">
+    <h1>blues</h1>
+    <div class="gallery">
+    $for(blues)$
+        <div class="img">
+	  <a href=$url$>
+            <img src="$thumbnail$" class="blues">
+	  </a>
+        </div>
+    $endfor$
+    </div>
+</div>
+
+<div class="section scenes">
     <h1>scenes</h1>
     <div class="gallery">
     $for(scenes)$
@@ -31,19 +44,6 @@
         <div class="img">
 	  <a href=$url$>
             <img src="$thumbnail$" class="verticals">
-	  </a>
-        </div>
-    $endfor$
-    </div>
-</div>
-
-<div class="section">
-    <h1>blues</h1>
-    <div class="gallery">
-    $for(animals)$
-        <div class="img">
-	  <a href=$url$>
-            <img src="$thumbnail$" class="blues">
 	  </a>
         </div>
     $endfor$

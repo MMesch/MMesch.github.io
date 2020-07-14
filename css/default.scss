@@ -25,9 +25,6 @@ h2 {
 img {
     width: 100%;
 }
-.section {
-    margin-top: 8rem;
-}
 .header {
     text-align: center;
     font-size: 1.2rem;
@@ -118,6 +115,10 @@ div.archive .item {
     margin-top: 2rem;
 }
 
+.section {
+    margin-top: 8rem;
+}
+
 div.gallery {
     display: flex;
     flex-wrap: wrap;
@@ -151,7 +152,7 @@ div.gallery div.img .animals {
     height: auto;
 }
 div.gallery div.img .blues {
-    max-height: 300px;
+    max-height: 500px;
     width: auto;
     height: auto;
 }
