@@ -4,13 +4,16 @@
 $blue: #294994;
 $orange: #e0806c;
 $almostwhite: #320000;
+$darkblue: darken($blue,20%);
+$lightblue: lighten($blue,60%);
+$verylightblue: lighten($blue,70%);
 
 body {
     font-family: "Poppins", sans-serif;
     font-size: 1.2rem;
     margin: 0px;
     min-height: 100rem;
-    background-color: lighten($blue, 60%);
+    background-color: $lightblue;
 }
 h1 {
     font-size: 2rem;
@@ -43,17 +46,12 @@ a:hover {
     color: $almostwhite;
 }
 
-header {
-    margin-bottom: 2rem;
-}
-
 .container {
     margin: auto;
 }
 
 nav {
-    background: $blue;
-    opacity: 0.9;
+    background: $darkblue;
     padding: 0.5rem;
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -61,11 +59,11 @@ nav {
     justify-content: space-between;
 }
 nav a {
-    color: lighten($blue, 50%);
+    color: $lightblue;
     vertical-align: middle;
 }
 nav a:visited {
-    color: lighten($blue, 70%);
+    color: $verylightblue;
 }
 nav img.logo {
     height: 2rem;
@@ -86,7 +84,6 @@ nav.external {
 
 div.home {
     margin: auto;
-    max-width: 60rem;
     text-align: justify;
     padding: 4rem;
 }
@@ -116,7 +113,8 @@ div.archive .item {
 }
 
 .section {
-    margin-top: 8rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 div.gallery {
@@ -127,37 +125,59 @@ div.gallery {
     margin-top: 4rem;
 }
 div.gallery div.img {
-    flex-shrink: 1;
-    flex-grow: 2;
+    flex-shrink: 2;
+    flex-grow: 3;
     font-size: 1rem;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.1);
     text-align: center;
 }
+div.gallery div.img:hover {
+    border: 1px solid #777;
+}
+
+.dark {
+    background: $darkblue;
+    color: $verylightblue; 
+}
+
+.shadow-top {
+   -moz-box-shadow:    inset 0 70px 50px -50px #000000;
+   -webkit-box-shadow: inset 0 70px 50px -50px #000000;
+   box-shadow:         inset 0 70px 50px -50px #000000;
+}
+
+.shadow-bottom {
+   -moz-box-shadow:    inset 0 -70px 50px -50px #000000;
+   -webkit-box-shadow: inset 0 -70px 50px -50px #000000;
+   box-shadow:         inset 0 -70px 50px -50px #000000;
+}
+
+.shadow-topbottom {
+   -moz-box-shadow:    inset 0 -70px 50px -50px #000000, inset 0 70px 50px -50px #000000;
+   -webkit-box-shadow: inset 0 -70px 50px -50px #000000, inset 0 70px 50px -50px #000000;
+   box-shadow:         inset 0 -70px 50px -50px #000000, inset 0 70px 50px -50px #000000;
+}
+
 div.gallery div.img .scenes {
     max-height: 400px;
     max-width: 100%;
     width: auto;
-    height: auto;
 }
 div.gallery div.img .verticals {
-    height: auto;
-    max-width: 200px;
+    max-height: 800px;
+    max-width: 100%;
     width: auto;
-    height: auto;
 }
 div.gallery div.img .animals {
     max-height: 300px;
+    max-width: 100%;
     width: auto;
-    height: auto;
 }
 div.gallery div.img .blues {
     max-height: 500px;
+    max-width: 100%;
     width: auto;
-    height: auto;
-}
-div.gallery div.img:hover {
-    border: 1px solid #777;
 }
 
 @media screen and (max-width: 600px) {
