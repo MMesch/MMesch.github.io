@@ -12,8 +12,8 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 1.2rem;
     margin: 0px;
-    min-height: 100rem;
-    background-color: $lightblue;
+    background-color: $darkblue;
+    min-height: 100vh;
 }
 h1 {
     font-size: 2rem;
@@ -48,6 +48,7 @@ a:hover {
 
 .container {
     margin: auto;
+    min-height: 100%;
 }
 
 nav {
@@ -86,6 +87,12 @@ div.home {
     margin: auto;
     text-align: justify;
     padding: 4rem;
+    height: 100%;
+}
+div.text {
+    display: block;
+    margin: auto;
+    max-width: 60rem;
 }
 
 div.blog {
@@ -93,6 +100,7 @@ div.blog {
     text-align: justify;
     padding: 4rem;
     padding-top: 1rem;
+    margin-top: 4rem;
     max-width: 60rem;
     background: white;
 }
@@ -141,6 +149,11 @@ div.gallery div.img:hover {
     color: $verylightblue; 
 }
 
+.light {
+    background: $verylightblue;
+    color: $darkblue; 
+}
+
 .shadow-top {
    -moz-box-shadow:    inset 0 70px 50px -50px #000000;
    -webkit-box-shadow: inset 0 70px 50px -50px #000000;
@@ -175,7 +188,7 @@ div.gallery div.img .animals {
     width: auto;
 }
 div.gallery div.img .blues {
-    max-height: 500px;
+    max-height: 600px;
     max-width: 100%;
     width: auto;
 }
