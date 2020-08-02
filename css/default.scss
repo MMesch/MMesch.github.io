@@ -137,11 +137,19 @@ div.gallery div.img {
     flex-grow: 3;
     font-size: 1rem;
     padding: 5px;
-    border: 1px solid rgba(0,0,0,0.1);
     text-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
 }
+
 div.gallery div.img:hover {
     border: 1px solid #777;
+}
+
+div.gallery div.img img {
+    display: block;
+    height: 500px;
+    width: auto;
+    max-width: 100%;
 }
 
 .dark {
@@ -172,27 +180,6 @@ div.gallery div.img:hover {
    box-shadow:         inset 0 -70px 50px -50px #000000, inset 0 70px 50px -50px #000000;
 }
 
-div.gallery div.img .scenes {
-    max-height: 400px;
-    max-width: 100%;
-    width: auto;
-}
-div.gallery div.img .verticals {
-    max-height: 800px;
-    max-width: 100%;
-    width: auto;
-}
-div.gallery div.img .animals {
-    max-height: 300px;
-    max-width: 100%;
-    width: auto;
-}
-div.gallery div.img .blues {
-    max-height: 600px;
-    max-width: 100%;
-    width: auto;
-}
-
 @media screen and (max-width: 600px) {
     div.blog {
         padding: 1rem;
@@ -204,5 +191,10 @@ div.gallery div.img .blues {
     a.internal  {
         margin-left: 0.1rem;
         margin-right: 0.1rem;
+    }
+    div.gallery div.img img {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
     }
 }

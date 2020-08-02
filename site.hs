@@ -33,7 +33,7 @@ main = hakyll $ do
       TmpFile o <- newTmpFile $ "out" <> takeExtension i
       _ <-
         unsafeCompiler $
-          rawSystem "convert" ["-resize", "400x", "-filter", "Sinc", i, o]
+          rawSystem "convert" ["-resize", "x500", "-filter", "Sinc", i, o]
       makeItem $ TmpFile o
   --
   match "images/gallery/**/*.svg" $ version "small" $ do
@@ -43,7 +43,7 @@ main = hakyll $ do
     compile $ do
       i <- toFilePath <$> getUnderlying
       TmpFile o <- newTmpFile "out.png"
-      _ <- unsafeCompiler $ rawSystem "inkscape" ["-z", "-w=300", "-e", o, i]
+      _ <- unsafeCompiler $ rawSystem "inkscape" ["-z", "-h=500", "-e", o, i]
       makeItem $ TmpFile o
   --
   match "css/*.css" $ do
