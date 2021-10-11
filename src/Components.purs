@@ -4,7 +4,7 @@ import Prelude
 import Types (Action(SwitchPage), Page(..), Posts, Post)
 import Data.List (toUnfoldable)
 import Data.Array (reverse)
-import Data.Maybe (fromMaybe)
+import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 import Halogen.HTML.Events as HE
@@ -54,7 +54,7 @@ list :: forall i. Posts -> HH.HTML i Action
 list posts =
   HH.div [ cn "bg-white block p-6 flex flex-col" ]
     $ reverse
-    (toUnfoldable (values posts))
+        (toUnfoldable (values posts))
     <#> listCard
 
 listCard :: forall i. Post -> HH.HTML i Action
@@ -63,9 +63,13 @@ listCard post =
     [ HE.onClick \_ -> SwitchPage (Blog $ fromMaybe "default" post.id)
     , cn "hover:cursor-pointer block p-5 m-2 border-2 rounded border-black border-opacity-30"
     ]
-    [ HH.div [ cn "block text-lg" ] [ HH.text $ fromMaybe "no title" post.title ]
-    , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
-    ]
+    ( [ HH.div [ cn "block text-lg" ] [ HH.text $ fromMaybe "no title" post.title ]
+      , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
+      ]
+        <> case post.external of
+            Nothing -> []
+            Just url -> [ HH.div [ cn "blog" ] [ HH.text url ] ]
+    )
 
 layout1 :: forall i. HH.HTML i Action
 layout1 =

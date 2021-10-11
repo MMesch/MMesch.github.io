@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "staticFiles": {
-    "staticPath": "img",
+    "staticPath": [
+            {  
+               "staticPath": "images",
+               "staticOutDir": "images"
+            },
+            { "staticPath": "blog",
+              "staticOutDir": "blog"
+            }],
     "watcherGlob": "**"
   },
   "dependencies": {
