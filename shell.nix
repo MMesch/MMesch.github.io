@@ -1,17 +1,13 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
-let
-  overrides = self: super: {
-      hakyll = pkgs.haskell.lib.appendConfigureFlag super.hakyll ["-fpreviewserver"];
-    };
-  hskPkgs = pkgs.haskell.packages.ghc865.override { overrides = overrides; };
-  myenv = hskPkgs.ghcWithPackages (p: [p.hakyll p.hakyll-sass p.hakyll-images]);
-in
-  pkgs.stdenv.mkDerivation {
-    name="hakyll";
-    buildInputs = [
-      pkgs.inkscape
-      pkgs.imagemagick
-      myenv
-    ];
-  }
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+    hivemind
+    purescript
+    spago
+    nodePackages.purescript-language-server
+    nodePackages.parcel-bundler
+    nodePackages.purty
+    nodejs
+  ];
+}

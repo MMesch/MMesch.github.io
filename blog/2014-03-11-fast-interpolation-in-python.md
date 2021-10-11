@@ -43,4 +43,4 @@ plt.scatter(xp.flatten(),yp.flatten())
 plt.show()
 ```
 
-<img src="/images/posts/interp_irregular.png" style="width:50%"></img>
+<img src="/images/posts/interp_irregular.png" style="width:50%"/>

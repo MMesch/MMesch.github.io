@@ -75,4 +75,4 @@ this should create the file shtools.so that you can finally import into python.
 The test script
 the test script test.py shows an example on how to plot a map from spherical harmonics coefficients. You need shtools,numpy, matplotlib and basemap working. The script plots a function with sh-coefficients up to a certain degree. The result should look something like this:
 
-<img src="/images/posts/spherical-harmonics.png" style="width:50%"></img>
+<img src="/images/posts/spherical-harmonics.png" style="width:50%"/>

@@ -14,13 +14,13 @@ The following animations show two spheroidal modes. Their surface movement is in
 
 angular motion is towards radial peaks
 
-<img src="/images/posts/S2m0.gif" style="width:50%"></img>
+<img src="/images/posts/S2m0.gif" style="width:50%"/>
 
 ### Spheroidal Mode l=10, m=5 ("Fundamental Rayleigh Mode")
 
 angular motion is away from radial peaks
 
-<img src="/images/posts/D10m5.gif" style="width:50%"></img>
+<img src="/images/posts/D10m5.gif" style="width:50%"/>
 
 
 A detailed derivation of the frequency and shape of these oscillations can be found in:

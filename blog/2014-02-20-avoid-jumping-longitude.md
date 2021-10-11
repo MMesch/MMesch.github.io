@@ -6,7 +6,7 @@ class: post
 
 Global line data is often jumping from one half of the globe to another.
 
-<img src="/images/posts/jumpinglines1.png" style="width:50%"></img>
+<img src="/images/posts/jumpinglines1.png" style="width:50%"/>
 
 To avoid this, we can split our lines into segments.
 Large jumps in longitude provide the indices where the line is split.
@@ -63,4 +63,4 @@ plt.show()
 
 This is the result:
 
-<img src="/images/posts/jumpinglines2.png" style="width:50%"></img>
+<img src="/images/posts/jumpinglines2.png" style="width:50%"/>

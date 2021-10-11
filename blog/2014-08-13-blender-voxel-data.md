@@ -13,7 +13,7 @@ Unfortunately there is not much documentation about the input file formats ".bvo
 
 bvox is a very simple binary file that looks like this:
 
-```
+```default
 nx ny nz nframes data[1,0,0] data[2,0,0] .... data[nx-1,ny-1,nz-1]
 ```
 
@@ -68,7 +68,7 @@ pointdata.astype(np.uint8).tofile(binfile)
 
 test render
 
-<img src="/images/posts/voxelsphere.png" style="width:50%"></img>
+<img src="/images/posts/voxelsphere.png" style="width:50%"/>
 
 EDIT: see Leo's comment below the text for a quick overview on how to get this into blender!
 

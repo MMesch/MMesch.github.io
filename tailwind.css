@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+
+/* ./your-css-folder/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fancybackground {
+    background-image: linear-gradient(to right top, #fefefa, #fefefa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefefa, #fefefa);
+}
+
+div.markdown pre {
+    @apply bg-code text-white rounded p-5 overflow-auto my-5;
+}
+
+div.markdown h1 {
+        @apply text-4xl my-4;
+}
+
+div.markdown h2 {
+        @apply text-2xl mb-2 mt-4;
+}
+
+div.markdown h3 {
+        @apply text-xl mb-2 mt-3;
+}
+
+div.markdown img {
+        @apply my-5 mx-auto;
+}
+
+div.markdown iframe {
+        @apply my-5 mx-auto;
+}
+
+div.markdown p {
+        @apply mt-4 leading-relaxed;
+}
+
+div.markdown ul {
+        @apply list-disc ml-6;
+}
+
+div.markdown ol {
+        @apply list-decimal ml-6;
+}
+
+div.markdown {
+        @apply text-base;
+}

@@ -72,4 +72,4 @@ if __name__ == "__main__":
     main()
 ```
 
-<img src="/images/posts/mandelbrot.svg"></img>
+<img src="/images/posts/mandelbrot.svg"/>

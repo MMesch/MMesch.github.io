@@ -14,6 +14,6 @@ Basically the smoke density corresponds to the magnitude of displacement in the 
 
 Here is a similar image rendered with paraview:
 
-<img src="/images/posts/wavefield.png" style="width:80%"></img>
+<img src="/images/posts/wavefield.png" style="width:80%"/>
 
 It is clear that the advanced lightning possibilities in blender can greatly enhance the 3D impression of the image.
