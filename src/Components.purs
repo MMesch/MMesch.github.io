@@ -4,7 +4,7 @@ import Prelude
 import Types (Action(SwitchPage), Page(..), Posts, Post)
 import Data.List (toUnfoldable)
 import Data.Array (reverse)
-import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
+import Data.Maybe (fromMaybe, Maybe(Just, Nothing), maybe)
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 import Halogen.HTML.Events as HE
@@ -59,17 +59,24 @@ list posts =
 
 listCard :: forall i. Post -> HH.HTML i Action
 listCard post =
-  HH.a
-    [ HE.onClick \_ -> SwitchPage (Blog $ fromMaybe "default" post.id)
-    , cn "hover:cursor-pointer block p-5 m-2 border-2 rounded border-black border-opacity-30"
-    ]
-    ( [ HH.div [ cn "block text-lg" ] [ HH.text $ fromMaybe "no title" post.title ]
-      , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
-      ]
-        <> case post.external of
-            Nothing -> []
-            Just url -> [ HH.div [ cn "blog" ] [ HH.text url ] ]
-    )
+  let
+    cardStyle = "hover:cursor-pointer block p-5 m-2 border-2 rounded border-black border-opacity-30"
+  in
+    case post.external of
+      Nothing ->
+        HH.a
+          [ HP.href $ "#/blog/" <> fromMaybe "" post.id, cn cardStyle ]
+          [ HH.div [ cn "block text-lg" ]
+              [ HH.text $ fromMaybe "no title" post.title ]
+          , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
+          ]
+      Just url ->
+        HH.a
+          [ HP.href url, HP.target "_blank", cn cardStyle ]
+          [ HH.div [ cn "block text-lg" ]
+              [ HH.text $ "external: " <> fromMaybe "no title" post.title ]
+          , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
+          ]
 
 layout1 :: forall i. HH.HTML i Action
 layout1 =
