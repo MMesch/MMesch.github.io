@@ -1,4 +1,13 @@
 module.exports = {
+  purge: {
+    enabled: true,
+    content: [
+      './tailwind.css',
+      './src/**/*.html',
+      './src/**/*.vue',
+      './src/**/*.jsx',
+      './src/**/*.purs']
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
