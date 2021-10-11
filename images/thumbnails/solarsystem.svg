@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- pythology.blogspot.com by Matthias Meschede -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="300"
+     viewBox="-250 -250 800 800"
+    >
+
+<path id="Mercury_orbit" d="M458.919064564 452.059128302 A11.5389944502 11.2897578625 61.0 1,1 436.432563024,446.867710367A11.5389944502 11.2897578625 61.0 1,1 458.919064564,452.059128302" fill="none" stroke="#333333" stroke-width="3"/>
+<path id="Jupiter_orbit" d="M488.434028757 593.437748061 A156.117565095 155.931496312 -185.0 1,1 407.621630514,291.841771936A156.117565095 155.931496312 -185.0 1,1 488.434028757,593.437748061" fill="none" stroke="orange" stroke-width="3"/>
+<path id="Uranus_orbit" d="M535.775066746 -91.5624575883 A575.608775846 574.961223916 -7.0 1,1 355.684964902,1045.48169571A575.608775846 574.961223916 -7.0 1,1 535.775066746,-91.5624575883" fill="none" stroke="#990066" stroke-width="3"/>
+<path id="Mars_orbit" d="M433.818885094 488.120317834 A45.7005807185 45.4989517323 -197.0 1,1 469.532164047,403.98510512A45.7005807185 45.4989517323 -197.0 1,1 433.818885094,488.120317834" fill="none" stroke="red" stroke-width="3"/>
+<path id="Earth_orbit" d="M478.834605677 443.87101536 A29.9885940189 29.984260354 -24.0 1,1 420.168063099,456.340973936A29.9885940189 29.984260354 -24.0 1,1 478.834605677,443.87101536" fill="none" stroke="blue" stroke-width="3"/>
+<path id="Venus_orbit" d="M465.995647798 435.597454031 A21.6741576485 21.6736393489 35.0 1,1 433.781571592,464.603138531A21.6741576485 21.6736393489 35.0 1,1 465.995647798,435.597454031" fill="none" stroke="#CC9900" stroke-width="3"/>
+<path id="Saturn_orbit" d="M721.404243504 450.0 A287.482125304 287.032183014 -246.0 1,1 146.439992897,450.0A287.482125304 287.032183014 -246.0 1,1 721.404243504,450.0" fill="none" stroke="green" stroke-width="3"/>
+<path id="Neptune_orbit" d="M1082.31566549 1082.31566549 A902.028773976 901.995054692 -183.0 1,1 -193.345660322,-193.345660322A902.028773976 901.995054692 -183.0 1,1 1082.31566549,1082.31566549" fill="none" stroke="#330066" stroke-width="3"/>
+
+<circle cx="450" cy="450" r="5" fill="orange" id="sun" stroke="black" stroke-width="1"/>
+
+
+<g id="Mercury_group">
+  <circle r="5" fill="#333333" id="Mercury" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Mercury" style="font-size:13px;font-weight:bold;fill:#333333;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Mercury
+  </text>
+  <animateMotion begin="0s" dur="0.723s" repeatCount="indefinite">
+      <mpath xlink:href="#Mercury_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Jupiter_group">
+  <circle r="5" fill="orange" id="Jupiter" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Jupiter" style="font-size:13px;font-weight:bold;fill:orange;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Jupiter
+  </text>
+  <animateMotion begin="0s" dur="35.58s" repeatCount="indefinite">
+      <mpath xlink:href="#Jupiter_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Uranus_group">
+  <circle r="5" fill="#990066" id="Uranus" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Uranus" style="font-size:13px;font-weight:bold;fill:#990066;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Uranus
+  </text>
+  <animateMotion begin="0s" dur="252.21s" repeatCount="indefinite">
+      <mpath xlink:href="#Uranus_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Mars_group">
+  <circle r="5" fill="red" id="Mars" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Mars" style="font-size:13px;font-weight:bold;fill:red;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Mars
+  </text>
+  <animateMotion begin="0s" dur="5.643s" repeatCount="indefinite">
+      <mpath xlink:href="#Mars_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Earth_group">
+  <circle r="5" fill="blue" id="Earth" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Earth" style="font-size:13px;font-weight:bold;fill:blue;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Earth
+  </text>
+  <animateMotion begin="0s" dur="3.0s" repeatCount="indefinite">
+      <mpath xlink:href="#Earth_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Venus_group">
+  <circle r="5" fill="#CC9900" id="Venus" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Venus" style="font-size:13px;font-weight:bold;fill:#CC9900;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Venus
+  </text>
+  <animateMotion begin="0s" dur="1.845s" repeatCount="indefinite">
+      <mpath xlink:href="#Venus_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Saturn_group">
+  <circle r="5" fill="green" id="Saturn" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Saturn" style="font-size:13px;font-weight:bold;fill:green;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Saturn
+  </text>
+  <animateMotion begin="0s" dur="88.38s" repeatCount="indefinite">
+      <mpath xlink:href="#Saturn_orbit"/>
+  </animateMotion>
+</g>
+
+
+
+<g id="Neptune_group">
+  <circle r="5" fill="#330066" id="Neptune" stroke="black" stroke-width="1">
+  </circle>
+  <text id="label_Neptune" style="font-size:13px;font-weight:bold;fill:#330066;stroke:black;stroke-width:0.3" x="-15px" y="15px">
+      Neptune
+  </text>
+  <animateMotion begin="0s" dur="494.4s" repeatCount="indefinite">
+      <mpath xlink:href="#Neptune_orbit"/>
+  </animateMotion>
+</g>
+
+
+</svg>
