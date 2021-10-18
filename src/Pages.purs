@@ -35,11 +35,11 @@ blogPage markdownIt post =
 
     date = fromMaybe "no date" post.date
   in
-    HH.div [ cn "block markdown" ]
+    HH.div [ cn "block" ]
       [ navBar
-      , HH.div [ cn "max-w-colwidth mx-auto" ]
+      , HH.div [ cn "markdown max-w-colwidth mx-auto pt-12 pb-12" ]
           [ HH.h1 [] [ HH.text title ]
-          , HH.div [ cn "" ] [ HH.text date ]
+          , HH.div [ cn "mb-6" ] [ HH.text date ]
           , rendered
           ]
       ]

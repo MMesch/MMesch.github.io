@@ -14,7 +14,7 @@ div.markdown pre {
 }
 
 div.markdown h1 {
-        @apply text-4xl my-4;
+        @apply text-4xl mb-4;
 }
 
 div.markdown h2 {

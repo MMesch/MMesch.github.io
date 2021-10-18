@@ -11,7 +11,7 @@ This is similar to a ferromagnet where particles adjust their spins but don't ch
 As the magnet, the moving system can show a "phase transition" from unordered to swarm-like, depending on the strength of the random perturbations.
 Interestingly a similar effect of organized motion can be observed if particles repel each other (<a href="http://iopscience.iop.org/1367-2630/10/2/023036">Grossman, Aranson and Jacob 2008</a>)
 
-<script src="/content/2014-02-21-collective-motion.js"></script>
+<script src="/blog/2014-02-21-collective-motion.js"></script>
 
 <br />
 <div align="center" id="outer" style="margin-bottom: 50px; margin-top: 50px;">

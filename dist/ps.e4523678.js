@@ -48799,7 +48799,7 @@ var PS = {};
       var markdown = Data_Maybe.fromMaybe("")(post.content);
       var rendered = MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
       var date = Data_Maybe.fromMaybe("no date")(post.date);
-      return Halogen_HTML_Elements.div([cn("block markdown")])([navBar, Halogen_HTML_Elements.div([cn("max-w-colwidth mx-auto")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("")])([Halogen_HTML_Core.text(date)]), rendered])]);
+      return Halogen_HTML_Elements.div([cn("block")])([navBar, Halogen_HTML_Elements.div([cn("markdown max-w-colwidth mx-auto pt-12 pb-12")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
     };
   };
 
