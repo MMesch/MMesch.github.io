@@ -37,7 +37,7 @@ blogPage markdownIt post =
   in
     HH.div [ cn "block" ]
       [ navBar
-      , HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray mx-auto mt-6 pt-6 pb-12" ]
+      , HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray mx-auto mt-12 py-16" ]
           [ HH.h1 [] [ HH.text title ]
           , HH.div [ cn "mb-6" ] [ HH.text date ]
           , rendered
@@ -56,7 +56,7 @@ navBarButton ::
 navBarButton { action, content } =
   HH.a
     [ HE.onClick \_ -> action
-    , cn "block hover:cursor-pointer my-1 ml-1 mr-3 text-3xl md:text-5xl"
+    , cn "block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl"
     ]
     [ HH.text content ]
 
@@ -83,7 +83,7 @@ navBarButtonGroup ::
   { elements :: Array (HH.HTML i a) } -> HH.HTML i a
 navBarButtonGroup { elements } =
   HH.div
-    [ cn "font-bold text-5xl flex flex-row lg:flex-col m-2" ]
+    [ cn "font-bold flex flex-row lg:flex-col m-2" ]
     elements
 
 {- writing pages -}
@@ -109,7 +109,7 @@ container content = HH.div [ cn "w-full max-w-colwidth block mx-auto" ] content
 
 list :: forall i. Posts -> HH.HTML i Action
 list posts =
-  HH.div [ cn "bg-white block p-3 flex flex-col" ]
+  HH.div [ cn "bg-white block mt-6 flex flex-col" ]
     $ reverse
         (toUnfoldable (values posts))
     <#> listCard
