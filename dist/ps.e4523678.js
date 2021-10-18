@@ -48753,7 +48753,7 @@ var PS = {};
   };
 
   var list = function list(posts) {
-    return Halogen_HTML_Elements.div([cn("bg-white block mt-6 flex flex-col")])(Data_Functor.mapFlipped(Data_Functor.functorArray)(Data_Array.reverse(Data_List.toUnfoldable(Data_Unfoldable.unfoldableArray)(Data_Map_Internal.values(posts))))(listCard));
+    return Halogen_HTML_Elements.div([cn("bg-white block pt-6 flex flex-col")])(Data_Functor.mapFlipped(Data_Functor.functorArray)(Data_Array.reverse(Data_List.toUnfoldable(Data_Unfoldable.unfoldableArray)(Data_Map_Internal.values(posts))))(listCard));
   };
 
   var navBarButton = function navBarButton(v) {

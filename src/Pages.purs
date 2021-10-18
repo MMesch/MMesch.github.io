@@ -109,7 +109,7 @@ container content = HH.div [ cn "w-full max-w-colwidth block mx-auto" ] content
 
 list :: forall i. Posts -> HH.HTML i Action
 list posts =
-  HH.div [ cn "bg-white block mt-6 flex flex-col" ]
+  HH.div [ cn "bg-white block pt-6 flex flex-col" ]
     $ reverse
         (toUnfoldable (values posts))
     <#> listCard
