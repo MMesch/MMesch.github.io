@@ -21,8 +21,9 @@ module.exports = {
         'colwidth': '50em',
       },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-      body: ['Roboto', 'sans-serif']
+      display: ['Noto', 'sans-serif'],
+      sans: ['Noto', 'sans-serif'],
+      body: ['Noto', 'sans-serif']
     }},
   colors: {
      transparent: 'transparent',
