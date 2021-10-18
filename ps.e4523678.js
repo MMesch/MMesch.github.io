@@ -48739,13 +48739,13 @@ var PS = {};
 
   var listCard = function listCard(post) {
     if (post.external instanceof Data_Maybe.Nothing) {
-      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href("#/blog/" + Data_Maybe.fromMaybe("")(post.id)), cn("hover:cursor-pointer block p-5 m-2 border-2 rounded border-black border-opacity-30")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
+      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href("#/blog/" + Data_Maybe.fromMaybe("")(post.id)), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
     }
 
     ;
 
     if (post.external instanceof Data_Maybe.Just) {
-      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-5 m-2 border-2 rounded border-black border-opacity-30")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text("external: " + Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
+      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text("external: " + Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
     }
 
     ;
@@ -48753,7 +48753,7 @@ var PS = {};
   };
 
   var list = function list(posts) {
-    return Halogen_HTML_Elements.div([cn("bg-white block p-6 flex flex-col")])(Data_Functor.mapFlipped(Data_Functor.functorArray)(Data_Array.reverse(Data_List.toUnfoldable(Data_Unfoldable.unfoldableArray)(Data_Map_Internal.values(posts))))(listCard));
+    return Halogen_HTML_Elements.div([cn("bg-white block p-3 flex flex-col")])(Data_Functor.mapFlipped(Data_Functor.functorArray)(Data_Array.reverse(Data_List.toUnfoldable(Data_Unfoldable.unfoldableArray)(Data_Map_Internal.values(posts))))(listCard));
   };
 
   var navBarButton = function navBarButton(v) {
@@ -48799,7 +48799,7 @@ var PS = {};
       var markdown = Data_Maybe.fromMaybe("")(post.content);
       var rendered = MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
       var date = Data_Maybe.fromMaybe("no date")(post.date);
-      return Halogen_HTML_Elements.div([cn("block")])([navBar, Halogen_HTML_Elements.div([cn("markdown max-w-colwidth mx-auto pt-12 pb-12")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
+      return Halogen_HTML_Elements.div([cn("block")])([navBar, Halogen_HTML_Elements.div([cn("markdown max-w-colwidth border-t-2 lg:border-0 border-gray mx-auto mt-6 pt-6 pb-12")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
     };
   };
 
