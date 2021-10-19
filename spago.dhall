@@ -23,6 +23,7 @@ to generate this file without the comments in this block.
   , "effect"
   , "either"
   , "foldable-traversable"
+  , "foreign"
   , "halogen"
   , "halogen-css"
   , "html-parser-halogen"

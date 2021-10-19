@@ -1,9 +1,12 @@
 module Main where
 
 import Prelude
+import Control.Monad.Reader.Trans (class MonadAsk, ReaderT, runReaderT, asks)
+import Type.Equality (class TypeEquals, from)
 import Control.Parallel (parSequence)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Effect (Effect)
+import Effect.Aff (Aff)
 import Effect.Aff.Class (class MonadAff)
 import Effect.Class (class MonadEffect)
 import Effect.Class.Console (log)
@@ -11,21 +14,24 @@ import Halogen as H
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
 import Pages (blogList, mainPage, blogPage)
-import Debug (traceM)
-import Routes (listenForUrlHashChanges, validateUrlHash, setUrlHash)
+import Routes (listenForUrlChanges, routeCodec)
+import Routing.Duplex as RD
+import Routing.PushState (makeInterface, PushStateInterface)
 import Types
   ( Page(Main, Blog, BlogList)
   , Action(SwitchPage, Initialize)
   , State
   , Query(Navigate)
+  , Route
   )
-import Util (fetchList, fetchPost, fetchFile)
+import Util (fetchList, fetchPost)
 import Data.Map (lookup, fromFoldable)
 import Data.Tuple (Tuple(Tuple))
 import Data.Array (catMaybes)
 import Data.Options ((:=))
+import Foreign (unsafeToForeign)
 import MarkdownIt
-  ( Preset(CommonMark, Default)
+  ( Preset(Default)
   , highlight
   , html
   , typographer
@@ -43,16 +49,61 @@ to switch pages with a halogen query that is sent to the component.
 main :: Effect Unit
 main =
   HA.runHalogenAff do
+    nav <- H.liftEffect makeInterface
+    let
+      environment :: Env
+      environment = { nav }
+
+      rootcomponent = H.hoist (runAppM environment) component
     HA.awaitLoad
     body <- HA.awaitBody
-    halogenIO <- runUI component unit body
-    canceller <- H.liftEffect $ listenForUrlHashChanges halogenIO
+    halogenIO <- runUI rootcomponent unit body
+    canceller <- H.liftEffect $ listenForUrlChanges nav halogenIO
     pure unit
+
+type Env
+  = { nav :: PushStateInterface
+    }
+
+newtype AppM a
+  = AppM (ReaderT Env Aff a)
+
+derive newtype instance functorAppM :: Functor AppM
+
+derive newtype instance applyAppM :: Apply AppM
+
+derive newtype instance applicativeAppM :: Applicative AppM
+
+derive newtype instance bindAppM :: Bind AppM
+
+derive newtype instance monadAppM :: Monad AppM
+
+derive newtype instance monadEffectAppM :: MonadEffect AppM
+
+derive newtype instance monadAffAppM :: MonadAff AppM
+
+instance monadAskAppM :: TypeEquals e Env => MonadAsk e AppM where
+  ask = AppM $ asks from
+
+class
+  Monad m <= Navigate m where
+  navigate :: Route -> m Unit
+
+instance navigateHalogenM :: Navigate m => Navigate (H.HalogenM state action slots output m) where
+  navigate = H.lift <<< navigate
+
+instance navigateAppM :: Navigate AppM where
+  navigate route = do
+    pushInterface <- asks _.nav
+    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
+
+runAppM :: Env -> AppM ~> Aff
+runAppM env (AppM m) = runReaderT m env
 
 {-
 Main component. This component is the purescript javascript code.
 -}
-component :: forall i m. MonadEffect m => MonadAff m => H.Component Query i Void m
+component :: forall i. H.Component Query i Void AppM
 component =
   H.mkComponent
     { initialState
@@ -76,7 +127,7 @@ component =
   {-
   handleQuery is more interesting
   -}
-  handleQuery :: forall c a. Query a -> H.HalogenM State Action c Void m (Maybe a)
+  handleQuery :: forall c a. Query a -> H.HalogenM State Action c Void AppM (Maybe a)
   handleQuery = case _ of
     Navigate (destPage) a -> do
       { page } <- H.get
@@ -84,17 +135,16 @@ component =
         H.modify_ \state ->
           state
             { page = fromMaybe Main destPage }
+      newPage <- H.get
       pure $ Just a
 
-  handleAction :: forall c. Action -> H.HalogenM State Action c Void m Unit
+  handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
   handleAction = case _ of
     SwitchPage page -> do
       state <- H.get
-      setUrlHash (Just page)
+      navigate (Just page)
     Initialize -> do
-      validateUrlHash
-      rawList <- H.liftAff $ fetchFile "./blog/posts.dat"
-      postListEither <- H.liftAff $ fetchList "./blog/posts.dat"
+      postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
       markdownIt <-
         H.liftEffect
           $ newMarkdownIt Default
@@ -105,7 +155,7 @@ component =
         Nothing -> H.liftAff $ log "err"
         Just postList -> do
           let
-            paths = ((<>) "./blog/") <$> postList
+            paths = ((<>) "/blog/") <$> postList
           arr <- H.liftAff $ parSequence $ fetchPost <$> paths
           let
             postMap = fromFoldable $ toTuple <$> catMaybes arr
@@ -119,7 +169,7 @@ component =
     where
     toTuple el = Tuple (fromMaybe "default" el.id) el
 
-  render :: forall c. State -> H.ComponentHTML Action c m
+  render :: forall c. State -> H.ComponentHTML Action c AppM
   render state = case state.page of
     Main -> mainPage
     BlogList -> blogList state

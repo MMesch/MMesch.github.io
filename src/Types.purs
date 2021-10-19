@@ -3,7 +3,7 @@ module Types where
 import Prelude
 import Data.Maybe (Maybe)
 import Data.Generic.Rep (class Generic)
-import Data.Map (Map, fromFoldable)
+import Data.Map (Map)
 import MarkdownIt (MarkdownIt)
 
 {-

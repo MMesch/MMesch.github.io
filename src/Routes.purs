@@ -7,9 +7,12 @@ import Effect (Effect)
 import Effect.Aff (launchAff_, Aff)
 import Data.Maybe (Maybe(Just), fromMaybe)
 import Data.Either (hush)
+import Debug (spy)
 import Halogen as H
 import Halogen.Query as HQ
-import Routing.Hash (matchesWith, setHash, getHash)
+import Routing.Hash (setHash, getHash)
+import Routing.PushState (matchesWith, PushStateInterface)
+import Foreign (unsafeToForeign)
 import Routing.Duplex
   ( RouteDuplex'
   , parse
@@ -45,6 +48,9 @@ and then sets the url hash accordingly
 setUrlHash :: forall m. MonadEffect m => Route -> m Unit
 setUrlHash = H.liftEffect <<< setHash <<< print routeCodec
 
+setUrl :: forall m. MonadEffect m => PushStateInterface -> Route -> m Unit
+setUrl nav = H.liftEffect <<< nav.pushState (unsafeToForeign {}) <<< print routeCodec
+
 {-
 this function gets the browser hash on initialization and then
 navigates to the correct spot with the Main page as default option.
@@ -54,15 +60,24 @@ validateUrlHash = do
   initialRoute <- hush <<< (parse routeCodec) <$> H.liftEffect getHash
   setUrlHash $ fromMaybe (Just Main) initialRoute
 
+validateUrl :: forall m. MonadEffect m => PushStateInterface -> m Unit
+validateUrl nav = do
+  { path } <- H.liftEffect nav.locationState
+  let
+    initialRoute = hush $ (parse routeCodec) path
+  setUrl nav $ fromMaybe (Just Main) initialRoute
+
 {-
 Runs a callback on every hash change using a given custom parser to extract a
 route from the hash.
 -}
-listenForUrlHashChanges ::
+listenForUrlChanges ::
   forall a b.
+  PushStateInterface ->
   { query :: Query Unit -> Aff a | b } ->
   Effect (Effect Unit)
-listenForUrlHashChanges halogenIO =
-  matchesWith (parse routeCodec) \old new -> do
-    when (old /= Just new) do
-      launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
+listenForUrlChanges nav halogenIO =
+  nav
+    # matchesWith (parse routeCodec) \old new -> do
+        when (old /= Just new) do
+          launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new

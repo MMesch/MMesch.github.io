@@ -12,7 +12,6 @@ import Data.List (toUnfoldable)
 import Data.Array (reverse)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing), maybe)
 import Data.Map (values)
-import Debug (spy)
 
 blogList :: forall i. State -> HH.HTML i Action
 blogList state =
@@ -37,7 +36,7 @@ blogPage markdownIt post =
   in
     HH.div [ cn "block" ]
       [ navBar
-      , HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray mx-auto mt-12 py-16" ]
+      , HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
           [ HH.h1 [] [ HH.text title ]
           , HH.div [ cn "mb-6" ] [ HH.text date ]
           , rendered
@@ -89,7 +88,7 @@ navBarButtonGroup { elements } =
 {- writing pages -}
 navBar :: forall i. HH.HTML i Action
 navBar =
-  HH.div [ cn "lg:absolute flex justify-between flex-row lg:flex-col" ]
+  HH.div [ cn "lg:absolute flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
     [ navBarButtonGroup
         { elements:
             [ navBarButton { action: SwitchPage Main, content: "Home" }
@@ -122,7 +121,7 @@ listCard post =
     case post.external of
       Nothing ->
         HH.a
-          [ HP.href $ "#/blog/" <> fromMaybe "" post.id, cn cardStyle ]
+          [ HP.href $ "/blog/" <> fromMaybe "" post.id, cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
               [ HH.text $ fromMaybe "no title" post.title ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
