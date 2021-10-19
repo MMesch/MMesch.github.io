@@ -10,7 +10,7 @@ import Halogen.HTML.Events as HE
 import MarkdownIt.Renderer.Halogen (render_)
 import Data.List (toUnfoldable)
 import Data.Array (reverse)
-import Data.Maybe (fromMaybe, Maybe(Just, Nothing), maybe)
+import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
 import Data.Map (values)
 
 blogList :: forall i. State -> HH.HTML i Action
@@ -21,7 +21,18 @@ blogList state =
       ]
 
 mainPage :: forall i. HH.HTML i Action
-mainPage = HH.div [ cn "block" ] [ navBar ]
+mainPage =
+  HH.div [ cn "block" ]
+    [ navBar
+    , container
+        [ HH.text
+            $ "Hi, I am a physicists, geophysicist and now software "
+            <> "developer and this is where I am writing up thoughts. "
+            <> "I enjoy programming but not as an end in itself. "
+            <> "I wrote this blog entirely in Purescript after using Hakyll "
+            <> "and Elm."
+        ]
+    ]
 
 blogPage :: forall i. MarkdownIt -> Post -> HH.HTML i Action
 blogPage markdownIt post =
@@ -104,7 +115,7 @@ navBar =
     ]
 
 container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-container content = HH.div [ cn "w-full max-w-colwidth block mx-auto" ] content
+container content = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3" ] content
 
 list :: forall i. Posts -> HH.HTML i Action
 list posts =

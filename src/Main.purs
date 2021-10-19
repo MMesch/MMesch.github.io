@@ -1,6 +1,7 @@
 module Main where
 
 import Prelude
+import Data.Array (filter, zip)
 import Control.Monad.Reader.Trans (class MonadAsk, ReaderT, runReaderT, asks)
 import Type.Equality (class TypeEquals, from)
 import Control.Parallel (parSequence)
@@ -26,7 +27,7 @@ import Types
   )
 import Util (fetchList, fetchPost)
 import Data.Map (lookup, fromFoldable)
-import Data.Tuple (Tuple(Tuple))
+import Data.Tuple (Tuple(Tuple), snd)
 import Data.Array (catMaybes)
 import Data.Options ((:=))
 import Foreign (unsafeToForeign)
@@ -138,8 +139,6 @@ component =
         H.modify_ \state ->
           state
             { page = fromMaybe Main destPage }
-      newPage <- H.get
-      traceM newPage
       pure $ Just a
 
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
@@ -163,6 +162,9 @@ component =
           arr <- H.liftAff $ parSequence $ fetchPost <$> paths
           let
             postMap = fromFoldable $ toTuple <$> catMaybes arr
+
+            failed = filter (\(Tuple el path) -> el == Nothing) $ zip arr paths
+          _ <- parSequence $ log <<< (<>) "failed path: " <<< show <<< snd <$> failed
           H.modify_
             ( \state ->
                 state

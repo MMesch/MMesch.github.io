@@ -55,7 +55,7 @@ fetchPost url = do
 
 extractMarkdown :: String -> Maybe { header :: String, body :: String }
 extractMarkdown markdown = do
-  expr <- hush $ regex "\\s*---([\\s\\S]*)---\\s*([\\s\\S]*)" noFlags
+  expr <- hush $ regex "\\s*---([\\s\\S]*?)---\\s*([\\s\\S]*)" noFlags
   arr <- match expr markdown
   firstGroup <- arr !! 1
   header <- firstGroup

@@ -759,6 +759,10 @@ video {
   overflow: auto;
 }
 
+.overflow-y-scroll{
+  overflow-y: scroll;
+}
+
 .rounded{
   border-radius: 0.25rem;
 }
