@@ -14,7 +14,7 @@ import Halogen as H
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
 import Pages (blogList, mainPage, blogPage)
-import Routes (listenForUrlChanges, routeCodec)
+import Routes (listenForUrlHashChanges, routeCodec, setUrlHash, validateUrlHash)
 import Routing.Duplex as RD
 import Routing.PushState (makeInterface, PushStateInterface)
 import Types
@@ -30,6 +30,7 @@ import Data.Tuple (Tuple(Tuple))
 import Data.Array (catMaybes)
 import Data.Options ((:=))
 import Foreign (unsafeToForeign)
+import Debug
 import MarkdownIt
   ( Preset(Default)
   , highlight
@@ -58,7 +59,7 @@ main =
     HA.awaitLoad
     body <- HA.awaitBody
     halogenIO <- runUI rootcomponent unit body
-    canceller <- H.liftEffect $ listenForUrlChanges nav halogenIO
+    canceller <- H.liftEffect $ listenForUrlHashChanges halogenIO
     pure unit
 
 type Env
@@ -92,10 +93,12 @@ class
 instance navigateHalogenM :: Navigate m => Navigate (H.HalogenM state action slots output m) where
   navigate = H.lift <<< navigate
 
-instance navigateAppM :: Navigate AppM where
-  navigate route = do
-    pushInterface <- asks _.nav
-    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
+--instance navigateAppMPush :: Navigate AppM where
+--  navigate route = do
+--    pushInterface <- asks _.nav
+--    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
+instance navigateAppMHash :: Navigate AppM where
+  navigate route = setUrlHash (RD.print routeCodec route)
 
 runAppM :: Env -> AppM ~> Aff
 runAppM env (AppM m) = runReaderT m env
@@ -136,6 +139,7 @@ component =
           state
             { page = fromMaybe Main destPage }
       newPage <- H.get
+      traceM newPage
       pure $ Just a
 
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit

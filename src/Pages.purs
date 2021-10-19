@@ -121,7 +121,7 @@ listCard post =
     case post.external of
       Nothing ->
         HH.a
-          [ HP.href $ "/blog/" <> fromMaybe "" post.id, cn cardStyle ]
+          [ HP.href $ "#/blog/" <> fromMaybe "" post.id, cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
               [ HH.text $ fromMaybe "no title" post.title ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]

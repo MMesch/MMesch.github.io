@@ -10,7 +10,7 @@ import Data.Either (hush)
 import Debug (spy)
 import Halogen as H
 import Halogen.Query as HQ
-import Routing.Hash (setHash, getHash)
+import Routing.Hash as RH
 import Routing.PushState (matchesWith, PushStateInterface)
 import Foreign (unsafeToForeign)
 import Routing.Duplex
@@ -45,8 +45,8 @@ pageCodec =
 this function takes a Route datatype, maps it to a string via the routeCodec
 and then sets the url hash accordingly
 -}
-setUrlHash :: forall m. MonadEffect m => Route -> m Unit
-setUrlHash = H.liftEffect <<< setHash <<< print routeCodec
+setUrlHash :: forall m. MonadEffect m => String -> m Unit
+setUrlHash = H.liftEffect <<< RH.setHash
 
 setUrl :: forall m. MonadEffect m => PushStateInterface -> Route -> m Unit
 setUrl nav = H.liftEffect <<< nav.pushState (unsafeToForeign {}) <<< print routeCodec
@@ -57,8 +57,8 @@ navigates to the correct spot with the Main page as default option.
 -}
 validateUrlHash :: forall m. MonadEffect m => m Unit
 validateUrlHash = do
-  initialRoute <- hush <<< (parse routeCodec) <$> H.liftEffect getHash
-  setUrlHash $ fromMaybe (Just Main) initialRoute
+  initialRoute <- hush <<< (parse routeCodec) <$> H.liftEffect RH.getHash
+  setUrlHash $ print routeCodec $ fromMaybe (Just Main) initialRoute
 
 validateUrl :: forall m. MonadEffect m => PushStateInterface -> m Unit
 validateUrl nav = do
@@ -81,3 +81,12 @@ listenForUrlChanges nav halogenIO =
     # matchesWith (parse routeCodec) \old new -> do
         when (old /= Just new) do
           launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
+
+listenForUrlHashChanges ::
+  forall a b.
+  { query :: Query Unit -> Aff a | b } ->
+  Effect (Effect Unit)
+listenForUrlHashChanges halogenIO =
+  RH.matchesWith (parse routeCodec) \old new -> do
+    when (old /= Just new) do
+      launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
