@@ -7,6 +7,7 @@ import Effect (Effect)
 import Effect.Aff (launchAff_, Aff)
 import Data.Maybe (Maybe(Just), fromMaybe)
 import Data.Either (hush)
+import Data.String (stripPrefix, Pattern(Pattern))
 import Debug (spy)
 import Halogen as H
 import Halogen.Query as HQ
@@ -46,7 +47,7 @@ this function takes a Route datatype, maps it to a string via the routeCodec
 and then sets the url hash accordingly
 -}
 setUrlHash :: forall m. MonadEffect m => String -> m Unit
-setUrlHash = H.liftEffect <<< RH.setHash
+setUrlHash = H.liftEffect <<< RH.setHash <<< addBang
 
 setUrl :: forall m. MonadEffect m => PushStateInterface -> Route -> m Unit
 setUrl nav = H.liftEffect <<< nav.pushState (unsafeToForeign {}) <<< print routeCodec
@@ -87,6 +88,12 @@ listenForUrlHashChanges ::
   { query :: Query Unit -> Aff a | b } ->
   Effect (Effect Unit)
 listenForUrlHashChanges halogenIO =
-  RH.matchesWith (parse routeCodec) \old new -> do
+  RH.matchesWith (stripBang >>> parse routeCodec) \old new -> do
     when (old /= Just new) do
       launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
+
+addBang :: String -> String
+addBang = (<>) "!"
+
+stripBang :: String -> String
+stripBang str = fromMaybe str $ stripPrefix (Pattern "!") str

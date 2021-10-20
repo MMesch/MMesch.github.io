@@ -60,12 +60,12 @@ cn = HP.class_ <<< HH.ClassName
 
 {- nav bar component -}
 navBarButton ::
-  forall i.
-  { action :: Action, content :: String } ->
-  HH.HTML i Action
-navBarButton { action, content } =
+  forall i a.
+  { href :: String, content :: String } ->
+  HH.HTML i a
+navBarButton { href, content } =
   HH.a
-    [ HE.onClick \_ -> action
+    [ HP.href href
     , cn "block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl"
     ]
     [ HH.text content ]
@@ -102,8 +102,8 @@ navBar =
   HH.div [ cn "lg:absolute flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
     [ navBarButtonGroup
         { elements:
-            [ navBarButton { action: SwitchPage Main, content: "Home" }
-            , navBarButton { action: SwitchPage BlogList, content: "Blog" }
+            [ navBarButton { href: "#!/", content: "Home" }
+            , navBarButton { href: "#!/blog", content: "Blog" }
             ]
         }
     , navBarIconGroup
@@ -132,7 +132,7 @@ listCard post =
     case post.external of
       Nothing ->
         HH.a
-          [ HP.href $ "#/blog/" <> fromMaybe "" post.id, cn cardStyle ]
+          [ HP.href $ "#!/blog/" <> fromMaybe "" post.id, cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
               [ HH.text $ fromMaybe "no title" post.title ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
