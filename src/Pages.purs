@@ -115,7 +115,7 @@ navBar =
     ]
 
 container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-container content = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3" ] content
+container content = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3 py-3" ] content
 
 list :: forall i. Posts -> HH.HTML i Action
 list posts =
