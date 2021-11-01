@@ -49128,7 +49128,7 @@ var PS = {};
   };
 
   var container = function container(content) {
-    return Halogen_HTML_Elements.div([cn("w-full max-w-colwidth block mx-auto px-3")])(content);
+    return Halogen_HTML_Elements.div([cn("w-full max-w-colwidth block mx-auto px-3 py-3")])(content);
   };
 
   var listCard = function listCard(post) {
@@ -51353,7 +51353,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42963" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33885" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
