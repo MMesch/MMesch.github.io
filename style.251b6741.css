@@ -759,6 +759,10 @@ video {
   overflow: auto;
 }
 
+.overflow-y-scroll{
+  overflow-y: scroll;
+}
+
 .rounded{
   border-radius: 0.25rem;
 }
@@ -778,11 +782,6 @@ video {
 .border-gray{
   --tw-border-opacity: 1;
   border-color: rgba(196, 196, 196, var(--tw-border-opacity));
-}
-
-.bg-palered{
-  --tw-bg-opacity: 1;
-  background-color: rgba(174, 135, 153, var(--tw-bg-opacity));
 }
 
 .bg-white{
@@ -849,6 +848,11 @@ video {
 
 .font-bold{
   font-weight: 700;
+}
+
+.text-red{
+  --tw-text-opacity: 1;
+  color: rgba(201, 93, 99, var(--tw-text-opacity));
 }
 
 .text-white{
