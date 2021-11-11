@@ -1,37 +1,42 @@
 module Pages where
 
 import Prelude
-import Types (State, Action(SwitchPage), Page(..), Posts, Post)
-import Data.Maybe (fromMaybe)
+import Types (State, Action, Posts, Post)
 import MarkdownIt (MarkdownIt)
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
-import Halogen.HTML.Events as HE
 import MarkdownIt.Renderer.Halogen (render_)
 import Data.List (toUnfoldable)
 import Data.Array (reverse)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
 import Data.Map (values)
 
+-- simple navbar layout
+layout1 :: forall i. Array (HH.HTML i Action) -> HH.HTML i Action
+layout1 elements =
+  HH.div [ cn "block overflow-y-scroll" ]
+    $ [ navBar
+      , container elements
+      ]
+  where
+  container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
+  container = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3 py-3" ]
+
+-- pages
 blogList :: forall i. State -> HH.HTML i Action
 blogList state =
-  HH.div [ cn "block" ]
-    $ [ navBar
-      , container [ list $ state.posts ]
-      ]
+  layout1
+    $ [ list $ state.posts ]
 
 mainPage :: forall i. HH.HTML i Action
 mainPage =
-  HH.div [ cn "block" ]
-    [ navBar
-    , container
-        [ HH.text
-            $ "Hi, I am a physicists, geophysicist and now software "
-            <> "developer and this is where I am writing up thoughts. "
-            <> "I enjoy programming but not as an end in itself. "
-            <> "I wrote this blog entirely in Purescript after using Hakyll "
-            <> "and Elm."
-        ]
+  layout1
+    [ HH.text
+        $ "Hi, I am a physicists, geophysicist and now software "
+        <> "developer and this is where I am writing up thoughts. "
+        <> "I enjoy programming but not as an end in itself. "
+        <> "I wrote this blog entirely in Purescript after using Hakyll "
+        <> "and Elm."
     ]
 
 blogPage :: forall i. MarkdownIt -> Post -> HH.HTML i Action
@@ -45,9 +50,8 @@ blogPage markdownIt post =
 
     date = fromMaybe "no date" post.date
   in
-    HH.div [ cn "block" ]
-      [ navBar
-      , HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
+    layout1
+      [ HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
           [ HH.h1 [] [ HH.text title ]
           , HH.div [ cn "mb-6" ] [ HH.text date ]
           , rendered
@@ -114,9 +118,6 @@ navBar =
         }
     ]
 
-container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-container content = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3 py-3" ] content
-
 list :: forall i. Posts -> HH.HTML i Action
 list posts =
   HH.div [ cn "bg-white block pt-6 flex flex-col" ]
@@ -141,13 +142,8 @@ listCard post =
         HH.a
           [ HP.href url, HP.target "_blank", cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
-              [ HH.text $ "external: " <> fromMaybe "no title" post.title ]
+              [ HH.span [ cn "text-red font-bold" ] [ HH.text "external: " ]
+              , HH.text $ fromMaybe "no title" post.title
+              ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
           ]
-
-layout1 :: forall i. HH.HTML i Action
-layout1 =
-  HH.div [ cn "bg-palered" ]
-    [ navBar
-    , HH.text "Hey there"
-    ]

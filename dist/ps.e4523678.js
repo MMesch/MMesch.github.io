@@ -34313,7 +34313,7 @@ LinkifyIt.prototype.onCompile = function onCompile() {
 
 module.exports = LinkifyIt;
 
-},{"./lib/re":"node_modules/linkify-it/lib/re.js"}],"../../../../../nix/store/dk8f3g0qn4ijb5wph933fb1ffzfycc20-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
+},{"./lib/re":"node_modules/linkify-it/lib/re.js"}],"../../../../../nix/store/9w4mrzs0ajjfdy8wmgrg44jcd03rw6qv-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
 var global = arguments[3];
 var define;
 /*! https://mths.be/punycode v1.4.1 by @mathias */
@@ -35623,7 +35623,7 @@ MarkdownIt.prototype.renderInline = function (src, env) {
 
 module.exports = MarkdownIt;
 
-},{"./common/utils":"node_modules/markdown-it/lib/common/utils.js","./helpers":"node_modules/markdown-it/lib/helpers/index.js","./renderer":"node_modules/markdown-it/lib/renderer.js","./parser_core":"node_modules/markdown-it/lib/parser_core.js","./parser_block":"node_modules/markdown-it/lib/parser_block.js","./parser_inline":"node_modules/markdown-it/lib/parser_inline.js","linkify-it":"node_modules/linkify-it/index.js","mdurl":"node_modules/mdurl/index.js","punycode":"../../../../../nix/store/dk8f3g0qn4ijb5wph933fb1ffzfycc20-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./presets/default":"node_modules/markdown-it/lib/presets/default.js","./presets/zero":"node_modules/markdown-it/lib/presets/zero.js","./presets/commonmark":"node_modules/markdown-it/lib/presets/commonmark.js"}],"node_modules/markdown-it/index.js":[function(require,module,exports) {
+},{"./common/utils":"node_modules/markdown-it/lib/common/utils.js","./helpers":"node_modules/markdown-it/lib/helpers/index.js","./renderer":"node_modules/markdown-it/lib/renderer.js","./parser_core":"node_modules/markdown-it/lib/parser_core.js","./parser_block":"node_modules/markdown-it/lib/parser_block.js","./parser_inline":"node_modules/markdown-it/lib/parser_inline.js","linkify-it":"node_modules/linkify-it/index.js","mdurl":"node_modules/mdurl/index.js","punycode":"../../../../../nix/store/9w4mrzs0ajjfdy8wmgrg44jcd03rw6qv-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./presets/default":"node_modules/markdown-it/lib/presets/default.js","./presets/zero":"node_modules/markdown-it/lib/presets/zero.js","./presets/commonmark":"node_modules/markdown-it/lib/presets/commonmark.js"}],"node_modules/markdown-it/index.js":[function(require,module,exports) {
 'use strict';
 
 
@@ -47812,6 +47812,7 @@ var PS = {};
     return element("img")(props)([]);
   };
 
+  var span = element("span");
   var div = element("div");
   var a = element("a");
   exports["element"] = element;
@@ -47819,6 +47820,7 @@ var PS = {};
   exports["div"] = div;
   exports["h1"] = h1;
   exports["img"] = img;
+  exports["span"] = span;
 })(PS);
 
 (function ($PS) {
@@ -49127,10 +49129,6 @@ var PS = {};
     return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($16));
   };
 
-  var container = function container(content) {
-    return Halogen_HTML_Elements.div([cn("w-full max-w-colwidth block mx-auto px-3 py-3")])(content);
-  };
-
   var listCard = function listCard(post) {
     if (post.external instanceof Data_Maybe.Nothing) {
       return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href("#!/blog/" + Data_Maybe.fromMaybe("")(post.id)), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
@@ -49139,11 +49137,11 @@ var PS = {};
     ;
 
     if (post.external instanceof Data_Maybe.Just) {
-      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Core.text("external: " + Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
+      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Elements.span([cn("text-red font-bold")])([Halogen_HTML_Core.text("external: ")]), Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
     }
 
     ;
-    throw new Error("Failed pattern match at Pages (line 132, column 5 - line 146, column 12): " + [post.external.constructor.name]);
+    throw new Error("Failed pattern match at Pages (line 133, column 5 - line 149, column 12): " + [post.external.constructor.name]);
   };
 
   var list = function list(posts) {
@@ -49183,7 +49181,13 @@ var PS = {};
       path: "github.png"
     })]
   })]);
-  var mainPage = Halogen_HTML_Elements.div([cn("block")])([navBar, container([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up thoughts. " + ("I enjoy programming but not as an end in itself. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm."))))])]);
+
+  var layout1 = function layout1(elements) {
+    var container = Halogen_HTML_Elements.div([cn("w-full max-w-colwidth block mx-auto px-3 py-3")]);
+    return Halogen_HTML_Elements.div([cn("block overflow-y-scroll")])([navBar, container(elements)]);
+  };
+
+  var mainPage = layout1([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up thoughts. " + ("I enjoy programming but not as an end in itself. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm."))))]);
 
   var blogPage = function blogPage(markdownIt) {
     return function (post) {
@@ -49191,12 +49195,12 @@ var PS = {};
       var markdown = Data_Maybe.fromMaybe("")(post.content);
       var rendered = MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
       var date = Data_Maybe.fromMaybe("no date")(post.date);
-      return Halogen_HTML_Elements.div([cn("block")])([navBar, Halogen_HTML_Elements.div([cn("markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
+      return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
     };
   };
 
   var blogList = function blogList(state) {
-    return Halogen_HTML_Elements.div([cn("block")])([navBar, container([list(state.posts)])]);
+    return layout1([list(state.posts)]);
   };
 
   exports["blogList"] = blogList;
@@ -51325,7 +51329,7 @@ var PS = {};
 })(PS);
 
 PS["Main"].main();
-},{"js-yaml":"node_modules/js-yaml/dist/js-yaml.mjs","highlight.js":"node_modules/highlight.js/lib/index.js","markdown-it":"node_modules/markdown-it/index.js"}],"../../../../../nix/store/dk8f3g0qn4ijb5wph933fb1ffzfycc20-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"js-yaml":"node_modules/js-yaml/dist/js-yaml.mjs","highlight.js":"node_modules/highlight.js/lib/index.js","markdown-it":"node_modules/markdown-it/index.js"}],"../../../../../nix/store/9w4mrzs0ajjfdy8wmgrg44jcd03rw6qv-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -51353,7 +51357,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33885" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39975" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -51529,5 +51533,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../nix/store/dk8f3g0qn4ijb5wph933fb1ffzfycc20-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","build/ps.js"], null)
+},{}]},{},["../../../../../nix/store/9w4mrzs0ajjfdy8wmgrg44jcd03rw6qv-node_parcel-bundler-1.12.5/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","build/ps.js"], null)
 //# sourceMappingURL=/ps.e4523678.js.map
