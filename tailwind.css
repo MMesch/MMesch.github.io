@@ -9,20 +9,34 @@
     background-image: linear-gradient(to right top, #fefefa, #fefefa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefefa, #fefefa);
 }
 
+/*!
+ *
+ * MARKDOWN
+ *
+*/
+
 div.markdown pre {
-    @apply bg-code text-white rounded p-5 overflow-auto my-5;
+    @apply bg-gray-100 font-mono font-medium text-black rounded p-5 overflow-auto my-5;
+}
+
+div.markdown p > code {
+    @apply text-gray-900 font-mono font-semibold;
 }
 
 div.markdown h1 {
-        @apply text-4xl mb-4;
+        @apply text-6xl font-extrabold mb-6 mt-6;
 }
 
 div.markdown h2 {
-        @apply text-2xl mb-2 mt-4;
+        @apply text-3xl font-bold mb-6 mt-6;
 }
 
 div.markdown h3 {
-        @apply text-xl mb-2 mt-3;
+        @apply text-2xl mb-6 mt-6;
+}
+
+div.markdown h4 {
+        @apply text-lg;
 }
 
 div.markdown img {
@@ -34,17 +48,158 @@ div.markdown iframe {
 }
 
 div.markdown p {
-        @apply mt-4 leading-relaxed;
+        @apply my-3 leading-relaxed;
+}
+
+div.markdown a {
+        @apply text-red-800 font-bold;
 }
 
 div.markdown ul {
-        @apply list-disc ml-6;
+        @apply list-disc ml-6 my-2;
 }
 
 div.markdown ol {
         @apply list-decimal ml-6;
 }
 
+div.markdown li {
+        @apply mt-1;
+}
+
+div.markdown .abstract {
+        @apply mb-6 text-gray-700;
+}
+
+div.markdown blockquote {
+        @apply ml-6 text-gray-700 italic;
+}
+
 div.markdown {
         @apply text-base;
+}
+/*!
+  Theme: StackOverflow Light
+  Description: Light theme as used on stackoverflow.com
+  Author: stackoverflow.com
+  Maintainer: @Hirse
+  Website: https://github.com/StackExchange/Stacks
+  License: MIT
+  Updated: 2021-05-15
+  Updated for @stackoverflow/stacks v0.64.0
+  Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+  Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+*/
+
+.hljs {
+  /* var(--highlight-color) */
+  color: #2f3337;
+  /* var(--highlight-bg) */
+  background: #f6f6f6;
+}
+
+.hljs-subst {
+  /* var(--highlight-color) */
+  color: #2f3337;
+}
+
+.hljs-comment {
+  /* var(--highlight-comment) */
+  color: #656e77;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-meta .hljs-keyword,
+.hljs-doctag,
+.hljs-section {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-attr {
+  /* var(--highlight-attribute); */
+  color: #015692;
+}
+
+.hljs-attribute {
+  /* var(--highlight-symbol) */
+  color: #803378;
+}
+
+.hljs-name,
+.hljs-type,
+.hljs-number,
+.hljs-selector-id,
+.hljs-quote,
+.hljs-template-tag {
+  /* var(--highlight-namespace) */
+  color: #b75501;
+}
+
+.hljs-selector-class {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr {
+  /* var(--highlight-variable) */
+  color: #54790d;
+}
+
+.hljs-meta,
+.hljs-selector-pseudo {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-built_in,
+.hljs-title,
+.hljs-literal {
+  /* var(--highlight-literal) */
+  color: #b75501;
+}
+
+.hljs-bullet,
+.hljs-code {
+  /* var(--highlight-punctuation) */
+  color: #535a60;
+}
+
+.hljs-meta .hljs-string {
+  /* var(--highlight-variable) */
+  color: #54790d;
+}
+
+.hljs-deletion {
+  /* var(--highlight-deletion) */
+  color: #c02d2e;
+}
+
+.hljs-addition {
+  /* var(--highlight-addition) */
+  color: #2f6f44;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-formula,
+.hljs-operator,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
 }

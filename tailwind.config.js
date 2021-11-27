@@ -23,21 +23,9 @@ module.exports = {
     fontFamily: {
       display: ['Noto', 'sans-serif'],
       sans: ['Noto', 'sans-serif'],
-      body: ['Noto', 'sans-serif']
+      body: ['Noto', 'sans-serif'],
+      mono: ['Source Code Pro'],
     }},
-  colors: {
-     transparent: 'transparent',
-     current: 'currentColor',
-     darkblue: '#496DDB',
-     paleblue: '#717EC3',
-     palered: '#AE8799',
-     red: '#C95D63',
-     orange: '#EE8434',
-     black: '#000000',
-     gray: '#C4C4C4',
-     white: '#FFFFFF',
-     code: '#333333'
-  }
   },
   variants: {
     extend: {
