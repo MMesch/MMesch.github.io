@@ -47807,11 +47807,15 @@ var PS = {};
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
   var element = Halogen_HTML_Core.element(Data_Maybe.Nothing.value);
   var h1 = element("h1");
+  var h2 = element("h2");
+  var h2_ = h2([]);
 
   var img = function img(props) {
     return element("img")(props)([]);
   };
 
+  var p = element("p");
+  var p_ = p([]);
   var span = element("span");
   var div = element("div");
   var a = element("a");
@@ -47819,7 +47823,9 @@ var PS = {};
   exports["a"] = a;
   exports["div"] = div;
   exports["h1"] = h1;
+  exports["h2_"] = h2_;
   exports["img"] = img;
+  exports["p_"] = p_;
   exports["span"] = span;
 })(PS);
 
@@ -49141,7 +49147,7 @@ var PS = {};
     }
 
     ;
-    throw new Error("Failed pattern match at Pages (line 136, column 5 - line 152, column 12): " + [post.external.constructor.name]);
+    throw new Error("Failed pattern match at Pages (line 142, column 5 - line 158, column 12): " + [post.external.constructor.name]);
   };
 
   var list = function list(posts) {
@@ -49187,7 +49193,7 @@ var PS = {};
     return Halogen_HTML_Elements.div([cn("block")])([navBar, container(elements)]);
   };
 
-  var mainPage = layout1([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up thoughts. " + ("I enjoy programming but not as an end in itself. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm."))))]);
+  var mainPage = layout1([Halogen_HTML_Elements.div([cn("markdown")])([Halogen_HTML_Elements.h2_([Halogen_HTML_Core.text("Welcome")]), Halogen_HTML_Elements.p_([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up notes and thoughts. " + ("I enjoy programming as a means to an end, to build applications, " + ("or visualize things. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm.")))))])])]);
 
   var blogPage = function blogPage(markdownIt) {
     return function (post) {
@@ -49207,7 +49213,7 @@ var PS = {};
         }
 
         ;
-        throw new Error("Failed pattern match at Pages (line 57, column 13 - line 59, column 83): " + [post.description.constructor.name]);
+        throw new Error("Failed pattern match at Pages (line 63, column 13 - line 65, column 83): " + [post.description.constructor.name]);
       }(), rendered])]);
     };
   };
@@ -51370,7 +51376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37589" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
