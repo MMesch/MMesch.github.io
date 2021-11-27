@@ -49125,8 +49125,8 @@ var PS = {};
   var MarkdownIt_Renderer_Halogen = $PS["MarkdownIt.Renderer.Halogen"];
   var Web_HTML_Common = $PS["Web.HTML.Common"];
 
-  var cn = function cn($16) {
-    return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($16));
+  var cn = function cn($18) {
+    return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($18));
   };
 
   var listCard = function listCard(post) {
@@ -49137,11 +49137,11 @@ var PS = {};
     ;
 
     if (post.external instanceof Data_Maybe.Just) {
-      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Elements.span([cn("text-red font-bold")])([Halogen_HTML_Core.text("external: ")]), Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
+      return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(post.external.value0), Halogen_HTML_Properties.target("_blank"), cn("hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg")])([Halogen_HTML_Elements.div([cn("block text-lg")])([Halogen_HTML_Elements.span([cn("text-red-800 font-bold")])([Halogen_HTML_Core.text("external: ")]), Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no title")(post.title))]), Halogen_HTML_Elements.div([cn("block")])([Halogen_HTML_Core.text(Data_Maybe.fromMaybe("no date")(post.date))])]);
     }
 
     ;
-    throw new Error("Failed pattern match at Pages (line 133, column 5 - line 149, column 12): " + [post.external.constructor.name]);
+    throw new Error("Failed pattern match at Pages (line 136, column 5 - line 152, column 12): " + [post.external.constructor.name]);
   };
 
   var list = function list(posts) {
@@ -49183,8 +49183,8 @@ var PS = {};
   })]);
 
   var layout1 = function layout1(elements) {
-    var container = Halogen_HTML_Elements.div([cn("w-full max-w-colwidth block mx-auto px-3 py-3")]);
-    return Halogen_HTML_Elements.div([cn("block overflow-y-scroll")])([navBar, container(elements)]);
+    var container = Halogen_HTML_Elements.div([cn("w-full max-w-4xl block mx-auto px-3 py-3")]);
+    return Halogen_HTML_Elements.div([cn("block")])([navBar, container(elements)]);
   };
 
   var mainPage = layout1([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up thoughts. " + ("I enjoy programming but not as an end in itself. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm."))))]);
@@ -49195,7 +49195,20 @@ var PS = {};
       var markdown = Data_Maybe.fromMaybe("")(post.content);
       var rendered = MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
       var date = Data_Maybe.fromMaybe("no date")(post.date);
-      return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), Halogen_HTML_Elements.div([cn("mb-6")])([Halogen_HTML_Core.text(date)]), rendered])]);
+      return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-4xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.div([cn("text-gray-800 text-lg")])([Halogen_HTML_Core.text(date)]), Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), function () {
+        if (post.description instanceof Data_Maybe.Nothing) {
+          return Halogen_HTML_Elements.div([])([]);
+        }
+
+        ;
+
+        if (post.description instanceof Data_Maybe.Just) {
+          return Halogen_HTML_Elements.div([cn("abstract")])([Halogen_HTML_Core.text(post.description.value0)]);
+        }
+
+        ;
+        throw new Error("Failed pattern match at Pages (line 57, column 13 - line 59, column 83): " + [post.description.constructor.name]);
+      }(), rendered])]);
     };
   };
 
@@ -51357,7 +51370,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40705" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45043" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
