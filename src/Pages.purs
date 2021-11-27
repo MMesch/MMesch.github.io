@@ -14,13 +14,13 @@ import Data.Map (values)
 -- simple navbar layout
 layout1 :: forall i. Array (HH.HTML i Action) -> HH.HTML i Action
 layout1 elements =
-  HH.div [ cn "block overflow-y-scroll" ]
+  HH.div [ cn "block" ]
     $ [ navBar
       , container elements
       ]
   where
   container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-  container = HH.div [ cn "w-full max-w-colwidth block mx-auto px-3 py-3" ]
+  container = HH.div [ cn "w-full max-w-4xl block mx-auto px-3 py-3" ]
 
 -- pages
 blogList :: forall i. State -> HH.HTML i Action
@@ -51,9 +51,12 @@ blogPage markdownIt post =
     date = fromMaybe "no date" post.date
   in
     layout1
-      [ HH.div [ cn "markdown max-w-colwidth border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
-          [ HH.h1 [] [ HH.text title ]
-          , HH.div [ cn "mb-6" ] [ HH.text date ]
+      [ HH.div [ cn "markdown max-w-4xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
+          [ HH.div [ cn "text-gray-800 text-lg" ] [ HH.text date ]
+          , HH.h1 [] [ HH.text title ]
+          , case post.description of
+              Nothing -> HH.div [] []
+              Just description -> HH.div [ cn "abstract" ] [ HH.text description ]
           , rendered
           ]
       ]
@@ -142,7 +145,7 @@ listCard post =
         HH.a
           [ HP.href url, HP.target "_blank", cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
-              [ HH.span [ cn "text-red font-bold" ] [ HH.text "external: " ]
+              [ HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
               , HH.text $ fromMaybe "no title" post.title
               ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
