@@ -31,12 +31,18 @@ blogList state =
 mainPage :: forall i. HH.HTML i Action
 mainPage =
   layout1
-    [ HH.text
-        $ "Hi, I am a physicists, geophysicist and now software "
-        <> "developer and this is where I am writing up thoughts. "
-        <> "I enjoy programming but not as an end in itself. "
-        <> "I wrote this blog entirely in Purescript after using Hakyll "
-        <> "and Elm."
+    [ HH.div [ cn "markdown" ]
+        [ HH.h2_ [ HH.text "Welcome" ]
+        , HH.p_
+            [ HH.text
+                $ "Hi, I am a physicists, geophysicist and now software "
+                <> "developer and this is where I am writing up notes and thoughts. "
+                <> "I enjoy programming as a means to an end, to build applications, "
+                <> "or visualize things. "
+                <> "I wrote this blog entirely in Purescript after using Hakyll "
+                <> "and Elm."
+            ]
+        ]
     ]
 
 blogPage :: forall i. MarkdownIt -> Post -> HH.HTML i Action
