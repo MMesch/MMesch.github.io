@@ -83,7 +83,7 @@ for c in ['a', 'b', 'c']:
 
 Writing this as a while loop is a bit clunky.
 
-## for and while: statements and side effects
+## Statements and side effects
 
 Keywords such as `break`, `while` or `for` (other loop specific keywords are `pass` and `continue`) are special in Python: They are always available without importing them, the programmer has to know all `35` of them that Python 3.8 has. They are protected names that you can't use for a variable as in `break = 5`, and they aren't expressions that can be assigned to a variable either as in `a = break`. Special statements thus are an overhead that the programmer has to deal with. The thought comes up whether we _need_ to have special keywords for loops or whether we cannot express them just as a normal Python expressions with the usual machinery that Python offers.
 
@@ -91,7 +91,7 @@ More importantly, loops like the ones above _have no return value_. They are sta
 
 Purely functional programming takes the standpoint that such side effects are to be avoided (or wrapped in a special construct limiting their reach that we will see later). It is based on the idea that everything is an expression, and thus amenable to be used with variables, as arguments to functions and so on. We will see that this gives enormous power to the programmer later on.
 
-## What can be done about it?
+## Converting loops to expressions
 
 And, already in Python, a multi-paradigm language, certain statements with side effects can also be written as an expression without. Consider the following example related to the `if:` and `else:` statements:
 
@@ -126,6 +126,8 @@ l = [i**2 for i in range(10)]
 ```
 
 All of these examples show, that we can express loops without `for` or `while` statements in very elegant ways. In this series we will go through many more possibilities.
+
+## Techniques that we'll explore in this series
 
 First, although it is often _not_ the most elegant and concise way, we will show how to express loops side-effect-free through recursion, as a chain of nested function calls. A loop like `for i in range(3): print(i)` becomes `f(f(f(0)))`, where each function prints its argument and then increases it by `1` before passing it on to the next call. There is a simple recipe to translate loops to such recursive functions calls. However, recursion is more general and can express much more. For example, we could recurse twice instead of once inside of a function, which would correspond to looping through a tree structure. Understanding the correspondence between loops and recursion is conceptually extremely helpful to understand other techniques.
 
