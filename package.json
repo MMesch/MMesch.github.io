@@ -13,7 +13,6 @@
     "autoprefixer": "^10.2.5",
     "cssnano": "^5.0.8",
     "marked": "^3.0.7",
-    "parcel-plugin-compress": "^2.0.2",
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1"
   },
