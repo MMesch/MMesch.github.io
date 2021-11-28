@@ -2,25 +2,25 @@
 title: "Loops in Functional Programming 1: What's wrong with for and while?"
 class: post
 description: |
-  One thing I struggled with for a long time when using functional programming languages were loops. There are just so many ways of doing them and once one has understood a bunch of techniques, it always takes time and thought to chose one of them. I thought it's worth to structure my thoughts a bit. So here it is, my little compendium of techniques and when to use them. In this first part of the series I'll motivate why we don't use classic techniques known from the imperative world in functional programming. I use Python for imperative style examples and later on switch to Haskell for the functional side.
+  I struggled with expressing loops a long time when starting to use functional programming languages. There are just so many ways of doing them and once one has understood a bunch of techniques, it always takes time and thought to chose one of them. That's why I thought it's worth to structure my thoughts a bit, starting to write up this little compendium of loop techniques for the functional programmer. In this first part of the series I'll motivate why we don't use classic for and while loops known from the imperative world in functional programming. I use Python for imperative style examples and later on switch to Haskell for the functional.
 ---
 
 ## Loops as we love (?) them in the imperative world
 
 ### looping infinitely
 
-Loops are used to repeatedly run a task in imperative programming. There are many ways to express such repetition, and each programming language seems to have different ways with which one can enter a loop. For example, in Python it is possible to write this:
+Loops are used to repeatedly run a task in imperative programming. There are many ways to express such repetition, and each programming language seems to provide different ways to enter a loop. For example, in Python you can do it like this:
 
 ```python
 while True:
    print("infinite loop")
 ```
 
-As soon as the program enters this statement, it will start an infinite loop of print statements. But we rarely want run infinite loops. Somehow we need to stop and step out of it after some time.
+As soon as the program enters this statement, it will start repeating the print statement in an infinite loop. But we rarely run infinite loops. Somehow we need to stop and step out after some time.
 
 ### breaking the loop
 
-Python provides a keyword `break` that allows to step out of a loop. A `break` statement is often triggered by a condition. The following snippet asks the user for an input and breaks if the number is smaller than 5:
+To step out of a loop, Python provides a keyword `break` that is often triggered by a condition. The following snippet repeatedly asks the user for an input number and breaks if it is smaller than 5:
 
 ```python
 while True:
@@ -30,7 +30,7 @@ while True:
         break
 ```
 
-But, because we almost always want to break our loop at some point, Python's `while` keyword has this already built-in and we can simplify the above loop like this:
+Because breaking our loop at some point is such a common pattern, Python's `while` keyword has this already built-in and we can simplify the above snippet like this:
 
 ```python
 while x < 5:
@@ -41,17 +41,16 @@ while x < 5:
 
 ### modifying state
 
-Then, although a `while` loop doesn't have a return value and all interesting things it does happen through side effects, we often want to compute something in a loop and store the value of the computation. This is done by first declaring a variable _outside_ of the loop and then modifying it in the loop, again with a side effect:
+Then, we often want to compute something in a loop and assign the resulting value of the computation to a variable. This is done by first declaring the variable _outside_ of the loop and then modifying it in the loop:
 
 ```python
 x = 0 
 while x < 5:
     x = x + 1
+print(x)
 ```
 
-This introduces the two central aspects that we need to express loops: a break condition and a state variable set to an initial value. A `for` loop is a special construct that allows looping through a set of items.
-
-If we need more state than just an index, we would also define it outside of the loops such as the list `l` in the following example:
+If we need more state than just an index, we would also define it outside of the loop. In the following example, we compute a number and store it in a list `l`:
 
 ```python
 l = []
@@ -59,32 +58,42 @@ i = 0
 while i < 10:
     l += [2*i]
     i += 1
+print(l)
 ```
 
-No matter whether it is indices, accumulators such as the list or sum variable, this always falls into the same category of manipulating state. If we are modifying several at once, we could equally well write them into one combined data structure and then modify it there.
+We can also store the list and integer in the above snippet in a single state variable showing that conceptually there is not much difference between modifying one or many variables out of a loop:
+
+```python
+state = (i, [])
+while state[0] < 10:
+    state = (state[0] + 1, state[1] + [2*i])
+print(state[1])
+```
+
+Therefore, no matter whether it is indices, accumulators such as the list or sum variable, it always falls into the same category of manipulating state.
 
 ### looping through collections with for
 
-In addition to `while` loops, we also see a lot of `for` loops in programming languages like Python. A `for` loop can easily be expressed as `while` loop. In Python it manages the ubiquitous use case of looping through elements of an iterable data structure such as a list for us:
+In addition to `while` loops, we also see a lot of `for` loops in programming languages like Python. A `for` loop brings nothing new because it can easily be converted to a `while` loop. The reason it is used so often, is because it manages the ubiquitous use case of looping through elements of an iterable data structure such as a list for us:
 
 ```python
 for c in ['a', 'b', 'c']:
     print(c)
 ```
 
-A classic use case is to iterate over indices with this.
+Writing this as a while loop is a bit clunky.
 
 ## for and while: statements and side effects
 
-Keywords such as `break`, `while` or `for` are special in Python: they are always available without any import, you can't use a variable with the same name as in `break = 5` or assign a keyword to a variable such as in `a = break` which throws `SyntaxError`. Python knows a total of `35` such keywords that are special. The thought comes up whether we _need_ to have an keyword for loops or whether we cannot express them just as a normal Python expressions with the usual machinery that Python offers to define expressions.
+Keywords such as `break`, `while` or `for` (other loop specific keywords are `pass` and `continue`) are special in Python: They are always available without importing them, the programmer has to know all `35` of them that Python 3.8 has. They are protected names that you can't use for a variable as in `break = 5`, and they aren't expressions that can be assigned to a variable either as in `a = break`. Special statements thus are an overhead that the programmer has to deal with. The thought comes up whether we _need_ to have special keywords for loops or whether we cannot express them just as a normal Python expressions with the usual machinery that Python offers.
 
-Another problem is that loops like the ones above _have no return value_. This is because they are _not an expression_ in Python. They are _statements_ that cannot, contrary to an expression, be evaluated to a value. Although there is no return value, of course something happens when running a loop, otherwise we wouldn't write them. But instead of evaluating to a value, loops like the ones shown above perform _side effects_. The above examples illustrate two side effects, printing to the console or mutating the value of a variable.
+More importantly, loops like the ones above _have no return value_. They are statements, actions that are executed imperatively, but _not expressions_ that can be evaluated, assigned to a variable and passed as arguments to functions. This severely limits how loops can be used. And, although there is no return value, of course something happens when running a loop. Instead of evaluating to a value, loops like the ones shown above perform _side effects_, they execute statements that modify something somewhere else, such as the characters printed on the console or value of a variable declared elsewhere.
 
-They all perform some side effect and such side effects are exactly what we avoid in purely functional programming. There Purely functional programming is based on the idea that everything is an expression, depending on nothing else than it's explicit inputs and that can be always evaluated to the same value.
+Purely functional programming takes the standpoint that such side effects are to be avoided (or wrapped in a special construct limiting their reach that we will see later). It is based on the idea that everything is an expression, and thus amenable to be used with variables, as arguments to functions and so on. We will see that this gives enormous power to the programmer later on.
 
 ## What can be done about it?
 
-Surprise, Python being quite open about different paradigms allows to express certain statements also as an expression. Consider the following example related to the `if` and `else` statements. The following snippet is an `if/else` expressed as statement:
+And, already in Python, a multi-paradigm language, certain statements with side effects can also be written as an expression without. Consider the following example related to the `if:` and `else:` statements:
 
 ```python
 if name == "Bob":
@@ -93,16 +102,16 @@ else:
     print("It's not Bob!")
 ```
 
-This one is an expression with a return value:
+As in the loops above, `if: else:` doesn't have a return value here and runs side effects (printing twice). But the same statement can also be written as an expression with a return value:
 
 ```python
 output = "It's Bob!" if name == "Bob" else "It's not Bob!"
 print(output)
 ```
 
-The second version not only has the advantage that it is more compact (I could even make it a quite readable one-liner) but the `if/else` expression has no side effect anymore. It just provides the text to print and does nothing else.
+Now, the return value can be assigned to the variable `output`. This version is more compact (I could even make it a one-liner) but more importantly, the `if else` expression has no side effect anymore and it is clear that, whatever it computes is stored in the `output` variable.
 
-A similar technique exists for certain loops called list or dictionary comprehension. The following loop with side effects,
+Python has a similar technique, called _list comprehension_ (also available for dicts), to write certain loops as expression. Consider, for example, the following loop that mutates the list `l` with a side effect:
 
 ```python
 l = []
@@ -110,18 +119,18 @@ for i in range(10):
     l.append(i ** 2)
 ```
 
-, can be changed into this version without:
+It can be written equally like this without any side effect:
 
 ```python
 l = [i**2 for i in range(10)]
 ```
 
-All of these examples show, that we can express loops without an `for` and `while` statements in a very elegant way. We will go in more depth into list/dictionary comprehensions and how they generalize to something called monad comprehensions in functional programming in a later post and in addition we will say many other techniques that are equally elegant and very powerful.
+All of these examples show, that we can express loops without `for` or `while` statements in very elegant ways. In this series we will go through many more possibilities.
 
-But first, although it is often _not_ the most elegant and concise way, we will show how to express loops through recursion as a chain of function calls. So that a loop like `for i in range(3): print(i)` is expressed as nested function calls `f(f(f(0)))` where each function prints its argument and then increases it by `1` before passing it on to the next call.While there is a simple recipe to translate loops to recursive functions calls, recursion is more general. For example, we could recurse twice instead of once inside of a function which would correspond to looping through a tree. Understanding the correspondence between loops and recursion is conceptually extremely helpful.
+First, although it is often _not_ the most elegant and concise way, we will show how to express loops side-effect-free through recursion, as a chain of nested function calls. A loop like `for i in range(3): print(i)` becomes `f(f(f(0)))`, where each function prints its argument and then increases it by `1` before passing it on to the next call. There is a simple recipe to translate loops to such recursive functions calls. However, recursion is more general and can express much more. For example, we could recurse twice instead of once inside of a function, which would correspond to looping through a tree structure. Understanding the correspondence between loops and recursion is conceptually extremely helpful to understand other techniques.
 
-Recursion is great as a basis for understanding how loops can be expressed as functions. However, it is a bit clunky and actually not that often used. The next thing we will visit is a higher order function that makes another non-recursive function recurse, somewhat similar to `while` that makes a statement repeat.
+The next thing, still more on the conceptual side, we will look at a higher order function called `fix` that can make non-recursive function recurse, somewhat similar to `while` that makes a statement repeat.
 
-Finally, we'll get into the more practical loop replacements that are used in functional programming, such as list comprehensions and its generalization called monad comprehensions. Another technique are `folds` that, in contrast to monad-comprehensions, allow passing state from one step to the next. When we are doing `folds`, order suddenly becomes important since it matters how the state variable is modified. Finally, we'll dive into a generalization of these technique called `recursion` schemes that allow to loop through more complex data structures such as trees.
+Finally, with this background, we'll get into more practical, concise every-day techniques that are used in functional programming, such as list comprehensions and its generalization called monad comprehensions, `folds` that allow passing state from one step to the next, and into a generalization of these techniques called `recursion` schemes that allow to loop through more complex data structures such as trees.
 
 That's it for post number 1
