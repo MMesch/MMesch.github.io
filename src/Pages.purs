@@ -20,7 +20,7 @@ layout1 elements =
       ]
   where
   container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-  container = HH.div [ cn "w-full max-w-4xl block mx-auto px-3 py-3" ]
+  container = HH.div [ cn "w-full max-w-4xl block mx-auto px-1 md:px-3 py-3" ]
 
 -- pages
 blogList :: forall i. State -> HH.HTML i Action

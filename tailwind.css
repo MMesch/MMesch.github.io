@@ -24,15 +24,15 @@ div.markdown p > code {
 }
 
 div.markdown h1 {
-        @apply text-6xl font-extrabold mb-6 mt-6;
+        @apply text-4xl md:text-6xl font-extrabold mb-6 mt-6;
 }
 
 div.markdown h2 {
-        @apply text-3xl font-bold mb-6 mt-6;
+        @apply text-2xl md:text-3xl font-bold mb-6 mt-6;
 }
 
 div.markdown h3 {
-        @apply text-2xl mb-6 mt-6;
+        @apply text-xl md:text-2xl mb-6 mt-6;
 }
 
 div.markdown h4 {
