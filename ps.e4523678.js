@@ -49189,7 +49189,7 @@ var PS = {};
   })]);
 
   var layout1 = function layout1(elements) {
-    var container = Halogen_HTML_Elements.div([cn("w-full max-w-4xl block mx-auto px-3 py-3")]);
+    var container = Halogen_HTML_Elements.div([cn("w-full max-w-4xl block mx-auto px-1 md:px-3 py-3")]);
     return Halogen_HTML_Elements.div([cn("block")])([navBar, container(elements)]);
   };
 
@@ -51376,7 +51376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37463" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40719" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
