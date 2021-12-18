@@ -137,7 +137,7 @@ list posts =
 listCard :: forall i. Post -> HH.HTML i Action
 listCard post =
   let
-    cardStyle = "hover:cursor-pointer block p-6 mb-6 border-gray border-b-2 rounded-lg"
+    cardStyle = "hover:cursor-pointer block p-6 mb-6 border-solid border-2 rounded-lg"
   in
     case post.external of
       Nothing ->
@@ -145,7 +145,10 @@ listCard post =
           [ HP.href $ "#!/blog/" <> fromMaybe "" post.id, cn cardStyle ]
           [ HH.div [ cn "block text-lg" ]
               [ HH.text $ fromMaybe "no title" post.title ]
-          , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
+          , HH.div [ cn "block text-sm my-2" ]
+              [ HH.text $ fromMaybe "" post.description ]
+          , HH.div [ cn "block" ]
+              [ HH.text $ fromMaybe "no date" post.date ]
           ]
       Just url ->
         HH.a
