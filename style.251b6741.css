@@ -609,6 +609,11 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-3{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -769,12 +774,16 @@ video {
   border-radius: 0.5rem;
 }
 
+.border-2{
+  border-width: 2px;
+}
+
 .border-t-2{
   border-top-width: 2px;
 }
 
-.border-b-2{
-  border-bottom-width: 2px;
+.border-solid{
+  border-style: solid;
 }
 
 .bg-white{
@@ -821,6 +830,11 @@ video {
 
 .font-mono{
   font-family: Source Code Pro;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-lg{
