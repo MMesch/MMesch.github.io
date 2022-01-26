@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="3.144105mm"
+   height="3.2258744mm"
+   viewBox="0 0 3.144105 3.2258744"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="long-line.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="6.0208926"
+     inkscape:cx="19.513607"
+     inkscape:cy="62.04018"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-67.60551,-175.53379)">
+    <g
+       id="g1964"
+       style="stroke:none"
+       transform="translate(37.203085,1.9518409)">
+      <path
+         style="opacity:1;fill:#001432;fill-opacity:1;stroke:none;stroke-width:1.05833px;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1"
+         d="m 33.5451,174.718 c 0,0.539 0.0238,1.057 -0.1228,1.439 -0.1377,0.366 -0.4038,0.578 -0.92,0.595 -0.0216,0 -0.0431,0.007 -0.0647,0.02 -0.5397,0.063 -1.0573,0.055 -1.4389,-0.123 -0.3817,-0.143 -0.596,-0.426 -0.596,-0.966 v 0 c 4e-4,-1.102 -0.0504,-2 1.0435,-2.034 0.0213,0 0.0426,-0.007 0.064,-0.02 1.1238,-0.136 2.0349,-0.035 2.0349,1.089 z"
+         id="path1922" />
+    </g>
+  </g>
+</svg>
