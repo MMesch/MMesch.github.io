@@ -49342,7 +49342,7 @@ var PS = {};
     return Halogen_HTML_Elements.div([cn("block")])([navBar, container(elements)]);
   };
 
-  var mainPage = layout1([Halogen_HTML_Elements.div([cn("markdown")])([Halogen_HTML_Elements.h2_([Halogen_HTML_Core.text("Welcome")]), Halogen_HTML_Elements.p_([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up notes and thoughts. " + ("I enjoy programming as a means to an end, to build applications, " + ("or visualize things. " + ("I wrote this blog entirely in Purescript after using Hakyll " + "and Elm.")))))])])]);
+  var mainPage = layout1([Halogen_HTML_Elements.div([cn("markdown")])([Halogen_HTML_Elements.h2_([Halogen_HTML_Core.text("Welcome")]), Halogen_HTML_Elements.p_([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up notes and thoughts. " + ("I enjoy programming as a means to an end, to build applications, " + ("or visualize things. " + "This blog is written in Purescript."))))])])]);
 
   var blogPage = function blogPage(markdownIt) {
     return function (post) {
@@ -49362,7 +49362,7 @@ var PS = {};
         }
 
         ;
-        throw new Error("Failed pattern match at Pages (line 63, column 13 - line 65, column 83): " + [post.description.constructor.name]);
+        throw new Error("Failed pattern match at Pages (line 62, column 13 - line 64, column 83): " + [post.description.constructor.name]);
       }(), rendered])]);
     };
   };

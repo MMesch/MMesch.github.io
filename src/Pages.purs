@@ -39,8 +39,7 @@ mainPage =
                 <> "developer and this is where I am writing up notes and thoughts. "
                 <> "I enjoy programming as a means to an end, to build applications, "
                 <> "or visualize things. "
-                <> "I wrote this blog entirely in Purescript after using Hakyll "
-                <> "and Elm."
+                <> "This blog is written in Purescript."
             ]
         ]
     ]
