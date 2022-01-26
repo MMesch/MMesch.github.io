@@ -32,20 +32,12 @@ while True:
 ```
 
     please enter a number:  3
-
-
     3
 
-
     please enter a number:  2
-
-
     2
 
-
     please enter a number:  5
-
-
     5
 
 
@@ -60,20 +52,12 @@ while x < 5:
 ```
 
     please enter a number:  3
-
-
     3
 
-
     please enter a number:  2
-
-
     2
 
-
     please enter a number:  5
-
-
     5
 
 
