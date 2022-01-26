@@ -157,5 +157,7 @@ listCard post =
               [ HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
               , HH.text $ fromMaybe "no title" post.title
               ]
+          , HH.div [ cn "block text-sm my-2" ]
+              [ HH.text $ fromMaybe "" post.description ]
           , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
           ]
