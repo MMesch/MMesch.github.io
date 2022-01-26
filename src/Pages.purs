@@ -7,7 +7,7 @@ import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 import MarkdownIt.Renderer.Halogen (render_)
 import Data.List (toUnfoldable)
-import Data.Array (reverse)
+import Data.Array (reverse, filter, (..), zipWith)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
 import Data.Map (values)
 
@@ -128,36 +128,38 @@ navBar =
     ]
 
 list :: forall i. Posts -> HH.HTML i Action
-list posts =
-  HH.div [ cn "bg-white block pt-6 flex flex-col" ]
-    $ reverse
-        (toUnfoldable (values posts))
-    <#> listCard
+list posts = HH.div [ cn "bg-white pt-6 flex flex-col" ] elements
+  where
+  images = (\x -> "path" <> show x <> ".svg") <$> (filter (\x -> mod x 2 == 0) (1760 .. 1962))
+
+  imageElements = (\path -> HH.img [ cn "hidden md:inline md:h-12 lg:h-16 mx-6 lg:mx-10", HP.src $ "./images/backgrounds/" <> path ]) <$> images
+
+  postCards = reverse (toUnfoldable (values posts)) <#> listCard
+
+  elements = zipWith (\a b -> HH.div [ cn "flex flex-row items-center" ] [ a, b ]) imageElements postCards
 
 listCard :: forall i. Post -> HH.HTML i Action
 listCard post =
   let
-    cardStyle = "hover:cursor-pointer block p-6 mb-6 border-solid border-2 rounded-lg"
+    cardStyle = "hover:cursor-pointer w-full block p-6 my-3 border-solid border-2 rounded-lg"
+
+    href = fromMaybe ("#!/blog/" <> fromMaybe "" post.id) post.external
+
+    externalTag = HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
   in
-    case post.external of
-      Nothing ->
-        HH.a
-          [ HP.href $ "#!/blog/" <> fromMaybe "" post.id, cn cardStyle ]
-          [ HH.div [ cn "block text-lg" ]
-              [ HH.text $ fromMaybe "no title" post.title ]
-          , HH.div [ cn "block text-sm my-2" ]
-              [ HH.text $ fromMaybe "" post.description ]
-          , HH.div [ cn "block" ]
-              [ HH.text $ fromMaybe "no date" post.date ]
-          ]
-      Just url ->
-        HH.a
-          [ HP.href url, HP.target "_blank", cn cardStyle ]
-          [ HH.div [ cn "block text-lg" ]
-              [ HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
-              , HH.text $ fromMaybe "no title" post.title
-              ]
-          , HH.div [ cn "block text-sm my-2" ]
-              [ HH.text $ fromMaybe "" post.description ]
-          , HH.div [ cn "block" ] [ HH.text $ fromMaybe "no date" post.date ]
-          ]
+    HH.a
+      ( [ HP.href href, cn cardStyle ]
+          <> if post.external == Nothing then [] else [ HP.target "_blank" ]
+      )
+      [ HH.div [ cn "block text-lg" ]
+          $ ( if post.external /= Nothing then
+                [ externalTag ]
+              else
+                []
+            )
+          <> [ HH.text $ fromMaybe "no title" post.title ]
+      , HH.div [ cn "block text-sm my-2" ]
+          [ HH.text $ fromMaybe "" post.description ]
+      , HH.div [ cn "block" ]
+          [ HH.text $ fromMaybe "no date" post.date ]
+      ]

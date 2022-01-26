@@ -552,6 +552,10 @@ video {
  * Ensure the default browser behavior of the `hidden` attribute.
  */
 
+[hidden] {
+  display: none;
+}
+
 *, ::before, ::after{
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
@@ -597,6 +601,11 @@ video {
 
 .m-2{
   margin: 0.5rem;
+}
+
+.mx-6{
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .mx-auto{
@@ -654,6 +663,10 @@ video {
 
 .table{
   display: table;
+}
+
+.hidden{
+  display: none;
 }
 
 .h-8{
@@ -756,6 +769,10 @@ video {
 
 .flex-col{
   flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
 }
 
 .justify-between{
@@ -1195,6 +1212,10 @@ div.markdown {
 }
 
 @media (min-width: 768px){
+  .md\:inline{
+    display: inline;
+  }
+
   .md\:h-12{
     height: 3rem;
   }
@@ -1232,6 +1253,11 @@ div.markdown {
 @media (min-width: 1024px){
   .lg\:absolute{
     position: absolute;
+  }
+
+  .lg\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .lg\:mb-0{
