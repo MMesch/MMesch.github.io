@@ -49264,7 +49264,7 @@ var PS = {};
   var listCard = function listCard(post) {
     var href = Data_Maybe.fromMaybe("#!/blog/" + Data_Maybe.fromMaybe("")(post.id))(post.external);
     var externalTag = Halogen_HTML_Elements.span([cn("text-red-800 font-bold")])([Halogen_HTML_Core.text("external: ")]);
-    return Halogen_HTML_Elements.a(Data_Semigroup.append(Data_Semigroup.semigroupArray)([Halogen_HTML_Properties.href(href), cn("hover:cursor-pointer w-full block p-6 my-3 border-solid border-2 rounded-lg")])(function () {
+    return Halogen_HTML_Elements.a(Data_Semigroup.append(Data_Semigroup.semigroupArray)([Halogen_HTML_Properties.href(href), cn("hover:cursor-pointer w-full block p-4 md:p-6 my-3 border-solid border-2 rounded-lg")])(function () {
       var $4 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(post.external)(Data_Maybe.Nothing.value);
 
       if ($4) {
@@ -49322,7 +49322,7 @@ var PS = {};
   var navBar = Halogen_HTML_Elements.div([cn("lg:absolute flex justify-between flex-row lg:flex-col mb-10 lg:mb-0")])([navBarButtonGroup({
     elements: [navBarButton({
       href: "#!/",
-      content: "Home"
+      content: "About"
     }), navBarButton({
       href: "#!/blog",
       content: "Blog"
@@ -49342,7 +49342,7 @@ var PS = {};
     return Halogen_HTML_Elements.div([cn("block")])([navBar, container(elements)]);
   };
 
-  var mainPage = layout1([Halogen_HTML_Elements.div([cn("markdown")])([Halogen_HTML_Elements.h2_([Halogen_HTML_Core.text("Welcome")]), Halogen_HTML_Elements.p_([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up notes and thoughts. " + ("I enjoy programming as a means to an end, to build applications, " + ("or visualize things. " + "This blog is written in Purescript."))))])])]);
+  var mainPage = layout1([Halogen_HTML_Elements.div([cn("markdown mx-4")])([Halogen_HTML_Elements.h2_([Halogen_HTML_Core.text("Welcome")]), Halogen_HTML_Elements.p_([Halogen_HTML_Core.text("Hi, I am a physicists, geophysicist and now software " + ("developer and this is where I am writing up notes and thoughts. " + ("I enjoy programming as a means to an end, to build applications, " + ("or visualize things. " + "This blog is written in Purescript."))))])])]);
 
   var blogPage = function blogPage(markdownIt) {
     return function (post) {
@@ -51525,7 +51525,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46253" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45373" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
