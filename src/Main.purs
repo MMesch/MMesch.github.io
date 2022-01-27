@@ -151,7 +151,8 @@ component =
       navigate (Just page)
     Initialize -> do -- HalogenM
       postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
-      cvData <- H.liftAff $ fetchYaml "/assets/cv.yaml"
+      cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
+      H.liftAff $ log $ show cvData
       markdownIt <-
         H.liftEffect
           $ newMarkdownIt Default
@@ -184,10 +185,10 @@ component =
 
   render :: forall c. State -> H.ComponentHTML Action c AppM
   render state = case state.page of
-    Main -> mainPage
+    Main -> mainPage state.cv
     BlogList -> blogList state
     Blog path ->
-      fromMaybe mainPage
+      fromMaybe (mainPage state.cv)
         $ do
             post <- (lookup path state.posts)
             markdownIt <- state.markdownIt

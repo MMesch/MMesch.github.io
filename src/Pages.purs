@@ -1,7 +1,7 @@
 module Pages where
 
 import Prelude
-import Types (State, Action, Posts, Post)
+import Types (State, Action, Posts, Post, CV)
 import MarkdownIt (MarkdownIt)
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
@@ -9,6 +9,7 @@ import MarkdownIt.Renderer.Halogen (render_)
 import Data.List (toUnfoldable)
 import Data.Array (reverse, filter, (..), zipWith)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
+import Data.Either (Either(Left, Right))
 import Data.Map (values)
 
 -- simple navbar layout
@@ -28,21 +29,34 @@ blogList state =
   layout1
     $ [ list $ state.posts ]
 
-mainPage :: forall i. HH.HTML i Action
-mainPage =
+mainPage :: forall i. Maybe CV -> HH.HTML i Action
+mainPage maybeCV =
   layout1
-    [ HH.div [ cn "markdown mx-4" ]
-        [ HH.h2_ [ HH.text "Welcome" ]
-        , HH.p_
-            [ HH.text
-                $ "Hi, I am a physicists, geophysicist and now software "
-                <> "developer and this is where I am writing up notes and thoughts. "
-                <> "I enjoy programming as a means to an end, to build applications, "
-                <> "or visualize things. "
-                <> "This blog is written in Purescript."
-            ]
-        ]
-    ]
+    $ case maybeCV of
+        Nothing -> [ HH.text "Couldn't load CV" ]
+        Just cv ->
+          [ HH.div [ cn "markdown mx-4" ]
+              [ HH.p_ [ HH.text cv.summary ]
+              , HH.h2_ [ HH.text "What I do" ]
+              , HH.p_ [ HH.text cv.what ]
+              , HH.h2_ [ HH.text "The fields I worked in" ]
+              , HH.p_ [ HH.text cv.domains ]
+              , HH.h2_ [ HH.text "My tech stack" ]
+              , HH.p_ [ HH.text cv.stack ]
+              , HH.h2_ [ HH.text "Experience" ]
+              , HH.div_ (experienceCard <$> cv.experience)
+              , HH.h2_ [ HH.text "Education" ]
+              , HH.div_ (educationCard <$> cv.education)
+              ]
+          ]
+  where
+  experienceCard exp =
+    HH.div [ cn "block border-2 p-2 m-2" ]
+      [ HH.text $ exp.employer <> " (" <> exp.years <> ") ⇒ " <> exp.role ]
+
+  educationCard edu =
+    HH.div [ cn "block border-2 p-2 m-2" ]
+      [ HH.text $ edu.institution <> " - " <> edu.name <> " " <> edu.qualification ]
 
 blogPage :: forall i. MarkdownIt -> Post -> HH.HTML i Action
 blogPage markdownIt post =
