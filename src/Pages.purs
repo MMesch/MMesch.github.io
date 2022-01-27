@@ -88,7 +88,7 @@ navBarIcon { link, path } =
     [ HP.href link, cn "" ]
     [ HH.img
         [ HP.src $ "/images/logos/" <> path
-        , cn "block w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 m-1"
+        , cn "block w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 m-1"
         ]
     ]
 
@@ -122,6 +122,7 @@ navBar =
         { elements:
             [ navBarIcon { link: "https://twitter.com/Mattwittus", path: "mmesch.png" }
             , navBarIcon { link: "https://github.com/mmesch", path: "github.png" }
+            , navBarIcon { link: "https://www.linkedin.com/in/mmesch", path: "logo-linkedin.png" }
             ]
         }
     ]

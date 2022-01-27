@@ -1221,12 +1221,16 @@ div.markdown {
     display: inline;
   }
 
+  .md\:h-10{
+    height: 2.5rem;
+  }
+
   .md\:h-12{
     height: 3rem;
   }
 
-  .md\:w-12{
-    width: 3rem;
+  .md\:w-10{
+    width: 2.5rem;
   }
 
   .md\:p-6{
@@ -1273,12 +1277,16 @@ div.markdown {
     margin-bottom: 0px;
   }
 
+  .lg\:h-12{
+    height: 3rem;
+  }
+
   .lg\:h-16{
     height: 4rem;
   }
 
-  .lg\:w-16{
-    width: 4rem;
+  .lg\:w-12{
+    width: 3rem;
   }
 
   .lg\:flex-col{
