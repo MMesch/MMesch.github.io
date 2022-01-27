@@ -49312,7 +49312,7 @@ var PS = {};
   };
 
   var navBarIcon = function navBarIcon(v) {
-    return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(v.link), cn("")])([Halogen_HTML_Elements.img([Halogen_HTML_Properties.src("/images/logos/" + v.path), cn("block w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 m-1")])]);
+    return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(v.link), cn("")])([Halogen_HTML_Elements.img([Halogen_HTML_Properties.src("/images/logos/" + v.path), cn("block w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 m-1")])]);
   };
 
   var navBarIconGroup = function navBarIconGroup(v) {
@@ -49334,6 +49334,9 @@ var PS = {};
     }), navBarIcon({
       link: "https://github.com/mmesch",
       path: "github.png"
+    }), navBarIcon({
+      link: "https://www.linkedin.com/in/mmesch",
+      path: "logo-linkedin.png"
     })]
   })]);
 
@@ -51525,7 +51528,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45373" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44209" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
