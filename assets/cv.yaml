@@ -1,0 +1,65 @@
+summary: |
+  Hi, I am a software developer and project manager and this is a place
+  where I write up notes and thoughts.
+what: |
+  I am a generalist programmer and project manager. I enjoy coordinating
+  projects, deciphering business requirements, looking for the path to make
+  things happen all the way to implementing hands-on if required. For all my
+  life, I have had a strong inclination to sports and music and try to apply
+  lessons learned in this world to the still young programming industry.  My
+  experience living across countries in a highly multicultural environment is
+  helpful as well to bring together people.
+domains: |
+  I started my career at University with degrees in general Physics, worked a
+  bit in Biophysics, and finally got a PhD and Post Doc in Geophysics working
+  in seismology on wave propagation, tomography, and signal processing. The
+  red-line here was to understand and implement mathematical models with the
+  computer. After my Post Doc I switched to the software industry and have
+  since worked and coordinated projects in the Quantitative Marketing,
+  Fintech, Biopharma, and Aeronautics domains.
+stack: |
+  I have worked with a variety of programming languages and frameworks. My
+  academic experience turned around large parralel Fortran simulation codes
+  and the Python data and machine learning stack. In the industry, I have
+  worked with standard technology such as Java Groovy, Ruby, Typescript and
+  more specialized purely functional frameworks in Elm, Type- or Purescript,
+  to Haskell. I discovered and learned to love Nix and NixOS over the last
+  years. On the non-programming side, I worked on modeling for a large part
+  of my career and have a good understanding of signal processing, differential
+  equation solvers, Bayesian statistics, inverse methods and data-driven
+  machine learning. In all those fields, I always enjoyed putting
+  together nice and effective data visualizations, initially with matplotlib,
+  d3.js and nowadays often with Vega.
+experience:
+  - employer: Tweag
+    role: Project management
+    years: August 2020 – present
+    description: Project inception
+  - employer: Tweag
+    role: Team lead data
+    years: February 2018 – August 2020
+    description: Leading a small data team
+  - employer: Institut de Physique du Globe
+    role: Post Doc
+    years: June 2015 – December 2017
+    description: Working on secondary microseisms
+  - employer: Institut de Physique du Globe
+    role: PhD Student
+    years: November 2011 – June 2015
+    description: PHD seismic wave propagation
+  - employer: Max Planck Institute for Dynamics and Selforganization
+    role: Research assistant
+    years: April 2011 – September 2011
+    description: Collective motion
+  - employer: Princeton University
+    role: Visiting Student Research Collaborator
+    years: November 2009 – October 2010
+    description: Seismic wave propagation
+education:
+  - qualification: PhD
+    name: Seismology
+    institution: Institut de Physique du Globe de Paris
+
+  - qualification: Diplom (eq. MSc)
+    name: Physics
+    institution: Ludwig Maximilians Universitaet München
