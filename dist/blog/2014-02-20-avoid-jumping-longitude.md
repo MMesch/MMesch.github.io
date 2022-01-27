@@ -1,6 +1,14 @@
 ---
 title: avoid jumping longitude in matplotlib basemap
-class: post
+labels:
+  - python
+  - little trick
+  - visualization
+description: |
+  The sphere is a continuous surface but spherical coordinate systems jump when
+  crossing the 2 pi longitude or the pi latitude boundaries which generates
+  artifacts in geographic plots. This is a short post that shows how to avoid
+  this when your plotting tool isn't doing it automatically.
 ---
 
 

@@ -1,6 +1,10 @@
 ---
 title: Blender Voxel Data
-class: post
+labels:
+  - Blender
+  - visualization
+description: |
+  How to plot Voxel data with Blender
 ---
 
 You can do cool stuff with manual Blender voxel data. See for example this video:

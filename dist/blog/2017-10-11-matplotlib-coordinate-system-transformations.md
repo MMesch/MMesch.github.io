@@ -1,7 +1,12 @@
 ---
 title: Matplotlib Coordinate System Transformations
-class: post
+labels:
+  - Python
+  - Matplotlib
+  - visualization
 thumbnail: "/images/posts/matplotlib_coordinate_transformations.png"
+description: |
+  Illustration of coordinate transformations used in Matplotlib.
 ---
 
 

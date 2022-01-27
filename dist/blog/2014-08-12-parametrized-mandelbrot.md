@@ -1,10 +1,13 @@
 ---
 title: parametrized mandelbrot set
-class: post
+labels:
+  - visualization
+  - fractals
 thumbnail: "/images/posts/mandelbrot.svg"
+description: |
+  I have recently written a script that plots the Mandelbrot set boundary to use it as a vector graphic in inkscape.
 ---
 
-I have recently written a script that plots the Mandelbrot set boundary to use it as a vector graphic in inkscape.
 Of course only a curve that converges towards the fractal boundary can be plotted but it looks pretty good.
 The code is based on the great website [fraktal.republika.pl](fraktal.republika.pl) and uses something called a "Jungreis" function that can map the unit circle to the Mandelbrot set boundary (see more on Wikipedia).
 Here is the code:

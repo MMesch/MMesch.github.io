@@ -1,6 +1,7 @@
 ---
 title: Nixpkgs channel overview
-class: post
+labels:
+  - Nix
 ---
 
 # Nixpkgs vs Nix

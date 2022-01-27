@@ -1,7 +1,12 @@
 ---
 title: Visualization of Different Seismic Phases
-class: post
+labels:
+  - visualization
+  - seismology
+  - Blender
 thumbnail: "/images/thumbnails/ray_paths_movie.gif"
+description: |
+  A Blender illustration of the paths that seismic waves take through the Earth.
 ---
 
 This is an illustration of different paths that seismic waves take when they propagate through the Earth.

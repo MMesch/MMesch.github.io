@@ -1,6 +1,8 @@
 ---
 title: Spherical Harmonics Transform and Rotation in Python
-class: post
+description:
+ - python
+ - library contribution
 ---
 
 Recently I needed a module that provides spherical harmonics transforms and tools in Python and I started wrapping the library shtools written by Mark Wieczorek using f2py from the numpy/scipy packages.

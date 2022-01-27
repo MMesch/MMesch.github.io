@@ -1,6 +1,10 @@
 ---
 title: Executing SAC through Python
-class: post
+labels:
+ - seismology
+ - code snippet
+description: |
+  SAC is a processing tool for seismic traces. The question came up recently how to handle it through a python pipe, instead of the common perl approach.
 ---
 
 SAC (get it here) is a processing tool for seismic traces. The question came up recently how to handle it through a python pipe, instead of the common perl approach. This is the short answer we found, employing python's subprocess module. Remember to exchange the SAC executable path.

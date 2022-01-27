@@ -1,7 +1,11 @@
 ---
 title: Solar System SVG Animation
-class: post
+labels:
+  - visualization
+  - svg
 thumbnail: "/images/thumbnails/solarsystem.svg"
+description: |
+  An animated solar system svg with correct orbital parameters.
 ---
 
 Here is a python script that creates an svg animation of the solarsystem from orbital data.
