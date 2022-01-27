@@ -27,6 +27,7 @@ to generate this file without the comments in this block.
   , "halogen"
   , "halogen-css"
   , "html-parser-halogen"
+  , "identity"
   , "lists"
   , "markdown-it"
   , "markdown-it-halogen"

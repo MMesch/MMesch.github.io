@@ -7,36 +7,41 @@ import Types (Post)
 import Milkis as M
 import Milkis.Impl.Window (windowFetch)
 import Control.Monad.Except (runExcept)
-import Data.Either (Either(Right, Left), hush)
+import Control.Monad.Except.Trans (withExceptT, except, ExceptT)
+import Data.Either (Either(Right, Left), hush, either, note)
+import Foreign (renderForeignError)
 import Data.Bifunctor (bimap, lmap)
 import Data.Traversable (sequence)
+import Data.Foldable (foldMap)
 import Data.Argonaut.Decode.Class (decodeJson, class DecodeJson)
+import Data.Argonaut.Decode.Error (printJsonDecodeError)
 import Data.YAML.Foreign.Decode (parseYAMLToJson)
 import Data.String (split, Pattern(Pattern))
 import Data.String.Regex (regex, match)
+import Data.Identity (Identity)
 import Data.String.Regex.Flags (noFlags)
 import Data.Array.NonEmpty ((!!))
-import Data.Maybe (Maybe(Just, Nothing), maybe)
+import Data.Maybe (Maybe(Just, Nothing))
 import Debug (spy, traceM)
 
-fetchFile :: String -> Aff (Maybe String)
+fetchFile :: String -> Aff (Either String String)
 fetchFile url = do
   _response <- attempt $ M.fetch windowFetch (M.URL url) M.defaultFetchOptions
-  hush <$> (sequence $ bimap show M.text _response)
+  (sequence $ bimap show M.text _response)
 
-fetchList :: String -> Aff (Maybe (Array String))
+fetchList :: String -> Aff (Either String (Array String))
 fetchList url = do
   content <- fetchFile url
   pure $ split (Pattern "\n") <$> content
 
-fetchPost :: String -> Aff (Maybe Post)
+fetchPost :: String -> Aff (Either String Post)
 fetchPost url = do
   contentMaybe <- fetchFile url
   pure
     $ do
         content <- contentMaybe
-        { header, body } <- extractMarkdown content
-        (post :: Post) <- parseYaml header
+        { header, body } <- note "error in markdown extractions" $ extractMarkdown content
+        (post :: Post) <- runExcept $ parseYaml header
         pure
           $ post
               { content = Just body
@@ -63,12 +68,17 @@ extractMarkdown markdown = do
   body <- secondGroup
   pure { header: header, body: body }
 
-fetchYaml :: forall a. DecodeJson a => String -> Aff (Maybe a)
-fetchYaml url = do
+fetchYaml :: forall a. DecodeJson a => String -> Aff (Either String a)
+fetchYaml url = do -- Aff
   yamlEither <- fetchFile url
-  pure $ yamlEither >>= parseYaml
+  pure
+    $ do -- Either
+        yaml <- yamlEither
+        runExcept (parseYaml yaml)
 
-parseYaml :: forall a. DecodeJson a => String -> Maybe a
+parseYaml :: forall a. DecodeJson a => String -> ExceptT String Identity a
 parseYaml content = do -- this is an Either Monad
-  json <- hush $ runExcept $ parseYAMLToJson content
-  hush $ decodeJson json
+  json <- withExceptT foreignListError $ parseYAMLToJson content
+  withExceptT printJsonDecodeError (except (decodeJson json))
+  where
+  foreignListError x = foldMap (\err -> renderForeignError err) x

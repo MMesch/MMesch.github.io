@@ -53,7 +53,32 @@ the page the user is looking at.
 type State
   = { page :: Page
     , posts :: Posts
+    , cv :: Maybe String
     , markdownIt :: Maybe MarkdownIt
+    }
+
+type CV
+  = { shortDescription :: String
+    , bio :: String
+    , skills :: Array String
+    , speaks :: Array String
+    , experience :: Array Experience
+    , education :: Array Education
+    }
+
+type Experience
+  = { employer :: String
+    , role :: String
+    , years :: String
+    , location :: String
+    , description :: Array { tech :: String }
+    }
+
+type Education
+  = { qualification :: String
+    , name :: String
+    , institution :: String
+    , years :: String
     }
 
 type Post

@@ -24,10 +24,12 @@ import Types
   , State
   , Query(Navigate)
   , Route
+  , CV
   )
-import Util (fetchList, fetchPost)
+import Util (fetchList, fetchPost, fetchYaml)
 import Data.Map (lookup, fromFoldable)
-import Data.Tuple (Tuple(Tuple), snd)
+import Data.Either (Either(Left, Right), hush, isLeft, isRight, fromLeft)
+import Data.Tuple (Tuple(Tuple), fst, snd)
 import Data.Array (catMaybes)
 import Data.Options ((:=))
 import Foreign (unsafeToForeign)
@@ -126,6 +128,7 @@ component =
     { page: Main
     , posts: fromFoldable []
     , markdownIt: Nothing
+    , cv: Nothing
     }
 
   {-
@@ -146,8 +149,9 @@ component =
     SwitchPage page -> do
       state <- H.get
       navigate (Just page)
-    Initialize -> do
+    Initialize -> do -- HalogenM
       postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
+      cvData <- H.liftAff $ fetchYaml "/assets/cv.yaml"
       markdownIt <-
         H.liftEffect
           $ newMarkdownIt Default
@@ -155,21 +159,24 @@ component =
           <> (typographer := true)
           <> (html := true)
       case postListEither of
-        Nothing -> H.liftAff $ log "err"
-        Just postList -> do
+        Left err -> H.liftAff $ log err
+        Right postList -> do
           let
             paths = ((<>) "/blog/") <$> postList
           arr <- H.liftAff $ parSequence $ fetchPost <$> paths
           let
-            postMap = fromFoldable $ toTuple <$> catMaybes arr
+            postMap = fromFoldable $ toTuple <$> catMaybes (hush <$> arr)
 
-            failed = filter (\(Tuple el path) -> el == Nothing) $ zip arr paths
-          _ <- parSequence $ log <<< (<>) "failed path: " <<< show <<< snd <$> failed
+            failed = filter (\(Tuple el path) -> isLeft el) $ zip arr paths
+
+            printFailed x = log $ "failed path: " <> show (snd x) <> " - " <> fromLeft "unknown error" (fst x)
+          _ <- parSequence $ printFailed <$> failed
           H.modify_
             ( \state ->
                 state
                   { posts = postMap
                   , markdownIt = Just markdownIt
+                  , cv = hush cvData
                   }
             )
     where
