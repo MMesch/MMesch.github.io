@@ -603,6 +603,11 @@ video {
   margin: 0.5rem;
 }
 
+.mx-4{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-6{
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -813,12 +818,12 @@ video {
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
 
-.p-5{
-  padding: 1.25rem;
+.p-4{
+  padding: 1rem;
 }
 
-.p-6{
-  padding: 1.5rem;
+.p-5{
+  padding: 1.25rem;
 }
 
 .px-1{
@@ -1222,6 +1227,10 @@ div.markdown {
 
   .md\:w-12{
     width: 3rem;
+  }
+
+  .md\:p-6{
+    padding: 1.5rem;
   }
 
   .md\:px-3{
