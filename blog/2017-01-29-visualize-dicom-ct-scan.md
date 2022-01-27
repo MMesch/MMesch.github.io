@@ -1,7 +1,12 @@
 ---
 title: Visualize you DICOM CT Scan in 3D with Paraview
-class: post
+labels:
+  - visualization
+  - little trick
+  - DICOM
 thumbnail: "/images/thumbnails/CTScan_labels.png"
+description: |
+  How to look at your own CT scans in 3D with Open Source tools.
 ---
 
 CT Scan examinations often come with a data CD that contains the raw images of the scan.

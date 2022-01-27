@@ -1,6 +1,8 @@
 ---
 title: "Probabilistic Programming with Monad-Bayes, Part 3: A Bayesian Neural Network"
-class: post
+labels:
+  - probabilistic programming
+  - Haskell
 external: "https://www.tweag.io/blog/2020-02-26-monad-bayes-3/"
 thumbnail: "/images/posts/bayes2_06.svg"
 description: |

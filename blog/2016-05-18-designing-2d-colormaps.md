@@ -1,10 +1,15 @@
 ---
 title: Designing 2D Colormaps for Matplotlib with Blender
-class: post
+labels:
+  - colormaps
+  - Blender
+  - Python
 thumbnail: "/images/thumbnails/cmap2d.png"
+description: |
+  2D colormaps for matplotlib designed with Blender.  
 ---
 
-PDATE: check out the <a href="https://github.com/MMesch/cmap_builder.git">github</a> project with blender scripts and python module.
+UPDATE: check out the <a href="https://github.com/MMesch/cmap_builder.git">github</a> project with blender scripts and python module.
 
 A 2d colormap is designed to represent two dimensional data on a two dimensional domain.
 Common examples are wind direction and magnitude, signal amplitude and frequency or a complex functions magnitude and argument.

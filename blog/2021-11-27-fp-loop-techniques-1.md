@@ -1,6 +1,9 @@
 ---
 title: "Loops in Functional Programming 1: What's wrong with for and while?"
-class: post
+labels:
+  - Python
+  - Haskell
+  - writeup
 description: |
   I struggled with expressing loops a long time when starting to use functional programming languages. There are just so many ways of doing them and once one has understood a bunch of techniques, it always takes time and thought to chose one of them. That's why I thought it's worth to structure my thoughts a bit, starting to write up this little compendium of loop techniques for the functional programmer. In this first part of the series I'll motivate why we don't use classic for and while loops known from the imperative world in functional programming. I use Python for imperative style examples and later on switch to Haskell for the functional.
 ---

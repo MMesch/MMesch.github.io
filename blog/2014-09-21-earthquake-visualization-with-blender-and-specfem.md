@@ -1,7 +1,11 @@
 ---
 title: Earthquake Visualization with Blender and Specfem
-class: post
+labels:
+  - visualization
+  - seismology
 thumbnail: "/images/thumbnails/seismic_wavefield_visualisation.png"
+description: |
+  Rendering a global seismic wavefield as Voxel data with Blender
 ---
 
 

@@ -1,7 +1,12 @@
 ---
 title: Robust B-Spline Regression and Fourier Transform with Scikit-Learn
-class: post
+labels:
+  - Python
+  - mathematics
+  - little trick
 thumbnail: "/images/posts/robust_fourier_tf.png"
+description: |
+  Regression that combines Fourier transform and B-splines to better deal with outliers.
 ---
 
 Real world data is often cluttered with outliers.

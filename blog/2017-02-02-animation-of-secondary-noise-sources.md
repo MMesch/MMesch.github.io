@@ -1,7 +1,11 @@
 ---
-title: Animation of Secondary Noise Sources
-class: post
+title: Animation of Secondary Microseismic Noise Sources in the Oceans
+labels:
+  - visualization
+  - seismology
 thumbnail: "/images/thumbnails/waves.gif"
+description: |
+  Visualization of the global ocean wave activity that generates a specific form of seismic noise.
 ---
 
 The interaction of ocean waves that run into each other is the major source of seismic noise in the frequency band between 0.1 and 0.3 Hz all over the Earth.

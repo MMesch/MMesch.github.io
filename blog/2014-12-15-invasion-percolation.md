@@ -1,6 +1,10 @@
 ---
 title: Visualizing Invasion Percolation
-class: post
+labels:
+  - percolation
+  - visualization
+description: |
+  Visualization of a liquid invading a porous rock.
 ---
 
 And another volume render in Blender.

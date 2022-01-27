@@ -1,7 +1,11 @@
 ---
 title: Using Jupyter Kernels From Python
-class: post
+labels:
+  - Jupyter
+  - little trick
 thumbnail: "/images/thumbnails/Jupyter_logo.svg"
+description: |
+  How to use and control Jupyter kernels directly from Python (without JupyterLab or Notebook).
 ---
 
 This notebook demonstrates how a jupyter kernel can be started and controlled from Python (i.e. another jupyter kernel in this case, with an attached notebook).

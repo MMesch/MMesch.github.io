@@ -1,6 +1,6 @@
 ---
 title: Animation of Earth's Normal Modes
-class: post
+labels: visualization
 thumbnail: "/images/thumbnails/animation-normal-modes.png"
 ---
 

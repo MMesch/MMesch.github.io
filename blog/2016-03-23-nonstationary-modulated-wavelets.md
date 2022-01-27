@@ -1,10 +1,13 @@
 ---
 title: Wavelet Statistics for Nonstationary Modulated Noise
-class: post
+labels:
+  - wavelets
+  - little trick
 thumbnail: "/images/thumbnails/nonstationarywavelets.png"
+description: |
+  A simple test that I have done to plot wavelet statistics for a stationary white noise random model realisation.
 ---
 
-This is a simple test that I have done that plots wavelet statistics for a stationary white noise random model realisation.
 In this case, the expected statistics of the model amplitudes is a Gaussian (normal) distribution.
 Due to the orthogonality of the daubechies wavelet basis (using PyWavelets), the coefficient power of one wavelet follows a Chi square distribution with 1 degree of freedom.
 This is simply the distribution of the square of normal distributed independent random variables.

@@ -1,7 +1,11 @@
 ---
 title: Execute Code in Jupyter Kernels Through HTTP Requests and Websockets
-class: post
+labels:
+  - Jupyter
+  - little trick
 thumbnail: "/images/thumbnails/Jupyter_logo.svg"
+description: |
+  How to execute code in Jupyter kernels via HTTP and websockets, not ZeroMQ.
 ---
 My last post demonstrated how to interact directly with a Jupyter kernel via the <i>jupyter_client</i> python module. Communication was done via the ZeroMQ messaging protocoll through a number of specific ports.
 As soon as we want to communicate with the kernel via a web application, as for example the jupyter notebook app does, there is a simpler way that exposes the communication API as http endpoints and websocket connections.

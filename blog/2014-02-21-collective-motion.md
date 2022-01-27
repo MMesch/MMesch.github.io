@@ -1,10 +1,12 @@
 ---
 title: collective motion model
-class: post
+labels:
+  - visualization
 thumbnail: "/images/thumbnails/collective_motion_animation.png"
+description: |
+  This is a collective motion simulation that I have done while working in Biophysics.
 ---
 
-This is a collective motion simulation that I have done while working in Biophysics.
 It is based upon the Vicsek model (<a href="https://en.wikipedia.org/wiki/Vicsek_model">Wikipedia article</a>).
 Essentially each particle (fish, locust, bird...) adjusts its movement direction to its neighbours while always retaining the same speed.
 This is similar to a ferromagnet where particles adjust their spins but don't change position.

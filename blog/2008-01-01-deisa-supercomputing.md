@@ -1,5 +1,5 @@
 ---
 title: "Journal Visualization - DEISA Advancing Science in Europe"
-class: visualization
+labels: visualization
 thumbnail: "/images/thumbnails/deisasupercomputing.png"
 ---

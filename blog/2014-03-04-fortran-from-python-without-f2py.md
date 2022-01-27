@@ -1,6 +1,8 @@
 ---
 title: calling fortran from python without f2py
-class: post
+labels:
+  - Python / Fortran
+  - little trick
 ---
 
 This post explains how you can use a fortran shared object file without(!) recompiling it with the f2py compile.
