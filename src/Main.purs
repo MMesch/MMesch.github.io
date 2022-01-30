@@ -150,8 +150,9 @@ component =
       state <- H.get
       navigate (Just page)
     Initialize -> do -- HalogenM
-      postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
       cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
+      H.modify_ (\state -> state { cv = hush cvData })
+      postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
       H.liftAff $ log $ show cvData
       markdownIt <-
         H.liftEffect
@@ -177,7 +178,6 @@ component =
                 state
                   { posts = postMap
                   , markdownIt = Just markdownIt
-                  , cv = hush cvData
                   }
             )
     where

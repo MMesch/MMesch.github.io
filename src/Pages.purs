@@ -33,7 +33,7 @@ mainPage :: forall i. Maybe CV -> HH.HTML i Action
 mainPage maybeCV =
   layout1
     $ case maybeCV of
-        Nothing -> [ HH.text "Couldn't load CV" ]
+        Nothing -> [ HH.text "Loading" ]
         Just cv ->
           [ HH.div [ cn "markdown mx-4" ]
               [ HH.p_ [ HH.text cv.summary ]

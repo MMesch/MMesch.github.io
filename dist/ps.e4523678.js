@@ -49801,7 +49801,7 @@ var PS = {};
 
     return layout1(function () {
       if (maybeCV instanceof Data_Maybe.Nothing) {
-        return [Halogen_HTML_Core.text("Couldn't load CV")];
+        return [Halogen_HTML_Core.text("Loading")];
       }
 
       ;
@@ -51776,10 +51776,10 @@ var PS = {};
     return new Navigate(function () {
       return Halogen_Query_HalogenM.monadHalogenM;
     }, function () {
-      var $36 = Control_Monad_Trans_Class.lift(Halogen_Query_HalogenM.monadTransHalogenM)(dictNavigate.Monad0());
-      var $37 = navigate(dictNavigate);
-      return function ($38) {
-        return $36($37($38));
+      var $40 = Control_Monad_Trans_Class.lift(Halogen_Query_HalogenM.monadTransHalogenM)(dictNavigate.Monad0());
+      var $41 = navigate(dictNavigate);
+      return function ($42) {
+        return $40($41($42));
       };
     }());
   };
@@ -51839,19 +51839,19 @@ var PS = {};
     var handleQuery = function handleQuery(v) {
       return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Control_Monad_State_Class.get(Halogen_Query_HalogenM.monadStateHalogenM))(function (v1) {
         return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(Control_Applicative.when(Halogen_Query_HalogenM.applicativeHalogenM)(Data_Eq.notEq(Data_Maybe.eqMaybe(Types.eqPage))(new Data_Maybe.Just(v1.page))(v.value0))(Control_Monad_State_Class.modify_(Halogen_Query_HalogenM.monadStateHalogenM)(function (state) {
-          var $18 = {};
+          var $19 = {};
 
-          for (var $19 in state) {
-            if ({}.hasOwnProperty.call(state, $19)) {
-              $18[$19] = state[$19];
+          for (var $20 in state) {
+            if ({}.hasOwnProperty.call(state, $20)) {
+              $19[$20] = state[$20];
             }
 
             ;
           }
 
           ;
-          $18.page = Data_Maybe.fromMaybe(Types.Main.value)(v.value0);
-          return $18;
+          $19.page = Data_Maybe.fromMaybe(Types.Main.value)(v.value0);
+          return $19;
         })))(function () {
           return Control_Applicative.pure(Halogen_Query_HalogenM.applicativeHalogenM)(new Data_Maybe.Just(v.value1));
         });
@@ -51873,103 +51873,118 @@ var PS = {};
         ;
 
         if (v instanceof Types.Initialize) {
-          return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Util.fetchList("/blog/posts.dat")))(function (postListEither) {
-            return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Util.fetchYaml(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeArray(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
-              return "qualification";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "name";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "institution";
-            }))()())())))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeArray(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
-              return "years";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "role";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "employer";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "description";
-            }))()())())))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
-              return "what";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "summary";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "stack";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "experience";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "education";
-            }))()())(new Data_Symbol.IsSymbol(function () {
-              return "domains";
-            }))()())())("/assets/cv.yaml")))(function (v1) {
-              return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Effect_Class_Console.log(Effect_Aff.monadEffectAff)(Data_Show.show(Data_Either.showEither(Data_Show.showString)(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "domains";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "education";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "experience";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "stack";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "summary";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "what";
-              }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showArray(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "description";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "employer";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "role";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "years";
-              }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString)))))(Data_Show.showArray(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "institution";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "name";
-              }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
-                return "qualification";
-              }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString)))))(Data_Show.showString))))(v1))))(function () {
-                return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Class.liftEffect(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))(MarkdownIt.newMarkdownIt(MarkdownIt.Default.value)(Data_Semigroup.append(Data_Options.semigroupOptions)(Data_Options.assoc(MarkdownIt.highlight)(Highlight.highlight))(Data_Semigroup.append(Data_Options.semigroupOptions)(Data_Options.assoc(MarkdownIt.typographer)(true))(Data_Options.assoc(MarkdownIt.html)(true))))))(function (markdownIt) {
-                  if (postListEither instanceof Data_Either.Left) {
-                    return Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Effect_Class_Console.log(Effect_Aff.monadEffectAff)(postListEither.value0));
-                  }
+          return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Util.fetchYaml(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeArray(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
+            return "qualification";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "name";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "institution";
+          }))()())())))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeArray(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
+            return "years";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "role";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "employer";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "description";
+          }))()())())))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
+            return "what";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "summary";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "stack";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "experience";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "education";
+          }))()())(new Data_Symbol.IsSymbol(function () {
+            return "domains";
+          }))()())())("/assets/cv.yaml")))(function (v1) {
+            return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(Control_Monad_State_Class.modify_(Halogen_Query_HalogenM.monadStateHalogenM)(function (state) {
+              var $28 = {};
 
-                  ;
+              for (var $29 in state) {
+                if ({}.hasOwnProperty.call(state, $29)) {
+                  $28[$29] = state[$29];
+                }
 
-                  if (postListEither instanceof Data_Either.Right) {
-                    var paths = Data_Functor.map(Data_Functor.functorArray)(Data_Semigroup.append(Data_Semigroup.semigroupString)("/blog/"))(postListEither.value0);
-                    return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Control_Parallel.parSequence(Effect_Aff.parallelAff)(Data_Traversable.traversableArray)(Data_Functor.map(Data_Functor.functorArray)(Util.fetchPost)(paths))))(function (arr) {
-                      var printFailed = function printFailed(x) {
-                        return Effect_Class_Console.log(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))("failed path: " + (Data_Show.show(Data_Show.showString)(Data_Tuple.snd(x)) + (" - " + Data_Either.fromLeft("unknown error")(Data_Tuple.fst(x)))));
-                      };
+                ;
+              }
 
-                      var postMap = Data_Map_Internal.fromFoldable(Data_Ord.ordString)(Data_Foldable.foldableArray)(Data_Functor.map(Data_Functor.functorArray)(toTuple)(Data_Array.catMaybes(Data_Functor.map(Data_Functor.functorArray)(Data_Either.hush)(arr))));
-                      var failed = Data_Array.filter(function (v2) {
-                        return Data_Either.isLeft(v2.value0);
-                      })(Data_Array.zip(arr)(paths));
-                      return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Control_Parallel.parSequence(Halogen_Query_HalogenM.parallelHalogenM)(Data_Traversable.traversableArray)(Data_Functor.map(Data_Functor.functorArray)(printFailed)(failed)))(function () {
-                        return Control_Monad_State_Class.modify_(Halogen_Query_HalogenM.monadStateHalogenM)(function (state) {
-                          var $32 = {};
+              ;
+              $28.cv = Data_Either.hush(v1);
+              return $28;
+            }))(function () {
+              return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Util.fetchList("/blog/posts.dat")))(function (postListEither) {
+                return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Effect_Class_Console.log(Effect_Aff.monadEffectAff)(Data_Show.show(Data_Either.showEither(Data_Show.showString)(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "domains";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "education";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "experience";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "stack";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "summary";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "what";
+                }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showArray(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "description";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "employer";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "role";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "years";
+                }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString)))))(Data_Show.showArray(Data_Show.showRecord()(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "institution";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "name";
+                }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
+                  return "qualification";
+                }))(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_Show.showString))(Data_Show.showString)))))(Data_Show.showString))))(v1))))(function () {
+                  return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Class.liftEffect(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))(MarkdownIt.newMarkdownIt(MarkdownIt.Default.value)(Data_Semigroup.append(Data_Options.semigroupOptions)(Data_Options.assoc(MarkdownIt.highlight)(Highlight.highlight))(Data_Semigroup.append(Data_Options.semigroupOptions)(Data_Options.assoc(MarkdownIt.typographer)(true))(Data_Options.assoc(MarkdownIt.html)(true))))))(function (markdownIt) {
+                    if (postListEither instanceof Data_Either.Left) {
+                      return Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Effect_Class_Console.log(Effect_Aff.monadEffectAff)(postListEither.value0));
+                    }
 
-                          for (var $33 in state) {
-                            if ({}.hasOwnProperty.call(state, $33)) {
-                              $32[$33] = state[$33];
+                    ;
+
+                    if (postListEither instanceof Data_Either.Right) {
+                      var paths = Data_Functor.map(Data_Functor.functorArray)(Data_Semigroup.append(Data_Semigroup.semigroupString)("/blog/"))(postListEither.value0);
+                      return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Effect_Aff_Class.liftAff(Halogen_Query_HalogenM.monadAffHalogenM(monadAffAppM))(Control_Parallel.parSequence(Effect_Aff.parallelAff)(Data_Traversable.traversableArray)(Data_Functor.map(Data_Functor.functorArray)(Util.fetchPost)(paths))))(function (arr) {
+                        var printFailed = function printFailed(x) {
+                          return Effect_Class_Console.log(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))("failed path: " + (Data_Show.show(Data_Show.showString)(Data_Tuple.snd(x)) + (" - " + Data_Either.fromLeft("unknown error")(Data_Tuple.fst(x)))));
+                        };
+
+                        var postMap = Data_Map_Internal.fromFoldable(Data_Ord.ordString)(Data_Foldable.foldableArray)(Data_Functor.map(Data_Functor.functorArray)(toTuple)(Data_Array.catMaybes(Data_Functor.map(Data_Functor.functorArray)(Data_Either.hush)(arr))));
+                        var failed = Data_Array.filter(function (v2) {
+                          return Data_Either.isLeft(v2.value0);
+                        })(Data_Array.zip(arr)(paths));
+                        return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Control_Parallel.parSequence(Halogen_Query_HalogenM.parallelHalogenM)(Data_Traversable.traversableArray)(Data_Functor.map(Data_Functor.functorArray)(printFailed)(failed)))(function () {
+                          return Control_Monad_State_Class.modify_(Halogen_Query_HalogenM.monadStateHalogenM)(function (state) {
+                            var $36 = {};
+
+                            for (var $37 in state) {
+                              if ({}.hasOwnProperty.call(state, $37)) {
+                                $36[$37] = state[$37];
+                              }
+
+                              ;
                             }
 
                             ;
-                          }
-
-                          ;
-                          $32.posts = postMap;
-                          $32.markdownIt = new Data_Maybe.Just(markdownIt);
-                          $32.cv = Data_Either.hush(v1);
-                          return $32;
+                            $36.posts = postMap;
+                            $36.markdownIt = new Data_Maybe.Just(markdownIt);
+                            return $36;
+                          });
                         });
                       });
-                    });
-                  }
+                    }
 
-                  ;
-                  throw new Error("Failed pattern match at Main (line 162, column 7 - line 182, column 14): " + [postListEither.constructor.name]);
+                    ;
+                    throw new Error("Failed pattern match at Main (line 163, column 7 - line 182, column 14): " + [postListEither.constructor.name]);
+                  });
                 });
               });
             });
@@ -52059,7 +52074,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44593" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36439" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
