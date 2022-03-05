@@ -203,3 +203,5 @@ div.markdown {
 .hljs-tag {
   /* purposely ignored */
 }
+
+.katex *, ::after, ::before {border-color: #000;}
