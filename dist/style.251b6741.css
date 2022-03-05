@@ -1218,6 +1218,17 @@ div.markdown {
   /* purposely ignored */
 }
 
+.katex *, ::after, ::before {
+  border-color: #000;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.5em 0;
+  padding: 0.5em 0;
+}
+
 @media (min-width: 640px){
 }
 
