@@ -40,8 +40,9 @@ import MarkdownIt
   , html
   , typographer
   , newMarkdownIt
+  , use
   )
-import Highlight as HL
+import External as Ext
 
 {-
 This is a minimal purescript example that sets up a website.
@@ -156,10 +157,12 @@ component =
       H.liftAff $ log $ show cvData
       markdownIt <-
         H.liftEffect
-          $ newMarkdownIt Default
-          $ (highlight := HL.highlight)
-          <> (typographer := true)
-          <> (html := true)
+          $ ( newMarkdownIt Default
+                $ (highlight := Ext.highlight)
+                <> (typographer := true)
+                <> (html := true)
+            )
+          >>= use Ext.katex
       case postListEither of
         Left err -> H.liftAff $ log err
         Right postList -> do
