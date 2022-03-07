@@ -647,6 +647,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mb-8{
+  margin-bottom: 2rem;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -1282,6 +1286,10 @@ div.markdown {
 @media (min-width: 1024px){
   .lg\:absolute{
     position: absolute;
+  }
+
+  .lg\:top-4{
+    top: 1rem;
   }
 
   .lg\:mx-10{
