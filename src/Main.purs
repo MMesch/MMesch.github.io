@@ -154,7 +154,6 @@ component =
       cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
       H.modify_ (\state -> state { cv = hush cvData })
       postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
-      H.liftAff $ log $ show cvData
       markdownIt <-
         H.liftEffect
           $ ( newMarkdownIt Default

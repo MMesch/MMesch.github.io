@@ -36,7 +36,8 @@ mainPage maybeCV =
         Nothing -> [ HH.text "Loading" ]
         Just cv ->
           [ HH.div [ cn "markdown mx-4" ]
-              [ HH.p_ [ HH.text cv.summary ]
+              [ HH.h2_ [ HH.text cv.summary ]
+              , HH.hr []
               , HH.h2_ [ HH.text "What I do" ]
               , HH.p_ [ HH.text cv.what ]
               , HH.h2_ [ HH.text "The fields I worked in" ]
@@ -125,7 +126,7 @@ navBarButtonGroup { elements } =
 {- writing pages -}
 navBar :: forall i. HH.HTML i Action
 navBar =
-  HH.div [ cn "lg:absolute flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
+  HH.div [ cn "lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
     [ navBarButtonGroup
         { elements:
             [ navBarButton { href: "#!/", content: "About" }
