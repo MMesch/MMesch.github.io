@@ -71,7 +71,7 @@ $$
 \lim_{n \rightarrow \infty} (1 + \frac{nx}{n})^n \qquad (6)
 $$
 
-Another trick helps to explore this limit: Instead of $x$, we look at the _squeezed_ coordinate $y=nx$ instead. The above expression will then converge to $e^{y} = e^{nx}$. In this coordinate system, an $n$ times _smaller_ value of $x$ leads to the same value of $y$, and thus to the same value of equation (1), as before. With this in mind, let's have a look at the plot of equation (6) for a range of $n$.
+Another artifice allows exploring this limit and also understand how convergence happens: Instead of $x$, we look at equation (6) in a _zoomed_ coordinate system $y=nx$. The above expression will then converge to $e^{y} = e^{nx}$. In this new coordinate system, an $n$ times _smaller_ value of $x$ leads to the same value than in the old. Therefore in the zoomed coordinates $y$, equation (6) looks exactly like the exponential in equation (1). And in the original, unzoomed coordinates, it looks like a version of equation (1) that gets gradually zoomed as $n$ grows. With this in mind, let's have a look at the plot of equation (6) for a range of $n$.
 
 ```python
 exp = (1 + n*x/n)**n
@@ -80,17 +80,19 @@ sp.plot(*[exp.subs(n, i) for i in range(10)], sp.exp(9*x), xlim=(-4, 4), ylim=(-
 
 ![png](/images/posts/generalized_central_limit_theorem_1_4_0.png)
 
-Admittedly, this looks a bit confusing. What should we think about this plot? Keep in mind, that we are showing the _unsqueezed_ coordinate system above, so we expect to see _squeezed_ exponentials that get squashed around $x=0$ as $n$ grows. And in fact, if you look at the above plot, only at the part greater than $x=-1$, you can indeed see these squashed exponentials.
+Admittedly, this looks a bit confusing. Keep in mind, that we are showing the _unzoomed_ coordinate system above, so we expect to see the equation converging to exponentials that are more and more squashed around $x=0$ as $n$ grows. And in fact, if you look at the above plot, only at the part greater than $x=-1$, you can indeed see them (we have plotted a true exponential for reference).
 
-If you think it was heavy gymnastics to think about $(1+x)^n$ as an expression that converges to an exponential, you'll be even more surprised about this: How about looking at the simple equation $x^n$ in the same way? Can we see it as an exponential in the limit of large $n$ in some coordinate system? Let's try the same trick as before:
+If you think this was heavy gymnastics, consider this: How about looking at the simple equation $x^n$ in the same way? Can we see it as an exponential in the limit of large $n$ in some coordinate system? Let's try the same trick as before:
 
 $$
 \lim_{n \rightarrow \infty} x^n = \lim_{n \rightarrow \infty} (1 + \frac{n(x-1)}{n})^n \qquad (7)
 $$
 
-To look at this limit, we now introduce the _shifted and stretched_ coordinate $y=n(x-1)$. In this coordinate system, equation (7) converges to $e^y=e^{n(x-1)}$. In fact, we don't need a new plot anymore for this, because it is simply the same as before but shifted along the $x$ axis by $1$ to the left. And indeed, if you simply look at the plot above, you can see the shifted $x^n$ function. Following our line of thought, this function should resemble an exponential around $x=0$ in the plot, and around $x=1$ in equation (7).
+To look at this limit, we now introduce the _shifted and zoomed_ coordinate $y=n(x-1)$. In this coordinate system, equation (7) converges to $e^y=e^{n(x-1)}$. In fact, we don't need a new plot anymore for this, because it is simply the same as before but shifted along the $x$ axis by $1$ to the left. If you simply look at the plot above, you can see the shifted $x^n$ function. Following our line of thought, this function should converge to a squashed exponential around $x=0$ in the plot, and around $x=1$ in equation (7).
 
-One way to see that $x^n$ and $e^y$ indeed resemble each other in the limit of large $n$, is to compare their derivatives at point $x=1$. The first derivative of $x^n$ evaluated at $x=1$ is simply $n$, and the derivative of $e^{n(x-1)}$, evaluated at point $1$, is similarly $n$. However, the second and higher derivatives of these two functions are _not_ the same. The exponential derivatives are $n^k$, where $k$ is the number of the derivative, whereas the power derivatives are $n(n-1)\cdots(n-k)$ - they decay. But _once we go to the limit of $n \rightarrow \infty$_, both will actually look the same, the decay of the power derivatives plays less and less of a role then, and $x^n$ starts to look like $e^{n(x-1)}$ around $x=1$. The convergence of $\frac{n(n-1)\cdots(n-k)}{n^k} \rightarrow 1$ for $n \rightarrow \infty$ and for $k \ll n$ is actually exactly the same argument as the one we used before when looking at the binomial theorem in equation (2) directly.
+One way to see that $x^n$ and $e^y$ resemble each other in the limit of large $n$, is to compare their derivatives at point $x=1$. The first derivative of $x^n$ evaluated at $x=1$ is simply $n$, and the derivative of $e^{n(x-1)}$, evaluated at point $1$, is similarly $n$. However, the second and higher derivatives of these two functions are _not_ the same. The exponential derivatives are $n^k$, where $k$ is the number of the derivative, whereas the power derivatives are $n(n-1)\cdots(n-k)$ - they decay. But _once we go to the limit of $n \rightarrow \infty$_, both will actually look the same, the decay of the power derivatives makes less and less of a _relative_ difference then, and $x^n$ starts to look like $e^{n(x-1)}$ around $x=1$. The convergence of $\frac{n(n-1)\cdots(n-k)}{n^k} \rightarrow 1$ for $n \rightarrow \infty$ and for $k \ll n$ is actually exactly the same argument as the one we used before when looking at the binomial theorem in equation (2) directly.
+
+[Optional example: Concretely, think about $f(x) = x^3$, with low $n$, far from convergence. The values of its first three derivatives at $x=1$ are $f'(x=1)=3, f''(x=1)=6, f'''(x=1)=6$, compared to the first three derivatives of $g(x) = e^{nx}$ at $x=0$ that are $g'(x=0)=3, g''(x=0)=9, g'''(x=0)=27$, a relative difference of 50% in the second and 450% in the third. And now $f(x) = x^20$, with higher $n$, closer to convergence. The values of its first three derivatives at $x=1$ are $f'(x=1)=20, f''(x=1)=380, f'''(x=1)=6840$, compared to the first three derivatives of $g(x) = e^{nx}$ at $x=0$ that are $g'(x=0)=20, g''(x=0)=400, g'''(x=0)=8000$, a much smaller _relative_ difference of 5% in the second and 17% in the third derivative.]
 
 ## Nonlinearities 
 
@@ -100,7 +102,7 @@ $$
 \lim_{n \rightarrow \infty}(1 - \frac{nx^2}{n})^n \qquad (8)
 $$
 
-Note that we can't instantly introduce the same squeezed coordinate system as before here, because we introduced a non-linearity in $x$, but not in $n$. But we can introduce a different one, $y=\sqrt{n}x$, now, and in this coordinate system, equation (8) converges to $e^{y} = e^{-nx^2}$. A plot is again insightful to gain confidence in this:
+Note that we can't instantly introduce the same zoomed coordinate system as before here, because we introduced a non-linearity in $x$, but not in $n$. But we can introduce a different one, $y=\sqrt{n}x$, now, and in this coordinate system, equation (8) converges to $e^{y} = e^{-nx^2}$. A plot is again insightful to gain confidence in this:
 
 ```python
 exp = (1 - n*x**2/n)**n
@@ -117,7 +119,7 @@ $$
 \lim_{n \rightarrow \infty} (1 - \frac{n|x|^\alpha}{n})^n  \qquad(9)
 $$
 
-Our squeezed coordinate system is now $n^{1/\alpha}x$, and in this coordinate system, equation (9) converges to $e^y=e^{-n|x|^\alpha}$. Here is an overview of these exponentials for different values of $\alpha$:
+Our zoomed coordinate system is now $n^{1/\alpha}x$, and in this coordinate system, equation (9) converges to $e^y=e^{-n|x|^\alpha}$. Here is an overview of these exponentials for different values of $\alpha$:
 
 ```python
 sp.plot(*[sp.exp(-9*abs(x)**alpha).subs(alpha, i) for i in range(0, 4)], xlim=(-2, 2), ylim=(-0.5, 1.5), legend=True);
@@ -151,7 +153,7 @@ $$
 \lim_{n \rightarrow \infty} (1 - (x^2 - x))^n  \qquad(10)
 $$
 
-There is no _simple_ squeezed coordinate now, because we get:
+There is no _simple_ zoomed coordinate now, because we get:
 
 $$
 \lim_{n \rightarrow \infty} (1 - \frac{(n^{1/2}x)^2 - nx}{n})^n  \qquad(11)
@@ -163,7 +165,7 @@ $$
 \lim_{n \rightarrow \infty} (1 - \frac{n^{-1/2}y^2 - y}{n})^n  \qquad(12)
 $$
 
-In this coordinate system, the quadratic term in $x$ becomes smaller and smaller compared to the linear $x$ term as $n$ grows, and can eventually be neglected. _The smallest power dominates_ in this perspective, and the reason is that the squeezed coordinate systems we introduce getting smaller faster for lower powers of $x$.
+In this coordinate system, the quadratic term in $x$ becomes smaller and smaller compared to the linear $x$ term as $n$ grows, and can eventually be neglected. _The smallest power dominates_ in this perspective, and the reason is that the zoomed coordinate systems we introduce zoom in faster for lower powers of $x$, and we thus look have a more localized perspective.
 
 ## What this is good for
 
