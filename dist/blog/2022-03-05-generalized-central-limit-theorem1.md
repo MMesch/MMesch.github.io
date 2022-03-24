@@ -9,19 +9,19 @@ description: |
 
 ## Introduction
 
-Exponentials are intimately related to products and multiplication. The most obvious relationship is that the multiplication of exponentials results in the addition of their exponents. But the connection that I explore in this post is that _taking any function to a large power can have them converge locally to exponentials_.
+Exponentials are intimately related to products and multiplication. The most obvious relationship is that the multiplication of exponentials results in the addition of their exponents. But more importantly, the exponential function describes fractional _growth_, repeatedly growing something in a multiplicative way. To understand this, I highly recommend reading [this](https://betterexplained.com/articles/an-intuitive-guide-to-exponential-functions-e/) and [this](https://betterexplained.com/articles/demystifying-the-natural-logarithm-ln/) article on [betterexplained.com](https://betterexplained.com/), before getting started with this article.
 
-It turns out that this convergence to exponentials is extremely helpful to understand the _generalized_ central limit theorem that not only explains why many sums of random variables converge to a normal distributions, but also why some others converge to so-called alpha-stable distributions instead, in particular those with certain asymptotic power-law behaviour.
+The connection that I explore in this post is that _taking any function to a large power (“growing” them locally) lets them converge locally to exponentials_. It turns out that this convergence to exponentials is extremely helpful to understand the _generalized_ central limit theorem that not only explains why many sums of random variables converge to a normal distributions, but also why some others converge to so-called alpha-stable distributions instead, in particular those with certain asymptotic power-law behaviour.
 
 ## A simple identity that explains a lot
 
-Exponentials are related to powers with a core identity that we will use _massively_ in this and the following posts and that is therefore crucial to understand:
+Exponentials are related to fractional growth through a core identity that we will use _massively_ in this and the following posts and that is therefore crucial to understand:
 
 $$
 e^{x} = \lim_{n \rightarrow \infty} (1 + \frac{x}{n})^n \qquad \text{(1)}
 $$
 
-In words, this identity states that, as we take a _specific_ function to the power of $n$, it converges to an exponential in the limit. Much of this first post is about showing that we can locally apply this identity to basically _any_ function, which leads us to the surprising conclusion that _any_ function locally converges to exponentials if we take it to a high power.
+In words, this identity states that, as we take a specific _linear_ function to the power of $n$, it converges to an exponential in the limit. Much of this first post is about showing that we can locally apply this identity to basically _any_ function, which leads us to the surprising conclusion that _any_ function locally converges to different forms of exponentials if we take it to a high power.
 
 One way to see that the right hand side of the equation (1) indeed converges to an exponential is to expand it with the [binomial theorem](https://en.wikipedia.org/wiki/Binomial_theorem#Statement):
 
