@@ -1,14 +1,10 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: [
+  content: [
       './tailwind.css',
       './src/**/*.html',
       './src/**/*.vue',
       './src/**/*.jsx',
-      './src/**/*.purs']
-  },
-  darkMode: false, // or 'media' or 'class'
+      './src/**/*.purs'],
   theme: {
     extend: {
       scale: {
@@ -26,15 +22,5 @@ module.exports = {
       body: ['Noto', 'sans-serif'],
       mono: ['Source Code Pro'],
     }},
-  },
-  variants: {
-    extend: {
-     filter: ['hover', 'focus'],
-     hueRotate: ['hover', 'focus'],
-     brightness: ['hover', 'focus'],
-     dropShadow: ['hover', 'focus'],
-     scale: ['active', 'group-hover'],
-     cursor: ['hover', 'focus'],
-    }
   }
 }
