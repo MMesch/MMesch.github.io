@@ -127,8 +127,8 @@ navBar =
   HH.div [ cn "lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
     [ navBarButtonGroup
         { elements:
-            [ navBarButton { href: "#!/", content: "About" }
-            , navBarButton { href: "#!/blog", content: "Blog" }
+            [ navBarButton { href: "/", content: "About" }
+            , navBarButton { href: "/blog", content: "Blog" }
             ]
         }
     , navBarIconGroup
@@ -156,7 +156,7 @@ listCard post =
   let
     cardStyle = "hover:cursor-pointer w-full block p-4 md:p-6 my-3 border-solid border-2 rounded-lg"
 
-    href = fromMaybe ("#!/blog/" <> fromMaybe "" post.id) post.external
+    href = fromMaybe ("/blog/" <> fromMaybe "" post.id) post.external
 
     externalTag = HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
   in

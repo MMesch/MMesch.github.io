@@ -15,7 +15,7 @@ import Halogen as H
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
 import Pages (blogList, mainPage, blogPage)
-import Routes (listenForUrlHashChanges, routeCodec, setUrlHash, validateUrlHash)
+import Routes (listenForUrlChanges, routeCodec, setUrl, validateUrl)
 import Routing.Duplex as RD
 import Routing.PushState (makeInterface, PushStateInterface)
 import Types
@@ -54,7 +54,7 @@ main =
     HA.awaitLoad
     body <- HA.awaitBody
     halogenIO <- runUI rootcomponent unit body
-    canceller <- H.liftEffect $ listenForUrlHashChanges halogenIO
+    canceller <- H.liftEffect $ (listenForUrlChanges nav) halogenIO
     pure unit
 
 type Env
@@ -81,19 +81,16 @@ derive newtype instance monadAffAppM :: MonadAff AppM
 instance monadAskAppM :: TypeEquals e Env => MonadAsk e AppM where
   ask = AppM $ asks from
 
-class
-  Monad m <= Navigate m where
+class Monad m <= Navigate m where
   navigate :: Route -> m Unit
 
 instance navigateHalogenM :: Navigate m => Navigate (H.HalogenM state action slots output m) where
   navigate = H.lift <<< navigate
 
---instance navigateAppMPush :: Navigate AppM where
---  navigate route = do
---    pushInterface <- asks _.nav
---    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
-instance navigateAppMHash :: Navigate AppM where
-  navigate route = setUrlHash (RD.print routeCodec route)
+instance navigateAppMPush :: Navigate AppM where
+  navigate route = do
+    pushInterface <- asks _.nav
+    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
 
 runAppM :: Env -> AppM ~> Aff
 runAppM env (AppM m) = runReaderT m env
