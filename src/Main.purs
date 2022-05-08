@@ -34,15 +34,6 @@ import Data.Array (catMaybes)
 import Data.Options ((:=))
 import Foreign (unsafeToForeign)
 import Debug
-import MarkdownIt
-  ( Preset(Default)
-  , highlight
-  , html
-  , typographer
-  , newMarkdownIt
-  , use
-  )
-import External as Ext
 
 {-
 This is a minimal purescript example that sets up a website.
@@ -128,7 +119,6 @@ component =
   initialState _ =
     { page: Main
     , posts: fromFoldable []
-    , markdownIt: Nothing
     , cv: Nothing
     }
 
@@ -154,14 +144,6 @@ component =
       cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
       H.modify_ (\state -> state { cv = hush cvData })
       postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
-      markdownIt <-
-        H.liftEffect
-          $ ( newMarkdownIt Default
-                $ (highlight := Ext.highlight)
-                <> (typographer := true)
-                <> (html := true)
-            )
-          >>= use Ext.katex
       case postListEither of
         Left err -> H.liftAff $ log err
         Right postList -> do
@@ -175,13 +157,7 @@ component =
 
             printFailed x = log $ "failed path: " <> show (snd x) <> " - " <> fromLeft "unknown error" (fst x)
           _ <- parSequence $ printFailed <$> failed
-          H.modify_
-            ( \state ->
-                state
-                  { posts = postMap
-                  , markdownIt = Just markdownIt
-                  }
-            )
+          H.modify_ ( \state -> state { posts = postMap } )
     where
     toTuple el = Tuple (fromMaybe "default" el.id) el
 
@@ -193,5 +169,4 @@ component =
       fromMaybe (mainPage state.cv)
         $ do
             post <- (lookup path state.posts)
-            markdownIt <- state.markdownIt
-            pure $ blogPage markdownIt post
+            pure $ blogPage post

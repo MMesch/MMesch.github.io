@@ -8,21 +8,41 @@ import Milkis as M
 import Milkis.Impl.Window (windowFetch)
 import Control.Monad.Except (runExcept)
 import Control.Monad.Except.Trans (withExceptT, except, ExceptT)
-import Data.Either (Either(Right, Left), hush, either, note)
+import Data.Either (Either(Right, Left), hush, note)
 import Foreign (renderForeignError)
-import Data.Bifunctor (bimap, lmap)
+import Data.Bifunctor (bimap)
 import Data.Traversable (sequence)
 import Data.Foldable (foldMap)
 import Data.Argonaut.Decode.Class (decodeJson, class DecodeJson)
 import Data.Argonaut.Decode.Error (printJsonDecodeError)
 import Data.YAML.Foreign.Decode (parseYAMLToJson)
 import Data.String (split, Pattern(Pattern), replace, Replacement(Replacement))
-import Data.String.Regex (regex, match)
+import Data.String.Regex (regex, match, replace')
 import Data.Identity (Identity)
-import Data.String.Regex.Flags (noFlags)
+import Data.String.Regex.Flags (noFlags, global, multiline)
 import Data.Array.NonEmpty ((!!))
-import Data.Maybe (Maybe(Just, Nothing))
-import Debug (spy, traceM)
+import Data.Array (head)
+import Data.Maybe (Maybe(Just, Nothing), fromMaybe)
+
+fixupHtml :: String -> Maybe String
+fixupHtml rawHtml = do
+  mspace <- hush $ regex "<(mspace.*)/>" global
+  svgpath <- hush $ regex "<(path[\\s\\S]*?)\\/>" (global <> multiline)
+  let
+    mspaceReplacer _ groups =
+      "<"
+        <> (fromMaybe "mspace width=0" (join $ head groups))
+        <> "></mspace>"
+
+    pathReplacer _ groups =
+        "<"
+            <> (fromMaybe "path" (join $ head groups))
+            <> "></path>"
+
+    fixedHtml1 = replace' mspace mspaceReplacer rawHtml
+
+    fixedHtml2 = replace' svgpath pathReplacer fixedHtml1
+  pure fixedHtml2
 
 fetchFile :: String -> Aff (Either String String)
 fetchFile url = do
@@ -36,18 +56,18 @@ fetchList url = do
 
 fetchPost :: String -> Aff (Either String Post)
 fetchPost url = do
-  contentMaybe <- fetchFile url
-  compiledMaybe <- fetchFile (replace (Pattern ".md") (Replacement ".html") url)
+  contentEither <- fetchFile url
+  compiledEither <- fetchFile (replace (Pattern ".md") (Replacement ".html") url)
   pure
     $ do
-        content <- contentMaybe
+        content <- contentEither
         { header, body } <- note "error in markdown extractions" $ extractMarkdown content
         (post :: Post) <- runExcept $ parseYaml header
         pure
           $ post
               { content = Just body
               , path = Just url
-              , compiled = hush compiledMaybe
+              , compiled = hush compiledEither >>= fixupHtml
               , date =
                 do
                   dateExpr <- hush $ regex ".*/(\\d+-\\d+-\\d+)-.*" noFlags

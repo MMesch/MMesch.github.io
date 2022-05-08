@@ -4,7 +4,6 @@ import Prelude
 import Data.Maybe (Maybe)
 import Data.Generic.Rep (class Generic)
 import Data.Map (Map)
-import MarkdownIt (MarkdownIt)
 
 {-
 page hierarchy
@@ -54,7 +53,6 @@ type State
   = { page :: Page
     , posts :: Posts
     , cv :: Maybe CV
-    , markdownIt :: Maybe MarkdownIt
     }
 
 type CV
