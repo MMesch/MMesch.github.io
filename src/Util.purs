@@ -16,7 +16,7 @@ import Data.Foldable (foldMap)
 import Data.Argonaut.Decode.Class (decodeJson, class DecodeJson)
 import Data.Argonaut.Decode.Error (printJsonDecodeError)
 import Data.YAML.Foreign.Decode (parseYAMLToJson)
-import Data.String (split, Pattern(Pattern))
+import Data.String (split, Pattern(Pattern), replace, Replacement(Replacement))
 import Data.String.Regex (regex, match)
 import Data.Identity (Identity)
 import Data.String.Regex.Flags (noFlags)
@@ -37,6 +37,7 @@ fetchList url = do
 fetchPost :: String -> Aff (Either String Post)
 fetchPost url = do
   contentMaybe <- fetchFile url
+  compiledMaybe <- fetchFile (replace (Pattern ".md") (Replacement ".html") url)
   pure
     $ do
         content <- contentMaybe
@@ -46,6 +47,7 @@ fetchPost url = do
           $ post
               { content = Just body
               , path = Just url
+              , compiled = hush compiledMaybe
               , date =
                 do
                   dateExpr <- hush $ regex ".*/(\\d+-\\d+-\\d+)-.*" noFlags

@@ -5,12 +5,16 @@ import Types (State, Action, Posts, Post, CV)
 import MarkdownIt (MarkdownIt)
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
-import MarkdownIt.Renderer.Halogen (render_)
+import Html.Renderer.Halogen as RH
+import MarkdownIt.Renderer.Halogen as MD
 import Data.List (toUnfoldable)
-import Data.Array (reverse, filter, (..), zipWith)
+import Data.Array (reverse, filter, (..), zipWith, head)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
-import Data.Either (Either(Left, Right))
+import Data.Either (hush)
+import Data.String.Regex (replace', regex)
+import Data.String.Regex.Flags (noFlags, global, multiline)
 import Data.Map (values)
+import Debug (traceM, spy)
 
 -- simple navbar layout
 layout1 :: forall i. Array (HH.HTML i Action) -> HH.HTML i Action
@@ -64,7 +68,9 @@ blogPage markdownIt post =
   let
     markdown = fromMaybe "" post.content
 
-    rendered = render_ markdownIt markdown
+    rendered = case post.compiled of
+      Nothing -> MD.render_ markdownIt markdown
+      Just rawHtml -> RH.render_ (fromMaybe "" $ fixupHtml rawHtml)
 
     title = fromMaybe "no title" post.title
 
@@ -80,6 +86,29 @@ blogPage markdownIt post =
           , rendered
           ]
       ]
+
+fixupHtml :: String -> Maybe String
+fixupHtml rawHtml = do
+  mspace <- hush $ regex "<(mspace.*)/>" global
+  svgpath <- hush $ regex "<(path[\\s\\S]*?)\\/>" (global <> multiline)
+  let
+    mspaceReplacer _ groups =
+      "<"
+        <> (fromMaybe "mspace width=0" (join $ head groups))
+        <> "></mspace>"
+
+    pathReplacer _ groups =
+      spy "match:"
+        ( "<"
+            <> (fromMaybe "path" (join $ head groups))
+            <> "></path>"
+        )
+
+    fixedHtml1 = replace' mspace mspaceReplacer rawHtml
+
+    fixedHtml2 = replace' svgpath pathReplacer fixedHtml1
+  traceM fixedHtml2
+  pure fixedHtml2
 
 -- This is a little helper to save some space
 cn :: forall t5 t6. String -> HH.IProp ( class :: String | t6 ) t5

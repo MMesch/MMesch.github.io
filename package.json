@@ -5,9 +5,11 @@
   "dependencies": {
     "highlight.js": "^11.2.0",
     "js-yaml": "^4.1.0",
+    "katex": "^0.15.3",
     "markdown-it": "^12.2.0",
     "markdown-it-katex": "^2.0.3",
     "node-fetch": "^3.0.0",
+    "pandoc-katex-filter": "^0.1.2",
     "tailwindcss-cli": "^0.1.2"
   },
   "devDependencies": {
@@ -19,7 +21,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tailwindcss -i tailwind.css -o styles/style.css"
+    "build": "bash build.sh"
   },
   "author": "",
   "license": "ISC"

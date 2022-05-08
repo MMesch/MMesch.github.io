@@ -1,0 +1,123 @@
+<h2 id="loops-as-we-love-them-in-the-imperative-world">Loops as we love (?) them in the imperative world</h2>
+<h3 id="looping-infinitely">looping infinitely</h3>
+<p>Loops are used to repeatedly run a task in imperative programming. There are many ways to express such repetition, and each programming language seems to provide different ways to enter a loop. For example, in Python you can do it like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="st">&quot;infinite loop&quot;</span>)</span></code></pre></div>
+<p>As soon as the program enters this statement, it will start repeating the print statement in an infinite loop. But we rarely run infinite loops. Somehow we need to stop and step out after some time.</p>
+<h3 id="breaking-the-loop">breaking the loop</h3>
+<p>To step out of a loop, Python provides a keyword <code>break</code> that is often triggered by a condition. The following snippet repeatedly asks the user for an input number and breaks if it greater or equal than 5:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;please enter a number: &quot;</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code></pre></div>
+<pre><code>please enter a number:  3
+3
+
+please enter a number:  2
+2
+
+please enter a number:  5
+5</code></pre>
+<p>Because breaking our loop at some point is such a common pattern, Python’s <code>while</code> keyword has this already built-in and we can simplify the above snippet like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;please enter a number: &quot;</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>please enter a number:  3
+3
+
+please enter a number:  2
+2
+
+please enter a number:  5
+5</code></pre>
+<p>Note that we had to define <code>x</code> outside of the loop because the condition is checked when we enter the <code>while</code> statement. Visually this looks like this:</p>
+<figure>
+<img src="./images/loop1-1.svg" alt="loop illustration" /><figcaption aria-hidden="true">loop illustration</figcaption>
+</figure>
+<h3 id="modifying-state">modifying state</h3>
+<p>We often want to compute something in a loop and assign the resulting value of the computation to a variable, as we did with <code>x</code>. We call <code>x</code> the <code>state</code> that the loop modifies while iterating through statements. A light adaptation of the example before is this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<pre><code>5</code></pre>
+<p>If we need more state than just an index, we would also define it outside of the loop. In the following example, we compute a number and store it in a list <code>l</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> []</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    l <span class="op">+=</span> [<span class="dv">2</span><span class="op">*</span>i]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(l)</span></code></pre></div>
+<pre><code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+<p>We can also store the list and integer in the above snippet in a single state variable showing that conceptually there is not much difference between modifying one or many variables out of a loop:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> (<span class="dv">0</span>, [])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> state[<span class="dv">0</span>] <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    state <span class="op">=</span> (state[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>             state[<span class="dv">1</span>] <span class="op">+</span> [<span class="dv">2</span><span class="op">*</span>state[<span class="dv">0</span>]])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(state)</span></code></pre></div>
+<pre><code>(1, [0])
+(2, [0, 2])
+(3, [0, 2, 4])
+(4, [0, 2, 4, 6])
+(5, [0, 2, 4, 6, 8])
+(6, [0, 2, 4, 6, 8, 10])
+(7, [0, 2, 4, 6, 8, 10, 12])
+(8, [0, 2, 4, 6, 8, 10, 12, 14])
+(9, [0, 2, 4, 6, 8, 10, 12, 14, 16])
+(10, [0, 2, 4, 6, 8, 10, 12, 14, 16, 18])</code></pre>
+<p>Therefore, no matter whether it is indices, accumulators such as the list or the integer sum, it always falls into the same category of manipulating state.</p>
+<h3 id="looping-through-collections-with-for">looping through collections with for</h3>
+<p>In addition to <code>while</code> loops, we also see a lot of <code>for</code> loops in programming languages like Python. A <code>for</code> loop brings nothing new because it can easily be converted to a <code>while</code> loop. The reason it is used so often, is because it manages the ubiquitous use case of looping through elements of an iterable data structure such as a list for us:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(c)</span></code></pre></div>
+<pre><code>a
+b
+c</code></pre>
+<p>Writing this as a while loop is a bit clunky. Also, notice that we don’t need to declare the <code>c</code> variable outside of the loop. <code>c</code> <em>looks</em> like local state neatly confined to the <code>for</code> block where it is needed (in Python it actually is accesible from outside after the loop has been executed).</p>
+<h2 id="statements-and-side-effects">Statements and side effects</h2>
+<p>Keyword statements, such as <code>while</code>, <code>for</code>, <code>break</code>, and <code>continue</code> that control loops, are special in Python: They are always available without import, and the programmer has to know all <code>35</code> that Python (v3.8) has. They are protected names that you can’t <em>use</em> for a variable as in <code>break = 5</code>, and they are different from expressions that can be <em>assigned</em> to a variable as in <code>a = break</code>. The thought comes up whether we <em>need</em> to have special statements for loops or whether we cannot express them just as a normal Python expressions with the other programming machinery that Python has to offer.</p>
+<p>But more troubling is that loops like the ones above have no return value. They are statements, actions that are executed imperatively, but not expressions that can be evaluated, assigned to a variable and passed as arguments to functions. This severely limits how loops can be used. But, although there is no return value, of course something happens when running a loop. Instead of evaluating to a value, loops perform <em>side effects</em>, they execute statements that modify something somewhere else, such as the characters printed on the screen or the value of a variable declared outside of the loop. A <code>while</code> or <code>for</code> loop without side effect simply has no effect at all.</p>
+<p>What’s so bad about side effects? To understand this, let’s go back in time. Before <code>while</code> and <code>for</code>, loops were often written as <code>goto start if condition else continue</code>. Arguably this is a simpler expression than learning special syntax for <code>while</code> and <code>for</code>. However, <code>goto</code> led to so-called <em>spaghetti code</em> and was therefore heavily critized and banned from many programming languages. Programs with <code>goto</code> were jumping around lines so much that it became very difficult to understand what was going on (a chaotic map of slices and dices rather than any regular topology). The structured programming movement advocated the programming with structured blocks instead, subroutine blocks, selection blocks - and iteration blocks such as <code>while</code>. These blocks would make sure to hold together what belongs together, disencouraging any uncontrolled long range jumps. Subroutines, for example, return control to the calling line after execution in contrast to <code>goto</code> statements that are one-directional.</p>
+<p>But <code>while</code> still <em>has</em> strange long range interactions: the side effects that we talked about. For the same reasons that the structural programming movement wanted to get rid of <code>goto</code>, the purely functional programming community tries to get rid of such side effects (or at least wrapping them in a special construct limiting their reach). Getting rid of side effects also has the advantage that everything becomes an expression (even a print statement) as we will see, and thus amenable to be used with variables, as arguments to functions and so on. This gives enormous power to the programmer. This is what we will explore in this series.</p>
+<h2 id="converting-loops-to-expressions">Converting loops to expressions</h2>
+<p>In fact, already in Python, a multi-paradigm language, statements with side effects can sometimes also be written as expressions without. Consider the following example related to the <code>if:</code> and <code>else:</code> statements:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&quot;Bob&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> name <span class="op">==</span> <span class="st">&quot;Bob&quot;</span>:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;It&#39;s Bob!&quot;</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;It&#39;s not Bob!&quot;</span>)</span></code></pre></div>
+<pre><code>It&#39;s Bob!</code></pre>
+<p>As in the loops above, <code>if: else:</code> doesn’t have a return value here and runs side effects (printing twice). But the same statement can also be written as an expression with a return value:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&quot;Bob&quot;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;It&#39;s Bob!&quot;</span> <span class="cf">if</span> name <span class="op">==</span> <span class="st">&quot;Bob&quot;</span> <span class="cf">else</span> <span class="st">&quot;It&#39;s not Bob!&quot;</span>)</span></code></pre></div>
+<pre><code>It&#39;s Bob!</code></pre>
+<p>We have transformed the <code>if: else:</code> statements into an <code>if else</code> expression which can be evaluated and thus used directly as an argument to <code>print</code>. This version is more compact but more importantly, the <code>if else</code> expression has no side effect anymore.</p>
+<p>Python also has a technique, called <em>list comprehension</em> to write certain loops as expression. Consider, for example, the following loop that mutates the list <code>l</code> with a side effect:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> []</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    l.append(i <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(l)</span></code></pre></div>
+<pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+<p>It can be written equally like this without any side effect:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(l)</span></code></pre></div>
+<pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+<p>Python has a similar tool for dictionaries:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">&quot;</span><span class="sc">{:d}</span><span class="st">&quot;</span>.<span class="bu">format</span>(i): i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)}</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d)</span></code></pre></div>
+<pre><code>{&#39;0&#39;: 0, &#39;1&#39;: 1, &#39;2&#39;: 4, &#39;3&#39;: 9, &#39;4&#39;: 16, &#39;5&#39;: 25, &#39;6&#39;: 36, &#39;7&#39;: 49, &#39;8&#39;: 64, &#39;9&#39;: 81}</code></pre>
+<p>All of these examples show, that we can express loops without <code>for</code> or <code>while</code> statements and side effects in very elegant ways. List and dictionary comprehension immediately make it clear to which variable the computation in a loop is assigned to. However, we have only dealt with the side effect of modifying state in these examples. Can we do something similar with an IO side effect such as printing to the console? Let’s have a look:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> [<span class="bu">print</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d)</span></code></pre></div>
+<pre><code>0
+1
+2
+[None, None, None]</code></pre>
+<p>This example is somewhat troubling but insightful. We see that the print side effect is <em>not</em> captured in the d variable and escapes our list comprehension. How would we store a print action in a variable? It turns out that if you think this further, you’ll quickly get to something that resembles purely functional programming languages like Haskell/Elm/Purescript. In this series we will show how they use IO types to stay side-effect free and go through many more possibilities to express loops beyond what Python can express.</p>
+<h2 id="techniques-that-well-explore-in-this-series">Techniques that we’ll explore in this series</h2>
+<p>First, although it is often <em>not</em> the most elegant and concise way, we will show how to express loops side-effect-free through recursion, as a chain of nested function calls. A loop like <code>for i in range(3): print(i)</code> becomes <code>f(f(f(0)))</code>, where each function prints its argument and then increases it by <code>1</code> before passing it on to the next call. There is a simple recipe to translate loops to such recursive functions calls. However, recursion is more general and can express much more. For example, we could recurse twice instead of once inside of a function, which would correspond to looping through a tree structure. Understanding the correspondence between loops and recursion is conceptually extremely helpful to understand other techniques.</p>
+<p>The next thing, still more on the conceptual side, we will look at a higher order function called <code>fix</code> that can make non-recursive function recurse, somewhat similar to <code>while</code> that makes a statement repeat.</p>
+<p>Finally, with this background, we’ll get into more practical, concise every-day techniques that are used in functional programming, such as list comprehensions and its generalization called monad comprehensions, <code>folds</code> that allow passing state from one step to the next, and into a generalization of these techniques called <code>recursion</code> schemes that allow to loop through more complex data structures such as trees.</p>
+<p>That’s it for post number 1</p>

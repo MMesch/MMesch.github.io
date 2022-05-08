@@ -1,0 +1,36 @@
+<p>Recently I needed a module that provides spherical harmonics transforms and tools in Python and I started wrapping the library shtools written by Mark Wieczorek using f2py from the numpy/scipy packages. Here is the result in case anyone is interested. If you are looking for a complete package, note that there is also another python module (pyspharm) that deals with spherical harmonics.</p>
+<p>UPDATE: a new and better version of the python wrapper is now included in the SHTOOLS library which you can find here: pyshtools. Numerous examples are included that show how it can be used from Python. Other spherical harmonics libraries are: pyspharm and SHTns. In addition to the spherical harmonics transforms, SHTOOLS provides local multitaper spherical harmonics analysis, as well as spherical harmonics rotations, coupling matrices, etc …</p>
+<p>Little Examples Once the package is compiled, a spherical harmonics transform is as easy as:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> shtools</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> grid <span class="op">=</span> shtools.pymakegriddh(coeffs)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> coeffs <span class="op">=</span> shtools.pyshexpanddh(grid,nlat<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div>
+<p>a rotation by 3 Euler angles can be done with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> angles <span class="op">=</span> np.radians(np.array[<span class="fl">90.</span>,<span class="op">-</span><span class="fl">30.</span>,<span class="fl">0.</span>])) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> coeffs <span class="op">=</span> shtools.pyshrotaterealcoef(coeffs_trim,angles) </span></code></pre></div>
+<p>Wrapped subroutines (so far)</p>
+<ul>
+<li>makegriddh (expand spherical harmonic coefficients on a regular lat-lon grid)</li>
+<li>shexpanddh (get spherical harmonics coefficients from a regular lat-lon grid)</li>
+<li>shpowerspectrum (get power spectrum from spherical harmonics coefficients)</li>
+<li>shcrosspowerspectrum (get cross power spectrum)</li>
+<li>shadmitcorr (compute admittance and correlation)</li>
+<li>shconfidence</li>
+<li>shrotaterealcoef (rotate spherical harmonic coefficients by 3 angles)</li>
+</ul>
+<p>For a detailed description of all the routines available in shtools see shtools.ipgp.fr.</p>
+<h2 id="installation">Installation:</h2>
+<h3 id="prerequisites">Prerequisites:</h3>
+<p>First you need to compile and install the shtools library. To do this, follow the instructions on its webpage (you’ll also need fftw3 for this which is often available through the package manager of many distributions). I compiled with gfortran and changed the associated compiler flags in the shtools Makefile to:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">ifeq</span> (<span class="ch">$(</span><span class="dt">F95</span><span class="ch">)</span>,gfortran)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Default gfortran flags</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">F95FLAGS </span><span class="ch">?=</span><span class="st"> -m64 -O3 -fPIC</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">MODFLAG </span><span class="ch">=</span><span class="st"> -Imodpath</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">endif</span> </span></code></pre></div>
+<p>The fPIC option is important and ensures compilation with position independent code.</p>
+<p>Second you need to have scipy/numpy and especially the f2py compiler installed. You can test this by typing the command “f2py” in the console. It is often installed along numpy/scipy installations. Sometimes you have to set the correct path to it. You can find more info on how to use and install f2py on the google codes or scipy webpages.</p>
+<p>Finally you can download the actual wrapper files here. wrapper.f90 contains the wrapper routines that need to be compiled with f2py. test.py is a small example script that shows how one can plot a map from spherical harmonic coefficients using shtools, numpy, matplotlib and basemap.</p>
+<p>How to compile the wrapper So far I only tested the compilation on my own linux machine. Once you have a working shtools library and also the f2py compiler running, try:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">f2py</span> <span class="at">-I</span><span class="st">&quot;SHTOOLS_INCLUDE_DIR&quot;</span> <span class="at">-L</span><span class="st">&quot;SHTOOLS_LIB_DIR&quot;</span> <span class="at">-lSHTOOLS2.8</span> <span class="at">-lfftw3</span> <span class="at">-lm</span> <span class="at">--f90flags</span><span class="op">=</span><span class="st">&quot;-m64 -fPIC&quot;</span> <span class="at">--f77flags</span><span class="op">=</span><span class="st">&quot;-m64 -fPIC&quot;</span> <span class="at">-c</span> <span class="at">-m</span> shtools wrapper.f90 </span></code></pre></div>
+<p>this should create the file shtools.so that you can finally import into python.</p>
+<p>The test script the test script test.py shows an example on how to plot a map from spherical harmonics coefficients. You need shtools,numpy, matplotlib and basemap working. The script plots a function with sh-coefficients up to a certain degree. The result should look something like this:</p>
+<p><img src="/images/posts/spherical-harmonics.png" style="width:50%"/></p>

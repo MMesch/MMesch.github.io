@@ -1,0 +1,28 @@
+<h2 id="the-user-perspective">The user perspective</h2>
+<p>Before describing the technical setup, here is an example how I use my task management system. If I have a meeting</p>
+<h2 id="features">Features</h2>
+<p>This is mostly about <em>reducing</em> features. We want a minimal set so that we can speed up time and reduce any extra thought to get a minimal and efficient system instead of a complex one.</p>
+<ul>
+<li>command line interface</li>
+<li>tasks, should come with tags, a note file and opening date</li>
+<li>no prioritization, all tasks are the same. Essentially I use the task system only as a must-do list. Nice-to-have’s go somewhere else or under a special “idea” tag.</li>
+<li>tasks are done after concrete outcome. Notes vanish once a task is done.</li>
+</ul>
+<h2 id="the-technical-perspective">The technical perspective</h2>
+<p>Let’s start with a basic overview of the components that make up this system. Over time I developed this technical setup:</p>
+<ul>
+<li><a href="https://taskwarrior.org/">taskwarrior</a> maintains a database of tasks. Taskwarrior provides a bunch of nice features and utilities but I only use very few of them. For my purpose I store tasks via the command line interface with a one line description, attached labels, a unique id and a status field that says whether the task is done or not.</li>
+<li><a href="https://github.com/robwhitaker/hasknote">hasknote</a> adds note-taking functionality to taskwarrior. It’s a very simple but useful tool that opens neovim to edit a markdown note that is stored under the unique id of the task in some folder.</li>
+<li>To rapidly take notes in neovim, I use the plugin <code>coc-snippets</code> and maintain a database of templates for different opportunities such as a default meeting template, one for requirement gathering and so on.</li>
+<li>I then added a set of bash aliases and functions that wrap the usual <code>taskwarrior</code> commands with even shorter key combinations.</li>
+<li>Finally a custom <code>.taskrc</code> file specifies reports such as <code>today</code> or <code>week</code> that automatically filter and sort tasks that I have done over the respective period.</li>
+</ul>
+<p>This setup might seem brittle. All those custom files and commands put together, <code>hasknote</code> not being very actively maintained and so on. The secret sauce here is <strong>Nix</strong>, and anyone who has experience using it might understand that this can nevertheless be very stable, with all dependencies pinned to specific versions. I thus have only very minor update anxiety.</p>
+<h2 id="what-is-unsolved">What is unsolved</h2>
+<p>Right now, there is no simple way for prioritization. I’d like to simply have an ordered list and a super quick method of moving tasks up or down (e.g. with arrow keys). Taskwarrior provides basically two ways of prioritization, due dates and special tags (<code>priority:H/M/L</code> and <code>next</code>), from which priority is automatically computed. I found this cumbersome from the user perspective.</p>
+<h2 id="alternatives">Alternatives</h2>
+<p>Components</p>
+<ul>
+<li>I have considered the zettelkasten system for note taking, e.g. exchanging hasknote with <a href="https://neuron.zettel.page/">neuron</a>. The upside would be that notes could be cross-linked, however, I kind of like that notes that are taken while working through tasks can <em>not</em> be easily reused. Notes are something like an ephemeral cache for me that I use to help thinking or store data over a medium period of time. If I really want to <em>do</em> something with this information, I would typically share or publish it - or put it into a separate permanent Zettelkasten system that is well maintained and curated.</li>
+<li>I have considered exchanging the database component that is currently handled by <code>taskwarrior</code> with <a href="https://www.visidata.org/">visidata</a> or <a href="https://tasklite.org/">tasklite</a>. However, several things made me move back: (a) visidata had some small bugs, tasklite had a slightly more difficult interface for adding tasks.</li>
+</ul>

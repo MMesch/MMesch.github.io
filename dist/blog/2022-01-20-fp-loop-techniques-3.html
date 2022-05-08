@@ -1,0 +1,43 @@
+<h2 id="from-list-to-monad-comprehensions">from list to monad comprehensions</h2>
+<p>Then, there are comprehensions, known in the Python world mostly as list or dictionary comprehensions. These might seem limited in scope to these two data types, but we will see that a whole class of loops over data types that have a notion of append can be expressed that way. This general technique is called Monad comprehensions.</p>
+<p>If there is no external state, and nothing to accumulate, typically list comprehensions work well in functional programming as they do in imperative languages. A simple list comprehension in Python looks like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">2</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span></code></pre></div>
+<p>In Haskell it is almost the same:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> [<span class="dv">2</span><span class="op">*</span>x <span class="op">|</span> x <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="op">..</span><span class="dv">10</span>]]</span></code></pre></div>
+<p>More advanced examples look like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">:</span> a <span class="ot">=</span> [x <span class="op">+</span> y <span class="op">|</span> x<span class="ot">&lt;-</span>[<span class="dv">1</span><span class="op">..</span><span class="dv">10</span>], y<span class="ot">&lt;-</span>[<span class="dv">1</span><span class="op">..</span><span class="dv">10</span>], x<span class="op">+</span>y <span class="op">&lt;</span> <span class="dv">5</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>λ<span class="op">:</span> a</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>]</span></code></pre></div>
+<p>that introduce conditions as in Python</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [x <span class="op">+</span> y <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="cf">if</span> x<span class="op">+</span>y <span class="op">&lt;</span> <span class="dv">5</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span></code></pre></div>
+<p>Interestingly, in functional languages list comprehensions generalize to much more than just lists and can be used to express many other loops. This technique is called monad-comprehensions. A data-type with a Monad typeclass (think about it as an interface for the purpose of this blog-post) knows how to bind to another member of it. E.g. a list could know that it can bind to another list by appending its elements. Similarly, a data type that represents a print action could bind to another print action by simply printing one statement after another, or a string could know how to bind to another string.</p>
+<p>To translate the above list comprehension into Monad do-notation we would write:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="op">..</span><span class="dv">10</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">2</span> <span class="op">*</span> x]</span></code></pre></div>
+<p>A more interesting application that shows that we can do more than just the normal comprehensions with the monad syntax would be:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="op">..</span><span class="dv">10</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  [x, <span class="dv">2</span><span class="op">*</span>x]</span></code></pre></div>
+<p>This <em>adds</em> elements and shows that this not just a simple one per element loop anymore. Its output is:</p>
+<pre><code>[1,2,2,4,3,6,4,8,5,10,6,12,7,14,8,16,9,18,10,20]</code></pre>
+<p>But even more interesting, we can loop through other things that bind to each other such as Maybe’s:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> [x <span class="op">+</span> y <span class="op">|</span> x <span class="ot">&lt;-</span> <span class="dt">Just</span> <span class="dv">1</span>, y <span class="ot">&lt;-</span> <span class="dt">Just</span> <span class="dv">2</span>]</span></code></pre></div>
+<p>and even guards</p>
+<h2 id="filters-and-maps">filters and maps</h2>
+<p>The arguably simplest are simple element wise tasks or mutations of a container such as a list, a dictionary (in Python lingo) that don’t depend on each other. In functional programming, these would be expressed as filters, maps or reverse maps that look remarkably similar to python loops using the <code>range</code> function over some index.</p>
+<h2 id="right-and-left-folds">Right and left folds</h2>
+<p>Next, we have a technique that is quite common in functional programming called folds. Essentially, folds express looping through a sortable container from the head or from the tail, passing compute state from one computation to another. This is the simple way to express a loop with an accumulator as we have seen above.</p>
+<p>When computations start to depend on each other, suddenly order becomes important in the loop since we can only depend on values that have been computed prior to the one that we are computing right now.</p>
+<p>If we think about a one dimensional array, the easiest orders are end-to-start or start-to-end that are embodied by right and left folds. Essentially we will then loop through the array from either end and accumulate some compute state on the way that we can then reuse later.</p>
+<p>However, we could also have more complex compute orders. Think about an array that where I want to average every neighboring two elements. Yes, I could do this with a fold, but that would introduce an unnecessary dependency that I don’t need.</p>
+<h2 id="catamorphisms">Catamorphisms</h2>
+<p>And then, finally, we have so-called catamorphisms that generalize the fold idea, allowing us, for example, to “loop” through trees accumulating the values.</p>
+<p>One criterium to pick the right technique is how concise a loop can be expressed, but it is equally important how readable it is which depends on the expertise of the reading programmer, and finally how fast it is when executing. We will see that performance considerations also play a big role.</p>
+<h2 id="looping-with-state-monads">looping with State Monads</h2>
+<h1 id="further-reading">further reading</h1>
+<ul>
+<li>https://duplode.github.io/posts/whats-in-a-fold.html</li>
+<li>https://colah.github.io/posts/2015-09-NN-Types-FP/</li>
+</ul>

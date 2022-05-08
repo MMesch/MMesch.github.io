@@ -1,0 +1,76 @@
+<p>My last post demonstrated how to interact directly with a Jupyter kernel via the <i>jupyter_client</i> python module. Communication was done via the ZeroMQ messaging protocoll through a number of specific ports. As soon as we want to communicate with the kernel via a web application, as for example the jupyter notebook app does, there is a simpler way that exposes the communication API as http endpoints and websocket connections. Any client website or webserver can then directly talk to a jupyter kernel. The jupyter application that provides this API is a tornado server called <a href="https://github.com/jupyter/kernel_gateway">kernelgateway</a> that can -for our purposes- be thought of as a jupyter notebook without the notebook client itself. The kernelgateway can be installed with <code>conda install -c conda-forge jupyter_kernel_gateway</code> or <code>pip install jupyter_kernel_gateway</code>. <br /></p>
+<p>The default API of the kernelgateway can be found here (<a href="https://github.com/jupyter/kernel_gateway/blob/master/kernel_gateway/jupyter_websocket/swagger.yaml">swagger.yaml</a>). It is possible to add your own custom API to the preexisting one (this is for another blogpost).</p>
+<h3 id="starting-kernels-via-bash-and-curl">Starting Kernels via Bash and Curl</h3>
+<p>The API can be explored with this bash snippet that (a) starts a kernelgateway, (b) starts a new kernel via a POST message, (c) get’s a list of running kernels via a GET request:</p>
+<script src="https://gist.github.com/MMesch/24bb44132957f78001d25287255c9648.js"></script>
+<p>When executed, this produces:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[...]/kernel_gateway_test$</span> ./run.sh </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> START GATEWAY ====</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Jupyter Kernel Gateway at http://127.0.0.1:8888</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> PING GATEWAY API ====</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&quot;version&quot;</span><span class="ex">:</span> <span class="st">&quot;5.4.0&quot;</span>}[I 180526 11:02:10 web:2064] 200 GET /api <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">1.40ms</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> START KERNEL ====</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Kernel started: 4d427307-10cb-44e8-a2ae-54dbd47fe05d</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&quot;id&quot;</span><span class="ex">:</span> <span class="st">&quot;4d427307-10cb-44e8-a2ae-54dbd47fe05d&quot;</span>, <span class="st">&quot;name&quot;</span>: <span class="st">&quot;python3&quot;</span>, <span class="st">&quot;last_activity&quot;</span>: <span class="st">&quot;2018-05-26T09:02:10.639301Z&quot;</span>, <span class="st">&quot;execution_state&quot;</span>: <span class="st">&quot;starting&quot;</span>, <span class="st">&quot;connections&quot;</span>: 0}[I 180526 11:02:10 web:2064] 201 POST /api/kernels <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">456.17ms</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> GET LIST OF RUNNING KERNELS ====</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[{</span><span class="st">&quot;id&quot;</span><span class="ex">:</span> <span class="st">&quot;4d427307-10cb-44e8-a2ae-54dbd47fe05d&quot;</span>, <span class="st">&quot;name&quot;</span>: <span class="st">&quot;python3&quot;</span>, <span class="st">&quot;last_activity&quot;</span>: <span class="st">&quot;2018-05-26T09:02:10.639301Z&quot;</span>, <span class="st">&quot;execution_state&quot;</span>: <span class="st">&quot;starting&quot;</span>, <span class="st">&quot;connections&quot;</span>: 0}][I 180526 11:02:10 web:2064] 200 GET /api/kernels <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">0.59ms</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> ALL DONE ====</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Received signal to terminate.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Terminated</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Kernel shutdown: 4d427307-10cb-44e8-a2ae-54dbd47fe05d</span></code></pre></div>
+<h3 id="starting-kernels-and-executing-code-via-websockets-and-python-aiohttp">Starting Kernels and Executing Code via Websockets and Python aiohttp</h3>
+<p>The same communication API can be used from Python with the aiohttp module and asynchronous http requests. Additionally we can connect the aiohttp client to the gateway via a websocket (ws). The websocket connection opens a channel directly to the kernel through which we can send messages such as execute requests, and receive messages from the kernel such as execute results. This is demonstrated in this script (output below). When executing the kernel gateway in terminal1 and the above script in terminal2, this produces:</p>
+<script src="https://gist.github.com/MMesch/1647615e2e046648a5cac262836e58f8.js"></script>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">terminal1$</span>  /gateway_aiohttp/jupyter kernelgateway <span class="at">--JupyterWebsocketPersonality.list_kernels</span><span class="op">=</span>True</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Jupyter Kernel Gateway at http://127.0.0.1:8888</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[I</span> 180526 .... web:2064] 200 GET /api/kernels <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">0.78ms</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Kernel started: 16582749-b11e-4868-930f-7bb76ae10c96</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[I</span> 180526 .... web:2064] 201 POST /api/kernels <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">427.41ms</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> WARNING <span class="kw">|</span> <span class="ex">No</span> session ID specified</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Adapting to protocol v5.1 for kernel 16582749-b11e-4868-930f-7bb76ae10c96</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[I</span> 180526 .... web:2064] 101 GET /api/kernels/16582749-b11e-4868-930f-7bb76ae10c96/channels <span class="er">(</span><span class="ex">127.0.0.1</span><span class="kw">)</span> <span class="ex">621.36ms</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Starting buffering for 16582749-b11e-4868-930f-7bb76ae10c96:1c08d7b3-97f4656534aede0cd4ddb32a</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">^C[KernelGatewayApp]</span> Interrupted...</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[KernelGatewayApp]</span> Kernel shutdown: 16582749-b11e-4868-930f-7bb76ae10c96</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">terminal2$</span> /gateway_aiohttp/python gateway_websocket.py</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> start or get kernel ====</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">get</span> kernel list from:  http://localhost:8888/api/kernels</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">no</span> kernel exists</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ex">starting</span> new kernel 16582749-b11e-4868-930f-7bb76ae10c96</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ex">====</span> start communication ====</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ex">----</span> sending <span class="at">----</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;header&#39;</span><span class="ex">:</span> {<span class="st">&#39;username&#39;</span>: <span class="st">&#39;&#39;</span>, <span class="st">&#39;version&#39;</span>: <span class="st">&#39;5.0&#39;</span>, <span class="st">&#39;session&#39;</span>: <span class="st">&#39;&#39;</span>, <span class="st">&#39;msg_id&#39;</span>: <span class="st">&#39;99bd09c585284c3f8f5e7ce1310d698b&#39;</span>, <span class="st">&#39;msg_type&#39;</span>: <span class="st">&#39;execute_request&#39;</span>}, <span class="st">&#39;parent_header&#39;</span>: {}, <span class="st">&#39;channel&#39;</span>: <span class="st">&#39;shell&#39;</span>, <span class="st">&#39;content&#39;</span>: {<span class="st">&#39;code&#39;</span>: <span class="st">&#39;2+3&#39;</span>, <span class="st">&#39;silent&#39;</span>: False, <span class="st">&#39;store_history&#39;</span>: False, <span class="st">&#39;user_expressions&#39;</span>: {}, <span class="st">&#39;allow_stdin&#39;</span>: False}, <span class="st">&#39;metadata&#39;</span>: {}, <span class="st">&#39;buffers&#39;</span>: {}}</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ex">----</span> receiving <span class="at">----</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> msg <span class="ex">type:</span> status <span class="op">&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;execution_state&#39;</span><span class="ex">:</span> <span class="st">&#39;busy&#39;</span>}</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> msg <span class="ex">type:</span> execute_input <span class="op">&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;code&#39;</span><span class="ex">:</span> <span class="st">&#39;2+3&#39;</span>, <span class="st">&#39;execution_count&#39;</span>: 1}</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> msg <span class="ex">type:</span> execute_result <span class="op">&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;data&#39;</span><span class="ex">:</span> {<span class="st">&#39;text/plain&#39;</span>: <span class="st">&#39;5&#39;</span>}, <span class="st">&#39;metadata&#39;</span>: {}, <span class="st">&#39;execution_count&#39;</span>: 1}</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> msg <span class="ex">type:</span> execute_reply <span class="op">&gt;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;status&#39;</span><span class="ex">:</span> <span class="st">&#39;ok&#39;</span>, <span class="st">&#39;execution_count&#39;</span>: 0, <span class="st">&#39;user_expressions&#39;</span>: {}, <span class="st">&#39;payload&#39;</span>: []}</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> msg <span class="ex">type:</span> status <span class="op">&gt;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ex">{</span><span class="st">&#39;execution_state&#39;</span><span class="ex">:</span> <span class="st">&#39;idle&#39;</span>}</span></code></pre></div>
+<p>We are sending a single execute message to the kernel and it responds with a cascade of messages that can be summarized as:</p>
+<ol type="1">
+<li>status -&gt; busy</li>
+<li>execute_input -&gt; code: ‘2+3’</li>
+<li>execute_result -&gt; data: ‘5’</li>
+<li>execute_reply -&gt; status: ok</li>
+<li>status -&gt; idle</li>
+</ol>
+<p>This corresponds to the standard jupyter messaging protocol (<a href="http://jupyter-client.readthedocs.io/en/stable/messaging.html" target="_blank">see details</a>).</p>

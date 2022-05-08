@@ -1,7 +1,7 @@
 "use strict"
 
 var hljs = require('highlight.js')
-var katex = require('markdown-it-katex')
+var mdkatex = require('markdown-it-katex')
 
 exports._highlight = function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -13,4 +13,4 @@ exports._highlight = function (str, lang) {
     return str;
 }
 
-exports._katex = katex 
+exports._katex = mdkatex

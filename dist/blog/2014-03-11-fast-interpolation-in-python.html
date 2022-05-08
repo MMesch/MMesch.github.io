@@ -1,0 +1,34 @@
+<p>This post is about interpolation on a N-dimensional regular grid that is distorted. With distorted I mean that dx, dy, dz can vary. The following code works very well:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.ndimage <span class="im">import</span> map_coordinates</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>nx_irreg, ny_irreg <span class="op">=</span> <span class="dv">20</span>,<span class="dv">30</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>nx_reg, ny_reg <span class="op">=</span> <span class="dv">500</span>,<span class="dv">500</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#create irregular sampling points and data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>xgrid <span class="op">=</span> np.sqrt(np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_irreg))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ygrid <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_irreg)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>zgrid_irreg <span class="op">=</span> np.outer(xgrid,ygrid)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#create regular sampling points</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>xcoords <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,nx_reg)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ycoords <span class="op">=</span> np.linspace(<span class="fl">0.</span>,<span class="fl">1.</span>,ny_reg)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#get array index coordinates</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ixcoords <span class="op">=</span> np.interp(xcoords, xgrid, np.arange(<span class="bu">len</span>(xgrid)))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>iycoords <span class="op">=</span> np.interp(ycoords, ygrid, np.arange(<span class="bu">len</span>(ygrid)))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#create 2d grid and interpolate</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ix,iy <span class="op">=</span> np.meshgrid(ixcoords,iycoords)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>points2d <span class="op">=</span> np.vstack( (ix.flatten(),iy.flatten()) )</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>zgrid_reg <span class="op">=</span> map_coordinates(zgrid_irreg, points2d, cval<span class="op">=</span>np.NaN).reshape(ny_reg,nx_reg)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.imshow(zgrid_reg,extent<span class="op">=</span>(<span class="fl">0.</span>,<span class="fl">1.</span>,<span class="fl">0.</span>,<span class="fl">1.</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>xp, yp <span class="op">=</span> np.meshgrid(xgrid,ygrid)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.scatter(xp.flatten(),yp.flatten())</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="/images/posts/interp_irregular.png" style="width:50%"/></p>

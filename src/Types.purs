@@ -87,6 +87,7 @@ type Post
     , thumb :: Maybe String
     , description :: Maybe String
     , content :: Maybe String
+    , compiled :: Maybe String
     , external :: Maybe String
     , thumbnail :: Maybe String
     }
