@@ -47,6 +47,7 @@ to generate this file without the comments in this block.
   , "type-equality"
   , "web-events"
   , "web-html"
+  , "web-uievents"
   , "yaml-next"
   ]
 , packages = ./packages.dhall
