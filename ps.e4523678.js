@@ -46417,6 +46417,10 @@ var PS = {};
     throw new Error("Failed pattern match at Data.List (line 249, column 1 - line 249, column 43): " + [v.constructor.name]);
   };
 
+  var singleton = function singleton(a) {
+    return new Data_List_Types.Cons(a, Data_List_Types.Nil.value);
+  };
+
   var reverse = function () {
     var go = function go($copy_acc) {
       return function ($copy_v) {
@@ -46499,6 +46503,7 @@ var PS = {};
   };
 
   exports["toUnfoldable"] = toUnfoldable;
+  exports["singleton"] = singleton;
   exports["manyRec"] = manyRec;
   exports["null"] = $$null;
   exports["reverse"] = reverse;
@@ -56997,8 +57002,17 @@ var PS = {};
 
   $PS["Halogen.HTML.Elements"] = $PS["Halogen.HTML.Elements"] || {};
   var exports = $PS["Halogen.HTML.Elements"];
+  var Control_Applicative = $PS["Control.Applicative"];
   var Data_Maybe = $PS["Data.Maybe"];
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
+
+  var elementNS = function () {
+    var $14 = Control_Applicative.pure(Data_Maybe.applicativeMaybe);
+    return function ($15) {
+      return Halogen_HTML_Core.element($14($15));
+    };
+  }();
+
   var element = Halogen_HTML_Core.element(Data_Maybe.Nothing.value);
   var h1 = element("h1");
   var h2 = element("h2");
@@ -57019,6 +57033,7 @@ var PS = {};
   var div_ = div([]);
   var a = element("a");
   exports["element"] = element;
+  exports["elementNS"] = elementNS;
   exports["a"] = a;
   exports["div"] = div;
   exports["div_"] = div_;
@@ -57849,6 +57864,7 @@ var PS = {};
   var Data_Array = $PS["Data.Array"];
   var Data_Eq = $PS["Data.Eq"];
   var Data_Functor = $PS["Data.Functor"];
+  var Data_List = $PS["Data.List"];
   var Data_List_Types = $PS["Data.List.Types"];
   var Data_String_CodeUnits = $PS["Data.String.CodeUnits"];
   var Text_Parsing_StringParser = $PS["Text.Parsing.StringParser"];
@@ -57914,8 +57930,8 @@ var PS = {};
     return HtmlComment;
   }();
 
-  var textParser = Data_Functor.map(Text_Parsing_StringParser.functorParser)(function ($36) {
-    return HtmlText.create($foreign.decodeHtmlEntity($36));
+  var textParser = Data_Functor.map(Text_Parsing_StringParser.functorParser)(function ($38) {
+    return HtmlText.create($foreign.decodeHtmlEntity($38));
   })(Text_Parsing_StringParser_CodeUnits.regex("[^<]+"));
   var selfClosingTags = ["br", "img", "hr", "meta", "input", "embed", "area", "base", "col", "keygen", "link", "param", "source", "command", "link", "track", "wbr"];
   var quotedString2 = Control_Apply.applyFirst(Text_Parsing_StringParser.applyParser)(Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Text_Parsing_StringParser_CodeUnits.string("\""))(Text_Parsing_StringParser_CodeUnits.regex("[^\"]*")))(Text_Parsing_StringParser_CodeUnits.string("\""));
@@ -57941,9 +57957,9 @@ var PS = {};
   var equals = Control_Apply.applyFirst(Text_Parsing_StringParser.applyParser)(Text_Parsing_StringParser_CodeUnits.string("="))(Text_Parsing_StringParser_CodeUnits.whiteSpace);
 
   var charListToString = function () {
-    var $37 = Data_Array.fromFoldable(Data_List_Types.foldableList);
-    return function ($38) {
-      return Data_String_CodeUnits.fromCharArray($37($38));
+    var $39 = Data_Array.fromFoldable(Data_List_Types.foldableList);
+    return function ($40) {
+      return Data_String_CodeUnits.fromCharArray($39($40));
     };
   }();
 
@@ -57972,15 +57988,24 @@ var PS = {};
   var elementParser = Control_Lazy.defer(Text_Parsing_StringParser.lazyParser)(function (v) {
     return Control_Bind.discard(Control_Bind.discardUnit)(Text_Parsing_StringParser.bindParser)(Text_Parsing_StringParser_CodeUnits.skipSpaces)(function () {
       return Control_Bind.bind(Text_Parsing_StringParser.bindParser)(Control_Bind.bind(Text_Parsing_StringParser.bindParser)(openingParser)(closingOrChildrenParser))(function () {
-        var $39 = Control_Applicative.pure(Text_Parsing_StringParser.applicativeParser);
-        return function ($40) {
-          return $39(HtmlElement.create($40));
+        var $41 = Control_Applicative.pure(Text_Parsing_StringParser.applicativeParser);
+        return function ($42) {
+          return $41(HtmlElement.create($42));
         };
       }());
     });
   });
 
   var closingOrChildrenParser = function closingOrChildrenParser(element) {
+    var scriptParser = Control_Bind.bind(Text_Parsing_StringParser.bindParser)(Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Text_Parsing_StringParser_CodeUnits.whiteSpace)(Text_Parsing_StringParser_CodeUnits.string(">")))(function () {
+      return Control_Bind.bind(Text_Parsing_StringParser.bindParser)(Text_Parsing_StringParser_Combinators.manyTill(Text_Parsing_StringParser_CodeUnits.anyChar)(Text_Parsing_StringParser_CodeUnits.string("</script>")))(function (content) {
+        return Control_Applicative.pure(Text_Parsing_StringParser.applicativeParser)({
+          children: Data_List.singleton(HtmlText.create(charListToString(content))),
+          attributes: element.attributes,
+          name: element.name
+        });
+      });
+    });
     var childrenParser = Control_Bind.bind(Text_Parsing_StringParser.bindParser)(Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Text_Parsing_StringParser_CodeUnits.whiteSpace)(Text_Parsing_StringParser_CodeUnits.string(">")))(function () {
       return Control_Bind.bind(Text_Parsing_StringParser.bindParser)(Text_Parsing_StringParser_Combinators.manyTill(nodeParser)(Text_Parsing_StringParser_CodeUnits.string("</" + (element.name + ">"))))(function (children) {
         return Control_Applicative.pure(Text_Parsing_StringParser.applicativeParser)({
@@ -57991,10 +58016,17 @@ var PS = {};
       });
     });
     return Control_Lazy.defer(Text_Parsing_StringParser.lazyParser)(function (v) {
-      var $35 = isSelfClosingElement(element);
+      var $36 = isSelfClosingElement(element);
 
-      if ($35) {
+      if ($36) {
         return Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Control_Apply.applySecond(Text_Parsing_StringParser.applyParser)(Text_Parsing_StringParser_CodeUnits.whiteSpace)(Text_Parsing_StringParser_Combinators.optional(Text_Parsing_StringParser_CodeUnits.string("/"))))(Text_Parsing_StringParser_CodeUnits.string(">")))(Control_Applicative.pure(Text_Parsing_StringParser.applicativeParser)(element));
+      }
+
+      ;
+      var $37 = element.name === "script";
+
+      if ($37) {
+        return scriptParser;
       }
 
       ;
@@ -58024,6 +58056,7 @@ var PS = {};
   var Data_Either = $PS["Data.Either"];
   var Data_Functor = $PS["Data.Functor"];
   var Data_List_Types = $PS["Data.List.Types"];
+  var Data_Maybe = $PS["Data.Maybe"];
   var Data_Show = $PS["Data.Show"];
   var Data_Symbol = $PS["Data.Symbol"];
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
@@ -58035,30 +58068,45 @@ var PS = {};
     return Halogen_HTML_Properties.attr(v.value0)(v.value1);
   };
 
-  var nodeToHtml = function nodeToHtml(v) {
-    if (v instanceof Html_Parser.HtmlElement) {
-      return elementToHtml(v.value0);
-    }
+  var nodeToHtml = function nodeToHtml(maybeNs) {
+    return function (v) {
+      if (v instanceof Html_Parser.HtmlElement) {
+        return elementToHtml(maybeNs)(v.value0);
+      }
 
-    ;
+      ;
 
-    if (v instanceof Html_Parser.HtmlText) {
-      return Halogen_HTML_Core.text(v.value0);
-    }
+      if (v instanceof Html_Parser.HtmlText) {
+        return Halogen_HTML_Core.text(v.value0);
+      }
 
-    ;
+      ;
 
-    if (v instanceof Html_Parser.HtmlComment) {
-      return Halogen_HTML_Core.text("");
-    }
+      if (v instanceof Html_Parser.HtmlComment) {
+        return Halogen_HTML_Core.text("");
+      }
 
-    ;
-    throw new Error("Failed pattern match at Html.Renderer.Halogen (line 34, column 1 - line 34, column 50): " + [v.constructor.name]);
+      ;
+      throw new Error("Failed pattern match at Html.Renderer.Halogen (line 37, column 1 - line 37, column 72): " + [maybeNs.constructor.name, v.constructor.name]);
+    };
   };
 
-  var elementToHtml = function elementToHtml(ele) {
-    var children = Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(nodeToHtml)(ele.children));
-    return Halogen_HTML_Elements.element(ele.name)(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(htmlAttributeToProp)(ele.attributes)))(children);
+  var elementToHtml = function elementToHtml(maybeNs) {
+    return function (ele) {
+      var newNs = function () {
+        if (ele.name === "svg") {
+          return Data_Maybe.Just.create("http://www.w3.org/2000/svg");
+        }
+
+        ;
+        return maybeNs;
+      }();
+
+      var insertElem = Data_Maybe.maybe(Halogen_HTML_Elements.element)(Halogen_HTML_Elements.elementNS)(newNs);
+      var children = Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(nodeToHtml(newNs))(ele.children));
+      var attrs = Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(htmlAttributeToProp)(ele.attributes));
+      return insertElem(ele.name)(attrs)(children);
+    };
   };
 
   var parse = function parse(raw) {
@@ -58067,10 +58115,10 @@ var PS = {};
     }))(Data_Show.showRecordFieldsCons(new Data_Symbol.IsSymbol(function () {
       return "pos";
     }))(Data_Show.showRecordFieldsNil)(Data_Show.showInt))(Data_Show.showString))))(Data_Functor.map(Data_Either.functorEither)(function () {
-      var $9 = Data_Array.fromFoldable(Data_List_Types.foldableList);
-      var $10 = Data_Functor.map(Data_List_Types.functorList)(nodeToHtml);
-      return function ($11) {
-        return $9($10($11));
+      var $11 = Data_Array.fromFoldable(Data_List_Types.foldableList);
+      var $12 = Data_Functor.map(Data_List_Types.functorList)(nodeToHtml(Data_Maybe.Nothing.value));
+      return function ($13) {
+        return $11($12($13));
       };
     }())(Html_Parser.parse(raw)));
   };
@@ -58082,9 +58130,9 @@ var PS = {};
   };
 
   var render = function render(props) {
-    var $12 = Halogen_HTML_Elements.div(props);
-    return function ($13) {
-      return $12(renderToArray($13));
+    var $14 = Halogen_HTML_Elements.div(props);
+    return function ($15) {
+      return $14(renderToArray($15));
     };
   };
 
@@ -58284,6 +58332,7 @@ var PS = {};
 })(PS);
 
 (function ($PS) {
+  // Generated by purs version 0.14.0
   "use strict";
 
   $PS["Pages"] = $PS["Pages"] || {};
@@ -58333,8 +58382,7 @@ var PS = {};
         });
       });
     });
-  }; // This is a little helper to save some space
-
+  };
 
   var cn = function cn($24) {
     return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($24));
@@ -58381,10 +58429,6 @@ var PS = {};
     })(imageElements)(postCards);
     return Halogen_HTML_Elements.div([cn("bg-white pt-6 flex flex-col")])(elements);
   };
-  /**
-  *  nav bar component 
-  */
-
 
   var navBarButton = function navBarButton(v) {
     return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(v.href), cn("block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl")])([Halogen_HTML_Core.text(v.content)]);
@@ -58401,10 +58445,6 @@ var PS = {};
   var navBarIconGroup = function navBarIconGroup(v) {
     return Halogen_HTML_Elements.div([cn("flex flex-row m-2")])(v.elements);
   };
-  /**
-  *  writing pages 
-  */
-
 
   var navBar = Halogen_HTML_Elements.div([cn("lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0")])([navBarButtonGroup({
     elements: [navBarButton({
@@ -58425,7 +58465,7 @@ var PS = {};
       link: "https://www.linkedin.com/in/mmesch",
       path: "logo-linkedin.png"
     })]
-  })]); // simple navbar layout
+  })]);
 
   var layout1 = function layout1(elements) {
     var container = Halogen_HTML_Elements.div([cn("w-full max-w-4xl block mx-auto px-1 md:px-3 py-3")]);
@@ -58493,8 +58533,7 @@ var PS = {};
         throw new Error("Failed pattern match at Pages (line 83, column 13 - line 85, column 83): " + [post.description.constructor.name]);
       }(), rendered])]);
     };
-  }; // pages
-
+  };
 
   var blogList = function blogList(state) {
     return layout1([list(state.posts)]);
@@ -60709,7 +60748,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41521" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42731" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

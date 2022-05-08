@@ -45,7 +45,7 @@ exp = (1 + x/n)**n
 sp.plot(*[exp.subs(n, i) for i in range(10)], sp.exp(x), xlim=(-5, 5), ylim=(-3, 7), legend=True);
 ```
 
-![png](/images/posts/generalized_central_limit_theorem_1_1_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_1_0.png)
 
 It's fascinating how this expression evolves from a constant ($n=0$) over a line ($n=1$) to something that more closely resembles an exponential. Basically, in the process, we are adding higher and higher powers of $x$ and thus gradually build up the exponential function that has them all.
 
@@ -78,7 +78,7 @@ exp = (1 + n*x/n)**n
 sp.plot(*[exp.subs(n, i) for i in range(10)], sp.exp(9*x), xlim=(-4, 4), ylim=(-3, 7), legend=True);
 ```
 
-![png](/images/posts/generalized_central_limit_theorem_1_4_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_4_0.png)
 
 Admittedly, this looks a bit confusing. Keep in mind, that we are showing the _unzoomed_ coordinate system above, so we expect to see the equation converging to exponentials that are more and more squashed around $x=0$ as $n$ grows. And in fact, if you look at the above plot, only at the part greater than $x=-1$, you can indeed see them (we have plotted a true exponential for reference).
 
@@ -109,7 +109,7 @@ exp = (1 - n*x**2/n)**n
 sp.plot(*[exp.subs(n, i) for i in range(10)], sp.exp(-9*x**2), xlim=(-2, 2), ylim=(-0.5, 1.5), legend=True);
 ```
 
-![png](/images/posts/generalized_central_limit_theorem_1_7_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_7_0.png)
 
 As expected, our original function, an inverted parabola, converges to a Gaussian bell curve between $-1$ and $1$ once we take it to a high power. Again, this is in our _unstretched_ coordinate system, and we expect this peak to become narrower and narrower, while looking more and more like a Gaussian bell curve, as $n$ grows.
 
@@ -125,7 +125,7 @@ Our zoomed coordinate system is now $n^{1/\alpha}x$, and in this coordinate syst
 sp.plot(*[sp.exp(-9*abs(x)**alpha).subs(alpha, i) for i in range(0, 4)], xlim=(-2, 2), ylim=(-0.5, 1.5), legend=True);
 ```
 
-![png](/images/posts/generalized_central_limit_theorem_1_9_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_9_0.png)
 
 And here is the explicit convergence of equation (9) for $\alpha=1$:
 
@@ -134,7 +134,7 @@ exp = (1 - n*x**alpha/n)**n
 sp.plot(*[exp.subs(alpha, 1).subs(n, i) for i in range(10)], sp.exp(-9*abs(x)), xlim=(-2, 2), ylim=(-0.5, 1.5), legend=True);
 ```
 
-![png](/images/posts/generalized_central_limit_theorem_1_11_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_11_0.png)
 
 This looks more or less the same as before with a convergence to the exponential for $x < 1$. What is particular about exponentials with $0 < \alpha < 2$ is that, even though they have a «pointy» maximum at $x=0$ because there is a discontinuity in their first derivative.
 
@@ -145,7 +145,7 @@ exp = (1 - n*abs(x)**alpha/n)**n
 sp.plot(*[exp.subs(alpha, 4).subs(n, i) for i in range(10)], sp.exp(-9*abs(x)**4), xlim=(-2, 2), ylim=(-0.5, 1.5), legend=True);
 ```
     
-![png](/images/posts/generalized_central_limit_theorem_1_13_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_13_0.png)
 
 A final thought is that we seem screwed if we look at _mixed_ polynomials. Consider, for example, the following equation:
 
@@ -178,7 +178,7 @@ expr = abs(sp.cos(x))**n
 sp.plot(*[expr.subs(n,i) for i in range(10)], xlim=(-4, 4), ylim=(-1.5, 1.5), legend=True);
 ```
     
-![png](/images/posts/generalized_central_limit_theorem_1_15_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_15_0.png)
 
 Can you see how the maxima converge to Gaussian bell curves? Take this polynomial for another example, with a local maximum close to $1$:
 
@@ -188,7 +188,7 @@ expr.subs(x, sp.sqrt(n)*x)
 sp.plot(*[expr.subs(n,i) for i in range(1, 30, 3)], xlim=(-4, 4), ylim=(-1.5, 1.5));
 ```
     
-![png](/images/posts/generalized_central_limit_theorem_1_17_0.png)
+![](/images/posts/generalized_central_limit_theorem_1_17_0.png)
 
 Again, convergence of this local maximum to a Gaussian is clearly visible. Furthermore, in the multiplication process, _the global maxima will dominate all other ones_. This means that _any_ bounded function with a single (well-behaved) maximum will converge _globally_ to a Gaussian.
 
