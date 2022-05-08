@@ -18,6 +18,7 @@ import Pages (blogList, mainPage, blogPage)
 import Routes (listenForUrlChanges, routeCodec, setUrl, validateUrl)
 import Routing.Duplex as RD
 import Routing.PushState (makeInterface, PushStateInterface)
+import Web.Event.Event as Event
 import Types
   ( Page(Main, Blog, BlogList)
   , Action(SwitchPage, Initialize)
@@ -134,7 +135,8 @@ component =
 
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
   handleAction = case _ of
-    SwitchPage page -> do
+    SwitchPage page ev -> do
+      H.liftEffect $ Event.preventDefault ev 
       state <- H.get
       navigate (Just page)
     Initialize -> do -- HalogenM

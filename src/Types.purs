@@ -4,6 +4,7 @@ import Prelude
 import Data.Maybe (Maybe)
 import Data.Generic.Rep (class Generic)
 import Data.Map (Map)
+import Web.Event.Event (Event)
 
 {-
 page hierarchy
@@ -34,7 +35,7 @@ can't be directly triggered from the outside (they can be triggered indirectly
 thought.
 -}
 data Action
-  = SwitchPage Page
+  = SwitchPage Page Event
   | Initialize
 
 {-

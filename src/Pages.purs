@@ -1,13 +1,15 @@
 module Pages where
 
 import Prelude
-import Types (State, Action, Posts, Post, CV)
+import Types (State, Action(SwitchPage), Posts, Post, CV, Page(Main, Blog, BlogList))
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
+import Halogen.HTML.Events as HE
 import Html.Renderer.Halogen as RH
 import Data.List (toUnfoldable)
 import Data.Array (reverse, filter, (..), zipWith)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
+import Web.UIEvent.MouseEvent as MouseEvent
 import Data.Map (values)
 
 -- simple navbar layout
@@ -84,13 +86,12 @@ cn :: forall t5 t6. String -> HH.IProp ( class :: String | t6 ) t5
 cn = HP.class_ <<< HH.ClassName
 
 {- nav bar component -}
-navBarButton ::
-  forall i a.
-  { href :: String, content :: String } ->
-  HH.HTML i a
-navBarButton { href, content } =
+navBarButton :: forall i. { href :: String, content :: String, page :: Page }
+  -> HH.HTML i Action
+navBarButton { href, content, page } =
   HH.a
     [ HP.href href
+    , HE.onClick $ MouseEvent.toEvent >>> SwitchPage page 
     , cn "block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl"
     ]
     [ HH.text content ]
@@ -127,8 +128,8 @@ navBar =
   HH.div [ cn "lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
     [ navBarButtonGroup
         { elements:
-            [ navBarButton { href: "/", content: "About" }
-            , navBarButton { href: "/blog", content: "Blog" }
+            [ navBarButton { href: "/", content: "About", page: Main }
+            , navBarButton { href: "/blog", content: "Blog", page: BlogList }
             ]
         }
     , navBarIconGroup
@@ -156,13 +157,17 @@ listCard post =
   let
     cardStyle = "hover:cursor-pointer w-full block p-4 md:p-6 my-3 border-solid border-2 rounded-lg"
 
-    href = fromMaybe ("/blog/" <> fromMaybe "" post.id) post.external
+    postId = fromMaybe "" post.id
+
+    href = fromMaybe ("/blog/" <> postId) post.external
 
     externalTag = HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
   in
     HH.a
       ( [ HP.href href, cn cardStyle ]
-          <> if post.external == Nothing then [] else [ HP.target "_blank" ]
+          <> case post.external of
+                Nothing -> [ HE.onClick $ MouseEvent.toEvent >>> SwitchPage (Blog postId)]
+                Just link -> [ HP.target "_blank" ]
       )
       [ HH.div [ cn "block text-lg" ]
           $ ( if post.external /= Nothing then
