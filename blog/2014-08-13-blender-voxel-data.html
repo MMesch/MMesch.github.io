@@ -1,0 +1,48 @@
+<p>You can do cool stuff with manual Blender voxel data. See for example this video:</p>
+<iframe align="middle" allowfullscreen frameborder="40" height="315" src="//www.youtube.com/embed/6n62SZMC3fo" width="560">
+</iframe>
+<p>Unfortunately there is not much documentation about the input file formats “.bvox” or 8bit raw. Both are simple structured rectangular grids in which usually ‘x’ is the fastest and ‘z’ the slowest dimension.</p>
+<h3 id="bvox-format">bvox format</h3>
+<p>bvox is a very simple binary file that looks like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nx ny nz nframes data[1,0,0] data[2,0,0] .... data[nx-1,ny-1,nz-1]</span></code></pre></div>
+<p><code>nx,ny,nz,nframes</code> are 32bit integers, data_xyz are 32bit floats between 0 and 1. This is a purely rectangular structured grid which is mapped to the appropriate domain within blender. There are options for spherical and cylindrical mappings, but I have only tried mapping it to a simple cube. Here is an example script that creates a simple 3D texture:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#specify dimensions header</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nx, ny, nz, nframes <span class="op">=</span> <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> np.array([nx,ny,nz,nframes])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#create simple distance to origin texture</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,nx)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,ny)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,nz)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>zz,yy,xx <span class="op">=</span> np.meshgrid(z,y,x,indexing<span class="op">=</span><span class="st">&#39;ij&#39;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>pointdata <span class="op">=</span> yy.flatten()<span class="op">**</span><span class="dv">2</span><span class="op">+</span>zz.flatten()<span class="op">**</span><span class="dv">2</span><span class="op">+</span>xx.flatten()<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#open and write to file</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>binfile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;test1.bvox&#39;</span>,<span class="st">&#39;wb&#39;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>header.astype(<span class="st">&#39;&amp;lti4&#39;</span>).tofile(binfile)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>pointdata.astype(<span class="st">&#39;&amp;ltf4&#39;</span>).tofile(binfile)</span></code></pre></div>
+<h3 id="bit-raw-format">8bit raw format</h3>
+<p>This format is even simpler and saves space. It is just a long array of 8bit uints, frame by frame. The dimensions are specified in blender itself.</p>
+<pre><code>frame1[1,0,0] frame1[2,0,0] .... frame1[nx-1,ny-1,nz-1] frame2[0,0,0] ...</code></pre>
+<p>A test file can be written with:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>nx, ny, nz <span class="op">=</span> <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#create simple distance to center texture</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,nx)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,ny)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,nz)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>zz,yy,xx <span class="op">=</span> np.meshgrid(z,y,x,indexing<span class="op">=</span><span class="st">&#39;ij&#39;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>pointdata <span class="op">=</span> yy.flatten()<span class="op">**</span><span class="dv">2</span><span class="op">+</span>zz.flatten()<span class="op">**</span><span class="dv">2</span><span class="op">+</span>xx.flatten()<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#open and write to file</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>binfile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;test_8bit.raw&#39;</span>,<span class="st">&#39;wb&#39;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>pointdata <span class="op">*=</span> <span class="dv">255</span><span class="op">/</span>pointdata.<span class="bu">max</span>()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>pointdata.astype(np.uint8).tofile(binfile)</span></code></pre></div>
+<p>test render</p>
+<p><img src="/images/posts/voxelsphere.png" style="width:50%"/></p>
+<p>EDIT: see Leo’s comment below the text for a quick overview on how to get this into blender!</p>
+<p>As you can see the volume data receives and casts shadows, can be made transparent, change the color and much more.</p>

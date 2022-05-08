@@ -27398,7 +27398,7 @@ hljs.registerLanguage('xl', require('./languages/xl'));
 hljs.registerLanguage('xquery', require('./languages/xquery'));
 hljs.registerLanguage('zephir', require('./languages/zephir'));
 module.exports = hljs;
-},{"./core":"node_modules/highlight.js/lib/core.js","./languages/1c":"node_modules/highlight.js/lib/languages/1c.js","./languages/abnf":"node_modules/highlight.js/lib/languages/abnf.js","./languages/accesslog":"node_modules/highlight.js/lib/languages/accesslog.js","./languages/actionscript":"node_modules/highlight.js/lib/languages/actionscript.js","./languages/ada":"node_modules/highlight.js/lib/languages/ada.js","./languages/angelscript":"node_modules/highlight.js/lib/languages/angelscript.js","./languages/apache":"node_modules/highlight.js/lib/languages/apache.js","./languages/applescript":"node_modules/highlight.js/lib/languages/applescript.js","./languages/arcade":"node_modules/highlight.js/lib/languages/arcade.js","./languages/arduino":"node_modules/highlight.js/lib/languages/arduino.js","./languages/armasm":"node_modules/highlight.js/lib/languages/armasm.js","./languages/xml":"node_modules/highlight.js/lib/languages/xml.js","./languages/asciidoc":"node_modules/highlight.js/lib/languages/asciidoc.js","./languages/aspectj":"node_modules/highlight.js/lib/languages/aspectj.js","./languages/autohotkey":"node_modules/highlight.js/lib/languages/autohotkey.js","./languages/autoit":"node_modules/highlight.js/lib/languages/autoit.js","./languages/avrasm":"node_modules/highlight.js/lib/languages/avrasm.js","./languages/awk":"node_modules/highlight.js/lib/languages/awk.js","./languages/axapta":"node_modules/highlight.js/lib/languages/axapta.js","./languages/bash":"node_modules/highlight.js/lib/languages/bash.js","./languages/basic":"node_modules/highlight.js/lib/languages/basic.js","./languages/bnf":"node_modules/highlight.js/lib/languages/bnf.js","./languages/brainfuck":"node_modules/highlight.js/lib/languages/brainfuck.js","./languages/c":"node_modules/highlight.js/lib/languages/c.js","./languages/cal":"node_modules/highlight.js/lib/languages/cal.js","./languages/capnproto":"node_modules/highlight.js/lib/languages/capnproto.js","./languages/ceylon":"node_modules/highlight.js/lib/languages/ceylon.js","./languages/clean":"node_modules/highlight.js/lib/languages/clean.js","./languages/clojure":"node_modules/highlight.js/lib/languages/clojure.js","./languages/clojure-repl":"node_modules/highlight.js/lib/languages/clojure-repl.js","./languages/cmake":"node_modules/highlight.js/lib/languages/cmake.js","./languages/coffeescript":"node_modules/highlight.js/lib/languages/coffeescript.js","./languages/coq":"node_modules/highlight.js/lib/languages/coq.js","./languages/cos":"node_modules/highlight.js/lib/languages/cos.js","./languages/cpp":"node_modules/highlight.js/lib/languages/cpp.js","./languages/crmsh":"node_modules/highlight.js/lib/languages/crmsh.js","./languages/crystal":"node_modules/highlight.js/lib/languages/crystal.js","./languages/csharp":"node_modules/highlight.js/lib/languages/csharp.js","./languages/csp":"node_modules/highlight.js/lib/languages/csp.js","./languages/css":"node_modules/highlight.js/lib/languages/css.js","./languages/d":"node_modules/highlight.js/lib/languages/d.js","./languages/markdown":"node_modules/highlight.js/lib/languages/markdown.js","./languages/dart":"node_modules/highlight.js/lib/languages/dart.js","./languages/delphi":"node_modules/highlight.js/lib/languages/delphi.js","./languages/diff":"node_modules/highlight.js/lib/languages/diff.js","./languages/django":"node_modules/highlight.js/lib/languages/django.js","./languages/dns":"node_modules/highlight.js/lib/languages/dns.js","./languages/dockerfile":"node_modules/highlight.js/lib/languages/dockerfile.js","./languages/dos":"node_modules/highlight.js/lib/languages/dos.js","./languages/dsconfig":"node_modules/highlight.js/lib/languages/dsconfig.js","./languages/dts":"node_modules/highlight.js/lib/languages/dts.js","./languages/dust":"node_modules/highlight.js/lib/languages/dust.js","./languages/ebnf":"node_modules/highlight.js/lib/languages/ebnf.js","./languages/elixir":"node_modules/highlight.js/lib/languages/elixir.js","./languages/elm":"node_modules/highlight.js/lib/languages/elm.js","./languages/ruby":"node_modules/highlight.js/lib/languages/ruby.js","./languages/erb":"node_modules/highlight.js/lib/languages/erb.js","./languages/erlang-repl":"node_modules/highlight.js/lib/languages/erlang-repl.js","./languages/erlang":"node_modules/highlight.js/lib/languages/erlang.js","./languages/excel":"node_modules/highlight.js/lib/languages/excel.js","./languages/fix":"node_modules/highlight.js/lib/languages/fix.js","./languages/flix":"node_modules/highlight.js/lib/languages/flix.js","./languages/fortran":"node_modules/highlight.js/lib/languages/fortran.js","./languages/fsharp":"node_modules/highlight.js/lib/languages/fsharp.js","./languages/gams":"node_modules/highlight.js/lib/languages/gams.js","./languages/gauss":"node_modules/highlight.js/lib/languages/gauss.js","./languages/gcode":"node_modules/highlight.js/lib/languages/gcode.js","./languages/gherkin":"node_modules/highlight.js/lib/languages/gherkin.js","./languages/glsl":"node_modules/highlight.js/lib/languages/glsl.js","./languages/gml":"node_modules/highlight.js/lib/languages/gml.js","./languages/go":"node_modules/highlight.js/lib/languages/go.js","./languages/golo":"node_modules/highlight.js/lib/languages/golo.js","./languages/gradle":"node_modules/highlight.js/lib/languages/gradle.js","./languages/groovy":"node_modules/highlight.js/lib/languages/groovy.js","./languages/haml":"node_modules/highlight.js/lib/languages/haml.js","./languages/handlebars":"node_modules/highlight.js/lib/languages/handlebars.js","./languages/haskell":"node_modules/highlight.js/lib/languages/haskell.js","./languages/haxe":"node_modules/highlight.js/lib/languages/haxe.js","./languages/hsp":"node_modules/highlight.js/lib/languages/hsp.js","./languages/http":"node_modules/highlight.js/lib/languages/http.js","./languages/hy":"node_modules/highlight.js/lib/languages/hy.js","./languages/inform7":"node_modules/highlight.js/lib/languages/inform7.js","./languages/ini":"node_modules/highlight.js/lib/languages/ini.js","./languages/irpf90":"node_modules/highlight.js/lib/languages/irpf90.js","./languages/isbl":"node_modules/highlight.js/lib/languages/isbl.js","./languages/java":"node_modules/highlight.js/lib/languages/java.js","./languages/javascript":"node_modules/highlight.js/lib/languages/javascript.js","./languages/jboss-cli":"node_modules/highlight.js/lib/languages/jboss-cli.js","./languages/json":"node_modules/highlight.js/lib/languages/json.js","./languages/julia":"node_modules/highlight.js/lib/languages/julia.js","./languages/julia-repl":"node_modules/highlight.js/lib/languages/julia-repl.js","./languages/kotlin":"node_modules/highlight.js/lib/languages/kotlin.js","./languages/lasso":"node_modules/highlight.js/lib/languages/lasso.js","./languages/latex":"node_modules/highlight.js/lib/languages/latex.js","./languages/ldif":"node_modules/highlight.js/lib/languages/ldif.js","./languages/leaf":"node_modules/highlight.js/lib/languages/leaf.js","./languages/less":"node_modules/highlight.js/lib/languages/less.js","./languages/lisp":"node_modules/highlight.js/lib/languages/lisp.js","./languages/livecodeserver":"node_modules/highlight.js/lib/languages/livecodeserver.js","./languages/livescript":"node_modules/highlight.js/lib/languages/livescript.js","./languages/llvm":"node_modules/highlight.js/lib/languages/llvm.js","./languages/lsl":"node_modules/highlight.js/lib/languages/lsl.js","./languages/lua":"node_modules/highlight.js/lib/languages/lua.js","./languages/makefile":"node_modules/highlight.js/lib/languages/makefile.js","./languages/mathematica":"node_modules/highlight.js/lib/languages/mathematica.js","./languages/matlab":"node_modules/highlight.js/lib/languages/matlab.js","./languages/maxima":"node_modules/highlight.js/lib/languages/maxima.js","./languages/mel":"node_modules/highlight.js/lib/languages/mel.js","./languages/mercury":"node_modules/highlight.js/lib/languages/mercury.js","./languages/mipsasm":"node_modules/highlight.js/lib/languages/mipsasm.js","./languages/mizar":"node_modules/highlight.js/lib/languages/mizar.js","./languages/perl":"node_modules/highlight.js/lib/languages/perl.js","./languages/mojolicious":"node_modules/highlight.js/lib/languages/mojolicious.js","./languages/monkey":"node_modules/highlight.js/lib/languages/monkey.js","./languages/moonscript":"node_modules/highlight.js/lib/languages/moonscript.js","./languages/n1ql":"node_modules/highlight.js/lib/languages/n1ql.js","./languages/nestedtext":"node_modules/highlight.js/lib/languages/nestedtext.js","./languages/nginx":"node_modules/highlight.js/lib/languages/nginx.js","./languages/nim":"node_modules/highlight.js/lib/languages/nim.js","./languages/nix":"node_modules/highlight.js/lib/languages/nix.js","./languages/node-repl":"node_modules/highlight.js/lib/languages/node-repl.js","./languages/nsis":"node_modules/highlight.js/lib/languages/nsis.js","./languages/objectivec":"node_modules/highlight.js/lib/languages/objectivec.js","./languages/ocaml":"node_modules/highlight.js/lib/languages/ocaml.js","./languages/openscad":"node_modules/highlight.js/lib/languages/openscad.js","./languages/oxygene":"node_modules/highlight.js/lib/languages/oxygene.js","./languages/parser3":"node_modules/highlight.js/lib/languages/parser3.js","./languages/pf":"node_modules/highlight.js/lib/languages/pf.js","./languages/pgsql":"node_modules/highlight.js/lib/languages/pgsql.js","./languages/php":"node_modules/highlight.js/lib/languages/php.js","./languages/php-template":"node_modules/highlight.js/lib/languages/php-template.js","./languages/plaintext":"node_modules/highlight.js/lib/languages/plaintext.js","./languages/pony":"node_modules/highlight.js/lib/languages/pony.js","./languages/powershell":"node_modules/highlight.js/lib/languages/powershell.js","./languages/processing":"node_modules/highlight.js/lib/languages/processing.js","./languages/profile":"node_modules/highlight.js/lib/languages/profile.js","./languages/prolog":"node_modules/highlight.js/lib/languages/prolog.js","./languages/properties":"node_modules/highlight.js/lib/languages/properties.js","./languages/protobuf":"node_modules/highlight.js/lib/languages/protobuf.js","./languages/puppet":"node_modules/highlight.js/lib/languages/puppet.js","./languages/purebasic":"node_modules/highlight.js/lib/languages/purebasic.js","./languages/python":"node_modules/highlight.js/lib/languages/python.js","./languages/python-repl":"node_modules/highlight.js/lib/languages/python-repl.js","./languages/q":"node_modules/highlight.js/lib/languages/q.js","./languages/qml":"node_modules/highlight.js/lib/languages/qml.js","./languages/r":"node_modules/highlight.js/lib/languages/r.js","./languages/reasonml":"node_modules/highlight.js/lib/languages/reasonml.js","./languages/rib":"node_modules/highlight.js/lib/languages/rib.js","./languages/roboconf":"node_modules/highlight.js/lib/languages/roboconf.js","./languages/routeros":"node_modules/highlight.js/lib/languages/routeros.js","./languages/rsl":"node_modules/highlight.js/lib/languages/rsl.js","./languages/ruleslanguage":"node_modules/highlight.js/lib/languages/ruleslanguage.js","./languages/rust":"node_modules/highlight.js/lib/languages/rust.js","./languages/sas":"node_modules/highlight.js/lib/languages/sas.js","./languages/scala":"node_modules/highlight.js/lib/languages/scala.js","./languages/scheme":"node_modules/highlight.js/lib/languages/scheme.js","./languages/scilab":"node_modules/highlight.js/lib/languages/scilab.js","./languages/scss":"node_modules/highlight.js/lib/languages/scss.js","./languages/shell":"node_modules/highlight.js/lib/languages/shell.js","./languages/smali":"node_modules/highlight.js/lib/languages/smali.js","./languages/smalltalk":"node_modules/highlight.js/lib/languages/smalltalk.js","./languages/sml":"node_modules/highlight.js/lib/languages/sml.js","./languages/sqf":"node_modules/highlight.js/lib/languages/sqf.js","./languages/sql":"node_modules/highlight.js/lib/languages/sql.js","./languages/stan":"node_modules/highlight.js/lib/languages/stan.js","./languages/stata":"node_modules/highlight.js/lib/languages/stata.js","./languages/step21":"node_modules/highlight.js/lib/languages/step21.js","./languages/stylus":"node_modules/highlight.js/lib/languages/stylus.js","./languages/subunit":"node_modules/highlight.js/lib/languages/subunit.js","./languages/swift":"node_modules/highlight.js/lib/languages/swift.js","./languages/taggerscript":"node_modules/highlight.js/lib/languages/taggerscript.js","./languages/yaml":"node_modules/highlight.js/lib/languages/yaml.js","./languages/tap":"node_modules/highlight.js/lib/languages/tap.js","./languages/tcl":"node_modules/highlight.js/lib/languages/tcl.js","./languages/thrift":"node_modules/highlight.js/lib/languages/thrift.js","./languages/tp":"node_modules/highlight.js/lib/languages/tp.js","./languages/twig":"node_modules/highlight.js/lib/languages/twig.js","./languages/typescript":"node_modules/highlight.js/lib/languages/typescript.js","./languages/vala":"node_modules/highlight.js/lib/languages/vala.js","./languages/vbnet":"node_modules/highlight.js/lib/languages/vbnet.js","./languages/vbscript":"node_modules/highlight.js/lib/languages/vbscript.js","./languages/vbscript-html":"node_modules/highlight.js/lib/languages/vbscript-html.js","./languages/verilog":"node_modules/highlight.js/lib/languages/verilog.js","./languages/vhdl":"node_modules/highlight.js/lib/languages/vhdl.js","./languages/vim":"node_modules/highlight.js/lib/languages/vim.js","./languages/wasm":"node_modules/highlight.js/lib/languages/wasm.js","./languages/wren":"node_modules/highlight.js/lib/languages/wren.js","./languages/x86asm":"node_modules/highlight.js/lib/languages/x86asm.js","./languages/xl":"node_modules/highlight.js/lib/languages/xl.js","./languages/xquery":"node_modules/highlight.js/lib/languages/xquery.js","./languages/zephir":"node_modules/highlight.js/lib/languages/zephir.js"}],"node_modules/katex/src/ParseError.js":[function(require,module,exports) {
+},{"./core":"node_modules/highlight.js/lib/core.js","./languages/1c":"node_modules/highlight.js/lib/languages/1c.js","./languages/abnf":"node_modules/highlight.js/lib/languages/abnf.js","./languages/accesslog":"node_modules/highlight.js/lib/languages/accesslog.js","./languages/actionscript":"node_modules/highlight.js/lib/languages/actionscript.js","./languages/ada":"node_modules/highlight.js/lib/languages/ada.js","./languages/angelscript":"node_modules/highlight.js/lib/languages/angelscript.js","./languages/apache":"node_modules/highlight.js/lib/languages/apache.js","./languages/applescript":"node_modules/highlight.js/lib/languages/applescript.js","./languages/arcade":"node_modules/highlight.js/lib/languages/arcade.js","./languages/arduino":"node_modules/highlight.js/lib/languages/arduino.js","./languages/armasm":"node_modules/highlight.js/lib/languages/armasm.js","./languages/xml":"node_modules/highlight.js/lib/languages/xml.js","./languages/asciidoc":"node_modules/highlight.js/lib/languages/asciidoc.js","./languages/aspectj":"node_modules/highlight.js/lib/languages/aspectj.js","./languages/autohotkey":"node_modules/highlight.js/lib/languages/autohotkey.js","./languages/autoit":"node_modules/highlight.js/lib/languages/autoit.js","./languages/avrasm":"node_modules/highlight.js/lib/languages/avrasm.js","./languages/awk":"node_modules/highlight.js/lib/languages/awk.js","./languages/axapta":"node_modules/highlight.js/lib/languages/axapta.js","./languages/bash":"node_modules/highlight.js/lib/languages/bash.js","./languages/basic":"node_modules/highlight.js/lib/languages/basic.js","./languages/bnf":"node_modules/highlight.js/lib/languages/bnf.js","./languages/brainfuck":"node_modules/highlight.js/lib/languages/brainfuck.js","./languages/c":"node_modules/highlight.js/lib/languages/c.js","./languages/cal":"node_modules/highlight.js/lib/languages/cal.js","./languages/capnproto":"node_modules/highlight.js/lib/languages/capnproto.js","./languages/ceylon":"node_modules/highlight.js/lib/languages/ceylon.js","./languages/clean":"node_modules/highlight.js/lib/languages/clean.js","./languages/clojure":"node_modules/highlight.js/lib/languages/clojure.js","./languages/clojure-repl":"node_modules/highlight.js/lib/languages/clojure-repl.js","./languages/cmake":"node_modules/highlight.js/lib/languages/cmake.js","./languages/coffeescript":"node_modules/highlight.js/lib/languages/coffeescript.js","./languages/coq":"node_modules/highlight.js/lib/languages/coq.js","./languages/cos":"node_modules/highlight.js/lib/languages/cos.js","./languages/cpp":"node_modules/highlight.js/lib/languages/cpp.js","./languages/crmsh":"node_modules/highlight.js/lib/languages/crmsh.js","./languages/crystal":"node_modules/highlight.js/lib/languages/crystal.js","./languages/csharp":"node_modules/highlight.js/lib/languages/csharp.js","./languages/csp":"node_modules/highlight.js/lib/languages/csp.js","./languages/css":"node_modules/highlight.js/lib/languages/css.js","./languages/d":"node_modules/highlight.js/lib/languages/d.js","./languages/markdown":"node_modules/highlight.js/lib/languages/markdown.js","./languages/dart":"node_modules/highlight.js/lib/languages/dart.js","./languages/delphi":"node_modules/highlight.js/lib/languages/delphi.js","./languages/diff":"node_modules/highlight.js/lib/languages/diff.js","./languages/django":"node_modules/highlight.js/lib/languages/django.js","./languages/dns":"node_modules/highlight.js/lib/languages/dns.js","./languages/dockerfile":"node_modules/highlight.js/lib/languages/dockerfile.js","./languages/dos":"node_modules/highlight.js/lib/languages/dos.js","./languages/dsconfig":"node_modules/highlight.js/lib/languages/dsconfig.js","./languages/dts":"node_modules/highlight.js/lib/languages/dts.js","./languages/dust":"node_modules/highlight.js/lib/languages/dust.js","./languages/ebnf":"node_modules/highlight.js/lib/languages/ebnf.js","./languages/elixir":"node_modules/highlight.js/lib/languages/elixir.js","./languages/elm":"node_modules/highlight.js/lib/languages/elm.js","./languages/ruby":"node_modules/highlight.js/lib/languages/ruby.js","./languages/erb":"node_modules/highlight.js/lib/languages/erb.js","./languages/erlang-repl":"node_modules/highlight.js/lib/languages/erlang-repl.js","./languages/erlang":"node_modules/highlight.js/lib/languages/erlang.js","./languages/excel":"node_modules/highlight.js/lib/languages/excel.js","./languages/fix":"node_modules/highlight.js/lib/languages/fix.js","./languages/flix":"node_modules/highlight.js/lib/languages/flix.js","./languages/fortran":"node_modules/highlight.js/lib/languages/fortran.js","./languages/fsharp":"node_modules/highlight.js/lib/languages/fsharp.js","./languages/gams":"node_modules/highlight.js/lib/languages/gams.js","./languages/gauss":"node_modules/highlight.js/lib/languages/gauss.js","./languages/gcode":"node_modules/highlight.js/lib/languages/gcode.js","./languages/gherkin":"node_modules/highlight.js/lib/languages/gherkin.js","./languages/glsl":"node_modules/highlight.js/lib/languages/glsl.js","./languages/gml":"node_modules/highlight.js/lib/languages/gml.js","./languages/go":"node_modules/highlight.js/lib/languages/go.js","./languages/golo":"node_modules/highlight.js/lib/languages/golo.js","./languages/gradle":"node_modules/highlight.js/lib/languages/gradle.js","./languages/groovy":"node_modules/highlight.js/lib/languages/groovy.js","./languages/haml":"node_modules/highlight.js/lib/languages/haml.js","./languages/handlebars":"node_modules/highlight.js/lib/languages/handlebars.js","./languages/haskell":"node_modules/highlight.js/lib/languages/haskell.js","./languages/haxe":"node_modules/highlight.js/lib/languages/haxe.js","./languages/hsp":"node_modules/highlight.js/lib/languages/hsp.js","./languages/http":"node_modules/highlight.js/lib/languages/http.js","./languages/hy":"node_modules/highlight.js/lib/languages/hy.js","./languages/inform7":"node_modules/highlight.js/lib/languages/inform7.js","./languages/ini":"node_modules/highlight.js/lib/languages/ini.js","./languages/irpf90":"node_modules/highlight.js/lib/languages/irpf90.js","./languages/isbl":"node_modules/highlight.js/lib/languages/isbl.js","./languages/java":"node_modules/highlight.js/lib/languages/java.js","./languages/javascript":"node_modules/highlight.js/lib/languages/javascript.js","./languages/jboss-cli":"node_modules/highlight.js/lib/languages/jboss-cli.js","./languages/json":"node_modules/highlight.js/lib/languages/json.js","./languages/julia":"node_modules/highlight.js/lib/languages/julia.js","./languages/julia-repl":"node_modules/highlight.js/lib/languages/julia-repl.js","./languages/kotlin":"node_modules/highlight.js/lib/languages/kotlin.js","./languages/lasso":"node_modules/highlight.js/lib/languages/lasso.js","./languages/latex":"node_modules/highlight.js/lib/languages/latex.js","./languages/ldif":"node_modules/highlight.js/lib/languages/ldif.js","./languages/leaf":"node_modules/highlight.js/lib/languages/leaf.js","./languages/less":"node_modules/highlight.js/lib/languages/less.js","./languages/lisp":"node_modules/highlight.js/lib/languages/lisp.js","./languages/livecodeserver":"node_modules/highlight.js/lib/languages/livecodeserver.js","./languages/livescript":"node_modules/highlight.js/lib/languages/livescript.js","./languages/llvm":"node_modules/highlight.js/lib/languages/llvm.js","./languages/lsl":"node_modules/highlight.js/lib/languages/lsl.js","./languages/lua":"node_modules/highlight.js/lib/languages/lua.js","./languages/makefile":"node_modules/highlight.js/lib/languages/makefile.js","./languages/mathematica":"node_modules/highlight.js/lib/languages/mathematica.js","./languages/matlab":"node_modules/highlight.js/lib/languages/matlab.js","./languages/maxima":"node_modules/highlight.js/lib/languages/maxima.js","./languages/mel":"node_modules/highlight.js/lib/languages/mel.js","./languages/mercury":"node_modules/highlight.js/lib/languages/mercury.js","./languages/mipsasm":"node_modules/highlight.js/lib/languages/mipsasm.js","./languages/mizar":"node_modules/highlight.js/lib/languages/mizar.js","./languages/perl":"node_modules/highlight.js/lib/languages/perl.js","./languages/mojolicious":"node_modules/highlight.js/lib/languages/mojolicious.js","./languages/monkey":"node_modules/highlight.js/lib/languages/monkey.js","./languages/moonscript":"node_modules/highlight.js/lib/languages/moonscript.js","./languages/n1ql":"node_modules/highlight.js/lib/languages/n1ql.js","./languages/nestedtext":"node_modules/highlight.js/lib/languages/nestedtext.js","./languages/nginx":"node_modules/highlight.js/lib/languages/nginx.js","./languages/nim":"node_modules/highlight.js/lib/languages/nim.js","./languages/nix":"node_modules/highlight.js/lib/languages/nix.js","./languages/node-repl":"node_modules/highlight.js/lib/languages/node-repl.js","./languages/nsis":"node_modules/highlight.js/lib/languages/nsis.js","./languages/objectivec":"node_modules/highlight.js/lib/languages/objectivec.js","./languages/ocaml":"node_modules/highlight.js/lib/languages/ocaml.js","./languages/openscad":"node_modules/highlight.js/lib/languages/openscad.js","./languages/oxygene":"node_modules/highlight.js/lib/languages/oxygene.js","./languages/parser3":"node_modules/highlight.js/lib/languages/parser3.js","./languages/pf":"node_modules/highlight.js/lib/languages/pf.js","./languages/pgsql":"node_modules/highlight.js/lib/languages/pgsql.js","./languages/php":"node_modules/highlight.js/lib/languages/php.js","./languages/php-template":"node_modules/highlight.js/lib/languages/php-template.js","./languages/plaintext":"node_modules/highlight.js/lib/languages/plaintext.js","./languages/pony":"node_modules/highlight.js/lib/languages/pony.js","./languages/powershell":"node_modules/highlight.js/lib/languages/powershell.js","./languages/processing":"node_modules/highlight.js/lib/languages/processing.js","./languages/profile":"node_modules/highlight.js/lib/languages/profile.js","./languages/prolog":"node_modules/highlight.js/lib/languages/prolog.js","./languages/properties":"node_modules/highlight.js/lib/languages/properties.js","./languages/protobuf":"node_modules/highlight.js/lib/languages/protobuf.js","./languages/puppet":"node_modules/highlight.js/lib/languages/puppet.js","./languages/purebasic":"node_modules/highlight.js/lib/languages/purebasic.js","./languages/python":"node_modules/highlight.js/lib/languages/python.js","./languages/python-repl":"node_modules/highlight.js/lib/languages/python-repl.js","./languages/q":"node_modules/highlight.js/lib/languages/q.js","./languages/qml":"node_modules/highlight.js/lib/languages/qml.js","./languages/r":"node_modules/highlight.js/lib/languages/r.js","./languages/reasonml":"node_modules/highlight.js/lib/languages/reasonml.js","./languages/rib":"node_modules/highlight.js/lib/languages/rib.js","./languages/roboconf":"node_modules/highlight.js/lib/languages/roboconf.js","./languages/routeros":"node_modules/highlight.js/lib/languages/routeros.js","./languages/rsl":"node_modules/highlight.js/lib/languages/rsl.js","./languages/ruleslanguage":"node_modules/highlight.js/lib/languages/ruleslanguage.js","./languages/rust":"node_modules/highlight.js/lib/languages/rust.js","./languages/sas":"node_modules/highlight.js/lib/languages/sas.js","./languages/scala":"node_modules/highlight.js/lib/languages/scala.js","./languages/scheme":"node_modules/highlight.js/lib/languages/scheme.js","./languages/scilab":"node_modules/highlight.js/lib/languages/scilab.js","./languages/scss":"node_modules/highlight.js/lib/languages/scss.js","./languages/shell":"node_modules/highlight.js/lib/languages/shell.js","./languages/smali":"node_modules/highlight.js/lib/languages/smali.js","./languages/smalltalk":"node_modules/highlight.js/lib/languages/smalltalk.js","./languages/sml":"node_modules/highlight.js/lib/languages/sml.js","./languages/sqf":"node_modules/highlight.js/lib/languages/sqf.js","./languages/sql":"node_modules/highlight.js/lib/languages/sql.js","./languages/stan":"node_modules/highlight.js/lib/languages/stan.js","./languages/stata":"node_modules/highlight.js/lib/languages/stata.js","./languages/step21":"node_modules/highlight.js/lib/languages/step21.js","./languages/stylus":"node_modules/highlight.js/lib/languages/stylus.js","./languages/subunit":"node_modules/highlight.js/lib/languages/subunit.js","./languages/swift":"node_modules/highlight.js/lib/languages/swift.js","./languages/taggerscript":"node_modules/highlight.js/lib/languages/taggerscript.js","./languages/yaml":"node_modules/highlight.js/lib/languages/yaml.js","./languages/tap":"node_modules/highlight.js/lib/languages/tap.js","./languages/tcl":"node_modules/highlight.js/lib/languages/tcl.js","./languages/thrift":"node_modules/highlight.js/lib/languages/thrift.js","./languages/tp":"node_modules/highlight.js/lib/languages/tp.js","./languages/twig":"node_modules/highlight.js/lib/languages/twig.js","./languages/typescript":"node_modules/highlight.js/lib/languages/typescript.js","./languages/vala":"node_modules/highlight.js/lib/languages/vala.js","./languages/vbnet":"node_modules/highlight.js/lib/languages/vbnet.js","./languages/vbscript":"node_modules/highlight.js/lib/languages/vbscript.js","./languages/vbscript-html":"node_modules/highlight.js/lib/languages/vbscript-html.js","./languages/verilog":"node_modules/highlight.js/lib/languages/verilog.js","./languages/vhdl":"node_modules/highlight.js/lib/languages/vhdl.js","./languages/vim":"node_modules/highlight.js/lib/languages/vim.js","./languages/wasm":"node_modules/highlight.js/lib/languages/wasm.js","./languages/wren":"node_modules/highlight.js/lib/languages/wren.js","./languages/x86asm":"node_modules/highlight.js/lib/languages/x86asm.js","./languages/xl":"node_modules/highlight.js/lib/languages/xl.js","./languages/xquery":"node_modules/highlight.js/lib/languages/xquery.js","./languages/zephir":"node_modules/highlight.js/lib/languages/zephir.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js":[function(require,module,exports) {
 /**
  * This is the ParseError class, which is the main error thrown by KaTeX
  * functions when something has gone wrong. This is used to distinguish internal
@@ -27440,7 +27440,7 @@ ParseError.prototype.__proto__ = Error.prototype;
 
 module.exports = ParseError;
 
-},{}],"node_modules/katex/src/Settings.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/Settings.js":[function(require,module,exports) {
 /**
  * This is a module for storing settings passed into KaTeX. It correctly handles
  * default settings.
@@ -27470,7 +27470,7 @@ function Settings(options) {
 
 module.exports = Settings;
 
-},{}],"node_modules/katex/src/Style.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/Style.js":[function(require,module,exports) {
 /**
  * This file contains information and classes for the various kinds of styles
  * used in TeX. It provides a generic `Style` class, which holds information
@@ -27598,7 +27598,7 @@ module.exports = {
     SCRIPTSCRIPT: styles[SS],
 };
 
-},{}],"node_modules/katex/src/utils.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/utils.js":[function(require,module,exports) {
 /**
  * This file contains a list of utility functions which are useful in other
  * files.
@@ -27706,7 +27706,7 @@ module.exports = {
     clearNode: clearNode,
 };
 
-},{}],"node_modules/katex/src/domTree.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/domTree.js":[function(require,module,exports) {
 /**
  * These objects store the data about the DOM nodes we create, as well as some
  * extra data. They can then be transformed into real DOM nodes with the
@@ -27977,7 +27977,7 @@ module.exports = {
     symbolNode: symbolNode,
 };
 
-},{"./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/fontMetricsData.js":[function(require,module,exports) {
+},{"./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/fontMetricsData.js":[function(require,module,exports) {
 module.exports = {
     "AMS-Regular": {
         "65": [0, 0.68889, 0, 0],
@@ -29731,7 +29731,7 @@ module.exports = {
     },
 };
 
-},{}],"node_modules/katex/src/fontMetrics.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js":[function(require,module,exports) {
 /* eslint no-unused-vars:0 */
 
 var Style = require("./Style");
@@ -29880,7 +29880,7 @@ module.exports = {
     getCharacterMetrics: getCharacterMetrics,
 };
 
-},{"./Style":"node_modules/katex/src/Style.js","./fontMetricsData":"node_modules/katex/src/fontMetricsData.js"}],"node_modules/katex/src/symbols.js":[function(require,module,exports) {
+},{"./Style":"node_modules/markdown-it-katex/node_modules/katex/src/Style.js","./fontMetricsData":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetricsData.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/symbols.js":[function(require,module,exports) {
 /**
  * This file holds a list of all no-argument functions and single-character
  * symbols (like 'a' or ';').
@@ -30502,7 +30502,7 @@ for (i = 0; i < letters.length; i++) {
     defineSymbol(text, main, textord, ch, ch);
 }
 
-},{}],"node_modules/katex/src/buildCommon.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/buildCommon.js":[function(require,module,exports) {
 /* eslint no-console:0 */
 /**
  * This module contains general functions that can be used for building
@@ -30954,7 +30954,7 @@ module.exports = {
     spacingFunctions: spacingFunctions,
 };
 
-},{"./domTree":"node_modules/katex/src/domTree.js","./fontMetrics":"node_modules/katex/src/fontMetrics.js","./symbols":"node_modules/katex/src/symbols.js","./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/delimiter.js":[function(require,module,exports) {
+},{"./domTree":"node_modules/markdown-it-katex/node_modules/katex/src/domTree.js","./fontMetrics":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js","./symbols":"node_modules/markdown-it-katex/node_modules/katex/src/symbols.js","./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/delimiter.js":[function(require,module,exports) {
 /**
  * This file deals with creating delimiters of various sizes. The TeXbook
  * discusses these routines on page 441-442, in the "Another subroutine sets box
@@ -31498,7 +31498,7 @@ module.exports = {
     leftRightDelim: makeLeftRightDelim,
 };
 
-},{"./ParseError":"node_modules/katex/src/ParseError.js","./Style":"node_modules/katex/src/Style.js","./buildCommon":"node_modules/katex/src/buildCommon.js","./fontMetrics":"node_modules/katex/src/fontMetrics.js","./symbols":"node_modules/katex/src/symbols.js","./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/buildHTML.js":[function(require,module,exports) {
+},{"./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js","./Style":"node_modules/markdown-it-katex/node_modules/katex/src/Style.js","./buildCommon":"node_modules/markdown-it-katex/node_modules/katex/src/buildCommon.js","./fontMetrics":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js","./symbols":"node_modules/markdown-it-katex/node_modules/katex/src/symbols.js","./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/buildHTML.js":[function(require,module,exports) {
 /* eslint no-console:0 */
 /**
  * This file does the main work of building a domTree structure from a parse
@@ -32902,7 +32902,7 @@ var buildHTML = function(tree, options) {
 
 module.exports = buildHTML;
 
-},{"./ParseError":"node_modules/katex/src/ParseError.js","./Style":"node_modules/katex/src/Style.js","./buildCommon":"node_modules/katex/src/buildCommon.js","./delimiter":"node_modules/katex/src/delimiter.js","./domTree":"node_modules/katex/src/domTree.js","./fontMetrics":"node_modules/katex/src/fontMetrics.js","./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/mathMLTree.js":[function(require,module,exports) {
+},{"./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js","./Style":"node_modules/markdown-it-katex/node_modules/katex/src/Style.js","./buildCommon":"node_modules/markdown-it-katex/node_modules/katex/src/buildCommon.js","./delimiter":"node_modules/markdown-it-katex/node_modules/katex/src/delimiter.js","./domTree":"node_modules/markdown-it-katex/node_modules/katex/src/domTree.js","./fontMetrics":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js","./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/mathMLTree.js":[function(require,module,exports) {
 /**
  * These objects store data about MathML nodes. This is the MathML equivalent
  * of the types in domTree.js. Since MathML handles its own rendering, and
@@ -33006,7 +33006,7 @@ module.exports = {
     TextNode: TextNode,
 };
 
-},{"./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/buildMathML.js":[function(require,module,exports) {
+},{"./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/buildMathML.js":[function(require,module,exports) {
 /**
  * This file converts a parse tree into a cooresponding MathML tree. The main
  * entry point is the `buildMathML` function, which takes a parse tree from the
@@ -33541,7 +33541,7 @@ var buildMathML = function(tree, texExpression, options) {
 
 module.exports = buildMathML;
 
-},{"./buildCommon":"node_modules/katex/src/buildCommon.js","./fontMetrics":"node_modules/katex/src/fontMetrics.js","./mathMLTree":"node_modules/katex/src/mathMLTree.js","./ParseError":"node_modules/katex/src/ParseError.js","./symbols":"node_modules/katex/src/symbols.js","./utils":"node_modules/katex/src/utils.js"}],"node_modules/katex/src/Options.js":[function(require,module,exports) {
+},{"./buildCommon":"node_modules/markdown-it-katex/node_modules/katex/src/buildCommon.js","./fontMetrics":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js","./mathMLTree":"node_modules/markdown-it-katex/node_modules/katex/src/mathMLTree.js","./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js","./symbols":"node_modules/markdown-it-katex/node_modules/katex/src/symbols.js","./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/Options.js":[function(require,module,exports) {
 /**
  * This file contains information about the options that the Parser carries
  * around with it while parsing. Data is held in an `Options` object, and when
@@ -33732,7 +33732,7 @@ Options.prototype.getColor = function() {
 
 module.exports = Options;
 
-},{}],"node_modules/katex/src/buildTree.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/buildTree.js":[function(require,module,exports) {
 var buildHTML = require("./buildHTML");
 var buildMathML = require("./buildMathML");
 var buildCommon = require("./buildCommon");
@@ -33774,7 +33774,7 @@ var buildTree = function(tree, expression, settings) {
 
 module.exports = buildTree;
 
-},{"./buildHTML":"node_modules/katex/src/buildHTML.js","./buildMathML":"node_modules/katex/src/buildMathML.js","./buildCommon":"node_modules/katex/src/buildCommon.js","./Options":"node_modules/katex/src/Options.js","./Settings":"node_modules/katex/src/Settings.js","./Style":"node_modules/katex/src/Style.js"}],"node_modules/katex/src/functions.js":[function(require,module,exports) {
+},{"./buildHTML":"node_modules/markdown-it-katex/node_modules/katex/src/buildHTML.js","./buildMathML":"node_modules/markdown-it-katex/node_modules/katex/src/buildMathML.js","./buildCommon":"node_modules/markdown-it-katex/node_modules/katex/src/buildCommon.js","./Options":"node_modules/markdown-it-katex/node_modules/katex/src/Options.js","./Settings":"node_modules/markdown-it-katex/node_modules/katex/src/Settings.js","./Style":"node_modules/markdown-it-katex/node_modules/katex/src/Style.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/functions.js":[function(require,module,exports) {
 var utils = require("./utils");
 var ParseError = require("./ParseError");
 
@@ -34356,7 +34356,7 @@ defineFunction(["\\begin", "\\end"], {
     };
 });
 
-},{"./utils":"node_modules/katex/src/utils.js","./ParseError":"node_modules/katex/src/ParseError.js"}],"node_modules/katex/src/parseData.js":[function(require,module,exports) {
+},{"./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js","./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/parseData.js":[function(require,module,exports) {
 /**
  * The resulting parse tree nodes of the parse tree.
  */
@@ -34371,7 +34371,7 @@ module.exports = {
 };
 
 
-},{}],"node_modules/katex/src/environments.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/environments.js":[function(require,module,exports) {
 /* eslint no-constant-condition:0 */
 var fontMetrics = require("./fontMetrics");
 var parseData = require("./parseData");
@@ -34594,7 +34594,7 @@ defineEnvironment("aligned", {
     return res;
 });
 
-},{"./fontMetrics":"node_modules/katex/src/fontMetrics.js","./parseData":"node_modules/katex/src/parseData.js","./ParseError":"node_modules/katex/src/ParseError.js"}],"node_modules/match-at/lib/matchAt.js":[function(require,module,exports) {
+},{"./fontMetrics":"node_modules/markdown-it-katex/node_modules/katex/src/fontMetrics.js","./parseData":"node_modules/markdown-it-katex/node_modules/katex/src/parseData.js","./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js"}],"node_modules/match-at/lib/matchAt.js":[function(require,module,exports) {
 function getRelocatable(re) {
   // In the future, this could use a WeakMap instead of an expando.
   if (!re.__matchAtRelocatable) {
@@ -34633,7 +34633,7 @@ function matchAt(re, str, pos) {
 }
 
 module.exports = matchAt;
-},{}],"node_modules/katex/src/Lexer.js":[function(require,module,exports) {
+},{}],"node_modules/markdown-it-katex/node_modules/katex/src/Lexer.js":[function(require,module,exports) {
 /**
  * The Lexer class handles tokenizing the input in various ways. Since our
  * parser expects us to be able to backtrack, the lexer allows lexing from any
@@ -34797,7 +34797,7 @@ Lexer.prototype.lex = function(pos, mode) {
 
 module.exports = Lexer;
 
-},{"match-at":"node_modules/match-at/lib/matchAt.js","./ParseError":"node_modules/katex/src/ParseError.js"}],"node_modules/katex/src/Parser.js":[function(require,module,exports) {
+},{"match-at":"node_modules/match-at/lib/matchAt.js","./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/Parser.js":[function(require,module,exports) {
 /* eslint no-constant-condition:0 */
 var functions = require("./functions");
 var environments = require("./environments");
@@ -35536,7 +35536,7 @@ Parser.prototype.ParseNode = ParseNode;
 
 module.exports = Parser;
 
-},{"./functions":"node_modules/katex/src/functions.js","./environments":"node_modules/katex/src/environments.js","./Lexer":"node_modules/katex/src/Lexer.js","./symbols":"node_modules/katex/src/symbols.js","./utils":"node_modules/katex/src/utils.js","./parseData":"node_modules/katex/src/parseData.js","./ParseError":"node_modules/katex/src/ParseError.js"}],"node_modules/katex/src/parseTree.js":[function(require,module,exports) {
+},{"./functions":"node_modules/markdown-it-katex/node_modules/katex/src/functions.js","./environments":"node_modules/markdown-it-katex/node_modules/katex/src/environments.js","./Lexer":"node_modules/markdown-it-katex/node_modules/katex/src/Lexer.js","./symbols":"node_modules/markdown-it-katex/node_modules/katex/src/symbols.js","./utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js","./parseData":"node_modules/markdown-it-katex/node_modules/katex/src/parseData.js","./ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js"}],"node_modules/markdown-it-katex/node_modules/katex/src/parseTree.js":[function(require,module,exports) {
 /**
  * Provides a single function for parsing an expression using a Parser
  * TODO(emily): Remove this
@@ -35555,7 +35555,7 @@ var parseTree = function(toParse, settings) {
 
 module.exports = parseTree;
 
-},{"./Parser":"node_modules/katex/src/Parser.js"}],"node_modules/katex/katex.js":[function(require,module,exports) {
+},{"./Parser":"node_modules/markdown-it-katex/node_modules/katex/src/Parser.js"}],"node_modules/markdown-it-katex/node_modules/katex/katex.js":[function(require,module,exports) {
 /* eslint no-console:0 */
 /**
  * This is the main entry point for KaTeX. Here, we expose functions for
@@ -35631,7 +35631,7 @@ module.exports = {
     ParseError: ParseError,
 };
 
-},{"./src/ParseError":"node_modules/katex/src/ParseError.js","./src/Settings":"node_modules/katex/src/Settings.js","./src/buildTree":"node_modules/katex/src/buildTree.js","./src/parseTree":"node_modules/katex/src/parseTree.js","./src/utils":"node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/index.js":[function(require,module,exports) {
+},{"./src/ParseError":"node_modules/markdown-it-katex/node_modules/katex/src/ParseError.js","./src/Settings":"node_modules/markdown-it-katex/node_modules/katex/src/Settings.js","./src/buildTree":"node_modules/markdown-it-katex/node_modules/katex/src/buildTree.js","./src/parseTree":"node_modules/markdown-it-katex/node_modules/katex/src/parseTree.js","./src/utils":"node_modules/markdown-it-katex/node_modules/katex/src/utils.js"}],"node_modules/markdown-it-katex/index.js":[function(require,module,exports) {
 /* Process inline math */
 /*
 Like markdown-it-simplemath, this is a stripped down, simplified version of:
@@ -35830,7 +35830,7 @@ module.exports = function math_plugin(md, options) {
     md.renderer.rules.math_block = blockRenderer;
 };
 
-},{"katex":"node_modules/katex/katex.js"}],"node_modules/entities/lib/maps/entities.json":[function(require,module,exports) {
+},{"katex":"node_modules/markdown-it-katex/node_modules/katex/katex.js"}],"node_modules/entities/lib/maps/entities.json":[function(require,module,exports) {
 module.exports = {"Aacute":"Á","aacute":"á","Abreve":"Ă","abreve":"ă","ac":"∾","acd":"∿","acE":"∾̳","Acirc":"Â","acirc":"â","acute":"´","Acy":"А","acy":"а","AElig":"Æ","aelig":"æ","af":"⁡","Afr":"𝔄","afr":"𝔞","Agrave":"À","agrave":"à","alefsym":"ℵ","aleph":"ℵ","Alpha":"Α","alpha":"α","Amacr":"Ā","amacr":"ā","amalg":"⨿","amp":"&","AMP":"&","andand":"⩕","And":"⩓","and":"∧","andd":"⩜","andslope":"⩘","andv":"⩚","ang":"∠","ange":"⦤","angle":"∠","angmsdaa":"⦨","angmsdab":"⦩","angmsdac":"⦪","angmsdad":"⦫","angmsdae":"⦬","angmsdaf":"⦭","angmsdag":"⦮","angmsdah":"⦯","angmsd":"∡","angrt":"∟","angrtvb":"⊾","angrtvbd":"⦝","angsph":"∢","angst":"Å","angzarr":"⍼","Aogon":"Ą","aogon":"ą","Aopf":"𝔸","aopf":"𝕒","apacir":"⩯","ap":"≈","apE":"⩰","ape":"≊","apid":"≋","apos":"'","ApplyFunction":"⁡","approx":"≈","approxeq":"≊","Aring":"Å","aring":"å","Ascr":"𝒜","ascr":"𝒶","Assign":"≔","ast":"*","asymp":"≈","asympeq":"≍","Atilde":"Ã","atilde":"ã","Auml":"Ä","auml":"ä","awconint":"∳","awint":"⨑","backcong":"≌","backepsilon":"϶","backprime":"‵","backsim":"∽","backsimeq":"⋍","Backslash":"∖","Barv":"⫧","barvee":"⊽","barwed":"⌅","Barwed":"⌆","barwedge":"⌅","bbrk":"⎵","bbrktbrk":"⎶","bcong":"≌","Bcy":"Б","bcy":"б","bdquo":"„","becaus":"∵","because":"∵","Because":"∵","bemptyv":"⦰","bepsi":"϶","bernou":"ℬ","Bernoullis":"ℬ","Beta":"Β","beta":"β","beth":"ℶ","between":"≬","Bfr":"𝔅","bfr":"𝔟","bigcap":"⋂","bigcirc":"◯","bigcup":"⋃","bigodot":"⨀","bigoplus":"⨁","bigotimes":"⨂","bigsqcup":"⨆","bigstar":"★","bigtriangledown":"▽","bigtriangleup":"△","biguplus":"⨄","bigvee":"⋁","bigwedge":"⋀","bkarow":"⤍","blacklozenge":"⧫","blacksquare":"▪","blacktriangle":"▴","blacktriangledown":"▾","blacktriangleleft":"◂","blacktriangleright":"▸","blank":"␣","blk12":"▒","blk14":"░","blk34":"▓","block":"█","bne":"=⃥","bnequiv":"≡⃥","bNot":"⫭","bnot":"⌐","Bopf":"𝔹","bopf":"𝕓","bot":"⊥","bottom":"⊥","bowtie":"⋈","boxbox":"⧉","boxdl":"┐","boxdL":"╕","boxDl":"╖","boxDL":"╗","boxdr":"┌","boxdR":"╒","boxDr":"╓","boxDR":"╔","boxh":"─","boxH":"═","boxhd":"┬","boxHd":"╤","boxhD":"╥","boxHD":"╦","boxhu":"┴","boxHu":"╧","boxhU":"╨","boxHU":"╩","boxminus":"⊟","boxplus":"⊞","boxtimes":"⊠","boxul":"┘","boxuL":"╛","boxUl":"╜","boxUL":"╝","boxur":"└","boxuR":"╘","boxUr":"╙","boxUR":"╚","boxv":"│","boxV":"║","boxvh":"┼","boxvH":"╪","boxVh":"╫","boxVH":"╬","boxvl":"┤","boxvL":"╡","boxVl":"╢","boxVL":"╣","boxvr":"├","boxvR":"╞","boxVr":"╟","boxVR":"╠","bprime":"‵","breve":"˘","Breve":"˘","brvbar":"¦","bscr":"𝒷","Bscr":"ℬ","bsemi":"⁏","bsim":"∽","bsime":"⋍","bsolb":"⧅","bsol":"\\","bsolhsub":"⟈","bull":"•","bullet":"•","bump":"≎","bumpE":"⪮","bumpe":"≏","Bumpeq":"≎","bumpeq":"≏","Cacute":"Ć","cacute":"ć","capand":"⩄","capbrcup":"⩉","capcap":"⩋","cap":"∩","Cap":"⋒","capcup":"⩇","capdot":"⩀","CapitalDifferentialD":"ⅅ","caps":"∩︀","caret":"⁁","caron":"ˇ","Cayleys":"ℭ","ccaps":"⩍","Ccaron":"Č","ccaron":"č","Ccedil":"Ç","ccedil":"ç","Ccirc":"Ĉ","ccirc":"ĉ","Cconint":"∰","ccups":"⩌","ccupssm":"⩐","Cdot":"Ċ","cdot":"ċ","cedil":"¸","Cedilla":"¸","cemptyv":"⦲","cent":"¢","centerdot":"·","CenterDot":"·","cfr":"𝔠","Cfr":"ℭ","CHcy":"Ч","chcy":"ч","check":"✓","checkmark":"✓","Chi":"Χ","chi":"χ","circ":"ˆ","circeq":"≗","circlearrowleft":"↺","circlearrowright":"↻","circledast":"⊛","circledcirc":"⊚","circleddash":"⊝","CircleDot":"⊙","circledR":"®","circledS":"Ⓢ","CircleMinus":"⊖","CirclePlus":"⊕","CircleTimes":"⊗","cir":"○","cirE":"⧃","cire":"≗","cirfnint":"⨐","cirmid":"⫯","cirscir":"⧂","ClockwiseContourIntegral":"∲","CloseCurlyDoubleQuote":"”","CloseCurlyQuote":"’","clubs":"♣","clubsuit":"♣","colon":":","Colon":"∷","Colone":"⩴","colone":"≔","coloneq":"≔","comma":",","commat":"@","comp":"∁","compfn":"∘","complement":"∁","complexes":"ℂ","cong":"≅","congdot":"⩭","Congruent":"≡","conint":"∮","Conint":"∯","ContourIntegral":"∮","copf":"𝕔","Copf":"ℂ","coprod":"∐","Coproduct":"∐","copy":"©","COPY":"©","copysr":"℗","CounterClockwiseContourIntegral":"∳","crarr":"↵","cross":"✗","Cross":"⨯","Cscr":"𝒞","cscr":"𝒸","csub":"⫏","csube":"⫑","csup":"⫐","csupe":"⫒","ctdot":"⋯","cudarrl":"⤸","cudarrr":"⤵","cuepr":"⋞","cuesc":"⋟","cularr":"↶","cularrp":"⤽","cupbrcap":"⩈","cupcap":"⩆","CupCap":"≍","cup":"∪","Cup":"⋓","cupcup":"⩊","cupdot":"⊍","cupor":"⩅","cups":"∪︀","curarr":"↷","curarrm":"⤼","curlyeqprec":"⋞","curlyeqsucc":"⋟","curlyvee":"⋎","curlywedge":"⋏","curren":"¤","curvearrowleft":"↶","curvearrowright":"↷","cuvee":"⋎","cuwed":"⋏","cwconint":"∲","cwint":"∱","cylcty":"⌭","dagger":"†","Dagger":"‡","daleth":"ℸ","darr":"↓","Darr":"↡","dArr":"⇓","dash":"‐","Dashv":"⫤","dashv":"⊣","dbkarow":"⤏","dblac":"˝","Dcaron":"Ď","dcaron":"ď","Dcy":"Д","dcy":"д","ddagger":"‡","ddarr":"⇊","DD":"ⅅ","dd":"ⅆ","DDotrahd":"⤑","ddotseq":"⩷","deg":"°","Del":"∇","Delta":"Δ","delta":"δ","demptyv":"⦱","dfisht":"⥿","Dfr":"𝔇","dfr":"𝔡","dHar":"⥥","dharl":"⇃","dharr":"⇂","DiacriticalAcute":"´","DiacriticalDot":"˙","DiacriticalDoubleAcute":"˝","DiacriticalGrave":"`","DiacriticalTilde":"˜","diam":"⋄","diamond":"⋄","Diamond":"⋄","diamondsuit":"♦","diams":"♦","die":"¨","DifferentialD":"ⅆ","digamma":"ϝ","disin":"⋲","div":"÷","divide":"÷","divideontimes":"⋇","divonx":"⋇","DJcy":"Ђ","djcy":"ђ","dlcorn":"⌞","dlcrop":"⌍","dollar":"$","Dopf":"𝔻","dopf":"𝕕","Dot":"¨","dot":"˙","DotDot":"⃜","doteq":"≐","doteqdot":"≑","DotEqual":"≐","dotminus":"∸","dotplus":"∔","dotsquare":"⊡","doublebarwedge":"⌆","DoubleContourIntegral":"∯","DoubleDot":"¨","DoubleDownArrow":"⇓","DoubleLeftArrow":"⇐","DoubleLeftRightArrow":"⇔","DoubleLeftTee":"⫤","DoubleLongLeftArrow":"⟸","DoubleLongLeftRightArrow":"⟺","DoubleLongRightArrow":"⟹","DoubleRightArrow":"⇒","DoubleRightTee":"⊨","DoubleUpArrow":"⇑","DoubleUpDownArrow":"⇕","DoubleVerticalBar":"∥","DownArrowBar":"⤓","downarrow":"↓","DownArrow":"↓","Downarrow":"⇓","DownArrowUpArrow":"⇵","DownBreve":"̑","downdownarrows":"⇊","downharpoonleft":"⇃","downharpoonright":"⇂","DownLeftRightVector":"⥐","DownLeftTeeVector":"⥞","DownLeftVectorBar":"⥖","DownLeftVector":"↽","DownRightTeeVector":"⥟","DownRightVectorBar":"⥗","DownRightVector":"⇁","DownTeeArrow":"↧","DownTee":"⊤","drbkarow":"⤐","drcorn":"⌟","drcrop":"⌌","Dscr":"𝒟","dscr":"𝒹","DScy":"Ѕ","dscy":"ѕ","dsol":"⧶","Dstrok":"Đ","dstrok":"đ","dtdot":"⋱","dtri":"▿","dtrif":"▾","duarr":"⇵","duhar":"⥯","dwangle":"⦦","DZcy":"Џ","dzcy":"џ","dzigrarr":"⟿","Eacute":"É","eacute":"é","easter":"⩮","Ecaron":"Ě","ecaron":"ě","Ecirc":"Ê","ecirc":"ê","ecir":"≖","ecolon":"≕","Ecy":"Э","ecy":"э","eDDot":"⩷","Edot":"Ė","edot":"ė","eDot":"≑","ee":"ⅇ","efDot":"≒","Efr":"𝔈","efr":"𝔢","eg":"⪚","Egrave":"È","egrave":"è","egs":"⪖","egsdot":"⪘","el":"⪙","Element":"∈","elinters":"⏧","ell":"ℓ","els":"⪕","elsdot":"⪗","Emacr":"Ē","emacr":"ē","empty":"∅","emptyset":"∅","EmptySmallSquare":"◻","emptyv":"∅","EmptyVerySmallSquare":"▫","emsp13":" ","emsp14":" ","emsp":" ","ENG":"Ŋ","eng":"ŋ","ensp":" ","Eogon":"Ę","eogon":"ę","Eopf":"𝔼","eopf":"𝕖","epar":"⋕","eparsl":"⧣","eplus":"⩱","epsi":"ε","Epsilon":"Ε","epsilon":"ε","epsiv":"ϵ","eqcirc":"≖","eqcolon":"≕","eqsim":"≂","eqslantgtr":"⪖","eqslantless":"⪕","Equal":"⩵","equals":"=","EqualTilde":"≂","equest":"≟","Equilibrium":"⇌","equiv":"≡","equivDD":"⩸","eqvparsl":"⧥","erarr":"⥱","erDot":"≓","escr":"ℯ","Escr":"ℰ","esdot":"≐","Esim":"⩳","esim":"≂","Eta":"Η","eta":"η","ETH":"Ð","eth":"ð","Euml":"Ë","euml":"ë","euro":"€","excl":"!","exist":"∃","Exists":"∃","expectation":"ℰ","exponentiale":"ⅇ","ExponentialE":"ⅇ","fallingdotseq":"≒","Fcy":"Ф","fcy":"ф","female":"♀","ffilig":"ﬃ","fflig":"ﬀ","ffllig":"ﬄ","Ffr":"𝔉","ffr":"𝔣","filig":"ﬁ","FilledSmallSquare":"◼","FilledVerySmallSquare":"▪","fjlig":"fj","flat":"♭","fllig":"ﬂ","fltns":"▱","fnof":"ƒ","Fopf":"𝔽","fopf":"𝕗","forall":"∀","ForAll":"∀","fork":"⋔","forkv":"⫙","Fouriertrf":"ℱ","fpartint":"⨍","frac12":"½","frac13":"⅓","frac14":"¼","frac15":"⅕","frac16":"⅙","frac18":"⅛","frac23":"⅔","frac25":"⅖","frac34":"¾","frac35":"⅗","frac38":"⅜","frac45":"⅘","frac56":"⅚","frac58":"⅝","frac78":"⅞","frasl":"⁄","frown":"⌢","fscr":"𝒻","Fscr":"ℱ","gacute":"ǵ","Gamma":"Γ","gamma":"γ","Gammad":"Ϝ","gammad":"ϝ","gap":"⪆","Gbreve":"Ğ","gbreve":"ğ","Gcedil":"Ģ","Gcirc":"Ĝ","gcirc":"ĝ","Gcy":"Г","gcy":"г","Gdot":"Ġ","gdot":"ġ","ge":"≥","gE":"≧","gEl":"⪌","gel":"⋛","geq":"≥","geqq":"≧","geqslant":"⩾","gescc":"⪩","ges":"⩾","gesdot":"⪀","gesdoto":"⪂","gesdotol":"⪄","gesl":"⋛︀","gesles":"⪔","Gfr":"𝔊","gfr":"𝔤","gg":"≫","Gg":"⋙","ggg":"⋙","gimel":"ℷ","GJcy":"Ѓ","gjcy":"ѓ","gla":"⪥","gl":"≷","glE":"⪒","glj":"⪤","gnap":"⪊","gnapprox":"⪊","gne":"⪈","gnE":"≩","gneq":"⪈","gneqq":"≩","gnsim":"⋧","Gopf":"𝔾","gopf":"𝕘","grave":"`","GreaterEqual":"≥","GreaterEqualLess":"⋛","GreaterFullEqual":"≧","GreaterGreater":"⪢","GreaterLess":"≷","GreaterSlantEqual":"⩾","GreaterTilde":"≳","Gscr":"𝒢","gscr":"ℊ","gsim":"≳","gsime":"⪎","gsiml":"⪐","gtcc":"⪧","gtcir":"⩺","gt":">","GT":">","Gt":"≫","gtdot":"⋗","gtlPar":"⦕","gtquest":"⩼","gtrapprox":"⪆","gtrarr":"⥸","gtrdot":"⋗","gtreqless":"⋛","gtreqqless":"⪌","gtrless":"≷","gtrsim":"≳","gvertneqq":"≩︀","gvnE":"≩︀","Hacek":"ˇ","hairsp":" ","half":"½","hamilt":"ℋ","HARDcy":"Ъ","hardcy":"ъ","harrcir":"⥈","harr":"↔","hArr":"⇔","harrw":"↭","Hat":"^","hbar":"ℏ","Hcirc":"Ĥ","hcirc":"ĥ","hearts":"♥","heartsuit":"♥","hellip":"…","hercon":"⊹","hfr":"𝔥","Hfr":"ℌ","HilbertSpace":"ℋ","hksearow":"⤥","hkswarow":"⤦","hoarr":"⇿","homtht":"∻","hookleftarrow":"↩","hookrightarrow":"↪","hopf":"𝕙","Hopf":"ℍ","horbar":"―","HorizontalLine":"─","hscr":"𝒽","Hscr":"ℋ","hslash":"ℏ","Hstrok":"Ħ","hstrok":"ħ","HumpDownHump":"≎","HumpEqual":"≏","hybull":"⁃","hyphen":"‐","Iacute":"Í","iacute":"í","ic":"⁣","Icirc":"Î","icirc":"î","Icy":"И","icy":"и","Idot":"İ","IEcy":"Е","iecy":"е","iexcl":"¡","iff":"⇔","ifr":"𝔦","Ifr":"ℑ","Igrave":"Ì","igrave":"ì","ii":"ⅈ","iiiint":"⨌","iiint":"∭","iinfin":"⧜","iiota":"℩","IJlig":"Ĳ","ijlig":"ĳ","Imacr":"Ī","imacr":"ī","image":"ℑ","ImaginaryI":"ⅈ","imagline":"ℐ","imagpart":"ℑ","imath":"ı","Im":"ℑ","imof":"⊷","imped":"Ƶ","Implies":"⇒","incare":"℅","in":"∈","infin":"∞","infintie":"⧝","inodot":"ı","intcal":"⊺","int":"∫","Int":"∬","integers":"ℤ","Integral":"∫","intercal":"⊺","Intersection":"⋂","intlarhk":"⨗","intprod":"⨼","InvisibleComma":"⁣","InvisibleTimes":"⁢","IOcy":"Ё","iocy":"ё","Iogon":"Į","iogon":"į","Iopf":"𝕀","iopf":"𝕚","Iota":"Ι","iota":"ι","iprod":"⨼","iquest":"¿","iscr":"𝒾","Iscr":"ℐ","isin":"∈","isindot":"⋵","isinE":"⋹","isins":"⋴","isinsv":"⋳","isinv":"∈","it":"⁢","Itilde":"Ĩ","itilde":"ĩ","Iukcy":"І","iukcy":"і","Iuml":"Ï","iuml":"ï","Jcirc":"Ĵ","jcirc":"ĵ","Jcy":"Й","jcy":"й","Jfr":"𝔍","jfr":"𝔧","jmath":"ȷ","Jopf":"𝕁","jopf":"𝕛","Jscr":"𝒥","jscr":"𝒿","Jsercy":"Ј","jsercy":"ј","Jukcy":"Є","jukcy":"є","Kappa":"Κ","kappa":"κ","kappav":"ϰ","Kcedil":"Ķ","kcedil":"ķ","Kcy":"К","kcy":"к","Kfr":"𝔎","kfr":"𝔨","kgreen":"ĸ","KHcy":"Х","khcy":"х","KJcy":"Ќ","kjcy":"ќ","Kopf":"𝕂","kopf":"𝕜","Kscr":"𝒦","kscr":"𝓀","lAarr":"⇚","Lacute":"Ĺ","lacute":"ĺ","laemptyv":"⦴","lagran":"ℒ","Lambda":"Λ","lambda":"λ","lang":"⟨","Lang":"⟪","langd":"⦑","langle":"⟨","lap":"⪅","Laplacetrf":"ℒ","laquo":"«","larrb":"⇤","larrbfs":"⤟","larr":"←","Larr":"↞","lArr":"⇐","larrfs":"⤝","larrhk":"↩","larrlp":"↫","larrpl":"⤹","larrsim":"⥳","larrtl":"↢","latail":"⤙","lAtail":"⤛","lat":"⪫","late":"⪭","lates":"⪭︀","lbarr":"⤌","lBarr":"⤎","lbbrk":"❲","lbrace":"{","lbrack":"[","lbrke":"⦋","lbrksld":"⦏","lbrkslu":"⦍","Lcaron":"Ľ","lcaron":"ľ","Lcedil":"Ļ","lcedil":"ļ","lceil":"⌈","lcub":"{","Lcy":"Л","lcy":"л","ldca":"⤶","ldquo":"“","ldquor":"„","ldrdhar":"⥧","ldrushar":"⥋","ldsh":"↲","le":"≤","lE":"≦","LeftAngleBracket":"⟨","LeftArrowBar":"⇤","leftarrow":"←","LeftArrow":"←","Leftarrow":"⇐","LeftArrowRightArrow":"⇆","leftarrowtail":"↢","LeftCeiling":"⌈","LeftDoubleBracket":"⟦","LeftDownTeeVector":"⥡","LeftDownVectorBar":"⥙","LeftDownVector":"⇃","LeftFloor":"⌊","leftharpoondown":"↽","leftharpoonup":"↼","leftleftarrows":"⇇","leftrightarrow":"↔","LeftRightArrow":"↔","Leftrightarrow":"⇔","leftrightarrows":"⇆","leftrightharpoons":"⇋","leftrightsquigarrow":"↭","LeftRightVector":"⥎","LeftTeeArrow":"↤","LeftTee":"⊣","LeftTeeVector":"⥚","leftthreetimes":"⋋","LeftTriangleBar":"⧏","LeftTriangle":"⊲","LeftTriangleEqual":"⊴","LeftUpDownVector":"⥑","LeftUpTeeVector":"⥠","LeftUpVectorBar":"⥘","LeftUpVector":"↿","LeftVectorBar":"⥒","LeftVector":"↼","lEg":"⪋","leg":"⋚","leq":"≤","leqq":"≦","leqslant":"⩽","lescc":"⪨","les":"⩽","lesdot":"⩿","lesdoto":"⪁","lesdotor":"⪃","lesg":"⋚︀","lesges":"⪓","lessapprox":"⪅","lessdot":"⋖","lesseqgtr":"⋚","lesseqqgtr":"⪋","LessEqualGreater":"⋚","LessFullEqual":"≦","LessGreater":"≶","lessgtr":"≶","LessLess":"⪡","lesssim":"≲","LessSlantEqual":"⩽","LessTilde":"≲","lfisht":"⥼","lfloor":"⌊","Lfr":"𝔏","lfr":"𝔩","lg":"≶","lgE":"⪑","lHar":"⥢","lhard":"↽","lharu":"↼","lharul":"⥪","lhblk":"▄","LJcy":"Љ","ljcy":"љ","llarr":"⇇","ll":"≪","Ll":"⋘","llcorner":"⌞","Lleftarrow":"⇚","llhard":"⥫","lltri":"◺","Lmidot":"Ŀ","lmidot":"ŀ","lmoustache":"⎰","lmoust":"⎰","lnap":"⪉","lnapprox":"⪉","lne":"⪇","lnE":"≨","lneq":"⪇","lneqq":"≨","lnsim":"⋦","loang":"⟬","loarr":"⇽","lobrk":"⟦","longleftarrow":"⟵","LongLeftArrow":"⟵","Longleftarrow":"⟸","longleftrightarrow":"⟷","LongLeftRightArrow":"⟷","Longleftrightarrow":"⟺","longmapsto":"⟼","longrightarrow":"⟶","LongRightArrow":"⟶","Longrightarrow":"⟹","looparrowleft":"↫","looparrowright":"↬","lopar":"⦅","Lopf":"𝕃","lopf":"𝕝","loplus":"⨭","lotimes":"⨴","lowast":"∗","lowbar":"_","LowerLeftArrow":"↙","LowerRightArrow":"↘","loz":"◊","lozenge":"◊","lozf":"⧫","lpar":"(","lparlt":"⦓","lrarr":"⇆","lrcorner":"⌟","lrhar":"⇋","lrhard":"⥭","lrm":"‎","lrtri":"⊿","lsaquo":"‹","lscr":"𝓁","Lscr":"ℒ","lsh":"↰","Lsh":"↰","lsim":"≲","lsime":"⪍","lsimg":"⪏","lsqb":"[","lsquo":"‘","lsquor":"‚","Lstrok":"Ł","lstrok":"ł","ltcc":"⪦","ltcir":"⩹","lt":"<","LT":"<","Lt":"≪","ltdot":"⋖","lthree":"⋋","ltimes":"⋉","ltlarr":"⥶","ltquest":"⩻","ltri":"◃","ltrie":"⊴","ltrif":"◂","ltrPar":"⦖","lurdshar":"⥊","luruhar":"⥦","lvertneqq":"≨︀","lvnE":"≨︀","macr":"¯","male":"♂","malt":"✠","maltese":"✠","Map":"⤅","map":"↦","mapsto":"↦","mapstodown":"↧","mapstoleft":"↤","mapstoup":"↥","marker":"▮","mcomma":"⨩","Mcy":"М","mcy":"м","mdash":"—","mDDot":"∺","measuredangle":"∡","MediumSpace":" ","Mellintrf":"ℳ","Mfr":"𝔐","mfr":"𝔪","mho":"℧","micro":"µ","midast":"*","midcir":"⫰","mid":"∣","middot":"·","minusb":"⊟","minus":"−","minusd":"∸","minusdu":"⨪","MinusPlus":"∓","mlcp":"⫛","mldr":"…","mnplus":"∓","models":"⊧","Mopf":"𝕄","mopf":"𝕞","mp":"∓","mscr":"𝓂","Mscr":"ℳ","mstpos":"∾","Mu":"Μ","mu":"μ","multimap":"⊸","mumap":"⊸","nabla":"∇","Nacute":"Ń","nacute":"ń","nang":"∠⃒","nap":"≉","napE":"⩰̸","napid":"≋̸","napos":"ŉ","napprox":"≉","natural":"♮","naturals":"ℕ","natur":"♮","nbsp":" ","nbump":"≎̸","nbumpe":"≏̸","ncap":"⩃","Ncaron":"Ň","ncaron":"ň","Ncedil":"Ņ","ncedil":"ņ","ncong":"≇","ncongdot":"⩭̸","ncup":"⩂","Ncy":"Н","ncy":"н","ndash":"–","nearhk":"⤤","nearr":"↗","neArr":"⇗","nearrow":"↗","ne":"≠","nedot":"≐̸","NegativeMediumSpace":"​","NegativeThickSpace":"​","NegativeThinSpace":"​","NegativeVeryThinSpace":"​","nequiv":"≢","nesear":"⤨","nesim":"≂̸","NestedGreaterGreater":"≫","NestedLessLess":"≪","NewLine":"\n","nexist":"∄","nexists":"∄","Nfr":"𝔑","nfr":"𝔫","ngE":"≧̸","nge":"≱","ngeq":"≱","ngeqq":"≧̸","ngeqslant":"⩾̸","nges":"⩾̸","nGg":"⋙̸","ngsim":"≵","nGt":"≫⃒","ngt":"≯","ngtr":"≯","nGtv":"≫̸","nharr":"↮","nhArr":"⇎","nhpar":"⫲","ni":"∋","nis":"⋼","nisd":"⋺","niv":"∋","NJcy":"Њ","njcy":"њ","nlarr":"↚","nlArr":"⇍","nldr":"‥","nlE":"≦̸","nle":"≰","nleftarrow":"↚","nLeftarrow":"⇍","nleftrightarrow":"↮","nLeftrightarrow":"⇎","nleq":"≰","nleqq":"≦̸","nleqslant":"⩽̸","nles":"⩽̸","nless":"≮","nLl":"⋘̸","nlsim":"≴","nLt":"≪⃒","nlt":"≮","nltri":"⋪","nltrie":"⋬","nLtv":"≪̸","nmid":"∤","NoBreak":"⁠","NonBreakingSpace":" ","nopf":"𝕟","Nopf":"ℕ","Not":"⫬","not":"¬","NotCongruent":"≢","NotCupCap":"≭","NotDoubleVerticalBar":"∦","NotElement":"∉","NotEqual":"≠","NotEqualTilde":"≂̸","NotExists":"∄","NotGreater":"≯","NotGreaterEqual":"≱","NotGreaterFullEqual":"≧̸","NotGreaterGreater":"≫̸","NotGreaterLess":"≹","NotGreaterSlantEqual":"⩾̸","NotGreaterTilde":"≵","NotHumpDownHump":"≎̸","NotHumpEqual":"≏̸","notin":"∉","notindot":"⋵̸","notinE":"⋹̸","notinva":"∉","notinvb":"⋷","notinvc":"⋶","NotLeftTriangleBar":"⧏̸","NotLeftTriangle":"⋪","NotLeftTriangleEqual":"⋬","NotLess":"≮","NotLessEqual":"≰","NotLessGreater":"≸","NotLessLess":"≪̸","NotLessSlantEqual":"⩽̸","NotLessTilde":"≴","NotNestedGreaterGreater":"⪢̸","NotNestedLessLess":"⪡̸","notni":"∌","notniva":"∌","notnivb":"⋾","notnivc":"⋽","NotPrecedes":"⊀","NotPrecedesEqual":"⪯̸","NotPrecedesSlantEqual":"⋠","NotReverseElement":"∌","NotRightTriangleBar":"⧐̸","NotRightTriangle":"⋫","NotRightTriangleEqual":"⋭","NotSquareSubset":"⊏̸","NotSquareSubsetEqual":"⋢","NotSquareSuperset":"⊐̸","NotSquareSupersetEqual":"⋣","NotSubset":"⊂⃒","NotSubsetEqual":"⊈","NotSucceeds":"⊁","NotSucceedsEqual":"⪰̸","NotSucceedsSlantEqual":"⋡","NotSucceedsTilde":"≿̸","NotSuperset":"⊃⃒","NotSupersetEqual":"⊉","NotTilde":"≁","NotTildeEqual":"≄","NotTildeFullEqual":"≇","NotTildeTilde":"≉","NotVerticalBar":"∤","nparallel":"∦","npar":"∦","nparsl":"⫽⃥","npart":"∂̸","npolint":"⨔","npr":"⊀","nprcue":"⋠","nprec":"⊀","npreceq":"⪯̸","npre":"⪯̸","nrarrc":"⤳̸","nrarr":"↛","nrArr":"⇏","nrarrw":"↝̸","nrightarrow":"↛","nRightarrow":"⇏","nrtri":"⋫","nrtrie":"⋭","nsc":"⊁","nsccue":"⋡","nsce":"⪰̸","Nscr":"𝒩","nscr":"𝓃","nshortmid":"∤","nshortparallel":"∦","nsim":"≁","nsime":"≄","nsimeq":"≄","nsmid":"∤","nspar":"∦","nsqsube":"⋢","nsqsupe":"⋣","nsub":"⊄","nsubE":"⫅̸","nsube":"⊈","nsubset":"⊂⃒","nsubseteq":"⊈","nsubseteqq":"⫅̸","nsucc":"⊁","nsucceq":"⪰̸","nsup":"⊅","nsupE":"⫆̸","nsupe":"⊉","nsupset":"⊃⃒","nsupseteq":"⊉","nsupseteqq":"⫆̸","ntgl":"≹","Ntilde":"Ñ","ntilde":"ñ","ntlg":"≸","ntriangleleft":"⋪","ntrianglelefteq":"⋬","ntriangleright":"⋫","ntrianglerighteq":"⋭","Nu":"Ν","nu":"ν","num":"#","numero":"№","numsp":" ","nvap":"≍⃒","nvdash":"⊬","nvDash":"⊭","nVdash":"⊮","nVDash":"⊯","nvge":"≥⃒","nvgt":">⃒","nvHarr":"⤄","nvinfin":"⧞","nvlArr":"⤂","nvle":"≤⃒","nvlt":"<⃒","nvltrie":"⊴⃒","nvrArr":"⤃","nvrtrie":"⊵⃒","nvsim":"∼⃒","nwarhk":"⤣","nwarr":"↖","nwArr":"⇖","nwarrow":"↖","nwnear":"⤧","Oacute":"Ó","oacute":"ó","oast":"⊛","Ocirc":"Ô","ocirc":"ô","ocir":"⊚","Ocy":"О","ocy":"о","odash":"⊝","Odblac":"Ő","odblac":"ő","odiv":"⨸","odot":"⊙","odsold":"⦼","OElig":"Œ","oelig":"œ","ofcir":"⦿","Ofr":"𝔒","ofr":"𝔬","ogon":"˛","Ograve":"Ò","ograve":"ò","ogt":"⧁","ohbar":"⦵","ohm":"Ω","oint":"∮","olarr":"↺","olcir":"⦾","olcross":"⦻","oline":"‾","olt":"⧀","Omacr":"Ō","omacr":"ō","Omega":"Ω","omega":"ω","Omicron":"Ο","omicron":"ο","omid":"⦶","ominus":"⊖","Oopf":"𝕆","oopf":"𝕠","opar":"⦷","OpenCurlyDoubleQuote":"“","OpenCurlyQuote":"‘","operp":"⦹","oplus":"⊕","orarr":"↻","Or":"⩔","or":"∨","ord":"⩝","order":"ℴ","orderof":"ℴ","ordf":"ª","ordm":"º","origof":"⊶","oror":"⩖","orslope":"⩗","orv":"⩛","oS":"Ⓢ","Oscr":"𝒪","oscr":"ℴ","Oslash":"Ø","oslash":"ø","osol":"⊘","Otilde":"Õ","otilde":"õ","otimesas":"⨶","Otimes":"⨷","otimes":"⊗","Ouml":"Ö","ouml":"ö","ovbar":"⌽","OverBar":"‾","OverBrace":"⏞","OverBracket":"⎴","OverParenthesis":"⏜","para":"¶","parallel":"∥","par":"∥","parsim":"⫳","parsl":"⫽","part":"∂","PartialD":"∂","Pcy":"П","pcy":"п","percnt":"%","period":".","permil":"‰","perp":"⊥","pertenk":"‱","Pfr":"𝔓","pfr":"𝔭","Phi":"Φ","phi":"φ","phiv":"ϕ","phmmat":"ℳ","phone":"☎","Pi":"Π","pi":"π","pitchfork":"⋔","piv":"ϖ","planck":"ℏ","planckh":"ℎ","plankv":"ℏ","plusacir":"⨣","plusb":"⊞","pluscir":"⨢","plus":"+","plusdo":"∔","plusdu":"⨥","pluse":"⩲","PlusMinus":"±","plusmn":"±","plussim":"⨦","plustwo":"⨧","pm":"±","Poincareplane":"ℌ","pointint":"⨕","popf":"𝕡","Popf":"ℙ","pound":"£","prap":"⪷","Pr":"⪻","pr":"≺","prcue":"≼","precapprox":"⪷","prec":"≺","preccurlyeq":"≼","Precedes":"≺","PrecedesEqual":"⪯","PrecedesSlantEqual":"≼","PrecedesTilde":"≾","preceq":"⪯","precnapprox":"⪹","precneqq":"⪵","precnsim":"⋨","pre":"⪯","prE":"⪳","precsim":"≾","prime":"′","Prime":"″","primes":"ℙ","prnap":"⪹","prnE":"⪵","prnsim":"⋨","prod":"∏","Product":"∏","profalar":"⌮","profline":"⌒","profsurf":"⌓","prop":"∝","Proportional":"∝","Proportion":"∷","propto":"∝","prsim":"≾","prurel":"⊰","Pscr":"𝒫","pscr":"𝓅","Psi":"Ψ","psi":"ψ","puncsp":" ","Qfr":"𝔔","qfr":"𝔮","qint":"⨌","qopf":"𝕢","Qopf":"ℚ","qprime":"⁗","Qscr":"𝒬","qscr":"𝓆","quaternions":"ℍ","quatint":"⨖","quest":"?","questeq":"≟","quot":"\"","QUOT":"\"","rAarr":"⇛","race":"∽̱","Racute":"Ŕ","racute":"ŕ","radic":"√","raemptyv":"⦳","rang":"⟩","Rang":"⟫","rangd":"⦒","range":"⦥","rangle":"⟩","raquo":"»","rarrap":"⥵","rarrb":"⇥","rarrbfs":"⤠","rarrc":"⤳","rarr":"→","Rarr":"↠","rArr":"⇒","rarrfs":"⤞","rarrhk":"↪","rarrlp":"↬","rarrpl":"⥅","rarrsim":"⥴","Rarrtl":"⤖","rarrtl":"↣","rarrw":"↝","ratail":"⤚","rAtail":"⤜","ratio":"∶","rationals":"ℚ","rbarr":"⤍","rBarr":"⤏","RBarr":"⤐","rbbrk":"❳","rbrace":"}","rbrack":"]","rbrke":"⦌","rbrksld":"⦎","rbrkslu":"⦐","Rcaron":"Ř","rcaron":"ř","Rcedil":"Ŗ","rcedil":"ŗ","rceil":"⌉","rcub":"}","Rcy":"Р","rcy":"р","rdca":"⤷","rdldhar":"⥩","rdquo":"”","rdquor":"”","rdsh":"↳","real":"ℜ","realine":"ℛ","realpart":"ℜ","reals":"ℝ","Re":"ℜ","rect":"▭","reg":"®","REG":"®","ReverseElement":"∋","ReverseEquilibrium":"⇋","ReverseUpEquilibrium":"⥯","rfisht":"⥽","rfloor":"⌋","rfr":"𝔯","Rfr":"ℜ","rHar":"⥤","rhard":"⇁","rharu":"⇀","rharul":"⥬","Rho":"Ρ","rho":"ρ","rhov":"ϱ","RightAngleBracket":"⟩","RightArrowBar":"⇥","rightarrow":"→","RightArrow":"→","Rightarrow":"⇒","RightArrowLeftArrow":"⇄","rightarrowtail":"↣","RightCeiling":"⌉","RightDoubleBracket":"⟧","RightDownTeeVector":"⥝","RightDownVectorBar":"⥕","RightDownVector":"⇂","RightFloor":"⌋","rightharpoondown":"⇁","rightharpoonup":"⇀","rightleftarrows":"⇄","rightleftharpoons":"⇌","rightrightarrows":"⇉","rightsquigarrow":"↝","RightTeeArrow":"↦","RightTee":"⊢","RightTeeVector":"⥛","rightthreetimes":"⋌","RightTriangleBar":"⧐","RightTriangle":"⊳","RightTriangleEqual":"⊵","RightUpDownVector":"⥏","RightUpTeeVector":"⥜","RightUpVectorBar":"⥔","RightUpVector":"↾","RightVectorBar":"⥓","RightVector":"⇀","ring":"˚","risingdotseq":"≓","rlarr":"⇄","rlhar":"⇌","rlm":"‏","rmoustache":"⎱","rmoust":"⎱","rnmid":"⫮","roang":"⟭","roarr":"⇾","robrk":"⟧","ropar":"⦆","ropf":"𝕣","Ropf":"ℝ","roplus":"⨮","rotimes":"⨵","RoundImplies":"⥰","rpar":")","rpargt":"⦔","rppolint":"⨒","rrarr":"⇉","Rrightarrow":"⇛","rsaquo":"›","rscr":"𝓇","Rscr":"ℛ","rsh":"↱","Rsh":"↱","rsqb":"]","rsquo":"’","rsquor":"’","rthree":"⋌","rtimes":"⋊","rtri":"▹","rtrie":"⊵","rtrif":"▸","rtriltri":"⧎","RuleDelayed":"⧴","ruluhar":"⥨","rx":"℞","Sacute":"Ś","sacute":"ś","sbquo":"‚","scap":"⪸","Scaron":"Š","scaron":"š","Sc":"⪼","sc":"≻","sccue":"≽","sce":"⪰","scE":"⪴","Scedil":"Ş","scedil":"ş","Scirc":"Ŝ","scirc":"ŝ","scnap":"⪺","scnE":"⪶","scnsim":"⋩","scpolint":"⨓","scsim":"≿","Scy":"С","scy":"с","sdotb":"⊡","sdot":"⋅","sdote":"⩦","searhk":"⤥","searr":"↘","seArr":"⇘","searrow":"↘","sect":"§","semi":";","seswar":"⤩","setminus":"∖","setmn":"∖","sext":"✶","Sfr":"𝔖","sfr":"𝔰","sfrown":"⌢","sharp":"♯","SHCHcy":"Щ","shchcy":"щ","SHcy":"Ш","shcy":"ш","ShortDownArrow":"↓","ShortLeftArrow":"←","shortmid":"∣","shortparallel":"∥","ShortRightArrow":"→","ShortUpArrow":"↑","shy":"­","Sigma":"Σ","sigma":"σ","sigmaf":"ς","sigmav":"ς","sim":"∼","simdot":"⩪","sime":"≃","simeq":"≃","simg":"⪞","simgE":"⪠","siml":"⪝","simlE":"⪟","simne":"≆","simplus":"⨤","simrarr":"⥲","slarr":"←","SmallCircle":"∘","smallsetminus":"∖","smashp":"⨳","smeparsl":"⧤","smid":"∣","smile":"⌣","smt":"⪪","smte":"⪬","smtes":"⪬︀","SOFTcy":"Ь","softcy":"ь","solbar":"⌿","solb":"⧄","sol":"/","Sopf":"𝕊","sopf":"𝕤","spades":"♠","spadesuit":"♠","spar":"∥","sqcap":"⊓","sqcaps":"⊓︀","sqcup":"⊔","sqcups":"⊔︀","Sqrt":"√","sqsub":"⊏","sqsube":"⊑","sqsubset":"⊏","sqsubseteq":"⊑","sqsup":"⊐","sqsupe":"⊒","sqsupset":"⊐","sqsupseteq":"⊒","square":"□","Square":"□","SquareIntersection":"⊓","SquareSubset":"⊏","SquareSubsetEqual":"⊑","SquareSuperset":"⊐","SquareSupersetEqual":"⊒","SquareUnion":"⊔","squarf":"▪","squ":"□","squf":"▪","srarr":"→","Sscr":"𝒮","sscr":"𝓈","ssetmn":"∖","ssmile":"⌣","sstarf":"⋆","Star":"⋆","star":"☆","starf":"★","straightepsilon":"ϵ","straightphi":"ϕ","strns":"¯","sub":"⊂","Sub":"⋐","subdot":"⪽","subE":"⫅","sube":"⊆","subedot":"⫃","submult":"⫁","subnE":"⫋","subne":"⊊","subplus":"⪿","subrarr":"⥹","subset":"⊂","Subset":"⋐","subseteq":"⊆","subseteqq":"⫅","SubsetEqual":"⊆","subsetneq":"⊊","subsetneqq":"⫋","subsim":"⫇","subsub":"⫕","subsup":"⫓","succapprox":"⪸","succ":"≻","succcurlyeq":"≽","Succeeds":"≻","SucceedsEqual":"⪰","SucceedsSlantEqual":"≽","SucceedsTilde":"≿","succeq":"⪰","succnapprox":"⪺","succneqq":"⪶","succnsim":"⋩","succsim":"≿","SuchThat":"∋","sum":"∑","Sum":"∑","sung":"♪","sup1":"¹","sup2":"²","sup3":"³","sup":"⊃","Sup":"⋑","supdot":"⪾","supdsub":"⫘","supE":"⫆","supe":"⊇","supedot":"⫄","Superset":"⊃","SupersetEqual":"⊇","suphsol":"⟉","suphsub":"⫗","suplarr":"⥻","supmult":"⫂","supnE":"⫌","supne":"⊋","supplus":"⫀","supset":"⊃","Supset":"⋑","supseteq":"⊇","supseteqq":"⫆","supsetneq":"⊋","supsetneqq":"⫌","supsim":"⫈","supsub":"⫔","supsup":"⫖","swarhk":"⤦","swarr":"↙","swArr":"⇙","swarrow":"↙","swnwar":"⤪","szlig":"ß","Tab":"\t","target":"⌖","Tau":"Τ","tau":"τ","tbrk":"⎴","Tcaron":"Ť","tcaron":"ť","Tcedil":"Ţ","tcedil":"ţ","Tcy":"Т","tcy":"т","tdot":"⃛","telrec":"⌕","Tfr":"𝔗","tfr":"𝔱","there4":"∴","therefore":"∴","Therefore":"∴","Theta":"Θ","theta":"θ","thetasym":"ϑ","thetav":"ϑ","thickapprox":"≈","thicksim":"∼","ThickSpace":"  ","ThinSpace":" ","thinsp":" ","thkap":"≈","thksim":"∼","THORN":"Þ","thorn":"þ","tilde":"˜","Tilde":"∼","TildeEqual":"≃","TildeFullEqual":"≅","TildeTilde":"≈","timesbar":"⨱","timesb":"⊠","times":"×","timesd":"⨰","tint":"∭","toea":"⤨","topbot":"⌶","topcir":"⫱","top":"⊤","Topf":"𝕋","topf":"𝕥","topfork":"⫚","tosa":"⤩","tprime":"‴","trade":"™","TRADE":"™","triangle":"▵","triangledown":"▿","triangleleft":"◃","trianglelefteq":"⊴","triangleq":"≜","triangleright":"▹","trianglerighteq":"⊵","tridot":"◬","trie":"≜","triminus":"⨺","TripleDot":"⃛","triplus":"⨹","trisb":"⧍","tritime":"⨻","trpezium":"⏢","Tscr":"𝒯","tscr":"𝓉","TScy":"Ц","tscy":"ц","TSHcy":"Ћ","tshcy":"ћ","Tstrok":"Ŧ","tstrok":"ŧ","twixt":"≬","twoheadleftarrow":"↞","twoheadrightarrow":"↠","Uacute":"Ú","uacute":"ú","uarr":"↑","Uarr":"↟","uArr":"⇑","Uarrocir":"⥉","Ubrcy":"Ў","ubrcy":"ў","Ubreve":"Ŭ","ubreve":"ŭ","Ucirc":"Û","ucirc":"û","Ucy":"У","ucy":"у","udarr":"⇅","Udblac":"Ű","udblac":"ű","udhar":"⥮","ufisht":"⥾","Ufr":"𝔘","ufr":"𝔲","Ugrave":"Ù","ugrave":"ù","uHar":"⥣","uharl":"↿","uharr":"↾","uhblk":"▀","ulcorn":"⌜","ulcorner":"⌜","ulcrop":"⌏","ultri":"◸","Umacr":"Ū","umacr":"ū","uml":"¨","UnderBar":"_","UnderBrace":"⏟","UnderBracket":"⎵","UnderParenthesis":"⏝","Union":"⋃","UnionPlus":"⊎","Uogon":"Ų","uogon":"ų","Uopf":"𝕌","uopf":"𝕦","UpArrowBar":"⤒","uparrow":"↑","UpArrow":"↑","Uparrow":"⇑","UpArrowDownArrow":"⇅","updownarrow":"↕","UpDownArrow":"↕","Updownarrow":"⇕","UpEquilibrium":"⥮","upharpoonleft":"↿","upharpoonright":"↾","uplus":"⊎","UpperLeftArrow":"↖","UpperRightArrow":"↗","upsi":"υ","Upsi":"ϒ","upsih":"ϒ","Upsilon":"Υ","upsilon":"υ","UpTeeArrow":"↥","UpTee":"⊥","upuparrows":"⇈","urcorn":"⌝","urcorner":"⌝","urcrop":"⌎","Uring":"Ů","uring":"ů","urtri":"◹","Uscr":"𝒰","uscr":"𝓊","utdot":"⋰","Utilde":"Ũ","utilde":"ũ","utri":"▵","utrif":"▴","uuarr":"⇈","Uuml":"Ü","uuml":"ü","uwangle":"⦧","vangrt":"⦜","varepsilon":"ϵ","varkappa":"ϰ","varnothing":"∅","varphi":"ϕ","varpi":"ϖ","varpropto":"∝","varr":"↕","vArr":"⇕","varrho":"ϱ","varsigma":"ς","varsubsetneq":"⊊︀","varsubsetneqq":"⫋︀","varsupsetneq":"⊋︀","varsupsetneqq":"⫌︀","vartheta":"ϑ","vartriangleleft":"⊲","vartriangleright":"⊳","vBar":"⫨","Vbar":"⫫","vBarv":"⫩","Vcy":"В","vcy":"в","vdash":"⊢","vDash":"⊨","Vdash":"⊩","VDash":"⊫","Vdashl":"⫦","veebar":"⊻","vee":"∨","Vee":"⋁","veeeq":"≚","vellip":"⋮","verbar":"|","Verbar":"‖","vert":"|","Vert":"‖","VerticalBar":"∣","VerticalLine":"|","VerticalSeparator":"❘","VerticalTilde":"≀","VeryThinSpace":" ","Vfr":"𝔙","vfr":"𝔳","vltri":"⊲","vnsub":"⊂⃒","vnsup":"⊃⃒","Vopf":"𝕍","vopf":"𝕧","vprop":"∝","vrtri":"⊳","Vscr":"𝒱","vscr":"𝓋","vsubnE":"⫋︀","vsubne":"⊊︀","vsupnE":"⫌︀","vsupne":"⊋︀","Vvdash":"⊪","vzigzag":"⦚","Wcirc":"Ŵ","wcirc":"ŵ","wedbar":"⩟","wedge":"∧","Wedge":"⋀","wedgeq":"≙","weierp":"℘","Wfr":"𝔚","wfr":"𝔴","Wopf":"𝕎","wopf":"𝕨","wp":"℘","wr":"≀","wreath":"≀","Wscr":"𝒲","wscr":"𝓌","xcap":"⋂","xcirc":"◯","xcup":"⋃","xdtri":"▽","Xfr":"𝔛","xfr":"𝔵","xharr":"⟷","xhArr":"⟺","Xi":"Ξ","xi":"ξ","xlarr":"⟵","xlArr":"⟸","xmap":"⟼","xnis":"⋻","xodot":"⨀","Xopf":"𝕏","xopf":"𝕩","xoplus":"⨁","xotime":"⨂","xrarr":"⟶","xrArr":"⟹","Xscr":"𝒳","xscr":"𝓍","xsqcup":"⨆","xuplus":"⨄","xutri":"△","xvee":"⋁","xwedge":"⋀","Yacute":"Ý","yacute":"ý","YAcy":"Я","yacy":"я","Ycirc":"Ŷ","ycirc":"ŷ","Ycy":"Ы","ycy":"ы","yen":"¥","Yfr":"𝔜","yfr":"𝔶","YIcy":"Ї","yicy":"ї","Yopf":"𝕐","yopf":"𝕪","Yscr":"𝒴","yscr":"𝓎","YUcy":"Ю","yucy":"ю","yuml":"ÿ","Yuml":"Ÿ","Zacute":"Ź","zacute":"ź","Zcaron":"Ž","zcaron":"ž","Zcy":"З","zcy":"з","Zdot":"Ż","zdot":"ż","zeetrf":"ℨ","ZeroWidthSpace":"​","Zeta":"Ζ","zeta":"ζ","zfr":"𝔷","Zfr":"ℨ","ZHcy":"Ж","zhcy":"ж","zigrarr":"⇝","zopf":"𝕫","Zopf":"ℤ","Zscr":"𝒵","zscr":"𝓏","zwj":"‍","zwnj":"‌"}
 ;
 },{}],"node_modules/markdown-it/lib/common/entities.js":[function(require,module,exports) {
@@ -44062,6 +44062,7 @@ module.exports = MarkdownIt;
 module.exports = require('./lib/');
 
 },{"./lib/":"node_modules/markdown-it/lib/index.js"}],"build/ps.js":[function(require,module,exports) {
+var global = arguments[3];
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 // Generated by purs bundle 0.14.0
@@ -44610,6 +44611,7 @@ var PS = {};
   var Control_Apply = $PS["Control.Apply"];
   var Control_Bind = $PS["Control.Bind"];
   var Control_Category = $PS["Control.Category"];
+  var Control_Monad = $PS["Control.Monad"];
   var Data_Eq = $PS["Data.Eq"];
   var Data_Function = $PS["Data.Function"];
   var Data_Functor = $PS["Data.Functor"];
@@ -44741,6 +44743,11 @@ var PS = {};
   var applicativeMaybe = new Control_Applicative.Applicative(function () {
     return applyMaybe;
   }, Just.create);
+  var monadMaybe = new Control_Monad.Monad(function () {
+    return applicativeMaybe;
+  }, function () {
+    return bindMaybe;
+  });
   exports["Nothing"] = Nothing;
   exports["Just"] = Just;
   exports["maybe"] = maybe;
@@ -44751,6 +44758,7 @@ var PS = {};
   exports["functorMaybe"] = functorMaybe;
   exports["applicativeMaybe"] = applicativeMaybe;
   exports["bindMaybe"] = bindMaybe;
+  exports["monadMaybe"] = monadMaybe;
   exports["eqMaybe"] = eqMaybe;
 })(PS);
 
@@ -53158,6 +53166,14 @@ var PS = {};
 (function (exports) {
   "use strict";
 
+  exports.replace = function (s1) {
+    return function (s2) {
+      return function (s3) {
+        return s3.replace(s1, s2);
+      };
+    };
+  };
+
   exports.split = function (sep) {
     return function (s) {
       return s.split(sep);
@@ -53178,6 +53194,7 @@ var PS = {};
   $PS["Data.String.Common"] = $PS["Data.String.Common"] || {};
   var exports = $PS["Data.String.Common"];
   var $foreign = $PS["Data.String.Common"];
+  exports["replace"] = $foreign.replace;
   exports["split"] = $foreign.split;
   exports["joinWith"] = $foreign.joinWith;
 })(PS);
@@ -53218,6 +53235,28 @@ var PS = {};
       };
     };
   };
+
+  exports._replaceBy = function (just) {
+    return function (nothing) {
+      return function (r) {
+        return function (f) {
+          return function (s) {
+            return s.replace(r, function (match) {
+              var groups = [];
+              var group,
+                  i = 1;
+
+              while (typeof (group = arguments[i++]) !== "number") {
+                groups.push(group == null ? nothing : just(group));
+              }
+
+              return f(match)(groups);
+            });
+          };
+        };
+      };
+    };
+  };
 })(PS["Data.String.Regex"] = PS["Data.String.Regex"] || {});
 
 (function ($PS) {
@@ -53229,6 +53268,7 @@ var PS = {};
   var $foreign = $PS["Data.String.Regex"];
   var Data_Either = $PS["Data.Either"];
   var Data_Maybe = $PS["Data.Maybe"];
+  var replace$prime = $foreign["_replaceBy"](Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 
   var renderFlags = function renderFlags(v) {
     return function () {
@@ -53285,6 +53325,7 @@ var PS = {};
   var match = $foreign["_match"](Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
   exports["regex"] = regex;
   exports["match"] = match;
+  exports["replace'"] = replace$prime;
 })(PS);
 
 (function ($PS) {
@@ -53293,6 +53334,7 @@ var PS = {};
 
   $PS["Data.String.Regex.Flags"] = $PS["Data.String.Regex.Flags"] || {};
   var exports = $PS["Data.String.Regex.Flags"];
+  var Data_Semigroup = $PS["Data.Semigroup"];
 
   var RegexFlags = function () {
     function RegexFlags(value0) {
@@ -53308,6 +53350,34 @@ var PS = {};
     return RegexFlags;
   }();
 
+  var unicode = new RegexFlags({
+    global: false,
+    ignoreCase: false,
+    multiline: false,
+    dotAll: false,
+    sticky: false,
+    unicode: true
+  });
+  var sticky = new RegexFlags({
+    global: false,
+    ignoreCase: false,
+    multiline: false,
+    dotAll: false,
+    sticky: true,
+    unicode: false
+  });
+  var semigroupRegexFlags = new Data_Semigroup.Semigroup(function (v) {
+    return function (v1) {
+      return new RegexFlags({
+        global: v.value0.global || v1.value0.global,
+        ignoreCase: v.value0.ignoreCase || v1.value0.ignoreCase,
+        multiline: v.value0.multiline || v1.value0.multiline,
+        dotAll: v.value0.dotAll || v1.value0.dotAll,
+        sticky: v.value0.sticky || v1.value0.sticky,
+        unicode: v.value0.unicode || v1.value0.unicode
+      });
+    };
+  });
   var noFlags = new RegexFlags({
     global: false,
     ignoreCase: false,
@@ -53316,7 +53386,42 @@ var PS = {};
     sticky: false,
     unicode: false
   });
+  var multiline = new RegexFlags({
+    global: false,
+    ignoreCase: false,
+    multiline: true,
+    dotAll: false,
+    sticky: false,
+    unicode: false
+  });
+  var ignoreCase = new RegexFlags({
+    global: false,
+    ignoreCase: true,
+    multiline: false,
+    dotAll: false,
+    sticky: false,
+    unicode: false
+  });
+  var global = new RegexFlags({
+    global: true,
+    ignoreCase: false,
+    multiline: false,
+    dotAll: false,
+    sticky: false,
+    unicode: false
+  });
+  var dotAll = new RegexFlags({
+    global: false,
+    ignoreCase: false,
+    multiline: false,
+    dotAll: true,
+    sticky: false,
+    unicode: false
+  });
   exports["noFlags"] = noFlags;
+  exports["global"] = global;
+  exports["multiline"] = multiline;
+  exports["semigroupRegexFlags"] = semigroupRegexFlags;
 })(PS);
 
 (function (exports) {
@@ -53365,6 +53470,91 @@ var PS = {};
   };
 
   exports["parseYAMLToJson"] = parseYAMLToJson;
+})(PS);
+
+(function (exports) {
+  "use strict"; // Alias require to prevent webpack or browserify from actually requiring.
+
+  var req = typeof module === "undefined" ? undefined : module.require;
+
+  var util = function () {
+    try {
+      return req === undefined ? undefined : req("util");
+    } catch (e) {
+      return undefined;
+    }
+  }();
+
+  exports._trace = function (x, k) {
+    // node only recurses two levels into an object before printing
+    // "[object]" for further objects when using console.log()
+    if (util !== undefined) {
+      console.log(util.inspect(x, {
+        depth: null,
+        colors: true
+      }));
+    } else {
+      console.log(x);
+    }
+
+    return k({});
+  };
+
+  exports._spy = function (tag, x) {
+    if (util !== undefined) {
+      console.log(tag + ":", util.inspect(x, {
+        depth: null,
+        colors: true
+      }));
+    } else {
+      console.log(tag + ":", x);
+    }
+
+    return x;
+  };
+})(PS["Debug"] = PS["Debug"] || {});
+
+(function ($PS) {
+  // Generated by purs version 0.14.0
+  "use strict";
+
+  $PS["Debug"] = $PS["Debug"] || {};
+  var exports = $PS["Debug"];
+  var $foreign = $PS["Debug"];
+  var Control_Applicative = $PS["Control.Applicative"];
+  var Control_Bind = $PS["Control.Bind"];
+  var Data_Unit = $PS["Data.Unit"];
+
+  var trace = function trace(dictDebugWarning) {
+    return function (a) {
+      return function (k) {
+        return $foreign["_trace"](a, k);
+      };
+    };
+  };
+
+  var traceM = function traceM(dictDebugWarning) {
+    return function (dictMonad) {
+      return function (s) {
+        return Control_Bind.discard(Control_Bind.discardUnit)(dictMonad.Bind1())(Control_Applicative.pure(dictMonad.Applicative0())(Data_Unit.unit))(function () {
+          return trace()(s)(function (v) {
+            return Control_Applicative.pure(dictMonad.Applicative0())(Data_Unit.unit);
+          });
+        });
+      };
+    };
+  };
+
+  var spy = function spy(dictDebugWarning) {
+    return function (tag) {
+      return function (a) {
+        return $foreign["_spy"](tag, a);
+      };
+    };
+  };
+
+  exports["traceM"] = traceM;
+  exports["spy"] = spy;
 })(PS);
 
 (function ($PS) {
@@ -53484,7 +53674,7 @@ var PS = {};
 
   var hljs = require("highlight.js");
 
-  var katex = require("markdown-it-katex");
+  var mdkatex = require("markdown-it-katex");
 
   exports._highlight = function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -53499,10 +53689,11 @@ var PS = {};
     return str;
   };
 
-  exports._katex = katex;
+  exports._katex = mdkatex;
 })(PS["External"] = PS["External"] || {});
 
 (function ($PS) {
+  // Generated by purs version 0.14.0
   "use strict";
 
   $PS["External"] = $PS["External"] || {};
@@ -57897,6 +58088,8 @@ var PS = {};
     };
   };
 
+  var render_ = render([]);
+  exports["render_"] = render_;
   exports["render"] = render;
 })(PS);
 
@@ -58091,12 +58284,14 @@ var PS = {};
 })(PS);
 
 (function ($PS) {
-  // Generated by purs version 0.14.0
   "use strict";
 
   $PS["Pages"] = $PS["Pages"] || {};
   var exports = $PS["Pages"];
+  var Control_Applicative = $PS["Control.Applicative"];
+  var Control_Bind = $PS["Control.Bind"];
   var Data_Array = $PS["Data.Array"];
+  var Data_Either = $PS["Data.Either"];
   var Data_Eq = $PS["Data.Eq"];
   var Data_EuclideanRing = $PS["Data.EuclideanRing"];
   var Data_Functor = $PS["Data.Functor"];
@@ -58105,33 +58300,62 @@ var PS = {};
   var Data_Maybe = $PS["Data.Maybe"];
   var Data_Semigroup = $PS["Data.Semigroup"];
   var Data_Show = $PS["Data.Show"];
+  var Data_String_Regex = $PS["Data.String.Regex"];
+  var Data_String_Regex_Flags = $PS["Data.String.Regex.Flags"];
   var Data_Unfoldable = $PS["Data.Unfoldable"];
+  var Debug = $PS["Debug"];
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
   var Halogen_HTML_Elements = $PS["Halogen.HTML.Elements"];
   var Halogen_HTML_Properties = $PS["Halogen.HTML.Properties"];
+  var Html_Renderer_Halogen = $PS["Html.Renderer.Halogen"];
   var MarkdownIt_Renderer_Halogen = $PS["MarkdownIt.Renderer.Halogen"];
   var Web_HTML_Common = $PS["Web.HTML.Common"];
 
-  var cn = function cn($20) {
-    return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($20));
+  var fixupHtml = function fixupHtml(rawHtml) {
+    return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex("<(mspace.*)/>")(Data_String_Regex_Flags.global)))(function (mspace) {
+      return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex("<(path[\\s\\S]*?)\\/>")(Data_Semigroup.append(Data_String_Regex_Flags.semigroupRegexFlags)(Data_String_Regex_Flags.global)(Data_String_Regex_Flags.multiline))))(function (svgpath) {
+        var pathReplacer = function pathReplacer(v) {
+          return function (groups) {
+            return Debug.spy()("match:")("<" + (Data_Maybe.fromMaybe("path")(Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array.head(groups))) + "></path>"));
+          };
+        };
+
+        var mspaceReplacer = function mspaceReplacer(v) {
+          return function (groups) {
+            return "<" + (Data_Maybe.fromMaybe("mspace width=0")(Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array.head(groups))) + "></mspace>");
+          };
+        };
+
+        var fixedHtml1 = Data_String_Regex["replace'"](mspace)(mspaceReplacer)(rawHtml);
+        var fixedHtml2 = Data_String_Regex["replace'"](svgpath)(pathReplacer)(fixedHtml1);
+        return Control_Bind.discard(Control_Bind.discardUnit)(Data_Maybe.bindMaybe)(Debug.traceM()(Data_Maybe.monadMaybe)(fixedHtml2))(function () {
+          return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(fixedHtml2);
+        });
+      });
+    });
+  }; // This is a little helper to save some space
+
+
+  var cn = function cn($24) {
+    return Halogen_HTML_Properties.class_(Web_HTML_Common.ClassName($24));
   };
 
   var listCard = function listCard(post) {
     var href = Data_Maybe.fromMaybe("#!/blog/" + Data_Maybe.fromMaybe("")(post.id))(post.external);
     var externalTag = Halogen_HTML_Elements.span([cn("text-red-800 font-bold")])([Halogen_HTML_Core.text("external: ")]);
     return Halogen_HTML_Elements.a(Data_Semigroup.append(Data_Semigroup.semigroupArray)([Halogen_HTML_Properties.href(href), cn("hover:cursor-pointer w-full block p-4 md:p-6 my-3 border-solid border-2 rounded-lg")])(function () {
-      var $4 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(post.external)(Data_Maybe.Nothing.value);
+      var $6 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(post.external)(Data_Maybe.Nothing.value);
 
-      if ($4) {
+      if ($6) {
         return [];
       }
 
       ;
       return [Halogen_HTML_Properties.target("_blank")];
     }()))([Halogen_HTML_Elements.div([cn("block text-lg")])(Data_Semigroup.append(Data_Semigroup.semigroupArray)(function () {
-      var $5 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(post.external)(Data_Maybe.Nothing.value);
+      var $7 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(post.external)(Data_Maybe.Nothing.value);
 
-      if ($5) {
+      if ($7) {
         return [externalTag];
       }
 
@@ -58157,6 +58381,10 @@ var PS = {};
     })(imageElements)(postCards);
     return Halogen_HTML_Elements.div([cn("bg-white pt-6 flex flex-col")])(elements);
   };
+  /**
+  *  nav bar component 
+  */
+
 
   var navBarButton = function navBarButton(v) {
     return Halogen_HTML_Elements.a([Halogen_HTML_Properties.href(v.href), cn("block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl")])([Halogen_HTML_Core.text(v.content)]);
@@ -58173,6 +58401,10 @@ var PS = {};
   var navBarIconGroup = function navBarIconGroup(v) {
     return Halogen_HTML_Elements.div([cn("flex flex-row m-2")])(v.elements);
   };
+  /**
+  *  writing pages 
+  */
+
 
   var navBar = Halogen_HTML_Elements.div([cn("lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0")])([navBarButtonGroup({
     elements: [navBarButton({
@@ -58193,7 +58425,7 @@ var PS = {};
       link: "https://www.linkedin.com/in/mmesch",
       path: "logo-linkedin.png"
     })]
-  })]);
+  })]); // simple navbar layout
 
   var layout1 = function layout1(elements) {
     var container = Halogen_HTML_Elements.div([cn("w-full max-w-4xl block mx-auto px-1 md:px-3 py-3")]);
@@ -58221,7 +58453,7 @@ var PS = {};
       }
 
       ;
-      throw new Error("Failed pattern match at Pages (line 35, column 7 - line 52, column 12): " + [maybeCV.constructor.name]);
+      throw new Error("Failed pattern match at Pages (line 39, column 7 - line 56, column 12): " + [maybeCV.constructor.name]);
     }());
   };
 
@@ -58229,7 +58461,22 @@ var PS = {};
     return function (post) {
       var title = Data_Maybe.fromMaybe("no title")(post.title);
       var markdown = Data_Maybe.fromMaybe("")(post.content);
-      var rendered = MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
+
+      var rendered = function () {
+        if (post.compiled instanceof Data_Maybe.Nothing) {
+          return MarkdownIt_Renderer_Halogen.render_(markdownIt)(markdown);
+        }
+
+        ;
+
+        if (post.compiled instanceof Data_Maybe.Just) {
+          return Html_Renderer_Halogen.render_(Data_Maybe.fromMaybe("")(fixupHtml(post.compiled.value0)));
+        }
+
+        ;
+        throw new Error("Failed pattern match at Pages (line 71, column 16 - line 73, column 68): " + [post.compiled.constructor.name]);
+      }();
+
       var date = Data_Maybe.fromMaybe("no date")(post.date);
       return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-4xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.div([cn("text-gray-800 text-lg")])([Halogen_HTML_Core.text(date)]), Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), function () {
         if (post.description instanceof Data_Maybe.Nothing) {
@@ -58243,10 +58490,11 @@ var PS = {};
         }
 
         ;
-        throw new Error("Failed pattern match at Pages (line 77, column 13 - line 79, column 83): " + [post.description.constructor.name]);
+        throw new Error("Failed pattern match at Pages (line 83, column 13 - line 85, column 83): " + [post.description.constructor.name]);
       }(), rendered])]);
     };
-  };
+  }; // pages
+
 
   var blogList = function blogList(state) {
     return layout1([list(state.posts)]);
@@ -59975,7 +60223,6 @@ var PS = {};
 })(PS);
 
 (function ($PS) {
-  // Generated by purs version 0.14.0
   "use strict";
 
   $PS["Util"] = $PS["Util"] || {};
@@ -60065,49 +60312,54 @@ var PS = {};
 
   var fetchPost = function fetchPost(url) {
     return Control_Bind.bind(Effect_Aff.bindAff)(fetchFile(url))(function (contentMaybe) {
-      return Control_Applicative.pure(Effect_Aff.applicativeAff)(Control_Bind.bind(Data_Either.bindEither)(contentMaybe)(function (content) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Either.note("error in markdown extractions")(extractMarkdown(content)))(function (v) {
-          return Control_Bind.bind(Data_Either.bindEither)(Control_Monad_Except.runExcept(parseYaml(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
-            return "title";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "thumbnail";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "thumb";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "path";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "id";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "external";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "description";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "date";
-          }))()())(new Data_Symbol.IsSymbol(function () {
-            return "content";
-          }))()())())(v.header)))(function (v1) {
-            return Control_Applicative.pure(Data_Either.applicativeEither)({
-              content: new Data_Maybe.Just(v.body),
-              path: new Data_Maybe.Just(url),
-              date: Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex(".*/(\\d+-\\d+-\\d+)-.*")(Data_String_Regex_Flags.noFlags)))(function (dateExpr) {
-                return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_String_Regex.match(dateExpr)(url))(function (arr) {
-                  return Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array_NonEmpty.index(arr)(1));
-                });
-              }),
-              id: Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex(".*/(.+)\\.md")(Data_String_Regex_Flags.noFlags)))(function (idExpr) {
-                return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_String_Regex.match(idExpr)(url))(function (arr) {
-                  return Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array_NonEmpty.index(arr)(1));
-                });
-              }),
-              description: v1.description,
-              external: v1.external,
-              thumb: v1.thumb,
-              thumbnail: v1.thumbnail,
-              title: v1.title
+      return Control_Bind.bind(Effect_Aff.bindAff)(fetchFile(Data_String_Common.replace(".md")(".html")(url)))(function (compiledMaybe) {
+        return Control_Applicative.pure(Effect_Aff.applicativeAff)(Control_Bind.bind(Data_Either.bindEither)(contentMaybe)(function (content) {
+          return Control_Bind.bind(Data_Either.bindEither)(Data_Either.note("error in markdown extractions")(extractMarkdown(content)))(function (v) {
+            return Control_Bind.bind(Data_Either.bindEither)(Control_Monad_Except.runExcept(parseYaml(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)(new Data_Symbol.IsSymbol(function () {
+              return "title";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "thumbnail";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "thumb";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "path";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "id";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "external";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "description";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "date";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "content";
+            }))()())(new Data_Symbol.IsSymbol(function () {
+              return "compiled";
+            }))()())())(v.header)))(function (v1) {
+              return Control_Applicative.pure(Data_Either.applicativeEither)({
+                content: new Data_Maybe.Just(v.body),
+                path: new Data_Maybe.Just(url),
+                compiled: Data_Either.hush(compiledMaybe),
+                date: Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex(".*/(\\d+-\\d+-\\d+)-.*")(Data_String_Regex_Flags.noFlags)))(function (dateExpr) {
+                  return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_String_Regex.match(dateExpr)(url))(function (arr) {
+                    return Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array_NonEmpty.index(arr)(1));
+                  });
+                }),
+                id: Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(Data_String_Regex.regex(".*/(.+)\\.md")(Data_String_Regex_Flags.noFlags)))(function (idExpr) {
+                  return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_String_Regex.match(idExpr)(url))(function (arr) {
+                    return Control_Bind.join(Data_Maybe.bindMaybe)(Data_Array_NonEmpty.index(arr)(1));
+                  });
+                }),
+                description: v1.description,
+                external: v1.external,
+                thumb: v1.thumb,
+                thumbnail: v1.thumbnail,
+                title: v1.title
+              });
             });
           });
-        });
-      }));
+        }));
+      });
     });
   };
 
@@ -60457,7 +60709,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35137" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41521" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,0 +1,12 @@
+<p>Languagetool is a powerful spell checker</p>
+<pre class="vim"><code>      function LanguageTool(lang) range
+        let l:cmd = &quot;${pkgs.languagetool}/bin/languagetool-commandline -m de-DE -l &quot;.a:lang.&quot; -&quot;
+        let output=system(&#39;echo &#39;.shellescape(join(getline(a:firstline, a:lastline), &quot;\n&quot;)).&#39;|&#39;.cmd)
+        set splitbelow
+        new
+        call setline(&#39;.&#39;, split(output, &quot;\n&quot;))
+      endfunction
+
+      command -range LanguageToolEN &lt;line1&gt;,&lt;line2&gt;call LanguageTool(&quot;en-US&quot;) 
+      command -range LanguageToolFR &lt;line1&gt;,&lt;line2&gt;call LanguageTool(&quot;fr&quot;) 
+      command -range LanguageToolDE &lt;line1&gt;,&lt;line2&gt;call LanguageTool(&quot;de-DE&quot;) </code></pre>

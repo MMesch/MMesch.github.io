@@ -1,0 +1,207 @@
+<p>This notebook demonstrates how a jupyter kernel can be started and controlled from Python (i.e. another jupyter kernel in this case, with an attached notebook).</p>
+<h2 id="demonstration-of-python---jupyter-kernel-interaction">Demonstration of Python - Jupyter kernel interaction</h2>
+<p>Jupyter provides capabilities to launch a compute kernel in a subprocess that can execute user computations. This notebook demonstrates how this works, using Python to launch and manage the compute kernel.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ol type="1">
+<li>starting a jupyter kernel using the KernelManager class</li>
+<li>interactions with the jupyter kernel using the BlockingKernelClient class</li>
+<li>sending serialized Python objects to jupyter</li>
+</ol>
+<h3 id="starting-a-jupyter-kernel-using-the-kernelmanager-class">starting a jupyter kernel using the KernelManager class</h3>
+<p>Jupyter kernels are managed by a KernelManager class. This class is responsible to start, stop and manage a single compute kernel in a subprocess. It can be instantiated with default arguments with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jupyter_client</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>manager <span class="op">=</span> jupyter_client.KernelManager()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>manager.is_alive()</span></code></pre></div>
+<pre><code>False</code></pre>
+<p>Until now, this kernel has not been started. A compute kernel can have different properties. For example, it could be a Python2 or Python3, a Haskell kernel or some other exotic specification. Jupyter stores the kernel specifications in a KernelSpec object. Let’s have a look at it for the kernel that we have just instantiated:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>manager.kernel_spec.to_dict()</span></code></pre></div>
+<pre><code>{&#39;argv&#39;: [&#39;/home/matto/miniconda3/bin/python&#39;,
+  &#39;-m&#39;,
+  &#39;ipykernel_launcher&#39;,
+  &#39;-f&#39;,
+  &#39;{connection_file}&#39;],
+ &#39;display_name&#39;: &#39;Python 3&#39;,
+ &#39;env&#39;: {},
+ &#39;interrupt_mode&#39;: &#39;signal&#39;,
+ &#39;language&#39;: &#39;python&#39;,
+ &#39;metadata&#39;: {}}</code></pre>
+<p>This dictionary describes in detail the kernel that the KernelManager manages. In our case, it is a Python3 kernel. Let’s start the kernel with the obvious start_kernel() method and check again if it is alive:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>manager.start_kernel()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>manager.is_alive()</span></code></pre></div>
+<pre><code>True</code></pre>
+<p>The KernelManager provides different methods to extract information about the kernel. Communication with the kernel is done through a message interface (http://jupyter-client.readthedocs.io/en/stable/messaging.html). The ports that are used for these messages can be seen:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>manager.get_connection_info()</span></code></pre></div>
+<pre><code>{&#39;control_port&#39;: 48159,
+ &#39;hb_port&#39;: 44763,
+ &#39;iopub_port&#39;: 59763,
+ &#39;ip&#39;: &#39;127.0.0.1&#39;,
+ &#39;key&#39;: b&#39;2830e36f-86c120ead1c005e5797396c1&#39;,
+ &#39;shell_port&#39;: 41363,
+ &#39;signature_scheme&#39;: &#39;hmac-sha256&#39;,
+ &#39;stdin_port&#39;: 51377,
+ &#39;transport&#39;: &#39;tcp&#39;}</code></pre>
+<h3 id="interactions-with-the-jupyter-kernel-using-the-blockingkernelclient-class">interactions with the jupyter kernel using the BlockingKernelClient class</h3>
+<p>Interaction with the kernel is handled by a Client class. We are going to use the default BlockingKernelClient here. Such a client that is connected to the appropriate kernel can be obtained from the manager:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> manager.client()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>client</span></code></pre></div>
+<pre><code>jupyter_client.blocking.client.BlockingKernelClient at 0x7fc9643e4550</code></pre>
+<p>Let’s try to communicate with our kernel. We have different channels available. For our purposes the most important one is the iopub channel, that is used to send code and receive results. Checking if the kernel has sent any messages on this channel throws an Empty Exception:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    client.get_iopub_msg(timeout<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> err:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;empty queue&#39;</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(err))</span></code></pre></div>
+<pre><code>empty queue
+class &#39;queue.Empty&#39;</code></pre>
+<p>As we would expect, there is no message from the kernel, because we didn’t start sending any requests to it so far. A simple computation can be send through the .execute() method:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>client.execute(<span class="st">&#39;3+2&#39;</span>)</span></code></pre></div>
+<pre><code>&#39;fea281ed-77987d7a89692479f3c93088&#39;</code></pre>
+<p>This triggers a cascade of message responses from the jupyter kernel that we can inspect one by one using the <code>.get_iopub_msg</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>client.get_iopub_msg()</span></code></pre></div>
+<pre><code>{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;execution_state&#39;: &#39;starting&#39;},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 3695, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;16f7a9a3-7df46aea379ad558a48a8ed9&#39;,
+  &#39;msg_type&#39;: &#39;status&#39;,
+  &#39;session&#39;: &#39;c9b86ad9-e4f01c7571f295fe001b9b08&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {},
+ &#39;msg_id&#39;: &#39;16f7a9a3-7df46aea379ad558a48a8ed9&#39;,
+ &#39;msg_type&#39;: &#39;status&#39;,
+ &#39;parent_header&#39;: {}}</code></pre>
+<p>The above message is just telling us that the kernel is now busy with our request …</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>client.get_iopub_msg()</span></code></pre></div>
+<pre><code>{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;execution_state&#39;: &#39;busy&#39;},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 4407, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;9f1441d8-c44ac9476becd84ee0c147b6&#39;,
+  &#39;msg_type&#39;: &#39;status&#39;,
+  &#39;session&#39;: &#39;c9b86ad9-e4f01c7571f295fe001b9b08&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {},
+ &#39;msg_id&#39;: &#39;9f1441d8-c44ac9476becd84ee0c147b6&#39;,
+ &#39;msg_type&#39;: &#39;status&#39;,
+ &#39;parent_header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 22, 363864, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;fea281ed-77987d7a89692479f3c93088&#39;,
+  &#39;msg_type&#39;: &#39;execute_request&#39;,
+  &#39;session&#39;: &#39;af27da15-a5a7241d50cd60c5d20a783e&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;}}</code></pre>
+<p>the next message shows the statement ‘3+2’ that is executed on the kernel</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>client.get_iopub_msg()</span></code></pre></div>
+<pre><code>{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;code&#39;: &#39;3+2&#39;, &#39;execution_count&#39;: 1},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 4612, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;7a9c3f88-df5b892f6f5760c47fa31428&#39;,
+  &#39;msg_type&#39;: &#39;execute_input&#39;,
+  &#39;session&#39;: &#39;c9b86ad9-e4f01c7571f295fe001b9b08&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {},
+ &#39;msg_id&#39;: &#39;7a9c3f88-df5b892f6f5760c47fa31428&#39;,
+ &#39;msg_type&#39;: &#39;execute_input&#39;,
+ &#39;parent_header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 22, 363864, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;fea281ed-77987d7a89692479f3c93088&#39;,
+  &#39;msg_type&#39;: &#39;execute_request&#39;,
+  &#39;session&#39;: &#39;af27da15-a5a7241d50cd60c5d20a783e&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;}}</code></pre>
+<p>after code execution, a return value (stored in ‘content’: {‘data’: ….}’) is sent to the client</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>client.get_iopub_msg()</span></code></pre></div>
+<pre><code>{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;data&#39;: {&#39;text/plain&#39;: &#39;5&#39;},
+  &#39;execution_count&#39;: 1,
+  &#39;metadata&#39;: {}},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 6003, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;28b19685-167db8d658ce45f6f17b88cb&#39;,
+  &#39;msg_type&#39;: &#39;execute_result&#39;,
+  &#39;session&#39;: &#39;c9b86ad9-e4f01c7571f295fe001b9b08&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {},
+ &#39;msg_id&#39;: &#39;28b19685-167db8d658ce45f6f17b88cb&#39;,
+ &#39;msg_type&#39;: &#39;execute_result&#39;,
+ &#39;parent_header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 22, 363864, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;fea281ed-77987d7a89692479f3c93088&#39;,
+  &#39;msg_type&#39;: &#39;execute_request&#39;,
+  &#39;session&#39;: &#39;af27da15-a5a7241d50cd60c5d20a783e&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;}}</code></pre>
+<p>finally, the kernel goes back into idle mode again, and this is the end of the messages that follow a single execution, as can be seen by checking:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    client.get_iopub_msg(timeout<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> err:</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;empty queue&#39;</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(err))</span></code></pre></div>
+<p>All of this can be done in a much compressed and safer form using the .execute_interactive() method that immediately returns the results:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>client.execute_interactive(<span class="st">&#39;3+2&#39;</span>)</span></code></pre></div>
+<pre><code>5
+{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;execution_count&#39;: 2,
+  &#39;payload&#39;: [],
+  &#39;status&#39;: &#39;ok&#39;,
+  &#39;user_expressions&#39;: {}},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 46009, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;8aa270e2-b9cd67c9971a398ae45d91ca&#39;,
+  &#39;msg_type&#39;: &#39;execute_reply&#39;,
+  &#39;session&#39;: &#39;c9b86ad9-e4f01c7571f295fe001b9b08&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {&#39;dependencies_met&#39;: True,
+  &#39;engine&#39;: &#39;7adc130c-cb3c-4783-bdf4-2e0eaf5015b3&#39;,
+  &#39;started&#39;: &#39;2018-05-22T11:30:23.042660Z&#39;,
+  &#39;status&#39;: &#39;ok&#39;},
+ &#39;msg_id&#39;: &#39;8aa270e2-b9cd67c9971a398ae45d91ca&#39;,
+ &#39;msg_type&#39;: &#39;execute_reply&#39;,
+ &#39;parent_header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 41239, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;e649c9ff-d66ab94382f2621896b3c30c&#39;,
+  &#39;msg_type&#39;: &#39;execute_request&#39;,
+  &#39;session&#39;: &#39;af27da15-a5a7241d50cd60c5d20a783e&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;}}</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>manager.shutdown_kernel()</span></code></pre></div>
+<h3 id="sending-serialized-python-objects-to-jupyter">sending serialized Python objects to jupyter</h3>
+<p>Python objects can be serialized and send as a byte string to a jupyter kernel through the message interface. Python provides the pickle library to serialize objects. The following cells demonstrate how this can be done. First we open a kernel with a specific ID name:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>manager <span class="op">=</span> jupyter_client.KernelManager(connection_file<span class="op">=</span><span class="st">&#39;mykernel.json&#39;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>manager.start_kernel()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>manager.is_alive()</span></code></pre></div>
+<pre><code>True</code></pre>
+<p>we can connect to this kernel with an external console using jupyter console –existing mykernel.json. We are now going to send a serialized Python dictionary object to this kernel:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> manager.client()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="st">&#39;a&#39;</span>: <span class="dv">5</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">3</span>}</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>client.execute(<span class="st">&#39;import pickle&#39;</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>client.execute_interactive(<span class="st">&#39;a=pickle.loads(</span><span class="sc">{}</span><span class="st">)&#39;</span>.<span class="bu">format</span>(pickle.dumps(dictionary)), timeout<span class="op">=</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>Out[17]:
+{&#39;buffers&#39;: [],
+ &#39;content&#39;: {&#39;execution_count&#39;: 2,
+  &#39;payload&#39;: [],
+  &#39;status&#39;: &#39;ok&#39;,
+  &#39;user_expressions&#39;: {}},
+ &#39;header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 24, 121976, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;45835c44-99384663671faf70ee518a9c&#39;,
+  &#39;msg_type&#39;: &#39;execute_reply&#39;,
+  &#39;session&#39;: &#39;bd6fdd1a-05b8e7149cae8fb4d6c8dc6d&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;},
+ &#39;metadata&#39;: {&#39;dependencies_met&#39;: True,
+  &#39;engine&#39;: &#39;a20e8588-fc8d-4e5e-ba30-fe9fb1f943e0&#39;,
+  &#39;started&#39;: &#39;2018-05-22T11:30:24.115847Z&#39;,
+  &#39;status&#39;: &#39;ok&#39;},
+ &#39;msg_id&#39;: &#39;45835c44-99384663671faf70ee518a9c&#39;,
+ &#39;msg_type&#39;: &#39;execute_reply&#39;,
+ &#39;parent_header&#39;: {&#39;date&#39;: datetime.datetime(2018, 5, 22, 11, 30, 23, 408879, tzinfo=tzutc()),
+  &#39;msg_id&#39;: &#39;bd2a0eb5-f81c8f423d76dced76ab4a9b&#39;,
+  &#39;msg_type&#39;: &#39;execute_request&#39;,
+  &#39;session&#39;: &#39;a4202442-1a62d25bf330ab9810b861e1&#39;,
+  &#39;username&#39;: &#39;matto&#39;,
+  &#39;version&#39;: &#39;5.3&#39;}}</code></pre>
+<p>typing a in the external jupyter console should now show the dictionary. We can also retrieve it’s content through the message interface:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> client.execute_interactive(<span class="st">&#39;a&#39;</span>, timeout<span class="op">=</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>{&#39;a&#39;: 5, &#39;b&#39;: 3}</code></pre>
+<p>even though we store the results of this command in result, we see a line Out[5] which is the actual output line of the jupyter kernel.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>manager.shutdown_kernel()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>manager.is_alive()</span></code></pre></div>
+<pre><code>False</code></pre>
