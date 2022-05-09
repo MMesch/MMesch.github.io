@@ -144,12 +144,12 @@ component =
       validateUrl nav
       cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
       H.modify_ (\state -> state { cv = hush cvData })
-      postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
+      postListEither <- H.liftAff $ fetchList "/posts/posts.dat"
       case postListEither of
         Left err -> H.liftAff $ log err
-        Right postList -> do
+        Right postList -> do -- HalogenM
           let
-            paths = ((<>) "/blog/") <$> postList
+            paths = ((<>) "/posts/") <$> postList
           arr <- H.liftAff $ parSequence $ fetchPost <$> paths
           let
             postMap = fromFoldable $ toTuple <$> catMaybes (hush <$> arr)
