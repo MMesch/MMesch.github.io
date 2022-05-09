@@ -7,7 +7,7 @@ import Effect (Effect)
 import Effect.Aff (launchAff_, Aff)
 import Data.Maybe (Maybe(Just), fromMaybe)
 import Data.Either (hush)
-import Data.String (stripPrefix, Pattern(Pattern))
+import Data.String (stripPrefix, stripSuffix, Pattern(Pattern))
 import Debug (spy)
 import Halogen as H
 import Halogen.Query as HQ
@@ -65,7 +65,7 @@ validateUrl :: forall m. MonadEffect m => PushStateInterface -> m Unit
 validateUrl nav = do
   { path } <- H.liftEffect nav.locationState
   let
-    initialRoute = hush $ (parse routeCodec) path
+    initialRoute = hush $ (parse routeCodec) (stripSlash path)
   setUrl nav $ fromMaybe (Just Main) initialRoute
 
 {-
@@ -94,6 +94,9 @@ listenForUrlHashChanges halogenIO =
 
 addBang :: String -> String
 addBang = (<>) "!"
+
+stripSlash :: String -> String
+stripSlash str = fromMaybe str $ stripSuffix (Pattern "/") str
 
 stripBang :: String -> String
 stripBang str = fromMaybe str $ stripPrefix (Pattern "!") str

@@ -90,8 +90,8 @@ instance navigateHalogenM :: Navigate m => Navigate (H.HalogenM state action slo
 
 instance navigateAppMPush :: Navigate AppM where
   navigate route = do
-    pushInterface <- asks _.nav
-    H.liftEffect $ pushInterface.pushState (unsafeToForeign {}) (RD.print routeCodec route)
+    nav <- asks _.nav
+    setUrl nav route
 
 runAppM :: Env -> AppM ~> Aff
 runAppM env (AppM m) = runReaderT m env
