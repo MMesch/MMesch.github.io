@@ -119,6 +119,6 @@ in  upstream
     }
   with html-parser-halogen = 
     { dependencies = ["prelude", "string-parsers", "halogen"]
-    , repo = "https://github.com/mmesch/purescript-html-parser-halogen.git"
-    , version = "af0d7ce641733bfc4fd704267e713651d82b8b74"
+    , repo = "https://github.com/rnons/purescript-html-parser-halogen.git"
+    , version = "314acb997945d78c77381e3f7a5c19d3b882de3a"
     }
