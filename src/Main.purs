@@ -140,6 +140,8 @@ component =
       state <- H.get
       navigate (Just page)
     Initialize -> do -- HalogenM
+      nav <- asks _.nav
+      validateUrl nav
       cvData :: Either String CV <- H.liftAff $ fetchYaml "/assets/cv.yaml"
       H.modify_ (\state -> state { cv = hush cvData })
       postListEither <- H.liftAff $ fetchList "/blog/posts.dat"
