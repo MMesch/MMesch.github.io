@@ -8,7 +8,6 @@ import Effect.Aff (launchAff_, Aff)
 import Data.Maybe (Maybe(Just), fromMaybe)
 import Data.Either (hush)
 import Data.String (stripPrefix, stripSuffix, Pattern(Pattern))
-import Debug (spy)
 import Halogen as H
 import Halogen.Query as HQ
 import Routing.Hash as RH
@@ -37,7 +36,8 @@ routeCodec = root $ optional pageCodec
 pageCodec :: RouteDuplex' Page
 pageCodec =
   sum
-    { "Main": noArgs
+    { "Loading": "loading" / noArgs
+    , "Main": noArgs
     , "BlogList": "blog" / noArgs
     , "Blog": path "blog" (string segment)
     }

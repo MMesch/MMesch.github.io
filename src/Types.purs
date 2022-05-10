@@ -10,7 +10,8 @@ import Web.Event.Event (Event)
 page hierarchy
 -}
 data Page
-  = Main
+  = Loading
+  | Main
   | BlogList
   | Blog String
 

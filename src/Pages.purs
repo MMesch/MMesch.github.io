@@ -29,6 +29,9 @@ blogList state =
   layout1
     $ [ list $ state.posts ]
 
+loadingPage :: forall i. HH.HTML i Action
+loadingPage = layout1 [ HH.text "Loading" ]
+
 mainPage :: forall i. Maybe CV -> HH.HTML i Action
 mainPage maybeCV =
   layout1
@@ -86,12 +89,14 @@ cn :: forall t5 t6. String -> HH.IProp ( class :: String | t6 ) t5
 cn = HP.class_ <<< HH.ClassName
 
 {- nav bar component -}
-navBarButton :: forall i. { href :: String, content :: String, page :: Page }
-  -> HH.HTML i Action
+navBarButton ::
+  forall i.
+  { href :: String, content :: String, page :: Page } ->
+  HH.HTML i Action
 navBarButton { href, content, page } =
   HH.a
     [ HP.href href
-    , HE.onClick $ MouseEvent.toEvent >>> SwitchPage page 
+    , HE.onClick $ MouseEvent.toEvent >>> SwitchPage page
     , cn "block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl"
     ]
     [ HH.text content ]
@@ -166,8 +171,8 @@ listCard post =
     HH.a
       ( [ HP.href href, cn cardStyle ]
           <> case post.external of
-                Nothing -> [ HE.onClick $ MouseEvent.toEvent >>> SwitchPage (Blog postId)]
-                Just link -> [ HP.target "_blank" ]
+              Nothing -> [ HE.onClick $ MouseEvent.toEvent >>> SwitchPage (Blog postId) ]
+              Just link -> [ HP.target "_blank" ]
       )
       [ HH.div [ cn "block text-lg" ]
           $ ( if post.external /= Nothing then

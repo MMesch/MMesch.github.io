@@ -14,13 +14,13 @@ import Effect.Class.Console (log)
 import Halogen as H
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
-import Pages (blogList, mainPage, blogPage)
+import Pages (blogList, loadingPage, mainPage, blogPage)
 import Routes (listenForUrlChanges, routeCodec, setUrl, validateUrl)
 import Routing.Duplex as RD
 import Routing.PushState (makeInterface, PushStateInterface)
 import Web.Event.Event as Event
 import Types
-  ( Page(Main, Blog, BlogList)
+  ( Page(Loading, Main, Blog, BlogList)
   , Action(SwitchPage, Initialize)
   , State
   , Query(Navigate)
@@ -115,7 +115,7 @@ component =
   where
   {- initial state -}
   initialState _ =
-    { page: Main
+    { page: Loading
     , posts: fromFoldable []
     , cv: Nothing
     }
@@ -136,7 +136,7 @@ component =
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
   handleAction = case _ of
     SwitchPage page ev -> do
-      H.liftEffect $ Event.preventDefault ev 
+      H.liftEffect $ Event.preventDefault ev
       state <- H.get
       navigate (Just page)
     Initialize -> do -- HalogenM
@@ -164,6 +164,7 @@ component =
 
   render :: forall c. State -> H.ComponentHTML Action c AppM
   render state = case state.page of
+    Loading -> loadingPage 
     Main -> mainPage state.cv
     BlogList -> blogList state
     Blog path ->
