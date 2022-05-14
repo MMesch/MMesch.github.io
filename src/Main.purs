@@ -112,6 +112,9 @@ setTitle posts route = do
                     pure $ pageTitle posts page
       HTML.window >>= Window.document >>= HTMLDocument.setTitle title
 
+scrollToTop :: Effect Unit
+scrollToTop = HTML.window >>= Window.scroll 0 0
+
 runAppM :: Env -> AppM ~> Aff
 runAppM env (AppM m) = runReaderT m env
 
@@ -157,6 +160,7 @@ component =
       H.liftEffect $ Event.preventDefault ev
       state <- H.get
       navigate (Just page)
+      H.liftEffect scrollToTop
     Initialize -> do -- HalogenM
       nav <- asks _.nav
       validateUrl nav

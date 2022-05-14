@@ -16267,6 +16267,16 @@ var PS = {};
       return window.history;
     };
   };
+
+  exports.scroll = function (xCoord) {
+    return function (yCoord) {
+      return function (window) {
+        return function () {
+          window.scroll(xCoord, yCoord);
+        };
+      };
+    };
+  };
 })(PS["Web.HTML.Window"] = PS["Web.HTML.Window"] || {});
 
 (function ($PS) {
@@ -16282,6 +16292,7 @@ var PS = {};
   exports["document"] = $foreign.document;
   exports["location"] = $foreign.location;
   exports["history"] = $foreign.history;
+  exports["scroll"] = $foreign.scroll;
 })(PS);
 
 (function ($PS) {
@@ -19295,6 +19306,8 @@ var PS = {};
     return x;
   };
 
+  var scrollToTop = Control_Bind.bind(Effect.bindEffect)(Web_HTML.window)(Web_HTML_Window.scroll(0)(0));
+
   var runAppM = function runAppM(env) {
     return function (v) {
       return Control_Monad_Reader_Trans.runReaderT(v)(env);
@@ -19397,11 +19410,11 @@ var PS = {};
         }
 
         ;
-        throw new Error("Failed pattern match at Main (line 186, column 18 - line 193, column 37): " + [state.page.value0.constructor.name]);
+        throw new Error("Failed pattern match at Main (line 190, column 18 - line 197, column 37): " + [state.page.value0.constructor.name]);
       }
 
       ;
-      throw new Error("Failed pattern match at Main (line 184, column 18 - line 193, column 37): " + [state.page.constructor.name]);
+      throw new Error("Failed pattern match at Main (line 188, column 18 - line 197, column 37): " + [state.page.constructor.name]);
     };
 
     var initialState = function initialState(v) {
@@ -19445,7 +19458,9 @@ var PS = {};
         if (v instanceof Types.SwitchPage) {
           return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(Effect_Class.liftEffect(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))(Web_Event_Event.preventDefault(v.value1)))(function () {
             return Control_Bind.bind(Halogen_Query_HalogenM.bindHalogenM)(Control_Monad_State_Class.get(Halogen_Query_HalogenM.monadStateHalogenM))(function (state) {
-              return navigate(navigateHalogenM(navigateAppMPush))(new Data_Maybe.Just(v.value0));
+              return Control_Bind.discard(Control_Bind.discardUnit)(Halogen_Query_HalogenM.bindHalogenM)(navigate(navigateHalogenM(navigateAppMPush))(new Data_Maybe.Just(v.value0)))(function () {
+                return Effect_Class.liftEffect(Halogen_Query_HalogenM.monadEffectHalogenM(monadEffectAppM))(scrollToTop);
+              });
             });
           });
         }
@@ -19538,7 +19553,7 @@ var PS = {};
                     }
 
                     ;
-                    throw new Error("Failed pattern match at Main (line 166, column 7 - line 179, column 60): " + [postListEither.constructor.name]);
+                    throw new Error("Failed pattern match at Main (line 170, column 7 - line 183, column 60): " + [postListEither.constructor.name]);
                   });
                 });
               });
@@ -19547,7 +19562,7 @@ var PS = {};
         }
 
         ;
-        throw new Error("Failed pattern match at Main (line 155, column 18 - line 179, column 60): " + [v.constructor.name]);
+        throw new Error("Failed pattern match at Main (line 158, column 18 - line 183, column 60): " + [v.constructor.name]);
       };
     }();
 
@@ -19587,6 +19602,7 @@ var PS = {};
   exports["Navigate"] = Navigate;
   exports["pageTitle"] = pageTitle;
   exports["setTitle"] = setTitle;
+  exports["scrollToTop"] = scrollToTop;
   exports["runAppM"] = runAppM;
   exports["component"] = component;
   exports["functorAppM"] = functorAppM;
@@ -19630,7 +19646,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36193" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
