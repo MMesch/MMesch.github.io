@@ -10,8 +10,7 @@ import Web.Event.Event (Event)
 page hierarchy
 -}
 data Page
-  = Loading
-  | Main
+  = Main
   | BlogList
   | Blog String
 
@@ -52,7 +51,7 @@ Every component also has its own state. In our case this very simple and just
 the page the user is looking at.
 -}
 type State
-  = { page :: Page
+  = { page :: Route
     , posts :: Posts
     , cv :: Maybe CV
     }

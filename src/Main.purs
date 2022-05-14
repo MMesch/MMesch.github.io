@@ -20,9 +20,10 @@ import Routing.Duplex as RD
 import Routing.PushState (makeInterface, PushStateInterface)
 import Web.Event.Event as Event
 import Types
-  ( Page(Loading, Main, Blog, BlogList)
+  ( Page(Main, Blog, BlogList)
   , Action(SwitchPage, Initialize)
   , State
+  , Posts
   , Query(Navigate)
   , Route
   , CV
@@ -34,6 +35,9 @@ import Data.Tuple (Tuple(Tuple), fst, snd)
 import Data.Array (catMaybes)
 import Data.Options ((:=))
 import Foreign (unsafeToForeign)
+import Web.HTML as HTML
+import Web.HTML.HTMLDocument as HTMLDocument
+import Web.HTML.Window as Window
 import Debug
 
 {-
@@ -83,15 +87,30 @@ instance monadAskAppM :: TypeEquals e Env => MonadAsk e AppM where
   ask = AppM $ asks from
 
 class Monad m <= Navigate m where
-  navigate :: Route -> m Unit
+        navigate :: Route -> m Unit
 
 instance navigateHalogenM :: Navigate m => Navigate (H.HalogenM state action slots output m) where
-  navigate = H.lift <<< navigate
+  navigate route = H.lift $ navigate route
 
 instance navigateAppMPush :: Navigate AppM where
   navigate route = do
     nav <- asks _.nav
     setUrl nav route
+
+pageTitle :: Posts -> Page -> String
+pageTitle posts page = case page of
+              Main -> "Welcome"
+              BlogList -> "Blog List"
+              Blog id -> fromMaybe "" $ do
+                     post <- lookup id posts
+                     post.title
+
+setTitle :: Posts -> Route -> Effect Unit
+setTitle posts route = do
+      let title = fromMaybe "not found" do
+                    page <- route
+                    pure $ pageTitle posts page
+      HTML.window >>= Window.document >>= HTMLDocument.setTitle title
 
 runAppM :: Env -> AppM ~> Aff
 runAppM env (AppM m) = runReaderT m env
@@ -115,7 +134,7 @@ component =
   where
   {- initial state -}
   initialState _ =
-    { page: Loading
+    { page: Nothing
     , posts: fromFoldable []
     , cv: Nothing
     }
@@ -126,11 +145,10 @@ component =
   handleQuery :: forall c a. Query a -> H.HalogenM State Action c Void AppM (Maybe a)
   handleQuery = case _ of
     Navigate (destPage) a -> do
-      { page } <- H.get
-      when (Just page /= destPage) do
-        H.modify_ \state ->
-          state
-            { page = fromMaybe Main destPage }
+      state <- H.get
+      when (state.page /= destPage) do
+        H.modify_ \s -> s { page = destPage }
+      H.liftEffect $ setTitle state.posts destPage
       pure $ Just a
 
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
@@ -164,11 +182,12 @@ component =
 
   render :: forall c. State -> H.ComponentHTML Action c AppM
   render state = case state.page of
-    Loading -> loadingPage 
-    Main -> mainPage state.cv
-    BlogList -> blogList state
-    Blog path ->
-      fromMaybe (mainPage state.cv)
-        $ do
-            post <- (lookup path state.posts)
-            pure $ blogPage post
+    Nothing -> loadingPage 
+    Just page -> case page of
+        Main -> mainPage state.cv
+        BlogList -> blogList state
+        Blog path ->
+          fromMaybe (mainPage state.cv)
+            $ do
+                post <- (lookup path state.posts)
+                pure $ blogPage post
