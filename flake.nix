@@ -16,6 +16,7 @@
               purescript
               spago
               pandoc
+              graphviz
               nodePackages.purescript-language-server
               nodePackages.parcel-bundler
               nodePackages.purty
