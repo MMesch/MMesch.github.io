@@ -595,6 +595,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 56rem;
 }
 
+.max-w-2xl{
+  max-width: 42rem;
+}
+
 .list-disc{
   list-style-type: disc;
 }
@@ -954,6 +958,10 @@ div.markdown pre{
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+code{
+  overflow-wrap: break-word;
 }
 
 div.markdown p > code{

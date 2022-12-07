@@ -17483,7 +17483,7 @@ var PS = {};
     var rendered = Html_Renderer_Halogen.render_(Data_Maybe.fromMaybe("")(post.compiled));
     var markdown = Data_Maybe.fromMaybe("")(post.content);
     var date = Data_Maybe.fromMaybe("no date")(post.date);
-    return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-4xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.div([cn("text-gray-800 text-lg")])([Halogen_HTML_Core.text(date)]), Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), function () {
+    return layout1([Halogen_HTML_Elements.div([cn("markdown max-w-2xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16")])([Halogen_HTML_Elements.div([cn("text-gray-800 text-lg")])([Halogen_HTML_Core.text(date)]), Halogen_HTML_Elements.h1([])([Halogen_HTML_Core.text(title)]), function () {
       if (post.description instanceof Data_Maybe.Nothing) {
         return Halogen_HTML_Elements.div([])([]);
       }
@@ -19646,7 +19646,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36193" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40287" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

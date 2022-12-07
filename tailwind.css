@@ -90,6 +90,10 @@ div.markdown pre {
     @apply bg-stone-200 font-mono font-medium text-black p-5 rounded overflow-auto my-5;
 }
 
+code {
+  @apply break-words;
+}
+
 div.markdown p > code {
     @apply text-gray-900 font-mono font-semibold;
 }

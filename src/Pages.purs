@@ -74,7 +74,7 @@ blogPage post =
     date = fromMaybe "no date" post.date
   in
     layout1
-      [ HH.div [ cn "markdown max-w-4xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
+      [ HH.div [ cn "markdown max-w-2xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
           [ HH.div [ cn "text-gray-800 text-lg" ] [ HH.text date ]
           , HH.h1 [] [ HH.text title ]
           , case post.description of
