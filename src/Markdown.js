@@ -1,6 +1,5 @@
 import MarkdownIt from "markdown-it";
 import markdownItKatex from "markdown-it-katex";
-import hljs from "highlight.js";
 
 export function render(input) {
   return function () {

@@ -16,3 +16,4 @@ node_modules
 .parcel-cache/
 .envrc
 .direnv/
+.parcel-dev/
