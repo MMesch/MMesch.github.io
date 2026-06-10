@@ -5,6 +5,7 @@ import Types (Route, Page(Main), Query(Navigate))
 import Effect.Class (class MonadEffect)
 import Effect (Effect)
 import Effect.Aff (launchAff_, Aff)
+import Data.Functor (void)
 import Data.Maybe (Maybe(Just), fromMaybe)
 import Data.Either (hush)
 import Data.String (stripPrefix, stripSuffix, Pattern(Pattern))
@@ -75,22 +76,22 @@ route from the hash.
 listenForUrlChanges ::
   forall a b.
   PushStateInterface ->
-  { query :: Query Unit -> Aff a | b } ->
+  { query :: Query Unit -> Aff (Maybe a) | b } ->
   Effect (Effect Unit)
 listenForUrlChanges nav halogenIO =
   nav
     # matchesWith (parse routeCodec) \old new -> do
         when (old /= Just new) do
-          launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
+          launchAff_ $ void $ halogenIO.query $ HQ.mkTell $ Navigate new
 
 listenForUrlHashChanges ::
   forall a b.
-  { query :: Query Unit -> Aff a | b } ->
+  { query :: Query Unit -> Aff (Maybe a) | b } ->
   Effect (Effect Unit)
 listenForUrlHashChanges halogenIO =
   RH.matchesWith (stripBang >>> parse routeCodec) \old new -> do
     when (old /= Just new) do
-      launchAff_ $ halogenIO.query $ HQ.mkTell $ Navigate new
+      launchAff_ $ void $ halogenIO.query $ HQ.mkTell $ Navigate new
 
 addBang :: String -> String
 addBang = (<>) "!"

@@ -13,3 +13,4 @@ node_modules
 /.psa*
 /.spago
 /styles/
+.parcel-cache/
