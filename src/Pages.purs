@@ -29,19 +29,24 @@ mainPage maybeCV =
         Just cv ->
           [ HH.div [ cn "text-base" ]
               [ HH.h1 [ cn "text-gray-800 text-2xl font-bold mb-6" ] [ HH.text cv.summary ]
-              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> What I do" ]
+              , sectionHeader "What I do"
               , HH.p_ [ HH.text cv.what ]
-              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Fields I worked in" ]
+              , sectionHeader "Fields I worked in"
               , HH.p_ [ HH.text cv.domains ]
-              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Tech stack" ]
+              , sectionHeader "Tech stack"
               , HH.p_ [ HH.text cv.stack ]
-              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Experience" ]
+              , sectionHeader "Experience"
               , HH.div_ (experienceCard <$> cv.experience)
-              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Education" ]
+              , sectionHeader "Education"
               , HH.div_ (educationCard <$> cv.education)
               ]
           ]
   where
+  sectionHeader text = HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2 font-semibold" ]
+    [ HH.span [ cn "text-gray-500 mr-4", HP.style "vertical-align: middle; position: relative; top: -3px" ] [ HH.text "▸ ▸ ▸" ]
+    , HH.text text
+    ]
+
   experienceCard exp =
     HH.div [ cn "border-l-2 border-gray-200 pl-3 my-3 text-sm" ]
       [ HH.div [ cn "text-gray-800" ] [ HH.text exp.employer ]
@@ -63,11 +68,14 @@ blogPage post =
   in
     layout1
       [ HH.div [ cn "markdown max-w-4xl" ]
-          [ HH.div [ cn "text-gray-500 text-sm mb-4" ] [ HH.text date ]
+          [ HH.div [ cn "text-gray-500 text-base mb-4" ] [ HH.text date ]
           , HH.h1 [ cn "text-gray-800 text-2xl font-bold mb-6" ] [ HH.text title ]
           , case post.description of
               Nothing -> HH.div [] []
-              Just description -> HH.div [ cn "abstract" ] [ HH.text description ]
+              Just description -> HH.div_ 
+                [ HH.div [ cn "abstract" ] [ HH.text description ]
+                , HH.hr []
+                ]
           , HH.div [ cn "post-content", HP.id "post-content" ] []
           ]
       ]
@@ -104,7 +112,7 @@ listCard post =
           , HH.div [ cn "text-gray-500 text-base ml-6 shrink-0" ]
               [ HH.text $ fromMaybe "" post.date ]
           ]
-      , HH.div [ cn "text-gray-500 text-sm mt-1" ]
+      , HH.div [ cn "text-gray-500 text-sm mt-1 max-w-2xl" ]
           [ HH.text $ fromMaybe "" post.description ]
       ]
 

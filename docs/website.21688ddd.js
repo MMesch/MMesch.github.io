@@ -6877,13 +6877,13 @@
                 for(var i2 = classes.length - 1; i2 >= 0; i2--)if (!classes[i2]) classes.splice(i2, 1);
                 return classes.join(" ");
             };
-            function span5(classes, children2, height8, depth, maxFontSize, style2) {
+            function span5(classes, children2, height8, depth, maxFontSize, style3) {
                 this.classes = classes || [];
                 this.children = children2 || [];
                 this.height = height8 || 0;
                 this.depth = depth || 0;
                 this.maxFontSize = maxFontSize || 0;
-                this.style = style2 || {};
+                this.style = style3 || {};
                 this.attributes = {};
             }
             span5.prototype.setAttribute = function(attribute, value12) {
@@ -6892,7 +6892,7 @@
             span5.prototype.toNode = function() {
                 var span6 = document.createElement("span");
                 span6.className = createClass(this.classes);
-                for(var style2 in this.style)if (Object.prototype.hasOwnProperty.call(this.style, style2)) span6.style[style2] = this.style[style2];
+                for(var style3 in this.style)if (Object.prototype.hasOwnProperty.call(this.style, style3)) span6.style[style3] = this.style[style3];
                 for(var attr3 in this.attributes)if (Object.prototype.hasOwnProperty.call(this.attributes, attr3)) span6.setAttribute(attr3, this.attributes[attr3]);
                 for(var i2 = 0; i2 < this.children.length; i2++)span6.appendChild(this.children[i2].toNode());
                 return span6;
@@ -6905,7 +6905,7 @@
                     markup += '"';
                 }
                 var styles = "";
-                for(var style2 in this.style)if (this.style.hasOwnProperty(style2)) styles += utils.hyphenate(style2) + ":" + this.style[style2] + ";";
+                for(var style3 in this.style)if (this.style.hasOwnProperty(style3)) styles += utils.hyphenate(style3) + ":" + this.style[style3] + ";";
                 if (styles) markup += ' style="' + utils.escape(styles) + '"';
                 for(var attr3 in this.attributes)if (Object.prototype.hasOwnProperty.call(this.attributes, attr3)) {
                     markup += " " + attr3 + '="';
@@ -6933,14 +6933,14 @@
                 for(var i2 = 0; i2 < this.children.length; i2++)markup += this.children[i2].toMarkup();
                 return markup;
             };
-            function symbolNode(value12, height8, depth, italic, skew, classes, style2) {
+            function symbolNode(value12, height8, depth, italic, skew, classes, style3) {
                 this.value = value12 || "";
                 this.height = height8 || 0;
                 this.depth = depth || 0;
                 this.italic = italic || 0;
                 this.skew = skew || 0;
                 this.classes = classes || [];
-                this.style = style2 || {};
+                this.style = style3 || {};
                 this.maxFontSize = 0;
             }
             symbolNode.prototype.toNode = function() {
@@ -6954,9 +6954,9 @@
                     span6 = span6 || document.createElement("span");
                     span6.className = createClass(this.classes);
                 }
-                for(var style2 in this.style)if (this.style.hasOwnProperty(style2)) {
+                for(var style3 in this.style)if (this.style.hasOwnProperty(style3)) {
                     span6 = span6 || document.createElement("span");
-                    span6.style[style2] = this.style[style2];
+                    span6.style[style3] = this.style[style3];
                 }
                 if (span6) {
                     span6.appendChild(node);
@@ -6974,7 +6974,7 @@
                 }
                 var styles = "";
                 if (this.italic > 0) styles += "margin-right:" + this.italic + "em;";
-                for(var style2 in this.style)if (this.style.hasOwnProperty(style2)) styles += utils.hyphenate(style2) + ":" + this.style[style2] + ";";
+                for(var style3 in this.style)if (this.style.hasOwnProperty(style3)) styles += utils.hyphenate(style3) + ":" + this.style[style3] + ";";
                 if (styles) {
                     needsSpan = true;
                     markup += ' style="' + utils.escape(styles) + '"';
@@ -17400,16 +17400,16 @@
                 // TODO(alpert): Missing parallel structure here. We should probably add
                 // style-specific metrics for all of these.
                 delim1: sigma20,
-                getDelim2: function(style2) {
-                    if (style2.size === Style.TEXT.size) return sigma21;
-                    else if (style2.size === Style.SCRIPT.size) return sigma21Script;
-                    else if (style2.size === Style.SCRIPTSCRIPT.size) return sigma21ScriptScript;
-                    throw new Error("Unexpected style size: " + style2.size);
+                getDelim2: function(style3) {
+                    if (style3.size === Style.TEXT.size) return sigma21;
+                    else if (style3.size === Style.SCRIPT.size) return sigma21Script;
+                    else if (style3.size === Style.SCRIPTSCRIPT.size) return sigma21ScriptScript;
+                    throw new Error("Unexpected style size: " + style3.size);
                 }
             };
             var metricMap = require_fontMetricsData();
-            var getCharacterMetrics = function(character, style2) {
-                var metrics2 = metricMap[style2][character.charCodeAt(0)];
+            var getCharacterMetrics = function(character, style3) {
+                var metrics2 = metricMap[style3][character.charCodeAt(0)];
                 if (metrics2) return {
                     depth: metrics2[0],
                     height: metrics2[1],
@@ -18002,13 +18002,13 @@
                 // dotless i, \imath
                 "\u0237"
             ];
-            var makeSymbol = function(value12, style2, mode, color, classes) {
+            var makeSymbol = function(value12, style3, mode, color, classes) {
                 if (symbols[mode][value12] && symbols[mode][value12].replace) value12 = symbols[mode][value12].replace;
-                var metrics = fontMetrics.getCharacterMetrics(value12, style2);
+                var metrics = fontMetrics.getCharacterMetrics(value12, style3);
                 var symbolNode;
                 if (metrics) symbolNode = new domTree.symbolNode(value12, metrics.height, metrics.depth, metrics.italic, metrics.skew, classes);
                 else {
-                    typeof console !== "undefined" && console.warn("No character metrics for '" + value12 + "' in style '" + style2 + "'");
+                    typeof console !== "undefined" && console.warn("No character metrics for '" + value12 + "' in style '" + style3 + "'");
                     symbolNode = new domTree.symbolNode(value12, 0, 0, 0, 0, classes);
                 }
                 if (color) symbolNode.style.color = color;
@@ -18283,11 +18283,11 @@
                 span5.maxFontSize = toStyle.sizeMultiplier;
                 return span5;
             };
-            var makeSmallDelim = function(delim, style2, center, options2, mode) {
+            var makeSmallDelim = function(delim, style3, center, options2, mode) {
                 var text7 = buildCommon.makeSymbol(delim, "Main-Regular", mode);
-                var span5 = styleWrap(text7, style2, options2);
+                var span5 = styleWrap(text7, style3, options2);
                 if (center) {
-                    var shift = (1 - options2.style.sizeMultiplier / style2.sizeMultiplier) * fontMetrics.metrics.axisHeight;
+                    var shift = (1 - options2.style.sizeMultiplier / style3.sizeMultiplier) * fontMetrics.metrics.axisHeight;
                     span5.style.top = shift + "em";
                     span5.height -= shift;
                     span5.depth += shift;
@@ -19215,8 +19215,8 @@
                 var baseShift = 0;
                 var slant = 0;
                 if (group4.value.symbol) {
-                    var style2 = large ? "Size2-Regular" : "Size1-Regular";
-                    base2 = buildCommon.makeSymbol(group4.value.body, style2, "math", options2.getColor(), [
+                    var style3 = large ? "Size2-Regular" : "Size1-Regular";
+                    base2 = buildCommon.makeSymbol(group4.value.body, style3, "math", options2.getColor(), [
                         "op-symbol",
                         large ? "large-op" : "small-op",
                         "mop"
@@ -19563,13 +19563,13 @@
                 return span5;
             };
             groupTypes.styling = function(group4, options2, prev) {
-                var style2 = {
+                var style3 = {
                     "display": Style.DISPLAY,
                     "text": Style.TEXT,
                     "script": Style.SCRIPT,
                     "scriptscript": Style.SCRIPTSCRIPT
                 };
-                var newStyle = style2[group4.value.style];
+                var newStyle = style3[group4.value.style];
                 var inner = buildExpression(group4.value.value, options2.withStyle(newStyle), prev);
                 return makeSpan([
                     options2.style.reset(),
@@ -20174,9 +20174,9 @@
                 for(var key in extension)if (extension.hasOwnProperty(key)) data[key] = extension[key];
                 return new Options(data);
             };
-            Options.prototype.withStyle = function(style2) {
+            Options.prototype.withStyle = function(style3) {
                 return this.extend({
-                    style: style2
+                    style: style3
                 });
             };
             Options.prototype.withSize = function(size5) {
@@ -71246,6 +71246,11 @@
             };
         }
     };
+    var attr = function(ns) {
+        return function(v) {
+            return Attribute.create(ns)(v);
+        };
+    };
     // output/Control.Applicative.Free/index.js
     var identity8 = /* @__PURE__ */ identity(categoryFn);
     var Pure = /* @__PURE__ */ function() {
@@ -72296,6 +72301,9 @@
     }();
     var h1 = /* @__PURE__ */ element2("h1");
     var h2 = /* @__PURE__ */ element2("h2");
+    var hr = function(props) {
+        return element2("hr")(props)([]);
+    };
     var p = /* @__PURE__ */ element2("p");
     var p_ = /* @__PURE__ */ p([]);
     var span4 = /* @__PURE__ */ element2("span");
@@ -72317,6 +72325,10 @@
             return $36(unwrap2($37));
         };
     }();
+    var attr2 = /* @__PURE__ */ function() {
+        return attr(Nothing.value);
+    }();
+    var style = /* @__PURE__ */ attr2("style");
     // output/Halogen.Query/index.js
     var mkTell = function(act) {
         return act(unit);
@@ -73315,7 +73327,7 @@
             if (post.external instanceof Just) return [
                 target5("_blank")
             ];
-            throw new Error("Failed pattern match at Pages (line 94, column 14 - line 96, column 47): " + [
+            throw new Error("Failed pattern match at Pages (line 102, column 14 - line 104, column 47): " + [
                 post.external.constructor.name
             ]);
         }()))([
@@ -73335,7 +73347,7 @@
                             text5("[external]")
                         ])
                     ];
-                    throw new Error("Failed pattern match at Pages (line 101, column 18 - line 103, column 93): " + [
+                    throw new Error("Failed pattern match at Pages (line 109, column 18 - line 111, column 93): " + [
                         post.external.constructor.name
                     ]);
                 }())),
@@ -73346,7 +73358,7 @@
                 ])
             ]),
             div2([
-                cn("text-gray-500 text-sm mt-1")
+                cn("text-gray-500 text-sm mt-1 max-w-2xl")
             ])([
                 text5(fromMaybe("")(post.description))
             ])
@@ -73430,6 +73442,19 @@
         /* @__PURE__ */ text5("Loading...")
     ]);
     var mainPage = function(maybeCV) {
+        var sectionHeader = function(text7) {
+            return h2([
+                cn("text-gray-700 text-base mt-8 mb-2 font-semibold")
+            ])([
+                span4([
+                    cn("text-gray-500 mr-4"),
+                    style("vertical-align: middle; position: relative; top: -3px")
+                ])([
+                    text5("\u25B8 \u25B8 \u25B8")
+                ]),
+                text5(text7)
+            ]);
+        };
         var experienceCard = function(exp2) {
             return div2([
                 cn("border-l-2 border-gray-200 pl-3 my-3 text-sm")
@@ -73475,41 +73500,21 @@
                     ])([
                         text5(maybeCV.value0.summary)
                     ]),
-                    h2([
-                        cn("text-gray-700 text-base mt-8 mb-2")
-                    ])([
-                        text5("> What I do")
-                    ]),
+                    sectionHeader("What I do"),
                     p_([
                         text5(maybeCV.value0.what)
                     ]),
-                    h2([
-                        cn("text-gray-700 text-base mt-8 mb-2")
-                    ])([
-                        text5("> Fields I worked in")
-                    ]),
+                    sectionHeader("Fields I worked in"),
                     p_([
                         text5(maybeCV.value0.domains)
                     ]),
-                    h2([
-                        cn("text-gray-700 text-base mt-8 mb-2")
-                    ])([
-                        text5("> Tech stack")
-                    ]),
+                    sectionHeader("Tech stack"),
                     p_([
                         text5(maybeCV.value0.stack)
                     ]),
-                    h2([
-                        cn("text-gray-700 text-base mt-8 mb-2")
-                    ])([
-                        text5("> Experience")
-                    ]),
+                    sectionHeader("Experience"),
                     div_(map28(experienceCard)(maybeCV.value0.experience)),
-                    h2([
-                        cn("text-gray-700 text-base mt-8 mb-2")
-                    ])([
-                        text5("> Education")
-                    ]),
+                    sectionHeader("Education"),
                     div_(map28(educationCard)(maybeCV.value0.education))
                 ])
             ];
@@ -73527,7 +73532,7 @@
                 cn("markdown max-w-4xl")
             ])([
                 div2([
-                    cn("text-gray-500 text-sm mb-4")
+                    cn("text-gray-500 text-base mb-4")
                 ])([
                     text5(date)
                 ]),
@@ -73538,12 +73543,15 @@
                 ]),
                 function() {
                     if (post.description instanceof Nothing) return div2([])([]);
-                    if (post.description instanceof Just) return div2([
-                        cn("abstract")
-                    ])([
-                        text5(post.description.value0)
+                    if (post.description instanceof Just) return div_([
+                        div2([
+                            cn("abstract")
+                        ])([
+                            text5(post.description.value0)
+                        ]),
+                        hr([])
                     ]);
-                    throw new Error("Failed pattern match at Pages (line 68, column 13 - line 70, column 83): " + [
+                    throw new Error("Failed pattern match at Pages (line 73, column 13 - line 78, column 18): " + [
                         post.description.constructor.name
                     ]);
                 }(),
@@ -74828,9 +74836,9 @@
     ];
     function compileStyleAliases(map38) {
         var result = {};
-        if (map38 !== null) Object.keys(map38).forEach(function(style2) {
-            map38[style2].forEach(function(alias) {
-                result[String(alias)] = style2;
+        if (map38 !== null) Object.keys(map38).forEach(function(style3) {
+            map38[style3].forEach(function(alias) {
+                result[String(alias)] = style3;
             });
         });
         return result;
@@ -75147,9 +75155,9 @@
         return sign2 * parseFloat(value12, 10);
     }
     var SCIENTIFIC_WITHOUT_DOT = /^[-+]?[0-9]+e/;
-    function representYamlFloat(object2, style2) {
+    function representYamlFloat(object2, style3) {
         var res;
-        if (isNaN(object2)) switch(style2){
+        if (isNaN(object2)) switch(style3){
             case "lowercase":
                 return ".nan";
             case "uppercase":
@@ -75157,7 +75165,7 @@
             case "camelcase":
                 return ".NaN";
         }
-        else if (Number.POSITIVE_INFINITY === object2) switch(style2){
+        else if (Number.POSITIVE_INFINITY === object2) switch(style3){
             case "lowercase":
                 return ".inf";
             case "uppercase":
@@ -75165,7 +75173,7 @@
             case "camelcase":
                 return ".Inf";
         }
-        else if (Number.NEGATIVE_INFINITY === object2) switch(style2){
+        else if (Number.NEGATIVE_INFINITY === object2) switch(style3){
             case "lowercase":
                 return "-.inf";
             case "uppercase":
@@ -76340,17 +76348,17 @@
     ];
     var DEPRECATED_BASE60_SYNTAX = /^[-+]?[0-9_]+(?::[0-9_]+)+(?:\.[0-9_]*)?$/;
     function compileStyleMap(schema2, map38) {
-        var result, keys3, index5, length8, tag, style2, type2;
+        var result, keys3, index5, length8, tag, style3, type2;
         if (map38 === null) return {};
         result = {};
         keys3 = Object.keys(map38);
         for(index5 = 0, length8 = keys3.length; index5 < length8; index5 += 1){
             tag = keys3[index5];
-            style2 = String(map38[tag]);
+            style3 = String(map38[tag]);
             if (tag.slice(0, 2) === "!!") tag = "tag:yaml.org,2002:" + tag.slice(2);
             type2 = schema2.compiledTypeMap["fallback"][tag];
-            if (type2 && _hasOwnProperty.call(type2.styleAliases, style2)) style2 = type2.styleAliases[style2];
-            result[tag] = style2;
+            if (type2 && _hasOwnProperty.call(type2.styleAliases, style3)) style3 = type2.styleAliases[style3];
+            result[tag] = style3;
         }
         return result;
     }
@@ -76665,7 +76673,7 @@
         state3.dump = _result || "{}";
     }
     function detectType(state3, object2, explicit) {
-        var _result, typeList, index5, length8, type2, style2;
+        var _result, typeList, index5, length8, type2, style3;
         typeList = explicit ? state3.explicitTypes : state3.implicitTypes;
         for(index5 = 0, length8 = typeList.length; index5 < length8; index5 += 1){
             type2 = typeList[index5];
@@ -76675,10 +76683,10 @@
                     else state3.tag = type2.tag;
                 } else state3.tag = "?";
                 if (type2.represent) {
-                    style2 = state3.styleMap[type2.tag] || type2.defaultStyle;
-                    if (_toString.call(type2.represent) === "[object Function]") _result = type2.represent(object2, style2);
-                    else if (_hasOwnProperty.call(type2.represent, style2)) _result = type2.represent[style2](object2, style2);
-                    else throw new exception("!<" + type2.tag + '> tag resolver accepts not "' + style2 + '" style');
+                    style3 = state3.styleMap[type2.tag] || type2.defaultStyle;
+                    if (_toString.call(type2.represent) === "[object Function]") _result = type2.represent(object2, style3);
+                    else if (_hasOwnProperty.call(type2.represent, style3)) _result = type2.represent[style3](object2, style3);
+                    else throw new exception("!<" + type2.tag + '> tag resolver accepts not "' + style3 + '" style');
                     state3.dump = _result;
                 }
                 return true;

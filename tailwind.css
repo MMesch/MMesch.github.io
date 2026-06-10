@@ -60,6 +60,10 @@ div.markdown p {
   @apply my-5;
 }
 
+div.markdown img {
+  @apply my-5 mx-auto max-w-full block;
+}
+
 div.markdown a {
   @apply text-gray-700 underline decoration-gray-300 underline-offset-4;
 }
@@ -81,7 +85,7 @@ div.markdown blockquote {
 }
 
 div.markdown .abstract {
-  @apply mb-6 text-gray-500;
+  @apply mb-4 text-gray-600 italic leading-relaxed;
 }
 
 div.markdown p > code {
