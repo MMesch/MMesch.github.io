@@ -3,5 +3,5 @@ set -euo pipefail
 
 spago bundle --bundle-type app --platform browser --outfile build/ps.js --module Main --minify
 tailwindcss -i tailwind.css -o build/style.css
-rm -f docs/website.*.js docs/website.*.css docs/website.*.map
+rm -f docs/index.html docs/website.*.js docs/website.*.css docs/website.*.map
 parcel build index.html --dist-dir docs
