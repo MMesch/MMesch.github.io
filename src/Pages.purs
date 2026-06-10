@@ -3,184 +3,137 @@ module Pages where
 import Prelude
 import Types (State, Action(SwitchPage), Posts, Post, CV, Page(Main, Blog, BlogList))
 import Halogen.HTML as HH
-import Halogen.HTML.Core (PropName(..))
 import Halogen.HTML.Properties as HP
 import Halogen.HTML.Events as HE
 import Data.List (toUnfoldable)
-import Data.Array (reverse, filter, (..), zipWith)
+import Data.Array (reverse)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
 import Web.UIEvent.MouseEvent as MouseEvent
 import Data.Map (values)
 
--- simple navbar layout
 layout1 :: forall i. Array (HH.HTML i Action) -> HH.HTML i Action
 layout1 elements =
-  HH.div [ cn "block" ]
-    $ [ navBar
-      , container elements
-      ]
-  where
-  container :: forall i a. Array (HH.HTML i a) -> HH.HTML i a
-  container = HH.div [ cn "w-full max-w-4xl block mx-auto px-1 md:px-3 py-3" ]
-
--- pages
-blogList :: forall i. State -> HH.HTML i Action
-blogList state =
-  layout1
-    $ [ list $ state.posts ]
+  HH.div [ cn "min-h-screen bg-white text-gray-800" ]
+    [ navBar
+    , HH.div [ cn "max-w-4xl mx-auto px-4 py-8" ] elements
+    ]
 
 loadingPage :: forall i. HH.HTML i Action
-loadingPage = layout1 [ HH.text "Loading" ]
+loadingPage = layout1 [ HH.text "Loading..." ]
 
 mainPage :: forall i. Maybe CV -> HH.HTML i Action
 mainPage maybeCV =
   layout1
     $ case maybeCV of
-        Nothing -> [ HH.text "Loading" ]
+        Nothing -> [ HH.text "Loading..." ]
         Just cv ->
-          [ HH.div [ cn "markdown mx-4" ]
-              [ HH.h2_ [ HH.text cv.summary ]
-              , HH.hr []
-              , HH.h2_ [ HH.text "What I do" ]
+          [ HH.div [ cn "text-base" ]
+              [ HH.h1 [ cn "text-gray-800 text-2xl font-bold mb-6" ] [ HH.text cv.summary ]
+              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> What I do" ]
               , HH.p_ [ HH.text cv.what ]
-              , HH.h2_ [ HH.text "The fields I worked in" ]
+              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Fields I worked in" ]
               , HH.p_ [ HH.text cv.domains ]
-              , HH.h2_ [ HH.text "My tech stack" ]
+              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Tech stack" ]
               , HH.p_ [ HH.text cv.stack ]
-              , HH.h2_ [ HH.text "Experience" ]
+              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Experience" ]
               , HH.div_ (experienceCard <$> cv.experience)
-              , HH.h2_ [ HH.text "Education" ]
+              , HH.h2 [ cn "text-gray-700 text-base mt-8 mb-2" ] [ HH.text "> Education" ]
               , HH.div_ (educationCard <$> cv.education)
               ]
           ]
   where
   experienceCard exp =
-    HH.div [ cn "block border-2 p-2 m-2" ]
-      [ HH.text $ exp.employer <> " (" <> exp.years <> ") ⇒ " <> exp.role ]
+    HH.div [ cn "border-l-2 border-gray-200 pl-3 my-3 text-sm" ]
+      [ HH.div [ cn "text-gray-800" ] [ HH.text exp.employer ]
+      , HH.div [ cn "text-gray-500" ] [ HH.text $ exp.role <> " (" <> exp.years <> ")" ]
+      ]
 
   educationCard edu =
-    HH.div [ cn "block border-2 p-2 m-2" ]
-      [ HH.text $ edu.institution <> " - " <> edu.name <> " " <> edu.qualification ]
+    HH.div [ cn "border-l-2 border-gray-200 pl-3 my-3 text-sm" ]
+      [ HH.div [ cn "text-gray-800" ] [ HH.text edu.qualification ]
+      , HH.div [ cn "text-gray-500" ] [ HH.text $ edu.institution <> " — " <> edu.name ]
+      ]
 
 blogPage :: forall i. Post -> HH.HTML i Action
 blogPage post =
   let
     html = fromMaybe "" post.content
-
     title = fromMaybe "no title" post.title
-
     date = fromMaybe "no date" post.date
   in
     layout1
-      [ HH.div [ cn "markdown max-w-2xl border-t-2 lg:border-0 border-gray px-3 mx-auto py-16" ]
-          [ HH.div [ cn "text-gray-800 text-lg" ] [ HH.text date ]
-          , HH.h1 [] [ HH.text title ]
+      [ HH.div [ cn "markdown max-w-4xl" ]
+          [ HH.div [ cn "text-gray-500 text-sm mb-4" ] [ HH.text date ]
+          , HH.h1 [ cn "text-gray-800 text-2xl font-bold mb-6" ] [ HH.text title ]
           , case post.description of
               Nothing -> HH.div [] []
               Just description -> HH.div [ cn "abstract" ] [ HH.text description ]
-          , HH.div [ HP.prop (PropName "innerHTML") html ] []
+          , HH.div [ cn "post-content", HP.id "post-content" ] []
           ]
       ]
 
--- This is a little helper to save some space
-cn :: forall t5 t6. String -> HH.IProp ( class :: String | t6 ) t5
-cn = HP.class_ <<< HH.ClassName
-
-{- nav bar component -}
-navBarButton ::
-  forall i.
-  { href :: String, content :: String, page :: Page } ->
-  HH.HTML i Action
-navBarButton { href, content, page } =
-  HH.a
-    [ HP.href href
-    , HE.onClick $ MouseEvent.toEvent >>> SwitchPage page
-    , cn "block hover:cursor-pointer my-1 ml-1 mr-5 text-3xl md:text-5xl"
-    ]
-    [ HH.text content ]
-
-navBarIcon :: forall i. { link :: String, path :: String } -> HH.HTML i Action
-navBarIcon { link, path } =
-  HH.a
-    [ HP.href link, cn "" ]
-    [ HH.img
-        [ HP.src $ "/images/logos/" <> path
-        , cn "block w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 m-1"
+blogList :: forall i. State -> HH.HTML i Action
+blogList state =
+  layout1
+    [ HH.div [ cn "text-base" ]
+        [ HH.h1 [ cn "text-gray-800 text-xl mb-8" ] [ HH.text "Blog" ]
+        , HH.div_ (reverse (toUnfoldable (values state.posts)) <#> listCard)
         ]
     ]
-
-navBarIconGroup ::
-  forall i a.
-  { elements :: Array (HH.HTML i a) } -> HH.HTML i a
-navBarIconGroup { elements } =
-  HH.div
-    [ cn "flex flex-row m-2" ]
-    elements
-
-navBarButtonGroup ::
-  forall i a.
-  { elements :: Array (HH.HTML i a) } -> HH.HTML i a
-navBarButtonGroup { elements } =
-  HH.div
-    [ cn "font-bold flex flex-row lg:flex-col m-2" ]
-    elements
-
-{- writing pages -}
-navBar :: forall i. HH.HTML i Action
-navBar =
-  HH.div [ cn "lg:absolute lg:top-4 flex justify-between flex-row lg:flex-col mb-10 lg:mb-0" ]
-    [ navBarButtonGroup
-        { elements:
-            [ navBarButton { href: "/", content: "About", page: Main }
-            , navBarButton { href: "/blog", content: "Blog", page: BlogList }
-            ]
-        }
-    , navBarIconGroup
-        { elements:
-            [ navBarIcon { link: "https://twitter.com/Mattwittus", path: "mmesch.png" }
-            , navBarIcon { link: "https://github.com/mmesch", path: "github.png" }
-            , navBarIcon { link: "https://www.linkedin.com/in/mmesch", path: "logo-linkedin.png" }
-            ]
-        }
-    ]
-
-list :: forall i. Posts -> HH.HTML i Action
-list posts = HH.div [ cn "bg-white pt-6 flex flex-col" ] elements
-  where
-  images = (\x -> "path" <> show x <> ".svg") <$> (filter (\x -> mod x 2 == 0) (1760 .. 1962))
-
-  imageElements = (\path -> HH.img [ cn "hidden md:inline md:h-12 lg:h-16 mx-6 lg:mx-10", HP.src $ "./images/backgrounds/" <> path ]) <$> images
-
-  postCards = reverse (toUnfoldable (values posts)) <#> listCard
-
-  elements = zipWith (\a b -> HH.div [ cn "flex flex-row items-center" ] [ a, b ]) imageElements postCards
 
 listCard :: forall i. Post -> HH.HTML i Action
 listCard post =
   let
-    cardStyle = "hover:cursor-pointer w-full block p-4 md:p-6 my-3 border-solid border-2 rounded-lg"
-
     postId = fromMaybe "" post.id
-
     href = fromMaybe ("/blog/" <> postId) post.external
-
-    externalTag = HH.span [ cn "text-red-800 font-bold" ] [ HH.text "external: " ]
   in
     HH.a
-      ( [ HP.href href, cn cardStyle ]
+      ( [ HP.href href
+        , cn "block py-3 border-b border-gray-200 hover:bg-gray-50"
+        ]
           <> case post.external of
               Nothing -> [ HE.onClick $ MouseEvent.toEvent >>> SwitchPage (Blog postId) ]
-              Just link -> [ HP.target "_blank" ]
+              Just _ -> [ HP.target "_blank" ]
       )
-      [ HH.div [ cn "block text-lg" ]
-          $ ( if post.external /= Nothing then
-                [ externalTag ]
-              else
-                []
-            )
-          <> [ HH.text $ fromMaybe "no title" post.title ]
-      , HH.div [ cn "block text-sm my-2" ]
+      [ HH.div [ cn "flex flex-row justify-between items-baseline" ]
+          [ HH.div [ cn "text-gray-700" ]
+              $ [ HH.text $ fromMaybe "no title" post.title ]
+              <> case post.external of
+                  Nothing -> []
+                  Just _ -> [ HH.span [ cn "text-gray-400 ml-2" ] [ HH.text "[external]" ] ]
+          , HH.div [ cn "text-gray-500 text-base ml-6 shrink-0" ]
+              [ HH.text $ fromMaybe "" post.date ]
+          ]
+      , HH.div [ cn "text-gray-500 text-sm mt-1" ]
           [ HH.text $ fromMaybe "" post.description ]
-      , HH.div [ cn "block" ]
-          [ HH.text $ fromMaybe "no date" post.date ]
       ]
+
+cn :: forall t5 t6. String -> HH.IProp ( class :: String | t6 ) t5
+cn = HP.class_ <<< HH.ClassName
+
+navBar :: forall i. HH.HTML i Action
+navBar =
+  HH.div_
+    [ HH.div [ cn "px-6 py-4" ]
+        [ HH.div [ cn "max-w-4xl mx-auto flex flex-row justify-between items-center text-base" ]
+            [ HH.div [ cn "flex flex-row gap-8" ]
+                [ navLink "/" "About" Main
+                , navLink "/blog" "Blog" BlogList
+                ]
+            , HH.div [ cn "flex flex-row gap-4 text-sm" ]
+                [ HH.a [ HP.href "https://github.com/mmesch", cn "text-gray-500 hover:text-gray-800", HP.target "_blank" ] [ HH.text "GitHub" ]
+                , HH.a [ HP.href "https://www.linkedin.com/in/mmesch", cn "text-gray-500 hover:text-gray-800", HP.target "_blank" ] [ HH.text "LinkedIn" ]
+                , HH.a [ HP.href "https://fosstodon.org/@mattodon", cn "text-gray-500 hover:text-gray-800", HP.target "_blank" ] [ HH.text "Mastodon" ]
+                ]
+            ]
+        ]
+    , HH.div [ cn "nav-border" ] []
+    ]
+  where
+  navLink href text page =
+    HH.a
+      [ HP.href href
+      , HE.onClick $ MouseEvent.toEvent >>> SwitchPage page
+      , cn "text-gray-500 hover:text-gray-800 no-underline tracking-wide"
+      ]
+      [ HH.text text ]

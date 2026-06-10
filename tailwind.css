@@ -1,156 +1,112 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
-
-/* ./your-css-folder/styles.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.fancybackground {
-    background-image: linear-gradient(to right top, #fefefa, #fefefa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefdfa, #fefefa, #fefefa);
+@layer base {
+  body {
+    @apply bg-white text-gray-800 antialiased;
+  }
+
+  a {
+    @apply text-gray-800;
+  }
+
+  a:hover {
+    @apply text-gray-500;
+  }
+
+  hr {
+    @apply border-gray-200 my-6;
+  }
+
+  ::selection {
+    @apply bg-gray-200;
+  }
 }
 
-/*!
- *
- * MARKDOWN
- *
-*/
-
-div.markdown h1 {
-        @apply text-4xl md:text-6xl font-extrabold mb-6 mt-6;
-}
-
-div.markdown h2 {
-        @apply text-2xl md:text-3xl font-bold mb-6 mt-6;
-}
-
-div.markdown h3 {
-        @apply text-xl md:text-2xl mb-6 mt-6;
-}
-
-div.markdown h4 {
-        @apply text-lg;
-}
-
-div.markdown img {
-        @apply my-5 mx-auto;
-}
-
-div.markdown iframe {
-        @apply my-5 mx-auto;
-}
-
-div.markdown p {
-        @apply my-3 leading-relaxed;
-}
-
-div.markdown a {
-        @apply text-red-800 font-bold;
-}
-
-div.markdown ul {
-        @apply list-disc ml-6 my-2;
-}
-
-div.markdown ol {
-        @apply list-decimal ml-6;
-}
-
-div.markdown li {
-        @apply mt-1;
-}
-
-div.markdown .abstract {
-        @apply mb-6 text-gray-700;
-}
-
-div.markdown blockquote {
-        @apply ml-6 text-gray-700 italic;
+.nav-border {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #e5e7eb 20%,
+    #d1d5db 50%,
+    #e5e7eb 80%,
+    transparent 100%
+  );
+  height: 1px;
 }
 
 div.markdown {
-        @apply text-base;
+  @apply text-lg leading-relaxed;
 }
 
-/* MATHS */
-
-.katex *, ::after, ::before {
-    border-color: #000;
+div.markdown h1 {
+  @apply text-gray-800 text-3xl font-bold mt-12 mb-6;
 }
 
-.katex-display {
-        overflow-x: auto;
-        overflow-y: hidden;
-        margin: 0.5em 0;
-        padding: 0.5em 0;
+div.markdown h2 {
+  @apply text-gray-700 text-2xl font-bold mt-10 mb-4;
 }
 
-/* CODE */
+div.markdown h3 {
+  @apply text-gray-600 text-xl font-bold mt-8 mb-3;
+}
+
+div.markdown h4 {
+  @apply text-gray-500 text-lg font-bold mt-6 mb-2;
+}
+
+div.markdown p {
+  @apply my-5;
+}
+
+div.markdown a {
+  @apply text-gray-700 underline decoration-gray-300 underline-offset-4;
+}
+
+div.markdown a:hover {
+  @apply text-gray-500;
+}
+
+div.markdown ul {
+  @apply list-disc ml-5 my-2 space-y-1;
+}
+
+div.markdown ol {
+  @apply list-decimal ml-5 my-2 space-y-1;
+}
+
+div.markdown blockquote {
+  @apply ml-4 pl-4 border-l-2 border-gray-300 text-gray-500 italic;
+}
+
+div.markdown .abstract {
+  @apply mb-6 text-gray-500;
+}
+
+div.markdown p > code {
+  @apply bg-gray-100 text-gray-700 px-1 py-0.5 text-sm font-mono;
+}
 
 div.markdown pre {
-    @apply bg-stone-200 font-mono font-medium text-black p-5 rounded overflow-auto my-5;
+  @apply bg-gray-50 text-gray-700 p-4 overflow-auto my-5 leading-relaxed border border-gray-200 text-sm font-mono;
+}
+
+div.markdown pre code {
+  @apply bg-transparent p-0 text-sm;
 }
 
 code {
   @apply break-words;
 }
 
-div.markdown p > code {
-    @apply text-gray-900 font-mono font-semibold;
+.katex *, ::after, ::before {
+  border-color: #9ca3af;
 }
 
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.5em 0;
+  padding: 0.5em 0;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { @apply text-red-600; } /* Alert */
-code span.an { @apply text-red-400 font-bold italic; } /* Annotation */
-code span.wa { @apply text-red-500 font-bold italic; } /* Warning */
-code span.co { @apply text-blue-400 italic; } /* Comment */
-code span.cv { @apply text-blue-400 font-bold italic; } /* CommentVar */
-code span.do { @apply text-blue-400 font-bold italic; } /* Documentation */
-code span.er { @apply text-red-700 font-bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { @apply text-red-500 font-bold italic; } /* Information */
-code span.fu { @apply text-blue-500; } /* Function */
-code span.cf { @apply text-blue-700 font-bold; } /* ControlFlow */
-code span.kw { @apply text-blue-700 font-bold; } /* Keyword */
-code span.op { @apply text-orange-600 font-bold; } /* Operator */
-code span.pp { @apply text-blue-400 italic; } /* Preprocessor */
-code span.at { @apply text-green-800 } /* Attribute */
-code span.bu { @apply text-black; } /* Builtin */
-code span.dt { @apply text-lime-700; } /* DataType */
-code span.cn { @apply text-emerald-700; } /* Constant */
-code span.va { @apply text-emerald-700; } /* Variable */
-code span.dv { @apply text-emerald-700; } /* DecVal */
-code span.fl { @apply text-emerald-700; } /* Float */
-code span.bn { @apply text-emerald-700 } /* BaseN */
-code span.sc { @apply text-green-700; } /* SpecialChar */
-code span.ss { @apply text-green-700; } /* SpecialString */
-code span.st { @apply text-green-700; } /* String */
-code span.ch { @apply text-green-700; } /* Char */
-code span.vs { @apply text-green-700; } /* VerbatimString */
-code span.ot { @apply text-gray-900; } /* Other */

@@ -1,60 +1,80 @@
-summary: |
-  Hi, I am a software developer and project manager and this is the place
-  where I write up notes and thoughts about work.
+summary: Matthias Meschede
 what: |
-  I enjoy coordinating projects, deciphering business requirements, looking for
-  the best path to making things happen, all the way to implementing hands-on
-  if required. For all my life, I have had a strong inclination to sports and
-  music and try to apply lessons learned in this world about social life,
-  discipline and the connection between body and mind, to the still young and
-  sometimes overly intellectual programming industry. My experience living
-  across countries in a highly multicultural environment is helpful as well to
-  bring together people.
+  I am Chief Operating Officer at QuantStack, one of the leading forces behind
+  Jupyter, Apache Arrow, Conda/Mamba and other popular open source ecosystems.
+  I support the team with project initiation, requirement gathering, solution
+  design, sales, and operations — and do hands-on engineering when possible
+  and needed. I contribute to open source myself, principally with Python,
+  Haskell, Nix, Fortran, Rust and C in the context of modeling, data science
+  and data engineering.
+
+  I have organized, shaped and participated in governance, community events
+  and business models around open source. I was on the NixOS RFC Steering
+  Committee, co-created and organized Summer of Nix for two years, co-created
+  and organized the Compute! conference, and served on the PyData Paris
+  organizing committee.
 domains: |
-  I started my career at University with degrees in general Physics, worked a
-  bit in Biophysics, and finally got a PhD in Geophysics working in seismology
-  on wave propagation, tomography, and signal processing. The red-line in all
-  of these was to understand and implement mathematical models with the
-  computer. During this time, I started participating to several Open Source
-  projects, and after a Post Doc, I switched fully to the software industry and
-  have since worked on and coordinated large industrial projects across
-  domains, for example in Quantitative Marketing, Fintech, Biopharma, and
-  Aeronautics.
+  I started my career with degrees in Physics, worked in Biophysics, and
+  earned a PhD in Geophysics working on seismic wave propagation, tomography,
+  and signal processing. The common thread was understanding and implementing
+  mathematical models with computers. After a Post Doc, I transitioned fully
+  to software.
+
+  Since then I have worked across many domains: Quantitative Marketing,
+  Fintech, Biopharma, Aeronautics, Cybersecurity (frequent security audits
+  and penetration testing projects), Build Systems (Nix and Bazel, working
+  with one of the world-leading teams), Semantic Web (knowledge graph
+  projects), and UI/Web (end-to-end web applications, from design and
+  requirements to guiding teams through implementation).
 stack: |
-  I have worked with a variety of programming languages and frameworks. My
-  academic experience turned around large parallel Fortran simulation codes and
-  the Python data and machine learning stack. In the industry, I have worked
-  with standard technology such as Python, Java Groovy, Ruby, Typescript and
-  more specialized purely functional frameworks in Elm, Type- or Purescript, to
-  Haskell, implementing backend services, designing specialized libraries, or
-  setting up webapps. I discovered and learned to love Nix and NixOS over the
-  last years. On the non-programming side, I worked on modeling for a large
-  part of my career and have a good understanding of signal processing,
+  I have worked with a variety of programming languages and frameworks.
+  Academically, I ran large parallel Fortran simulation codes and the Python
+  data/machine learning stack. In industry, I have worked with Python, Java,
+  Ruby, TypeScript, functional frameworks in Elm, PureScript (as this website)
+  and Haskell, building backend services, specialized libraries, and web
+  applications. I discovered and learned to love Nix and NixOS over the last
+  years.
+
+  On the modeling side, I have a strong understanding of signal processing,
   differential equation solvers, Bayesian statistics, inverse methods and
-  data-driven machine learning. In all those fields, I always enjoyed putting
-  together nice and effective data visualizations, initially with matplotlib,
-  d3.js and nowadays often with Vega.
+  data-driven machine learning. I have always enjoyed creating effective data
+  visualizations, from matplotlib and d3.js to Vega.
 experience:
+  - employer: QuantStack
+    role: Chief Operating Officer
+    years: September 2024 – present
+    description: Responsible for smooth operations, including design and maintenance of a lean data backbone, team organisation, and revenue architecture
+
+  - employer: Modus Create (Tweag)
+    role: Senior Solutions Executive
+    years: March 2023 – September 2024
+    description: Managed half of Tweag's client portfolio from sales and solutions side after acquisition by Modus Create
+
   - employer: Tweag
-    role: Project management
-    years: August 2020 – present
-    description: Project inception
+    role: Project Manager
+    years: August 2020 – March 2023
+    description: Led complex client projects from inception to delivery
+
   - employer: Tweag
-    role: Team lead data
+    role: Data Science Team Lead
     years: February 2018 – August 2020
-    description: Leading a small data team
-  - employer: Institut de Physique du Globe
-    role: Post Doc
+    description: Built and led a small data engineering team
+
+  - employer: Institut de Physique du Globe de Paris
+    role: Postdoctoral Researcher
     years: June 2015 – December 2017
-    description: Working on secondary microseisms
-  - employer: Institut de Physique du Globe
+    description: Research on secondary microseisms
+
+  - employer: Institut de Physique du Globe de Paris
     role: PhD Student
     years: November 2011 – June 2015
-    description: PHD seismic wave propagation
+    description: Seismic wave propagation
+
   - employer: Max Planck Institute for Dynamics and Selforganization
-    role: Research assistant
+    role: Research Assistant
     years: April 2011 – September 2011
     description: Collective motion
+
   - employer: Princeton University
     role: Visiting Student Research Collaborator
     years: November 2009 – October 2010
@@ -66,4 +86,4 @@ education:
 
   - qualification: Diplom (eq. MSc)
     name: Physics
-    institution: Ludwig Maximilians Universitaet München
+    institution: Ludwig Maximilians Universität München

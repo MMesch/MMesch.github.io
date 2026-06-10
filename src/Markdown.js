@@ -3,14 +3,29 @@ import markdownItKatex from "markdown-it-katex";
 import hljs from "highlight.js";
 
 export function render(input) {
-  const md = new MarkdownIt({
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        return hljs.highlight(str, { language: lang }).value;
+  return function () {
+    const md = new MarkdownIt({
+      html: true,
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          return hljs.highlight(str, { language: lang }).value;
+        }
+        return "";
       }
-      return "";
-    }
-  });
-  md.use(markdownItKatex);
-  return md.render(input);
+    });
+    md.use(markdownItKatex);
+    return md.render(input);
+  };
+}
+
+export function setInnerHTML(id) {
+  return function (html) {
+    return function () {
+      var el = document.getElementById(id);
+      if (el) {
+        el.innerHTML = html;
+        console.log("innerHTML set:", html.substring(0, 200));
+      }
+    };
+  };
 }

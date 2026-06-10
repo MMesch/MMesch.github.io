@@ -7,10 +7,12 @@ import Type.Equality (class TypeEquals, from)
 import Control.Parallel (parSequence)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Effect (Effect)
-import Effect.Aff (Aff)
-import Effect.Aff.Class (class MonadAff)
-import Effect.Class (class MonadEffect)
+import Effect.Aff (Aff, delay)
+import Effect.Aff.Class (class MonadAff, liftAff)
+import Effect.Class (class MonadEffect, liftEffect)
 import Effect.Class.Console (log)
+import Data.Time.Duration (Milliseconds(..))
+import Markdown (setInnerHTML)
 import Halogen as H
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
@@ -152,6 +154,13 @@ component =
       when (state.page /= destPage) do
         H.modify_ \s -> s { page = destPage }
       H.liftEffect $ setTitle state.posts destPage
+      case destPage of
+        Just (Blog postId) -> do
+          liftAff $ delay (Milliseconds 10.0)
+          case lookup postId state.posts of
+            Just post -> H.liftEffect $ setInnerHTML "post-content" (fromMaybe "" post.content)
+            Nothing -> pure unit
+        _ -> pure unit
       pure $ Just a
 
   handleAction :: forall c. Action -> H.HalogenM State Action c Void AppM Unit
