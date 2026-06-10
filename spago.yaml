@@ -1,67 +1,39 @@
 package:
-  dependencies:
-  - aff
-  - argonaut-codecs
-  - arrays
-  - bifunctors
-  - console
-  - debug
-  - effect
-  - either
-  - foldable-traversable
-  - foreign
-  - halogen
-  - html-parser-halogen
-  - identity
-  - lists
-  - maybe
-  - milkis
-  - options
-  - ordered-collections
-  - parallel
-  - prelude
-  - routing
-  - routing-duplex
-  - strings
-  - transformers
-  - tuples
-  - type-equality
-  - web-events
-  - web-html
-  - web-uievents
-  - yaml-next
   name: my-project
+  dependencies:
+    - aff
+    - argonaut-codecs
+    - arrays
+    - bifunctors
+    - console
+    - debug
+    - effect
+    - either
+    - foldable-traversable
+    - foreign
+    - halogen
+    - identity
+    - lists
+    - maybe
+    - milkis
+    - options
+    - ordered-collections
+    - parallel
+    - prelude
+    - routing
+    - routing-duplex
+    - strings
+    - transformers
+    - tuples
+    - type-equality
+    - web-events
+    - web-html
+    - web-uievents
+    - yaml-next
 workspace:
-  extra_packages:
-    halogen-css:
-      dependencies:
-      - css
-      - halogen
-      git: https://github.com/purescript-halogen/purescript-halogen-css.git
-      ref: v9.0.0
-    html-parser-halogen:
-      dependencies:
-      - halogen
-      - prelude
-      - string-parsers
-      git: https://github.com/rnons/purescript-html-parser-halogen.git
-      ref: 314acb997945d78c77381e3f7a5c19d3b882de3a
-    markdown-it:
-      dependencies:
-      - effect
-      - foreign
-      - options
-      - prelude
-      git: https://github.com/mmesch/purescript-markdown-it.git
-      ref: 683a464fbd404ade1364e53b54cf2e82d4fa74d4
-    markdown-it-halogen:
-      dependencies:
-      - html-parser-halogen
-      - markdown-it
-      - prelude
-      git: https://github.com/mmesch/purescript-markdown-it-halogen.git
-      ref: d74627cf27b997b9392b0133595765fb978e620c
+  packageSet:
+    registry: 77.5.0
+  extraPackages:
     yaml-next:
-      version: "^3.1.0"
-  package_set:
-    url: https://raw.githubusercontent.com/purescript/package-sets/0.15.15/packages.json
+      git: git@github.com:archaeron/purescript-yaml-next.git
+      ref: v3.1.1

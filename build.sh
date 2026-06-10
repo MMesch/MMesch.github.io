@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
+# Bundle PureScript
+spago bundle --bundle-type app --platform browser --outfile build/ps.js --module Main
+
+# Build Tailwind CSS
 tailwindcss -i tailwind.css -o build/style.css
-for i in `git diff --name-only --cached docs/posts/ | grep md`
-  do pandoc $i \
-          --lua-filter=util/dgram.lua \
-          -M save_diagrams=true \
-          --filter pandoc-katex-filter \
-          --highlight-style pygments \
-          -o ${i/.md/.html}
-  echo $i
-done
+
+# Bundle with Parcel -> docs/
+parcel build index.html --dist-dir docs

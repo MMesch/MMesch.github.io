@@ -4,6 +4,7 @@ import Prelude
 import Effect.Class (liftEffect)
 import Effect.Aff (attempt, Aff)
 import Types (Post)
+import Markdown (render)
 import Milkis as M
 import Milkis.Impl.Window (windowFetch)
 import Control.Monad.Except (runExcept)
@@ -16,33 +17,17 @@ import Data.Foldable (foldMap)
 import Data.Argonaut.Decode.Class (decodeJson, class DecodeJson)
 import Data.Argonaut.Decode.Error (printJsonDecodeError)
 import Data.YAML.Foreign.Decode (parseYAMLToJson)
-import Data.String (split, Pattern(Pattern), replace, Replacement(Replacement))
-import Data.String.Regex (regex, match, replace')
+import Data.String (split, Pattern(Pattern))
 import Data.Identity (Identity)
-import Data.String.Regex.Flags (noFlags, global, multiline)
+import Data.String.Regex (regex, match)
+import Data.String.Regex.Flags (noFlags)
 import Data.Array.NonEmpty ((!!))
-import Data.Array (head)
 import Data.Maybe (Maybe(Just, Nothing), fromMaybe)
-
-fixupHtml :: String -> Maybe String
-fixupHtml rawHtml = do
-  mspace <- hush $ regex "<(mspace.*)/>" global
-  svgpath <- hush $ regex "<(path[\\s\\S]*?)\\/>" (global <> multiline)
-  let
-    mspaceReplacer _ groups =
-      "<"
-        <> (fromMaybe "mspace width=0" (join $ head groups))
-        <> "></mspace>"
-
-    pathReplacer _ groups =
-        "<"
-            <> (fromMaybe "path" (join $ head groups))
-            <> "></path>"
-
-    fixedHtml1 = replace' mspace mspaceReplacer rawHtml
-
-    fixedHtml2 = replace' svgpath pathReplacer fixedHtml1
-  pure fixedHtml2
+import Data.Identity (Identity)
+import Data.String.Regex (regex, match)
+import Data.String.Regex.Flags (noFlags)
+import Data.Array.NonEmpty ((!!))
+import Data.Maybe (fromMaybe)
 
 fetchFile :: String -> Aff (Either String String)
 fetchFile url = do
@@ -57,28 +42,28 @@ fetchList url = do
 fetchPost :: String -> Aff (Either String Post)
 fetchPost url = do
   contentEither <- fetchFile url
-  compiledEither <- fetchFile (replace (Pattern ".md") (Replacement ".html") url)
-  pure
-    $ do
-        content <- contentEither
-        { header, body } <- note "error in markdown extractions" $ extractMarkdown content
-        (post :: Post) <- runExcept $ parseYaml header
-        pure
-          $ post
-              { content = Just body
-              , path = Just url
-              , compiled = hush compiledEither >>= fixupHtml
-              , date =
+  case contentEither of
+    Left err -> pure $ Left err
+    Right content -> case extractMarkdown content of
+      Nothing -> pure $ Left "error in markdown extractions"
+      Just { header, body } -> case runExcept ((parseYaml header) :: ExceptT String Identity Post) of
+        Left err -> pure $ Left err
+        Right post' -> do
+          html <- liftEffect $ render body
+          pure $ Right $ post'
+            { content = Just html
+            , path = Just url
+            , date =
                 do
                   dateExpr <- hush $ regex ".*/(\\d+-\\d+-\\d+)-.*" noFlags
                   arr <- match dateExpr url
                   join $ arr !! 1
-              , id =
+            , id =
                 do
                   idExpr <- hush $ regex ".*/(.+)\\.md" noFlags
                   arr <- match idExpr url
                   join $ arr !! 1
-              }
+            }
 
 extractMarkdown :: String -> Maybe { header :: String, body :: String }
 extractMarkdown markdown = do
@@ -91,15 +76,15 @@ extractMarkdown markdown = do
   pure { header: header, body: body }
 
 fetchYaml :: forall a. DecodeJson a => String -> Aff (Either String a)
-fetchYaml url = do -- Aff
+fetchYaml url = do
   yamlEither <- fetchFile url
   pure
-    $ do -- Either
+    $ do
         yaml <- yamlEither
         runExcept (parseYaml yaml)
 
 parseYaml :: forall a. DecodeJson a => String -> ExceptT String Identity a
-parseYaml content = do -- this is an Either Monad
+parseYaml content = do
   json <- withExceptT foreignListError $ parseYAMLToJson content
   withExceptT printJsonDecodeError (except (decodeJson json))
   where

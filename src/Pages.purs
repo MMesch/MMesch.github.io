@@ -3,9 +3,9 @@ module Pages where
 import Prelude
 import Types (State, Action(SwitchPage), Posts, Post, CV, Page(Main, Blog, BlogList))
 import Halogen.HTML as HH
+import Halogen.HTML.Core (PropName(..))
 import Halogen.HTML.Properties as HP
 import Halogen.HTML.Events as HE
-import Html.Renderer.Halogen as RH
 import Data.List (toUnfoldable)
 import Data.Array (reverse, filter, (..), zipWith)
 import Data.Maybe (fromMaybe, Maybe(Just, Nothing))
@@ -65,9 +65,7 @@ mainPage maybeCV =
 blogPage :: forall i. Post -> HH.HTML i Action
 blogPage post =
   let
-    markdown = fromMaybe "" post.content
-
-    rendered = RH.render_ (fromMaybe "" post.compiled)
+    html = fromMaybe "" post.content
 
     title = fromMaybe "no title" post.title
 
@@ -80,7 +78,7 @@ blogPage post =
           , case post.description of
               Nothing -> HH.div [] []
               Just description -> HH.div [ cn "abstract" ] [ HH.text description ]
-          , rendered
+          , HH.div [ HP.prop (PropName "innerHTML") html ] []
           ]
       ]
 
