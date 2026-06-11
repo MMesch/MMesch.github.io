@@ -5,3 +5,4 @@ spago bundle --bundle-type app --platform browser --outfile build/ps.js --module
 tailwindcss -i tailwind.css -o build/style.css
 rm -f docs/index.html docs/website.*.js docs/website.*.css docs/website.*.map
 parcel build index.html --dist-dir docs
+cp docs/index.html docs/404.html
