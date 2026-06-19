@@ -15,6 +15,8 @@ No systematic, regularly published benchmarks compare Pyodide or emscripten-forg
 
 While the focus is Python (Pyodide and emscripten-forge), the same underlying Wasm engine and compilation pipeline applies to other scientific computing projects such as [webR](https://docs.r-wasm.org/webr/latest/) (R in the browser), [xeus-cpp](https://github.com/jupyter-xeus/xeus-cpp) (C++ Jupyter kernel for JupyterLite), and [Observable](https://observablehq.com/) (JavaScript-based reactive notebooks that interoperate with Wasm modules).
 
+*A note on provenance: this post was researched by compiling secondary sources — specification documents, GitHub issues, blog posts, and release notes — with the help of AI-assisted analysis. I am not directly involved in WebAssembly or Pyodide development; this is an effort to understand the performance landscape from the outside and gather what's publicly known in one place. Corrections and additions are welcome.*
+
 ## How WebAssembly Executes Code: The Compilation Pipeline
 
 To understand where performance is lost, it helps to trace the path from source to execution.
