@@ -5,14 +5,11 @@ import Effect.Class (liftEffect)
 import Effect.Aff (attempt, Aff)
 import Types (Post)
 import Markdown (render)
-import Milkis as M
-import Milkis.Impl.Window (windowFetch)
 import Control.Monad.Except (runExcept)
 import Control.Monad.Except.Trans (withExceptT, except, ExceptT)
 import Data.Either (Either(Right, Left), hush, note)
 import Foreign (renderForeignError)
 import Data.Bifunctor (bimap)
-import Data.Traversable (sequence)
 import Data.Foldable (foldMap)
 import Data.Argonaut.Decode.Class (decodeJson, class DecodeJson)
 import Data.Argonaut.Decode.Error (printJsonDecodeError)
@@ -23,16 +20,13 @@ import Data.String.Regex (regex, match)
 import Data.String.Regex.Flags (noFlags)
 import Data.Array.NonEmpty ((!!))
 import Data.Maybe (Maybe(Just, Nothing), fromMaybe)
-import Data.Identity (Identity)
-import Data.String.Regex (regex, match)
-import Data.String.Regex.Flags (noFlags)
-import Data.Array.NonEmpty ((!!))
-import Data.Maybe (fromMaybe)
+
+foreign import fetchNoCache :: String -> Aff String
 
 fetchFile :: String -> Aff (Either String String)
 fetchFile url = do
-  _response <- attempt $ M.fetch windowFetch (M.URL url) M.defaultFetchOptions
-  (sequence $ bimap show M.text _response)
+  content <- attempt $ fetchNoCache url
+  pure $ bimap show identity content
 
 fetchList :: String -> Aff (Either String (Array String))
 fetchList url = do
