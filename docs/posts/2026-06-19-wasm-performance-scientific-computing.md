@@ -112,9 +112,14 @@ These are not mandated by Wasm's security model — they are gaps in the current
 
 ## What Benchmarks Actually Show
 
-### mypy: 60× Slowdown on Python-Bytecode-Heavy Workloads
+### mypy: 60× Slowdown, Two Compounding Factors
 
-The most severe slowdown documented in the Pyodide issue tracker is [mypy taking ~60 seconds in Pyodide](https://github.com/pyodide/pyodide/issues/3497) vs. < 1 second natively for a trivial one-line file. With bytecode caching, the second run drops to ~5 seconds (still ~5× slower). This workload is dominated by Python-level object allocation, string processing, and module import — patterns least amenable to the Wasm compilation pipeline, where the CPython interpreter dispatch overhead is paid on every bytecode.
+The most severe slowdown documented in the Pyodide issue tracker is [mypy taking ~60 seconds in Pyodide](https://github.com/pyodide/pyodide/issues/3497) vs. < 1 second natively for a trivial one-line file. With bytecode caching, the second run drops to ~5 seconds (still ~5× slower). The [fix](https://github.com/pyodide/pyodide/pull/3504) was to ship mypy with its **mypyc-compiled** C extensions rather than running it as pure Python. This reveals that the 60× slowdown was not solely the interpreter dispatch overhead — it was two factors compounding:
+
+1. **Missing mypyc compilation (dominant)**. mypy runs dramatically faster when compiled to C extensions via mypyc. The Wasm build was running mypy as pure interpreted Python bytecode, while the native comparison was almost certainly using a compiled mypy.
+2. **Wasm dispatch overhead (contributing)**. Even with mypyc compilation, the remaining Python-level code (imports, glue logic, non-compiled modules) still pays the per-bytecode dispatch cost described above.
+
+The dispatch overhead is real but a better illustration of its magnitude is the cached run: ~5 seconds in Pyodide vs. < 1 second natively, after the heavy lifting of module import and initial type-checking infrastructure setup is done. This ~5× gap is closer to what you should expect for Python-bytecode-dominated workloads in Wasm, while the full 60× gap conflates dispatch overhead with an entirely avoidable build configuration issue — running pure Python instead of compiled extensions.
 
 ### SIMD OpenBLAS: Measurable Improvement, No Full Integration Yet
 
