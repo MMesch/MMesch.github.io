@@ -160,7 +160,7 @@ The Wasm performance model applies across languages. Brief notes on other projec
 | [Threads](https://github.com/WebAssembly/threads) | Phase 4 (shipped) | Shared memory + atomics; requires `SharedArrayBuffer` and COOP/COEP |
 | [JSPI](https://github.com/WebAssembly/js-promise-integration) | Phase 3 | Stack switching for sync-over-async; enables `asyncio.run()` in browser |
 | [Tail-call](https://github.com/WebAssembly/tail-call) | Phase 4 (shipped) | Enables CPython 3.14's tail-call interpreter in Wasm |
-| [Memory64](https://github.com/WebAssembly/memory64) | Phase 3 | Lifts the 4 GB linear memory limit |
+| [Memory64](https://github.com/WebAssembly/memory64) | Phase 3 | Lifts the 4 GB linear memory limit. SpiderMonkey's [analysis](https://spidermonkey.dev/blog/2025/01/15/is-memory64-actually-worth-using.html) (Jan 2025) finds that 64-bit pointers currently carry a ~10% runtime overhead vs. 32-bit due to increased memory pressure and larger object representations, making it situationally rather than universally beneficial. |
 | [Exception handling](https://github.com/WebAssembly/exception-handling) | Phase 4 (shipped) | Zero-cost exceptions; reduces overhead of Python exception handling |
 | [Garbage collection](https://github.com/WebAssembly/gc) | Phase 4 (shipped) | Managed objects; relevant for language runtimes that need GC interop with JS |
 
@@ -187,6 +187,7 @@ SIMD, tail-call, threads, exception handling, and GC are all shipped. The remain
 - [V8 blog — WebAssembly tag](https://v8.dev/blog/tags/webassembly)
 - [cibuildwheel changelog](https://cibuildwheel.pypa.io/en/stable/changelog/) (tracks PyEmscripten ABI support)
 - [webR documentation](https://docs.r-wasm.org/webr/latest/)
+- [Is Memory64 actually worth using?](https://spidermonkey.dev/blog/2025/01/15/is-memory64-actually-worth-using.html) — SpiderMonkey team, Jan 2025
 - [Pyodide #6102](https://github.com/pyodide/pyodide/issues/6102) — CPython 3.14 tail-call interpreter benchmarks
 - [Pyodide #3763](https://github.com/pyodide/pyodide/issues/3763) — OpenBLAS integration
 - [Pyodide #4015](https://github.com/pyodide/pyodide/issues/4015) — FFI benchmarks
