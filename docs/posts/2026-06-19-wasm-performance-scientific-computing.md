@@ -1,5 +1,5 @@
 ---
-title: "WebAssembly Performance for Scientific Computing: A Resource Survey"
+title: "Understanding WebAssembly Performance for Scientific Computing"
 labels:
   - webassembly
   - performance
@@ -8,7 +8,7 @@ labels:
   - emscripten-forge
   - python
 description: |
-    A survey of available benchmarks, issues, and design constraints shaping WebAssembly performance for scientific computing — covering Pyodide, emscripten-forge, and the Wasm feature proposals that affect numerical workloads.
+    An analysis of the compilation pipeline, design constraints, and benchmark data shaping WebAssembly performance for scientific Python — covering Pyodide, emscripten-forge, and the Wasm feature proposals that affect numerical workloads.
 ---
 
 No systematic, regularly published benchmarks compare Pyodide or emscripten-forge performance against native for scientific workloads. What does exist is scattered across GitHub issues, Wasm specification proposals, and release notes. This post gathers those data points and contextualizes them with the architectural constraints of running numerical code inside a browser sandbox. 
