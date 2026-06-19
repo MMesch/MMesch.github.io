@@ -11,7 +11,7 @@ description: |
     An analysis of the compilation pipeline, design constraints, and benchmark data shaping WebAssembly performance for scientific Python — covering Pyodide, emscripten-forge, and the Wasm feature proposals that affect numerical workloads.
 ---
 
-No systematic, regularly published benchmarks compare Pyodide or emscripten-forge performance against native for scientific workloads. What does exist is scattered across GitHub issues, Wasm specification proposals, and release notes. This post gathers those data points and contextualizes them with the architectural constraints of running numerical code inside a browser sandbox. 
+No systematic, regularly published benchmarks compare Pyodide or emscripten-forge performance against native for scientific workloads seems to exist. What does exist is scattered across GitHub issues, Wasm specification proposals, and release notes. This post gathers those data points and contextualizes them with the architectural constraints of running numerical code inside a browser sandbox. 
 
 While the focus is Python (Pyodide and emscripten-forge), the same underlying Wasm engine and compilation pipeline applies to other scientific computing projects such as [webR](https://docs.r-wasm.org/webr/latest/) (R in the browser), [xeus-cpp](https://github.com/jupyter-xeus/xeus-cpp) (C++ Jupyter kernel for JupyterLite), and [Observable](https://observablehq.com/) (JavaScript-based reactive notebooks that interoperate with Wasm modules).
 
